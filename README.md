@@ -2,7 +2,7 @@
 
 A collection of reusable skills. Each top-level folder is a skill package with a required `SKILL.md` entry point and optional supporting context.
 
-See `AGENT.md` for repository conventions and `STYLE.md` for authoring rules.
+See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
 
 - **recover** — Reconstruct interrupted work from recent chats, workspace artifacts, and temp files, then realign on the right thread and next steps.
 

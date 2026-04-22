@@ -10,7 +10,7 @@ This repository stores reusable skills.
 - Root-level docs explain repository-wide expectations:
   - `README.md` lists the published skills.
   - `STYLE.md` defines how to create and update skills.
-  - `AGENT.md` explains how to work in this repository.
+  - `AGENTS.md` explains how to work in this repository.
 
 ## Expected shape
 
