@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Capture restart-safe handoff notes for unfinished work so a future agent can resume without rediscovering the whole problem. Use when Codex needs to transfer work to a fresh agent because of context rot, token pressure, machine restarts, session changes, or any pause where the goal, current workflow stage, completed work, blockers, and next steps must be preserved.
+description: Capture restart-safe handoff notes for unfinished work so a future agent can resume without rediscovering the whole problem. Use when an a coding Agent needs to transfer work to a fresh agent because of context rot, token pressure, machine restarts, session changes, or any pause where the goal, current workflow stage, completed work, blockers, and next steps must be preserved.
 ---
 
 # Handoff
