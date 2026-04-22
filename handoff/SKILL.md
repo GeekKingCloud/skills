@@ -1,11 +1,11 @@
 ---
 name: handoff
-description: Capture restart-safe handoff notes for unfinished work so a future agent can resume without rediscovering the whole problem. Use when an a coding Agent needs to transfer work to a fresh agent because of context rot, token pressure, machine restarts, session changes, or any pause where the goal, current workflow stage, completed work, blockers, and next steps must be preserved.
+description: Capture restart-safe handoff notes for unfinished work so a future coding agent can resume without rediscovering the whole problem. Use when work needs to transfer cleanly because of context rot, token pressure, machine restarts, session changes, or any pause where the goal, current workflow stage, completed work, blockers, and next steps must be preserved.
 ---
 
 # Handoff
 
-Create a concise handoff for the next agent. Optimize for fast restart, not prose.
+Create a concise handoff for the next coding agent. Optimize for fast restart, not prose.
 
 ## Quick start
 
@@ -33,13 +33,13 @@ Prefer short sections with concrete facts:
 - `Status`: where the work stopped and why a handoff is needed
 - `Completed`: changes already made or verified
 - `In Progress`: the latest hypothesis, partial implementation, or active debugging thread
-- `Next Steps`: ordered actions the next agent should take first
+- `Next Steps`: ordered actions the next coding agent should take first
 - `Artifacts`: important files, commands, PRs, issues, logs, or screenshots
-- `Risks`: blockers, uncertainties, and places where the next agent should be careful
+- `Risks`: blockers, uncertainties, and places where the next coding agent should be careful
 
 ## Quality bar
 
-Make the note useful to a fresh agent with no hidden context:
+Make the note useful to a fresh reader with no hidden context:
 - reference real paths and identifiers
 - mention exact errors or failing checks when relevant
 - separate facts from guesses

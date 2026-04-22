@@ -1,14 +1,16 @@
-# Agent Skills (Reusable Prompts)
+# Reusable Skills
 
-A collection of skills (SKILL.md files with leafed context) that allow quick, efficient reproducability in Agent asks.
+A collection of reusable skills. Each top-level folder is a skill package with a required `SKILL.md` entry point and optional supporting context.
 
-- **recover** — Reconstruct interrupted work from recent chats, workspace artifacts, and temp files, then realign with the user on the right thread and next steps.
+See `AGENT.md` for repository conventions and `STYLE.md` for authoring rules.
+
+- **recover** — Reconstruct interrupted work from recent chats, workspace artifacts, and temp files, then realign on the right thread and next steps.
 
   ```
   npx skills@latest add GeekKingCloud/skills/recover
   ```
 
-- **handoff** — Capture a restart-safe handoff for unfinished work, including the end goal, current workflow stage, completed work, blockers, and exact next steps for the next agent.
+- **handoff** — Capture a restart-safe handoff for unfinished work, including the end goal, current workflow stage, completed work, blockers, and exact next steps for the next coding agent.
 
   ```
   npx skills@latest add GeekKingCloud/skills/handoff

@@ -1,6 +1,6 @@
 ---
 name: recover
-description: Recover interrupted coding work by reconstructing likely context from recent chats, workspace artifacts, and temp files, then realigning with the user on direction and next steps. Use when Codex needs to resume after a timeout, bad response, stalled operation, machine restart, lost thread, or multiple partial conversations and must figure out which task to continue.
+description: Recover interrupted coding work by reconstructing likely context from recent chats, workspace artifacts, and temp files, then realigning on direction and next steps. Use when work needs to resume after a timeout, bad response, stalled operation, machine restart, lost thread, or multiple partial conversations and the next step is unclear.
 ---
 
 # Recover
