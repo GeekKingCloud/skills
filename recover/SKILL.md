@@ -16,16 +16,20 @@ When asked to recover:
 4. Ask only the minimum questions needed to confirm direction.
 5. Treat the user's correction as authoritative.
 
+If the user refers to "this chat", "the other chat", "the crashed chat", or similar, treat chat/session history as the primary source of truth when available.
+
 ## Rebuild context
 
-Check concrete artifacts first:
-- recent conversation history or available thread summaries
+Check concrete artifacts first, in this order when available:
+- actual local session/chat transcripts, session indexes, or thread summaries
 - recent handoff notes, if any exist
-- recently modified files and git diff or status
 - temp files, scratch notes, logs, and generated outputs
-- open issues, PRs, commands, or test failures referenced nearby
+- recent commands, test failures, issues, or PRs referenced nearby
+- recently modified files and git diff or status
 
 Prefer signals that explain both what the work was and where it stopped.
+
+Repo state is supporting evidence, not the primary source of truth for conversational recovery when session artifacts are available.
 
 ## Guide the user back in
 
@@ -39,6 +43,8 @@ If the topic is mostly clear:
 - call out assumptions explicitly
 - ask targeted follow-up questions only for missing direction, constraints, or success criteria
 
+If session evidence and repo evidence point to different threads, say so plainly and ask before choosing one.
+
 ## Recovery summary
 
 Give the user a compact status readout:
@@ -50,6 +56,7 @@ Give the user a compact status readout:
 - recommended next step
 
 Separate facts from guesses. Use phrases like `I found`, `It looks like`, and `My best guess is`.
+When possible, label evidence sources explicitly, for example `I found in the session log` and `I found in the repo`.
 
 ## Alignment rules
 
@@ -57,6 +64,8 @@ Separate facts from guesses. Use phrases like `I found`, `It looks like`, and `M
 - do not force the user to reconstruct everything from scratch
 - always offer a concrete starting point or recommended next step
 - prefer a short confirmation question over a long interview
+- if multiple plausible threads exist, ask before committing to one narrative
+- if session evidence is available, confirm the likely thread before giving a confident recovery summary
 - once aligned, switch from recovery into normal execution
 
 ## Template

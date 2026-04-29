@@ -15,3 +15,9 @@ See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
   ```
   npx skills@latest add GeekKingCloud/skills/handoff
   ```
+
+- **roast** — Perform a harsh, detail-obsessed codebase review for a project folder or directed target, with extra force on security holes, architecture problems, tests, maintainability, style, naming, comments, spacing, and user-supplied excuses.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/roast
+  ```
