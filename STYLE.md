@@ -80,7 +80,7 @@ If a skill needs smaller helper files:
 
 - Put them under the parent skill's `helpers/` directory.
 - Keep each helper narrowly scoped.
-- Store helpers as ordinary Markdown files such as `helpers/triage-checklist.md`.
+- Store helpers as ordinary Markdown files such as `helpers/TRIAGE-CHECKLIST.md`.
 - Do not model helpers as nested standalone skills.
 - Document helper usage from the parent skill when the relationship is not obvious.
 

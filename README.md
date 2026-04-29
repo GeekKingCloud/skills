@@ -18,6 +18,10 @@ See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
 
 - **roast** — Perform a harsh, detail-obsessed codebase review for a project folder or directed target, with extra force on security holes, architecture problems, tests, maintainability, style, naming, comments, spacing, and user-supplied excuses.
 
+  Defaults to a serious strict-teacher tone. Ask for a snarky, mean, comedy,
+  burn, putdown, or savage roast to switch the presentation style while keeping
+  findings evidence-backed and actionable.
+
   ```
   npx skills@latest add GeekKingCloud/skills/roast
   ```

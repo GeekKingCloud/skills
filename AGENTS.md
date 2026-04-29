@@ -20,12 +20,12 @@ Use a simple, predictable structure:
 skill-name/
   SKILL.md
   context/
-    reference.md
-    examples.md
+    REFERENCE.md
+    EXAMPLES.md
   helpers/
-    helper-name.md
+    HELPER-NAME.md
   templates/
-    output.md
+    OUTPUT.md
 ```
 
 ## Structure rules
@@ -42,7 +42,7 @@ skill-name/
 Some skills may need smaller helper files for specialized subtasks. When that happens:
 
 - Put them under the parent skill's `helpers/` directory.
-- Store each helper as a focused Markdown file such as `helpers/checklist.md`.
+- Store each helper as a focused Markdown file such as `helpers/CHECKLIST.md`.
 - Keep helpers tightly scoped to the parent skill's needs.
 - Do not treat helper files as standalone top-level skills.
 

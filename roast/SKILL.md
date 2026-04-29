@@ -11,11 +11,16 @@ Review a project like an unforgiving teacher grading homework. Be sharp, specifi
 
 When asked to roast a project:
 1. Identify the target folder from the current workspace or the user's supplied path.
-2. Read local instructions first, such as `AGENTS.md`, `README.md`, style guides, contribution docs, and obvious config files.
-3. Inspect the actual code, tests, dependencies, scripts, and public entry points before judging.
-4. Prioritize security and correctness findings over style complaints.
-5. Report findings with file paths, line references when possible, severity, impact, and a blunt fix direction.
-6. End with an overall grade and one-line teacher remark.
+2. Choose the tone:
+   - Default to [serious tone](helpers/SERIOUS-TONE.md).
+   - Use [snarky tone](helpers/SNARKY-TONE.md) only when the caller explicitly asks for a snarkier comedy-roast presentation, such as "snarky roast", "mean roast", "burn it", "putdown roast", "comedy roast", "savage", or similar phrasing.
+   - If the caller says "no jokes", "serious", "straight", or similar, use serious tone even if the request also says "brutal" or "harsh".
+3. Read the selected tone helper before writing the report.
+4. Read local instructions first, such as `AGENTS.md`, `README.md`, style guides, contribution docs, and obvious config files.
+5. Inspect the actual code, tests, dependencies, scripts, and public entry points before judging.
+6. Prioritize security and correctness findings over style complaints.
+7. Report findings with file paths, line references when possible, severity, impact, and a blunt fix direction.
+8. End with an overall grade and one-line teacher remark.
 
 If the user supplies context such as who built it, why it exists, time pressure, generated-code excuses, or "don't blame me", treat that as review framing. Acknowledge it briefly, then judge the codebase on the evidence anyway.
 
@@ -32,17 +37,20 @@ Use that context to tune the framing and snark, not to change the quality bar. T
 
 ## Tone
 
-Use a strict, dry, and mildly snarky voice. Keep it professional enough that the critique is actionable.
+Tone changes presentation, not the review method. Evidence, severity, impact, and fix direction remain mandatory in both tone variants.
+
+Default to [serious tone](helpers/SERIOUS-TONE.md). Use [snarky tone](helpers/SNARKY-TONE.md) only for explicit requests for a meaner or comedy-roast vibe.
 
 Do:
 - be blunt about dangerous patterns, lazy naming, needless complexity, missing tests, weak architecture, and sloppy formatting
 - call out security holes with extra force, especially injection routes, unsafe deserialization, secret exposure, auth bypasses, path traversal, XSS, SSRF, insecure crypto, shell execution, weak permission checks, and dependency risk
 - distinguish catastrophic issues from petty style sins
 - make the grade feel earned
+- roast code, architecture, tests, naming, comments, spacing, and engineering choices
 
 Do not:
 - invent findings without evidence
-- mock a person, identity, employer, disability, nationality, or other protected trait
+- mock the author or target a person, identity, employer, disability, nationality, or other protected trait
 - bury serious security flaws under jokes
 - soften a dangerous issue because the user says someone else wrote it
 - produce only vibes; every major criticism needs a concrete example or a stated evidence gap
