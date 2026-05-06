@@ -46,34 +46,6 @@ Make the note useful to a fresh reader with no hidden context:
 - prefer imperative next steps over vague suggestions
 - keep it skimmable; dense notes are better than long narratives
 
-## Template
+## Output format
 
-```md
-# Handoff
-
-## Goal
-[What success looks like]
-
-## Workflow Stage
-[Current phase]
-
-## Status
-[Where the work stopped and why a handoff is needed]
-
-## Completed
-- [Concrete change or verification]
-
-## In Progress
-- [Current line of work or hypothesis]
-
-## Next Steps
-1. [Highest-priority action]
-2. [Next action]
-
-## Artifacts
-- `[path/to/file]` - why it matters
-- `[command]` - result or reason to rerun
-
-## Risks
-- [Blocker, assumption, or uncertainty]
-```
+Use `templates/HANDOFF.md` as the output skeleton.

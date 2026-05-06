@@ -4,18 +4,32 @@
 
 - Sources:
 - Time or project scope:
-- Confidence:
+- Task/session coverage:
+- Agent or tool contexts represented:
+- Available corpus:
+- Sample depth:
+- Evidence fidelity:
+- Overall confidence:
 - Privacy boundary:
 - Details intentionally omitted:
 - Missing evidence:
 
 ## Evidence Sufficiency Decision
 
-- Decision: [Enough for report / Preliminary only / Not enough evidence]
+- Decision: [Enough for report / Preliminary due to evidence fidelity / Preliminary only / Incomplete run / Not enough evidence]
 - Reason:
+- Generalization boundary:
 - Better inputs needed:
 
 If the decision is `Not enough evidence`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision`. Do not fill the rest of the report with generic collaboration coaching.
+
+If the decision is `Incomplete run`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision` unless the user explicitly asks for interim notes. List what was reviewed, what remains, and what blocker prevented full-depth review.
+
+For general collaboration-improvement requests, full-depth review is the default. `Preliminary only` still requires evidence beyond the active conversation. If the report would mostly analyze the current thread, stop and request broader history.
+
+For narrow collaboration-feedback requests, full-depth review still applies within that narrower scope. Do not substitute a lightweight scan for the requested evidence review.
+
+Do not confuse available corpus with completed inspection. If broad history exists but was not inspected deeply enough, continue reviewing. If continuing is blocked, mark the run `Incomplete run`; do not present a lower-confidence finished report merely because the workflow did not dig enough.
 
 Omit sections or items that the evidence cannot support, unless the absence itself is useful to report.
 
@@ -32,6 +46,19 @@ Omit sections or items that the evidence cannot support, unless the absence itse
 ## Executive Summary
 
 [Two to five sentences on the biggest collaboration patterns and highest-impact changes.]
+
+## Generalization Boundary
+
+[State exactly which tasks, repos, session summaries, transcripts, or artifacts this feedback can generalize across, and which it cannot.]
+
+## Confidence Model
+
+- Available corpus: [High / Medium / Low]
+- Sample depth: [High / Medium / Low]
+- Evidence fidelity: [Transcript/log / Detailed summary / Summary-derived / One-sided]
+- Overall confidence:
+- Pattern confidence notes:
+- If confidence is below high, evidence reason: [missing transcripts / narrow corpus / summary-only evidence / one-sided evidence / inaccessible sources]
 
 ## What Is Working
 
@@ -50,7 +77,9 @@ Omit sections or items that the evidence cannot support, unless the absence itse
   **Confidence:** [High, Medium, or Low]
   **Recommended:** [User-side change and matching agent-side adaptation]
 
-## Top Changes, Up To 3
+## Top Changes
+
+Repeat only for evidence-supported changes, maximum three.
 
 1. [Specific change]
    - Evidence basis: [E1, E2]
@@ -58,20 +87,7 @@ Omit sections or items that the evidence cannot support, unless the absence itse
    - When to use it:
    - Example prompt: `[Example wording]`
    - Agent response rule:
-
-2. [Specific change]
-   - Evidence basis: [E1, E2]
-   - Why this matters:
-   - When to use it:
-   - Example prompt: `[Example wording]`
-   - Agent response rule:
-
-3. [Specific change]
-   - Evidence basis: [E1, E2]
-   - Why this matters:
-   - When to use it:
-   - Example prompt: `[Example wording]`
-   - Agent response rule:
+   - Agent capability nuance:
 
 ## How The User Can Communicate Better
 
@@ -89,21 +105,28 @@ Omit sections or items that the evidence cannot support, unless the absence itse
    - Use when:
    - Example:
 
-## How Coding Agents Should Adapt
+## Agent-Side Rules To Encode
 
-1. [Specific agent-side behavior]
+1. [Specific rule future agents should follow]
    - Evidence basis: [E1, E2]
    - Inferred need:
    - Trigger:
-   - Durable home:
+   - Where the user can encode it: [prompt / AGENTS.md / skill / handoff / project doc / test]
+   - Expected future-agent behavior:
 
-2. [Specific agent-side behavior]
+2. [Specific rule future agents should follow]
    - Evidence basis: [E1, E2]
    - Inferred need:
    - Trigger:
-   - Durable home:
+   - Where the user can encode it: [prompt / AGENTS.md / skill / handoff / project doc / test]
+   - Expected future-agent behavior:
 
 ## Better Prompt Patterns
+
+History access for general feedback:
+```text
+Use the feedback skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
+```
 
 Repo or scope boundary:
 ```text
@@ -112,7 +135,7 @@ Repo or scope boundary:
 
 Evidence sufficiency:
 ```text
-Use the feedback skill on [scope]. If there is not enough history to produce evidence-bound feedback, say that and list what inputs you need.
+Use the feedback skill on [scope]. If there is not enough cross-task history to produce evidence-bound feedback, say that and list what inputs you need.
 ```
 
 Stop, audit, or continue correction:

@@ -18,9 +18,10 @@ Use this guide when creating or updating any skill in this repository.
 - Store supporting reference material in well-named subdirectories such as:
   - `context/` for background docs and reference notes
   - `helpers/` for smaller helper Markdown files
-  - `templates/` for reusable output formats
+  - `templates/` for reusable output skeletons
   - `examples/` for concrete sample inputs or outputs
 - Keep the structure minimal. Add folders only when they serve the skill.
+- Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `feedback/templates/FEEDBACK.md`, `handoff/templates/HANDOFF.md`.
 
 ## Required `SKILL.md` pieces
 
@@ -55,7 +56,21 @@ description: Reconstruct interrupted work from recent context and workspace arti
 - Prefer short sections with descriptive headings.
 - Optimize for the next reader to act quickly without extra interpretation.
 - Make uncertainty explicit.
-- Use templates only when they improve consistency.
+- Use templates only when they improve consistency. Do not create a `templates/` folder for a skill that has no reusable output skeleton.
+
+## Output quality
+
+Every skill must define enough output rules for a coding agent to produce useful work without generic filler.
+
+At minimum, each skill should make clear:
+
+- the expected final-output shape, directly or through a template
+- what evidence, verification, or uncertainty must be reported
+- when the coding agent should stop, refuse, or ask for more context
+- how to avoid unsupported sections, placeholders, or boilerplate
+- what belongs in the skill instructions versus a template, helper, context file, or example
+
+If a skill has multiple output modes, keep the main path clear in `SKILL.md` and move reusable variants into support files.
 
 ## Agent-agnostic language
 
@@ -84,6 +99,23 @@ If a skill needs smaller helper files:
 - Do not model helpers as nested standalone skills.
 - Document helper usage from the parent skill when the relationship is not obvious.
 
+## Templates
+
+Use `templates/` for reusable output skeletons, not general guidance. A template file should be something the coding agent can follow as the shape of the skill's final output.
+
+Template naming rule:
+
+- Match the parent skill name.
+- Use uppercase filenames.
+- Preserve kebab-case if the skill name contains hyphens.
+
+Examples:
+
+- `feedback/templates/FEEDBACK.md`
+- `handoff/templates/HANDOFF.md`
+
+Do not use generic names like `REPORT.md` or `SUMMARY.md` when the template belongs to a specific skill. Do not create empty `templates/` folders.
+
 ## Context files
 
 Use `context/` for information that supports the skill but should not clutter the main instructions.
@@ -93,13 +125,36 @@ Good uses:
 - domain notes
 - command references
 - policy reminders
-- examples too detailed for the main `SKILL.md`
 
 Context files should:
 
 - have stable, descriptive names
 - stay focused on one topic each
 - avoid repeating the full skill instructions
+
+## Examples
+
+Use `examples/` for concrete sample prompts, inputs, outputs, or before/after artifacts. Do not put examples under `context/` unless they are part of a larger reference document.
+
+Examples should:
+
+- be realistic enough to guide future output
+- avoid sensitive or machine-specific details unless they are intentionally part of the example
+- stay close to the skill that uses them
+- not replace the reusable output skeleton in `templates/`
+
+## Skill size and decomposition
+
+Keep `SKILL.md` focused on when to use the skill, the execution path, and the quality bar. Split supporting material out when the entry point becomes hard to scan.
+
+Use:
+
+- `templates/` for reusable output skeletons
+- `helpers/` for tone variants, checklists, or workflow notes
+- `context/` for background/reference material
+- `examples/` for sample inputs and outputs
+
+For skills with multiple templates, use `SKILL-NAME.md` as the primary template and `SKILL-NAME-VARIANT.md` for variants.
 
 ## Updating an existing skill
 

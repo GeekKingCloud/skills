@@ -1,6 +1,6 @@
 # Reusable Skills
 
-A collection of reusable skills. Each top-level folder is a skill package with a required `SKILL.md` entry point and optional supporting context.
+A collection of reusable skills. Each top-level folder is a skill package with a required `SKILL.md` entry point and optional supporting files such as templates, helpers, context, and examples.
 
 See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
 

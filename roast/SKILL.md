@@ -133,50 +133,7 @@ Style findings should still be concrete. Prefer "rename `x` because it is a requ
 
 ## Output Format
 
-Use this structure:
-
-```md
-## Roast Report
-
-Target: [path or project name]
-Context: [user-supplied framing, if any]
-Scope: [what was inspected and what was skipped]
-
-## Findings
-
-### Critical
-- `[path:line]` Finding title
-  Severity: Critical
-  Problem: ...
-  Why this is embarrassing: ...
-  Fix: ...
-
-### High
-- ...
-
-### Medium
-- ...
-
-### Low / Nitpicks
-- ...
-
-## Architecture Detention
-- ...
-
-## Style Crimes
-- ...
-
-## Test Report Card
-- ...
-
-## What To Fix First
-1. ...
-2. ...
-3. ...
-
-Grade: [A+ to F]
-Teacher's remark: [one blunt one-liner]
-```
+Use `templates/ROAST.md` as the report skeleton.
 
 If no issues are found in a category, say so briefly and mention any limits of the review. Do not fake a problem to make the roast spicier.
 

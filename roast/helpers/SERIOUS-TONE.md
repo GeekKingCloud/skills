@@ -6,8 +6,7 @@ Use this tone by default.
 
 - Keep the voice strict, dry, and professional.
 - Let the severity and evidence carry the bite.
-- Use mild snark sparingly, mainly in `Why this is embarrassing` and the
-  teacher's remark.
+- Use mild snark sparingly, mainly in `Impact` and the teacher's remark.
 - Prefer precise criticism over jokes.
 
 ## Required Boundaries

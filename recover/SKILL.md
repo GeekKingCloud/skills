@@ -58,6 +58,8 @@ Give the user a compact status readout:
 Separate facts from guesses. Use phrases like `I found`, `It looks like`, and `My best guess is`.
 When possible, label evidence sources explicitly, for example `I found in the session log` and `I found in the repo`.
 
+Use `templates/RECOVER.md` as the output skeleton.
+
 ## Alignment rules
 
 - do not pretend certainty when evidence is weak
@@ -67,17 +69,3 @@ When possible, label evidence sources explicitly, for example `I found in the se
 - if multiple plausible threads exist, ask before committing to one narrative
 - if session evidence is available, confirm the likely thread before giving a confident recovery summary
 - once aligned, switch from recovery into normal execution
-
-## Template
-
-```md
-## Recovery Summary
-- Likely topic: ...
-- Goal: ...
-- Current stage: ...
-- Evidence: ...
-- Open uncertainty: ...
-- Recommended next step: ...
-
-Question: Is this the thread you want to resume?
-```
