@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Capture restart-safe handoff notes for unfinished work so a future coding agent can resume without rediscovering the whole problem. Use when work needs to transfer cleanly because of context rot, token pressure, machine restarts, session changes, or any pause where the goal, current workflow stage, completed work, blockers, and next steps must be preserved.
+description: Capture restart-safe handoff notes for unfinished work. Use when pausing, transferring, or resuming after context loss, token pressure, machine restart, session change, or any stop that needs goal, status, blockers, artifacts, and next steps preserved.
 ---
 
 # Handoff

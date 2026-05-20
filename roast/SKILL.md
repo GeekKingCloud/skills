@@ -1,6 +1,6 @@
 ---
 name: roast
-description: Perform a harsh, detail-obsessed codebase review for a project folder or directed target. Use when the caller asks to roast, brutally review, harshly grade, nitpick, or act like an overly strict teacher for code quality, security, architecture, style, naming, comments, spacing, tests, maintainability, or excuses/context supplied with the request.
+description: Roast or harshly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade. Use for brutal reviews of code quality, architecture, tests, comments, naming, maintainability, or snarky/strict-teacher critique.
 ---
 
 # Roast

@@ -15,11 +15,15 @@ Use this guide when creating or updating any skill in this repository.
 - Use a lowercase kebab-case folder name for each skill.
 - Match the folder name and frontmatter `name` unless there is a strong reason not to.
 - Put the required `SKILL.md` at the root of the skill folder.
-- Store supporting reference material in well-named subdirectories such as:
-  - `context/` for background docs and reference notes
+- Treat `SKILL.md` plus frontmatter `name` and `description` as the required portable contract.
+- Store supporting material in well-named subdirectories such as:
+  - `references/` for longer factual or background material
+  - `assets/` for static resources consumed by the skill's output, such as document templates, images, fonts, fixtures, or boilerplate
   - `helpers/` for smaller helper Markdown files
   - `templates/` for reusable output skeletons
-  - `examples/` for concrete sample inputs or outputs
+- Use `examples/` only when concrete sample inputs or outputs improve trigger behavior, output expectations, or forward-testing.
+- Existing `context/` folders may remain, but prefer `references/` for new reference material.
+- Omit `agents/openai.yaml` and similar client-specific metadata unless the repository intentionally adopts that metadata for all skills.
 - Keep the structure minimal. Add folders only when they serve the skill.
 - Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `feedback/templates/FEEDBACK.md`, `handoff/templates/HANDOFF.md`.
 
@@ -38,7 +42,8 @@ Every `SKILL.md` should include:
 ## Frontmatter guidance
 
 - `name` should be short and stable.
-- `description` should explain the purpose, trigger conditions, and intended outcome in plain language.
+- `description` should front-load trigger words, task intent, important boundaries, and intended outcome in plain language.
+- Keep descriptions brief but not lossy; do not remove context that affects correct skill selection.
 - Keep descriptions vendor-neutral and reusable across tools and environments.
 
 Example:
@@ -116,9 +121,9 @@ Examples:
 
 Do not use generic names like `REPORT.md` or `SUMMARY.md` when the template belongs to a specific skill. Do not create empty `templates/` folders.
 
-## Context files
+## References
 
-Use `context/` for information that supports the skill but should not clutter the main instructions.
+Use `references/` for information that supports the skill but should not clutter the main instructions. Existing `context/` folders may remain; do not rename them just for conformity.
 
 Good uses:
 
@@ -126,15 +131,27 @@ Good uses:
 - command references
 - policy reminders
 
-Context files should:
+Reference files should:
 
 - have stable, descriptive names
 - stay focused on one topic each
 - avoid repeating the full skill instructions
 
+## Assets
+
+Use `assets/` for static files the skill consumes or adapts as output resources.
+
+Good uses:
+
+- document, slide, or code templates
+- images, fonts, icons, fixture files, or boilerplate
+- lookup data or schemas used as resources rather than instructions
+
+Do not put general workflow guidance in `assets/`.
+
 ## Examples
 
-Use `examples/` for concrete sample prompts, inputs, outputs, or before/after artifacts. Do not put examples under `context/` unless they are part of a larger reference document.
+Use `examples/` only when concrete sample prompts, inputs, outputs, or before/after artifacts materially improve trigger behavior, output expectations, or forward-testing. Do not add examples merely to match a folder pattern. Do not put examples under `context/` unless they are part of a larger reference document.
 
 Examples should:
 
@@ -151,7 +168,8 @@ Use:
 
 - `templates/` for reusable output skeletons
 - `helpers/` for tone variants, checklists, or workflow notes
-- `context/` for background/reference material
+- `references/` for background/reference material
+- `assets/` for output resources and static skill inputs
 - `examples/` for sample inputs and outputs
 
 For skills with multiple templates, use `SKILL-NAME.md` as the primary template and `SKILL-NAME-VARIANT.md` for variants.

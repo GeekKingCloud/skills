@@ -1,6 +1,6 @@
 ---
 name: recover
-description: Recover interrupted coding work by reconstructing likely context from recent chats, workspace artifacts, and temp files, then realigning on direction and next steps. Use when work needs to resume after a timeout, bad response, stalled operation, machine restart, lost thread, or multiple partial conversations and the next step is unclear.
+description: Recover interrupted coding work by reconstructing context from chats, handoffs, workspace artifacts, and temp files. Use after timeouts, bad responses, stalled operations, restarts, lost threads, or multiple partial conversations when the next step is unclear.
 ---
 
 # Recover

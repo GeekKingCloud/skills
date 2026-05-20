@@ -1,28 +1,34 @@
 # Reusable Skills
 
-A collection of reusable skills. Each top-level folder is a skill package with a required `SKILL.md` entry point and optional supporting files such as templates, helpers, context, and examples.
+A collection of reusable skills. Each top-level folder is a skill package with a required `SKILL.md` entry point and optional supporting files such as references, assets, helpers, templates, and examples.
 
 See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
 
-- **recover** — Reconstruct interrupted work from recent chats, workspace artifacts, and temp files, then realign on the right thread and next steps.
+- **recover** — Recover interrupted coding work from chats, handoffs, workspace artifacts, and temp files, then realign on the next step.
 
   ```
   npx skills@latest add GeekKingCloud/skills/recover
   ```
 
-- **handoff** — Capture a restart-safe handoff for unfinished work, including the end goal, current workflow stage, completed work, blockers, and exact next steps for the next coding agent.
+- **handoff** — Capture restart-safe handoff notes for unfinished work, including goal, status, blockers, artifacts, and exact next steps.
 
   ```
   npx skills@latest add GeekKingCloud/skills/handoff
   ```
 
-- **feedback** — Review available collaboration history between a user and coding agents, then produce evidence-bound feedback on communication patterns, gaps, and practical ways to work better together without inventing unsupported history.
+- **crucible** — Implement plans to release-ready state with tests, peer review, cleanup, security and docs/comment sweeps, and roast-gated remediation.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/crucible
+  ```
+
+- **feedback** — Review collaboration history deeply, then produce evidence-bound feedback on prompting, handoffs, corrections, failures, and agent-side rules.
 
   ```
   npx skills@latest add GeekKingCloud/skills/feedback
   ```
 
-- **roast** — Perform a harsh, detail-obsessed codebase review for a project folder or directed target, with extra force on security holes, architecture problems, tests, maintainability, style, naming, comments, spacing, and user-supplied excuses.
+- **roast** — Harshly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade.
 
   Defaults to a serious strict-teacher tone. Ask for a snarky, mean, comedy,
   burn, putdown, or savage roast to switch the presentation style while keeping

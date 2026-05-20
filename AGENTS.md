@@ -19,24 +19,30 @@ Use a simple, predictable structure:
 ```text
 skill-name/
   SKILL.md
-  context/
+  references/
     REFERENCE.md
+  assets/
+    RESOURCE-FILE
   helpers/
     HELPER-NAME.md
   templates/
     SKILL-NAME.md
-  examples/
-    EXAMPLE.md
 ```
+
+Optional examples may live in `examples/` when they support trigger behavior, output expectations, or forward-testing.
 
 ## Structure rules
 
 - The folder name is the skill name and should be lowercase kebab-case.
 - `SKILL.md` is required and is the entry point for the skill.
-- `context/` is for reference material the skill may lean on.
+- `SKILL.md` frontmatter must include `name` and `description`; treat those fields as the portable skill-selection contract.
+- `references/` is for longer factual or background material the skill may lean on.
+- `assets/` is for static resources consumed by the skill's output, such as document templates, images, fonts, fixtures, or boilerplate.
 - `helpers/` is for smaller supporting Markdown files that belong to the parent skill.
 - `templates/` is for reusable output skeletons when a skill needs them.
-- `examples/` is for concrete sample inputs or outputs.
+- `examples/` is optional and only for concrete sample inputs or outputs that improve trigger behavior, output expectations, or forward-testing.
+- Existing `context/` folders may remain, but prefer `references/` for new reference material.
+- `agents/openai.yaml` and similar client-specific metadata files are optional and should be omitted unless this repository adopts them consistently.
 - Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `feedback/templates/FEEDBACK.md`, `handoff/templates/HANDOFF.md`.
 - Only create directories that the skill actually uses. Avoid empty scaffolding.
 

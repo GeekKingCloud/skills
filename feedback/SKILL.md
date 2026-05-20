@@ -1,6 +1,6 @@
 ---
 name: feedback
-description: Run a deep review of available collaboration history between a user and coding agents, then produce evidence-bound feedback on communication patterns, gaps, and practical ways to get better results from agents. Use when the user wants a retrospective on agent collaboration, prompting habits, handoff quality, failure patterns, or how to give coding agents better context without inventing unsupported history.
+description: Review collaboration history deeply and produce evidence-bound feedback on prompting, handoffs, corrections, failures, and agent-side rules. Use for retrospectives on working with coding agents without inventing unsupported history.
 ---
 
 # Feedback
