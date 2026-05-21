@@ -62,9 +62,22 @@ Ask reviewers to look for correctness bugs, regressions, missing tests, security
 
 If sub-agents are not available, perform the same review manually and disclose that peer review was simulated locally.
 
+## Roast Gate
+
+Use the sibling `roast` skill after implementation, normal verification, and peer review are complete enough to judge. If the `roast` skill is unavailable, perform an equivalent serious, evidence-backed roast-style review and disclose that the actual skill was unavailable.
+
+Run the roast as a serious, evidence-backed release audit unless the caller explicitly asks for a snarkier presentation. Treat roast output as a hard quality gate:
+- Treat each roast run as the outer loop: collect findings, fix them, rerun roast, and repeat until the project earns an A grade or the remaining issues are low priority and explicitly documented as acceptable.
+- Treat each finding as the inner loop: handle one issue at a time using the Execution Loop rules, including surgical scope, sub-agent delegation, focused tests, narrow verification, and cleanup.
+- Do not batch unrelated roast findings into one broad refactor. Group findings only when they share the same root cause and can be fixed surgically.
+- Fix Critical, High, and Medium findings. Fix Low findings when they are cheap, clarify real confusion, or affect release confidence.
+- After each finding or root-cause group, rerun the relevant focused verification before moving to the next finding.
+
+Do not claim an A-grade release state if tests did not run, the review was sampled, or major findings remain unresolved. State the limitation plainly.
+
 ## Security Pass
 
-Run a dedicated security pass after implementation and before final cleanup.
+Run a dedicated security pass after roast remediation is complete and before final cleanup.
 Prefer a separate sub-agent for this pass when available, especially when the change touches inputs, permissions, storage, shell commands, dependencies, network boundaries, or generated artifacts.
 
 Inspect:
@@ -74,11 +87,11 @@ Inspect:
 - dependency changes, install hooks, lockfiles, network calls, CORS, CSRF, webhook validation, SSRF, open redirects, and unsafe defaults
 - file operations, destructive commands, cleanup behavior, temp paths, and permissions
 
-Patch confirmed security issues. If a security concern cannot be resolved inside scope, report it with severity, evidence, impact, and the safest next action.
+Patch confirmed security issues through the Execution Loop rules. If a security concern cannot be resolved inside scope, report it with severity, evidence, impact, and the safest next action.
 
 ## Comments And Docs
 
-Do a focused readability sweep after code behavior is stable.
+Do a focused readability sweep after roast remediation and the final security pass are stable.
 For broad or user-facing changes, delegate a docs/comment sweep to a sub-agent and reconcile its findings locally.
 
 Keep good comments:
@@ -92,19 +105,6 @@ Remove or rewrite bad comments:
 - docs that describe old behavior, old commands, old flags, old config, or removed files
 
 Update user-facing docs, internal docs, examples, and changelogs only when the plan or repo rules require them. Keep docs close to the source of truth.
-
-## Roast Gate
-
-Use the sibling `roast` skill near the end of the run, after implementation, normal verification, peer review, security review, and cleanup are complete enough to judge. If the `roast` skill is unavailable, perform an equivalent serious, evidence-backed roast-style review and disclose that the actual skill was unavailable.
-
-Run the roast as a serious, evidence-backed release audit unless the caller explicitly asks for a snarkier presentation. Treat roast output as a hard quality gate:
-- Fix Critical, High, and Medium findings.
-- Fix Low findings when they are cheap, clarify real confusion, or affect release confidence.
-- Use sub-agents to investigate and fix independent roast findings when available.
-- Rerun the relevant review or roast pass after fixes.
-- Continue looping until the project earns an A grade or the remaining issues are low priority and explicitly documented as acceptable.
-
-Do not claim an A-grade release state if tests did not run, the review was sampled, or major findings remain unresolved. State the limitation plainly.
 
 ## Cleanup Gate
 
