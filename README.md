@@ -16,7 +16,7 @@ See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
   npx skills@latest add GeekKingCloud/skills/handoff
   ```
 
-- **crucible** — Implement plans to release-ready state with tests, peer review, cleanup, security and docs/comment sweeps, and roast-gated remediation.
+- **crucible** — Implement plans to release-ready state through a sub-agent-heavy loop with tests, peer review, cleanup, security and docs/comment sweeps, and roast-gated remediation.
 
   ```
   npx skills@latest add GeekKingCloud/skills/crucible

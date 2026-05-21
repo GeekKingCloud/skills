@@ -1,6 +1,6 @@
 ---
 name: crucible
-description: Implement plans to release-ready state with tests, peer review, cleanup, security and docs/comment sweeps, and roast-gated remediation. Use when the caller asks to run a plan, harden for release, or loop fixes until Grade A or low-only findings.
+description: Implement plans to release-ready state through a sub-agent-heavy execution loop with tests, peer review, cleanup, security and docs/comment sweeps, and roast-gated remediation. Use when the caller asks to run a plan, harden for release, or loop fixes until Grade A or low-only findings.
 ---
 
 # Crucible
@@ -28,12 +28,18 @@ The target state is:
 
 Stop and ask only when the plan is missing critical product decisions, would require destructive Git history changes, needs credentials, or would materially change security posture, runtime behavior, dependency surface, or public behavior without clear caller approval.
 
+## Sub-Agent Operating Model
+
+For meaningful Crucible work, treat sub-agents as the default way to improve coverage when the environment supports them and delegation is allowed. At each stage, actively look for independent work to delegate: codebase search, implementation of isolated slices, regression hunting, test review, security review, docs/comment sweeps, cleanup checks, and roast follow-up.
+
+Keep delegated tasks bounded, parallel, and source-grounded. Give each sub-agent a clear scope, expected output, and ownership boundary. Keep blocking product decisions, final integration, and release-readiness judgment in the main thread, and verify sub-agent findings against the repository before acting.
+
 ## Execution Loop
 
 Work in logically connected slices. For each slice:
 
 1. State the slice goal and verification target.
-2. Use sub-agents when the environment permits them and the current request authorizes agent delegation. Prefer independent, bounded tasks such as codebase search, risk review, test review, regression search, or patch review. Keep blocking implementation decisions in the main thread.
+2. Decide what can be delegated before editing. Use sub-agents by default for independent, bounded work such as codebase search, isolated implementation, risk review, test review, regression search, or patch review. If sub-agents are unavailable or delegation is not allowed, say so and do the pass locally.
 3. Implement the slice with the smallest change that satisfies the plan and repo instructions.
 4. Add or update focused tests when the slice changes behavior, fixes a bug, touches shared contracts, or guards a regression.
 5. Run the narrowest meaningful verification. Broaden verification as risk or shared surface increases.
@@ -46,7 +52,7 @@ If verification fails, fix the cause and rerun the relevant check. Do not change
 
 After meaningful implementation work, run an independent review pass before considering the work complete.
 
-Use sub-agents for review when available and allowed. Give reviewers concrete scope:
+Use sub-agents for review unless unavailable or disallowed. Give reviewers concrete scope:
 - changed files and plan goals
 - suspected risk areas
 - tests that should prove the behavior
@@ -59,6 +65,7 @@ If sub-agents are not available, perform the same review manually and disclose t
 ## Security Pass
 
 Run a dedicated security pass after implementation and before final cleanup.
+Prefer a separate sub-agent for this pass when available, especially when the change touches inputs, permissions, storage, shell commands, dependencies, network boundaries, or generated artifacts.
 
 Inspect:
 - untrusted input reaching shell commands, SQL, paths, templates, HTML, eval-like APIs, redirects, URLs, dynamic imports, regexes, or deserializers
@@ -72,6 +79,7 @@ Patch confirmed security issues. If a security concern cannot be resolved inside
 ## Comments And Docs
 
 Do a focused readability sweep after code behavior is stable.
+For broad or user-facing changes, delegate a docs/comment sweep to a sub-agent and reconcile its findings locally.
 
 Keep good comments:
 - explain tricky algorithms, unusual constraints, compatibility requirements, security decisions, and non-obvious failure handling
@@ -92,6 +100,7 @@ Use the sibling `roast` skill near the end of the run, after implementation, nor
 Run the roast as a serious, evidence-backed release audit unless the caller explicitly asks for a snarkier presentation. Treat roast output as a hard quality gate:
 - Fix Critical, High, and Medium findings.
 - Fix Low findings when they are cheap, clarify real confusion, or affect release confidence.
+- Use sub-agents to investigate and fix independent roast findings when available.
 - Rerun the relevant review or roast pass after fixes.
 - Continue looping until the project earns an A grade or the remaining issues are low priority and explicitly documented as acceptable.
 
@@ -105,7 +114,8 @@ Before final response or handoff:
 2. Confirm there are no new orphaned files, unused helpers, stale fixtures, obsolete comments, outdated docs, dead imports, or accidental generated artifacts.
 3. Confirm local commits were created for each logical slice when commits were authorized. If commits were not authorized, summarize commit-ready groups.
 4. Confirm verification commands and results.
-5. Confirm unresolved risks are low priority or lower, or explain why release readiness is blocked.
+5. Confirm sub-agent reviews were integrated, or explain why review was performed locally.
+6. Confirm unresolved risks are low priority or lower, or explain why release readiness is blocked.
 
 ## Final Output
 
@@ -113,6 +123,7 @@ Keep the final report concise and evidence-based:
 
 - what plan was implemented
 - logical slices completed and commits created, if any
+- how sub-agents were used, or why they were unavailable or disallowed
 - tests and verification run
 - peer review, security pass, docs/comment sweep, cleanup, and roast status
 - unresolved findings or release blockers

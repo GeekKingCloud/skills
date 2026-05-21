@@ -9,6 +9,7 @@
 
 - List each logical slice and its outcome.
 - Include commit identifiers when local commits were authorized and created.
+- Summarize sub-agent usage, or state why delegation was unavailable or disallowed.
 
 ## Verification
 
