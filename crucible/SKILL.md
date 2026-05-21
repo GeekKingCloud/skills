@@ -30,7 +30,7 @@ Stop and ask only when the plan is missing critical product decisions, would req
 
 ## Sub-Agent Operating Model
 
-For meaningful Crucible work, treat sub-agents as the default way to improve coverage when the environment supports them and delegation is allowed. At each stage, actively look for independent work to delegate: codebase search, implementation of isolated slices, regression hunting, test review, security review, docs/comment sweeps, cleanup checks, and roast follow-up.
+For meaningful Crucible work, treat sub-agents as the default way to improve coverage when the environment supports them and delegation is allowed. At each stage, actively look for independent work to delegate: codebase search, implementation of isolated slices, in-the-moment peer review, regression hunting, test review, security review, docs/comment sweeps, cleanup checks, and roast follow-up.
 
 Keep delegated tasks bounded, parallel, and source-grounded. Give each sub-agent a clear scope, expected output, and ownership boundary. Keep blocking product decisions, final integration, and release-readiness judgment in the main thread, and verify sub-agent findings against the repository before acting.
 
@@ -40,31 +40,19 @@ Work in logically connected slices. For each slice:
 
 1. State the slice goal and verification target.
 2. Decide what can be delegated before editing. Use sub-agents by default for independent, bounded work such as codebase search, isolated implementation, risk review, test review, regression search, or patch review. If sub-agents are unavailable or delegation is not allowed, say so and do the pass locally.
-3. Implement the slice with the smallest change that satisfies the plan and repo instructions.
-4. Add or update focused tests when the slice changes behavior, fixes a bug, touches shared contracts, or guards a regression.
-5. Run the narrowest meaningful verification. Broaden verification as risk or shared surface increases.
-6. Review the slice for dead code, stale helpers, orphaned files, stale comments, stale docs, and unnecessary dependencies introduced by the change.
-7. Commit the slice when local commits are authorized by the caller or repo workflow. Treat an explicit Crucible request as authorization for local logical commits unless the caller or repo instructions say otherwise. Do not push, force-push, rewrite history, tag releases, or publish artifacts without explicit approval.
+3. Use at least one sub-agent as a peer reviewer or sounding board for each meaningful change when available. Give reviewers the slice goal, changed files or intended files, suspected risk areas, expected tests, and repo instructions.
+4. Implement the slice with the smallest change that satisfies the plan and repo instructions.
+5. Add or update focused tests when the slice changes behavior, fixes a bug, touches shared contracts, or guards a regression.
+6. Run the narrowest meaningful verification. Broaden verification as risk or shared surface increases.
+7. Ask reviewers to check the actual slice for correctness bugs, regressions, missing tests, security risks, stale comments/docs, orphaned code, and maintainability problems. Integrate findings critically; verify against source before changing code.
+8. Review the slice for dead code, stale helpers, orphaned files, stale comments, stale docs, and unnecessary dependencies introduced by the change.
+9. Commit the slice when local commits are authorized by the caller or repo workflow. Treat an explicit Crucible request as authorization for local logical commits unless the caller or repo instructions say otherwise. Do not push, force-push, rewrite history, tag releases, or publish artifacts without explicit approval.
 
 If verification fails, fix the cause and rerun the relevant check. Do not change tests merely to pass; align tests and implementation with the intended behavior.
 
-## Peer Review
-
-After meaningful implementation work, run an independent review pass before considering the work complete.
-
-Use sub-agents for review unless unavailable or disallowed. Give reviewers concrete scope:
-- changed files and plan goals
-- suspected risk areas
-- tests that should prove the behavior
-- repo instructions they must respect
-
-Ask reviewers to look for correctness bugs, regressions, missing tests, security risks, stale comments/docs, orphaned code, and maintainability problems. Integrate findings critically; verify against source before changing code.
-
-If sub-agents are not available, perform the same review manually and disclose that peer review was simulated locally.
-
 ## Roast Gate
 
-Use the sibling `roast` skill after implementation, normal verification, and peer review are complete enough to judge. If the `roast` skill is unavailable, perform an equivalent serious, evidence-backed roast-style review and disclose that the actual skill was unavailable.
+Use the sibling `roast` skill after implementation and normal verification are complete enough to judge. If the `roast` skill is unavailable, perform an equivalent serious, evidence-backed roast-style review and disclose that the actual skill was unavailable.
 
 Run the roast as a serious, evidence-backed release audit unless the caller explicitly asks for a snarkier presentation. Treat roast output as a hard quality gate:
 - Treat each roast run as the outer loop: collect findings, fix them, rerun roast, and repeat until the project earns an A grade or the remaining issues are low priority and explicitly documented as acceptable.
@@ -114,7 +102,7 @@ Before final response or handoff:
 2. Confirm there are no new orphaned files, unused helpers, stale fixtures, obsolete comments, outdated docs, dead imports, or accidental generated artifacts.
 3. Confirm local commits were created for each logical slice when commits were authorized. If commits were not authorized, summarize commit-ready groups.
 4. Confirm verification commands and results.
-5. Confirm sub-agent reviews were integrated, or explain why review was performed locally.
+5. Confirm slice-level sub-agent reviews were integrated, or explain why review was performed locally.
 6. Confirm unresolved risks are low priority or lower, or explain why release readiness is blocked.
 
 ## Final Output
@@ -125,7 +113,7 @@ Keep the final report concise and evidence-based:
 - logical slices completed and commits created, if any
 - how sub-agents were used, or why they were unavailable or disallowed
 - tests and verification run
-- peer review, security pass, docs/comment sweep, cleanup, and roast status
+- slice-level peer review, security pass, docs/comment sweep, cleanup, and roast status
 - unresolved findings or release blockers
 - whether the final state is releasable
 

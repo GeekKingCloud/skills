@@ -18,7 +18,7 @@
 
 ## Review And Cleanup
 
-- Summarize peer review, roast loops and issue remediation, final security pass, docs/comment sweep, and orphan cleanup results.
+- Summarize slice-level peer review, roast loops and issue remediation, final security pass, docs/comment sweep, and orphan cleanup results.
 - Note whether the actual `roast` skill was used or an equivalent fallback review was performed.
 
 ## Remaining Risk
