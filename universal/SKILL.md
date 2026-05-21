@@ -23,6 +23,12 @@ When asked to use Universal:
 
 Do not include test coverage or accessibility tooling gaps as standing categories unless the caller explicitly asks for them. Mention verification limits only where they affect confidence in the audit.
 
+## References
+
+- Read `references/RESEARCH-SOURCES.md` before auditing when the target platform, standards, or source list is not already obvious from the current request and local project docs.
+- Read `references/AUDIT-CATEGORIES.md` when planning or running the category pass, especially for UI-heavy projects with multiple surfaces.
+- Keep `SKILL.md` as the execution path; use reference files for expanded source and category details.
+
 ## Research First
 
 Start every audit by building a project-specific research baseline. Do not assume web guidance applies unchanged to native apps, PDFs, emails, terminal UIs, games, kiosks, admin tools, or generated documents.
