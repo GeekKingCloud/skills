@@ -1,0 +1,81 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Skills social preview</title>
+  <desc id="desc">A retro CRT social preview with the Skills logo above reusable workflow text.</desc>
+  <defs>
+    <pattern id="bg-scanlines" width="1" height="7" patternUnits="userSpaceOnUse">
+      <rect width="1" height="2" fill="#FFFFFF" opacity="0.08"/>
+    </pattern>
+    <pattern id="bg-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#243646" stroke-width="2" opacity="0.45"/>
+    </pattern>
+    <filter id="soft-glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="logo-wordmark" x1="292" y1="76" x2="702" y2="160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7D04A"/>
+      <stop offset="0.35" stop-color="#C7FF6B"/>
+      <stop offset="1" stop-color="#19F9B7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="#05070B"/>
+  <rect x="42" y="42" width="1196" height="556" rx="24" fill="#0C1219" stroke="#F2ECFF" stroke-width="4"/>
+  <rect x="72" y="72" width="1136" height="496" rx="10" fill="#111923"/>
+  <rect x="72" y="72" width="1136" height="496" rx="10" fill="url(#bg-grid)"/>
+  <rect x="72" y="72" width="1136" height="496" rx="10" fill="url(#bg-scanlines)"/>
+
+  <g opacity="0.58">
+    <path d="M104 122H1176" stroke="#31485C" stroke-width="4"/>
+    <path d="M104 520H1176" stroke="#31485C" stroke-width="4"/>
+    <path d="M128 164H260M1020 164H1152M128 476H332M948 476H1152" stroke="#F7D04A" stroke-width="8" stroke-linecap="square" opacity="0.64"/>
+    <path d="M128 190H316M964 190H1152M128 450H278M1002 450H1152" stroke="#58B7FF" stroke-width="6" stroke-linecap="square" opacity="0.64"/>
+  </g>
+
+  <g transform="translate(186 218) scale(1.35)">
+    <g transform="translate(0 -42)" filter="url(#soft-glow)">
+      <path d="M34 92L70 62M142 62L178 92" stroke="#DCE7F3" stroke-width="7" stroke-linecap="square" stroke-linejoin="bevel"/>
+      <path d="M34 92L70 122L106 152L142 122L178 152" stroke="#DCE7F3" stroke-width="7" stroke-linecap="square" stroke-linejoin="bevel"/>
+      <path d="M142 62L142 122M178 92L142 122" stroke="#DCE7F3" stroke-width="6" stroke-linecap="square" stroke-linejoin="bevel"/>
+      <path d="M70 62L106 92L142 62M178 92L214 122M178 152L214 122" stroke="#536170" stroke-width="7" stroke-linecap="square" stroke-linejoin="bevel"/>
+      <path d="M106 92L70 122M106 92L142 122" stroke="#536170" stroke-width="6" stroke-linecap="square" stroke-linejoin="bevel"/>
+
+      <circle cx="34" cy="92" r="14" fill="#071017" stroke="#58B7FF" stroke-width="6"/>
+      <circle cx="70" cy="62" r="14" fill="#10100A" stroke="#F7D04A" stroke-width="6"/>
+      <circle cx="106" cy="92" r="16" fill="#111923" stroke="#7D8894" stroke-width="7"/>
+      <circle cx="142" cy="62" r="14" fill="#100B12" stroke="#F25AC6" stroke-width="6"/>
+      <circle cx="178" cy="92" r="14" fill="#071017" stroke="#58B7FF" stroke-width="6"/>
+      <circle cx="70" cy="122" r="14" fill="#100B12" stroke="#F25AC6" stroke-width="6"/>
+      <circle cx="106" cy="152" r="14" fill="#10100A" stroke="#F7D04A" stroke-width="6"/>
+      <circle cx="142" cy="122" r="16" fill="#07110D" stroke="#19F9B7" stroke-width="7"/>
+      <circle cx="178" cy="152" r="14" fill="#071017" stroke="#58B7FF" stroke-width="6"/>
+      <circle cx="214" cy="122" r="14" fill="#111923" stroke="#7D8894" stroke-width="6"/>
+
+      <rect x="29" y="87" width="7" height="7" fill="#BDEBFF"/>
+      <rect x="65" y="57" width="7" height="7" fill="#FFF0A4"/>
+      <rect x="137" y="57" width="7" height="7" fill="#FFD2F3"/>
+      <rect x="173" y="87" width="7" height="7" fill="#BDEBFF"/>
+      <rect x="65" y="117" width="7" height="7" fill="#FFD2F3"/>
+      <rect x="101" y="147" width="7" height="7" fill="#FFF0A4"/>
+      <rect x="137" y="117" width="8" height="8" fill="#C9FFE0"/>
+      <rect x="173" y="147" width="7" height="7" fill="#BDEBFF"/>
+    </g>
+
+    <g transform="translate(258 -3)">
+      <text x="3" y="96" fill="#F25AC6" font-family="Consolas, 'Courier New', monospace" font-size="116" font-weight="800" letter-spacing="0" opacity="0.8">Skills</text>
+      <text x="-3" y="91" fill="#58B7FF" font-family="Consolas, 'Courier New', monospace" font-size="116" font-weight="800" letter-spacing="0" opacity="0.72">Skills</text>
+      <text x="0" y="94" fill="url(#logo-wordmark)" font-family="Consolas, 'Courier New', monospace" font-size="116" font-weight="800" letter-spacing="0">Skills</text>
+    </g>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="44" font-weight="900" letter-spacing="4" text-anchor="middle">
+    <text x="645" y="505" fill="#03070A" opacity="0.78">REUSABLE WORKFLOW CARTRIDGES</text>
+    <text x="640" y="500" fill="#19F9B7">REUSABLE WORKFLOW CARTRIDGES</text>
+  </g>
+  <path d="M344 536H936" stroke="#F25AC6" stroke-width="7" stroke-linecap="square"/>
+  <path d="M410 558H870" stroke="#F7D04A" stroke-width="7" stroke-linecap="square"/>
+  <path d="M476 580H804" stroke="#19F9B7" stroke-width="7" stroke-linecap="square"/>
+</svg>

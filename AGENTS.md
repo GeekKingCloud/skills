@@ -7,6 +7,8 @@ This repository stores reusable skills.
 - Each top-level folder is one skill.
 - Every skill folder must contain a `SKILL.md` at its root.
 - Supporting material should live inside the skill folder, not at the repository root.
+- Dot-prefixed root folders are repo infrastructure, not skills.
+- Repo-level branding and presentation files live in `.assets/`.
 - Root-level docs explain repository-wide expectations:
   - `README.md` lists the published skills.
   - `STYLE.md` defines how to create and update skills.
@@ -36,6 +38,7 @@ Optional examples may live in `examples/` when they support trigger behavior, ou
 - The folder name is the skill name and should be lowercase kebab-case.
 - `SKILL.md` is required and is the entry point for the skill.
 - `SKILL.md` frontmatter must include `name` and `description`; treat those fields as the portable skill-selection contract.
+- Do not create visible root-level non-skill folders. Use `.assets/` for repo presentation assets.
 - `references/` is for longer factual or background material the skill may lean on.
 - `assets/` is for static resources consumed by the skill's output, such as document templates, images, fonts, fixtures, or boilerplate.
 - `helpers/` is for smaller supporting Markdown files that belong to the parent skill.

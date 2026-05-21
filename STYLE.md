@@ -16,6 +16,7 @@ Use this guide when creating or updating any skill in this repository.
 - Match the folder name and frontmatter `name` unless there is a strong reason not to.
 - Put the required `SKILL.md` at the root of the skill folder.
 - Treat `SKILL.md` plus frontmatter `name` and `description` as the required portable contract.
+- Keep visible root-level directories reserved for skills. Put repo-level branding and presentation files in `.assets/`.
 - Store supporting material in well-named subdirectories such as:
   - `references/` for longer factual or background material
   - `assets/` for static resources consumed by the skill's output, such as document templates, images, fonts, fixtures, or boilerplate
@@ -148,6 +149,8 @@ Good uses:
 - lookup data or schemas used as resources rather than instructions
 
 Do not put general workflow guidance in `assets/`.
+
+Repo-level branding and presentation assets belong in the root `.assets/` folder. Do not put repo-level logos, screenshots, or social previews in a visible root-level folder that could be mistaken for a skill.
 
 ## Examples
 
