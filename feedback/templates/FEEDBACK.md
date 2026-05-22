@@ -125,7 +125,7 @@ Repeat only for evidence-supported changes, maximum three.
 
 History access for general agent feedback:
 ```text
-Use the `agent-feedback` skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
+Use the `feedback` skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
 ```
 
 Repo or scope boundary:
@@ -135,7 +135,7 @@ Repo or scope boundary:
 
 Evidence sufficiency:
 ```text
-Use the `agent-feedback` skill on [scope]. If there is not enough cross-task history to produce evidence-bound agent feedback, say that and list what inputs you need.
+Use the `feedback` skill on [scope]. If there is not enough cross-task history to produce evidence-bound agent feedback, say that and list what inputs you need.
 ```
 
 Stop, audit, or continue correction:

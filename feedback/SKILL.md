@@ -1,5 +1,5 @@
 ---
-name: agent-feedback
+name: feedback
 description: Review collaboration history deeply and produce evidence-bound agent feedback on prompting, handoffs, corrections, failures, and agent-side rules. Use for retrospectives on working with coding agents without inventing unsupported history.
 ---
 
@@ -148,7 +148,7 @@ Treat agent feedback as a collaboration audit, not a user-blame exercise. Sectio
 
 ## Output guidance
 
-Use the report template in `templates/AGENT-FEEDBACK.md` when the user wants a full report or when the evidence is substantial.
+Use the report template in `templates/FEEDBACK.md` when the user wants a full report or when the evidence is substantial.
 
 If the evidence sufficiency decision is `Not enough evidence`, stop after the insufficiency response. Do not fill a full report with generic coaching.
 
