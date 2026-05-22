@@ -2,6 +2,20 @@
 
 Use this file as the default category map for Universal audits. Omit categories that do not apply to the target, and add platform-specific categories when the research baseline requires them.
 
+## Contents
+
+- Visual Perception
+- Typography And Scaling
+- Responsive And Mobile Use
+- Keyboard And Focus
+- Semantics And Assistive Technology
+- Forms And Error Recovery
+- Motion, Timing, And Change
+- Content And Comprehension
+- Priority Mapping
+- Category Score Rubric
+- Final Score Rules
+
 ## Visual Perception
 
 Check whether users can perceive information without relying on ideal color vision, high contrast displays, perfect lighting, or designer-preferred themes.
@@ -112,3 +126,39 @@ Classify findings by user impact:
 - `Low`: polish issue with limited impact or a narrow context.
 
 For each finding, capture category, priority, evidence, affected users, impact, fix direction, and confidence.
+
+## Category Score Rubric
+
+Score each applicable category out of 10 after reviewing findings and evidence. Keep priority separate from score: priority describes the most urgent user impact; score summarizes category health.
+
+- `10`: no meaningful issues found; strong evidence across relevant states, devices, input methods, and platform expectations.
+- `8-9`: minor issues only; no core workflow barriers.
+- `6-7`: moderate issues affecting repeated use, secondary workflows, comprehension, or comfort.
+- `4-5`: serious issues affecting core workflows for some users.
+- `1-3`: major blockers for a disability group, input method, or assistive-technology path.
+- `0`: the category cannot be meaningfully used or evaluated because of a blocking accessibility failure.
+
+Use `N/A` only when a category genuinely does not apply to the target. Use `Not assessed` when the category applies but was not evaluated. Exclude `N/A` and `Not assessed` categories from the final average, and explain evidence limits for every `Not assessed` category.
+
+Every assessed category score must include a one-line rationale naming the strongest evidence and the main reason the score is not higher.
+
+## Final Score Rules
+
+Calculate the final Universal score as the average of applicable assessed category scores, rounded to one decimal.
+
+Map the final score to a letter grade:
+
+- `A`: 9.0-10
+- `B`: 8.0-8.9
+- `C`: 7.0-7.9
+- `D`: 6.0-6.9
+- `F`: 0-5.9
+
+Apply caps after averaging:
+
+- Any unresolved `Critical` finding caps the final grade at `F`.
+- Any category scored `0-3` caps the final grade at `D`.
+- Missing rendered or platform evidence caps the final grade at `B`.
+- Missing assistive-technology evidence for a UI-heavy product caps the final grade at `C`.
+
+Apply the most restrictive cap when multiple caps apply: `F` beats `D`, `D` beats `C`, and `C` beats `B`. Always report the cap reason when a cap changes the final grade.

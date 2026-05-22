@@ -11,15 +11,54 @@
 
 ## Research Baseline
 
-- Sources used:
+- Sources used and checked/accessed dates:
 - Applicable standards or platform expectations:
+- Target level or status model:
 - Target users, devices, input methods, and assistive-technology assumptions:
 
-## Grade
+## Standards Baseline
 
-Overall accessibility readiness: `A/B/C/D/F`
+Use this section for the target being judged against, not for repeating source notes.
+
+- Target standard or platform guidance:
+- Target conformance level or support status model:
+- Evaluated scope:
+- Evidence limits:
+- Conformance claim status: `Not claimed unless the caller explicitly requested a formal conformance evaluation.`
+
+## Standards Observations
+
+- Standards alignment:
+- Relevant failures or risks:
+- Relevant strengths:
+- Notes:
+
+## Optional ACR/VPAT Status
+
+Delete this section unless compliance or procurement scope applies.
+
+- Supports:
+- Partially supports:
+- Does not support:
+- Not applicable:
+
+## Universal Score
+
+Universal accessibility readiness score: `/10`
+
+Letter grade: `A/B/C/D/F`
+
+Cap applied: `None/Critical finding/Low category score/Missing rendered evidence/Missing assistive-technology evidence`
 
 Reason:
+
+Grade mapping:
+
+- `A`: 9.0-10
+- `B`: 8.0-8.9
+- `C`: 7.0-7.9
+- `D`: 6.0-6.9
+- `F`: 0-5.9
 
 ## Start Here
 
@@ -31,25 +70,40 @@ Reason:
 
 ### Critical
 
-No confirmed critical findings.
+- Replace with exactly one state: `No scoped findings after review.` or `Not assessed; evidence limit: ...`
 
 ### High
 
-No confirmed high findings.
+- Replace with exactly one state: `No scoped findings after review.` or `Not assessed; evidence limit: ...`
 
 ### Medium
 
-No confirmed medium findings.
+- Replace with exactly one state: `No scoped findings after review.` or `Not assessed; evidence limit: ...`
 
 ### Low
 
-No confirmed low findings.
+- Replace with exactly one state: `No scoped findings after review.` or `Not assessed; evidence limit: ...`
 
 ## Findings By Category
+
+| Category | Score /10 | Priority Ceiling | Conformance Notes | Confidence | Top Fix |
+| --- | ---: | --- | --- | --- | --- |
+| Visual Perception |  |  |  |  |  |
+| Typography And Scaling |  |  |  |  |  |
+| Responsive And Mobile Use |  |  |  |  |  |
+| Keyboard And Focus |  |  |  |  |  |
+| Semantics And Assistive Technology |  |  |  |  |  |
+| Forms And Error Recovery |  |  |  |  |  |
+| Motion, Timing, And Change |  |  |  |  |  |
+| Content And Comprehension |  |  |  |  |  |
+
+Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit. Repeat the finding block under each category as needed; write `No scoped findings` only after that category was actually reviewed.
 
 ### Visual Perception
 
 - Finding:
+- Score /10:
+- Score rationale:
 - Priority:
 - Evidence:
 - Who is affected:
@@ -60,6 +114,8 @@ No confirmed low findings.
 ### Typography And Scaling
 
 - Finding:
+- Score /10:
+- Score rationale:
 - Priority:
 - Evidence:
 - Who is affected:
@@ -70,6 +126,8 @@ No confirmed low findings.
 ### Responsive And Mobile Use
 
 - Finding:
+- Score /10:
+- Score rationale:
 - Priority:
 - Evidence:
 - Who is affected:
@@ -80,6 +138,8 @@ No confirmed low findings.
 ### Keyboard And Focus
 
 - Finding:
+- Score /10:
+- Score rationale:
 - Priority:
 - Evidence:
 - Who is affected:
@@ -90,6 +150,8 @@ No confirmed low findings.
 ### Semantics And Assistive Technology
 
 - Finding:
+- Score /10:
+- Score rationale:
 - Priority:
 - Evidence:
 - Who is affected:
@@ -100,6 +162,8 @@ No confirmed low findings.
 ### Forms And Error Recovery
 
 - Finding:
+- Score /10:
+- Score rationale:
 - Priority:
 - Evidence:
 - Who is affected:
@@ -110,6 +174,8 @@ No confirmed low findings.
 ### Motion, Timing, And Change
 
 - Finding:
+- Score /10:
+- Score rationale:
 - Priority:
 - Evidence:
 - Who is affected:
@@ -120,6 +186,8 @@ No confirmed low findings.
 ### Content And Comprehension
 
 - Finding:
+- Score /10:
+- Score rationale:
 - Priority:
 - Evidence:
 - Who is affected:

@@ -1,6 +1,6 @@
 ---
 name: universal
-description: Accessibility-focused audit of a codebase, interface, app, document workflow, or UI surface. Use when the caller wants accessibility reviewed across colors used together, contrast, typography, scaling, responsive/mobile behavior, keyboard/focus access, semantics, forms, motion, dynamic content, and user-impact priorities, with project-specific research first and a practical grade plus next steps.
+description: Accessibility audit of a codebase, interface, app, document workflow, or UI surface. Use when the caller wants project-specific accessibility research, standards baseline, color/contrast, typography, scaling, mobile/responsive behavior, keyboard/focus access, semantics, forms, motion, dynamic content, user-impact priorities, per-category scores, and a practical final grade with next steps.
 ---
 
 # Universal
@@ -18,7 +18,7 @@ When asked to use Universal:
 3. Determine the project type, tech stack, target platforms, likely users, input methods, rendering formats, and assistive-technology surface.
 4. Research the applicable accessibility standards and platform guidance before judging. Prefer current primary sources.
 5. Inspect the actual implementation: components, styles, design tokens, routes/screens, rendered markup where available, forms, state changes, content, and responsive behavior.
-6. Capture findings by accessibility category, then prioritize by user impact.
+6. Capture findings by accessibility category, score each applicable category out of 10, then prioritize by user impact.
 7. Use `templates/UNIVERSAL.md` as the report skeleton.
 
 Do not include test coverage or accessibility tooling gaps as standing categories unless the caller explicitly asks for them. Mention verification limits only where they affect confidence in the audit.
@@ -43,6 +43,18 @@ Use the most relevant sources for the target:
 - Project-local design-system rules, brand rules, content standards, and component documentation.
 
 In the final report, list the sources actually used. If live research was unavailable, say that clearly and treat standards-sensitive claims as lower confidence.
+
+## Standards Baseline
+
+Report standards alignment separately from Universal's practical score. Universal scores are not WCAG conformance claims, certifications, VPATs, or legal compliance findings.
+
+Before grading, define:
+- target standard or platform guidance
+- target level or status model
+- evaluated scope
+- evidence limits
+
+Default web and web-like targets to WCAG 2.2 AA unless project docs, legal scope, procurement context, or the caller specifies another target. For non-web products, use the relevant platform guidance. Use ACR/VPAT-style support statuses only when compliance or procurement context applies.
 
 ## Audit Categories
 
@@ -159,17 +171,28 @@ For each finding, include:
 
 Use line references, component names, selectors, screen names, or screenshots where practical. Separate confirmed findings from likely risks.
 
-## Grading
+## Grading And Scoring
 
-Grade accessibility readiness, not general code quality:
+Grade accessibility readiness, not general code quality or standards conformance.
 
-- `A`: accessible patterns are systematic, adaptable, and verified by implementation evidence.
-- `B`: mostly accessible, with fixable gaps that do not block most core workflows.
-- `C`: usable for some users, but accessibility depends on luck, defaults, or isolated good components.
-- `D`: common disability, device, or assistive-technology paths are blocked or fragile.
-- `F`: core workflows are inaccessible, misleading, or impossible to evaluate from the implementation.
+Score only applicable categories. Mark categories that genuinely do not apply as `N/A` and exclude them from the average. Mark categories that apply but were not evaluated as `Not assessed`, exclude them from the average, and explain the evidence limit. Every non-`N/A` and non-`Not assessed` score must cite the strongest evidence and the main reason the score is not higher.
 
-Do not award an `A` if the audit lacked enough rendered or platform-specific evidence to judge core workflows.
+Calculate the final Universal score as the average of applicable assessed category scores, rounded to one decimal.
+
+Map the final Universal score to a letter grade:
+- `A`: 9.0-10
+- `B`: 8.0-8.9
+- `C`: 7.0-7.9
+- `D`: 6.0-6.9
+- `F`: 0-5.9
+
+Apply caps after averaging:
+- any unresolved `Critical` finding caps the final grade at `F`
+- any applicable category scored `0-3` caps the final grade at `D`
+- missing rendered or platform evidence caps the final grade at `B`
+- missing assistive-technology evidence for a UI-heavy product caps the final grade at `C`
+
+Apply the most restrictive cap when multiple caps apply: `F` beats `D`, `D` beats `C`, and `C` beats `B`. Always report the cap reason when a cap changes the final grade. Do not award an `A` if the audit lacked enough rendered or platform-specific evidence to judge core workflows.
 
 ## Boundaries
 
