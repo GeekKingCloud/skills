@@ -1,37 +1,37 @@
 ---
 name: crucible
-description: Orchestrate release-hardening work from a plan, existing review findings, or current codebase state through sub-agent-heavy implementation, remediation, verification, review gates, security pass, docs/comment sweep, cleanup, and release-readiness reporting.
+description: Orchestrate release-hardening work from a supplied plan or full-project roast-led work queue through sub-agent-heavy implementation, remediation, verification, review gates, security pass, cleanup, docs/comment sweep, and release-readiness reporting.
 ---
 
 # Crucible
 
 ## Overview
 
-Use this skill to turn a plan, review, or current codebase state into finished, releasable work. Treat the work source, repository instructions, verification evidence, and review findings as hard inputs, not vibes.
+Use this skill to turn a supplied plan or a full-project roast-led work queue into finished, releasable work. Treat the work source, repository instructions, verification evidence, and review findings as hard inputs, not vibes.
 
 The target state is:
 - the selected work source is implemented or remediated
 - meaningful tests and checks pass
 - peer review and default review-gate findings are resolved or explicitly accepted
-- relevant optional gate findings are resolved, documented, or explicitly accepted
+- relevant optional gate findings are resolved through the same rerun-and-fix loop as default review gates, or explicitly accepted
 - no orphaned code, stale comments, stale docs, unused fixtures, or abandoned config remain from the work
 - comments explain tricky or unusual code without narrating obvious code
-- unresolved issues are low priority or lower
+- unresolved issues are Low or nitpick-level only, and no run gate has unresolved Critical, High, or Medium findings unless the caller explicitly accepts the release risk
 - the final state is ready to release, merge, or hand off with clear evidence
 
 ## Start And Work Route
 
 1. Read the nearest `AGENTS.md` first. If it points to `STYLE.md`, `README.md`, handoff files, plans, or project docs, read the relevant files before editing.
-2. Identify the work source and route before editing. Look for explicit user text, `PLAN.md`, `ROAST_PLAN.md`, `HANDOFF.md`, issue text, existing review findings, TODO lists, or repo-specific planning files.
+2. Identify the work source and route before editing. Crucible always needs one of: a supplied plan, or a full-project roast-led work queue. Look for explicit user text, `PLAN.md`, `ROAST_PLAN.md`, `HANDOFF.md`, issue text, existing review findings, TODO lists, or repo-specific planning files.
 3. Choose exactly one starting route:
-   - `Plan-led`: implement a supplied plan, then harden the result.
-   - `Review-led`: remediate existing roast, review, or audit findings as the work queue.
-   - `Current-state hardening`: inspect the current codebase, derive a bounded hardening plan, and use roast when appropriate.
-   - `Combined`: implement a supplied plan, then run roast on the changed result and remediate findings.
+   - `plan-led-no-roast`: implement a supplied plan and run the non-roast hardening gates.
+   - `plan-led-plan-scope-roast`: implement a supplied plan, then roast only the changed plan scope.
+   - `plan-led-project-scope-roast`: implement a supplied plan, then roast the full current project.
+   - `roast-led-project-scope`: roast the full current project, use findings as the work queue, then remediate through the review gate loop.
 4. Check version-control status before editing. Identify unrelated local changes and work around them without reverting them.
-5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, roast review role, security pass, optional adjunct gates, docs/comment sweep, cleanup, and commit or handoff expectations.
+5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, roast scope/status, optional adjunct gates, security pass, cleanup, docs/comment sweep, and commit or handoff expectations.
 
-If no work source exists and the caller asked for hardening, derive a bounded current-state hardening plan from repository evidence before editing. Stop and ask only when the work source is missing critical product decisions, would require destructive Git history changes, needs credentials, or would materially change security posture, runtime behavior, dependency surface, or public behavior without clear caller approval.
+If no supplied plan exists and the caller did not authorize a full-project roast-led work queue, stop and ask for the missing work source. Stop and ask only when the work source is missing critical product decisions, would require destructive Git history changes, needs credentials, or would materially change security posture, runtime behavior, dependency surface, or public behavior without clear caller approval.
 
 ## Sub-Agent Operating Model
 
@@ -57,81 +57,40 @@ If verification fails, fix the cause and rerun the relevant check. Do not change
 
 ## Roast Review Gate
 
-Use the sibling `roast` skill as Crucible's default broad code-quality review gate and as a possible work source. Roast is central to Crucible's release-hardening identity, but it is not required for every route.
+Use the sibling `roast` skill as Crucible's default broad code-quality review gate and as the only no-plan work source. Roast is central to Crucible's release-hardening identity, but plan-led work may explicitly choose no roast.
 
-Roast can play these roles:
-- `Input`: existing roast or review findings define the work queue.
-- `Post-change gate`: after plan-led or combined implementation, run roast on the changed result when release-hardening is in scope.
-- `Current-state gate`: during current-state hardening, run roast to derive a bounded remediation queue when appropriate.
-- `Fallback`: if the actual `roast` skill is unavailable, perform an equivalent serious, evidence-backed review and disclose the fallback.
-- `Skipped`: skip only when the caller opts out, the task is narrow/non-release, an existing accepted review already covers the scope, or repo instructions make roast inappropriate.
+Read `helpers/ROAST-GATE.md` when choosing roast scope, running roast, using roast as the work queue, falling back because `roast` is unavailable, or explaining why a plan-led route has no roast. Keep the detailed route and scope rules in that helper.
 
-Run roast as a serious, evidence-backed release audit unless the caller explicitly asks for a snarkier presentation. Treat roast output as a default core quality gate when it runs:
-- Treat each post-change roast run as the outer loop: collect findings, fix them, rerun roast or the focused equivalent review, and repeat until the project earns an A grade or the remaining issues are low priority and explicitly documented as acceptable.
-- Treat each finding as the inner loop: handle one issue at a time using the Execution Loop rules, including surgical scope, sub-agent delegation, focused tests, narrow verification, and cleanup.
-- Do not batch unrelated roast findings into one broad refactor. Group findings only when they share the same root cause and can be fixed surgically.
-- Fix Critical, High, and Medium findings. Fix Low findings when they are cheap, clarify real confusion, or affect release confidence.
-- After each finding or root-cause group, rerun the relevant focused verification before moving to the next finding.
+## Review Gate Loop
 
-If roast is skipped or unavailable, report the role as `skipped` or `fallback` in the final output with the reason. Do not claim an A-grade release state if tests did not run, the review was sampled, roast or equivalent review was skipped without justification, or major findings remain unresolved. State the limitation plainly.
+Use the same outer loop for every gate that runs, whether it is the default roast gate, an optional adjunct gate, or an evidence-backed fallback pass:
+
+1. Run the skill or equivalent fallback pass against the current changed state.
+2. Capture the grade, severity list, evidence, and scope limitations.
+3. Classify every finding as `actionable in scope`, `external or owner-blocked`, `unverifiable with current access`, or `explicitly accepted`.
+4. Fix each actionable Critical, High, and Medium finding through the Execution Loop. Fix Low or nitpick findings when they are cheap, clarifying, or release-confidence-building.
+5. For external, owner-blocked, or unverifiable findings, document the evidence, why Crucible cannot resolve or verify it from the current workspace, who or what would unblock it, and whether it caps the grade.
+6. Rerun the same skill, a focused rerun, or the closest equivalent verification against the changed state.
+7. Repeat until the gate produces an A grade or equivalent high result and no unresolved actionable finding remains above Low or nitpick level.
+
+Do not keep rerunning a gate solely because its grade is capped by documented external, owner-blocked, or unverifiable conditions. After actionable fixes are exhausted, treat the gate as `capped` rather than failed when the remaining above-Low findings are outside Crucible's current ability to change or verify. Report the cap clearly with evidence, owner or unblocker, and next step.
+
+If a skill does not produce a letter grade, treat the gate as passing only when its rerun has no unresolved actionable Critical, High, or Medium findings and the remaining Low, nitpick, external, owner-blocked, or unverifiable findings are documented. Do not claim release readiness while any run gate still has unresolved actionable Critical, High, or Medium findings unless the caller explicitly accepts that release risk in the final report.
+
+Do not use `external`, `owner-blocked`, or `unverifiable` as an escape hatch for findings that can be fixed or tested in the current workspace. When in doubt, attempt the narrowest reasonable fix or verification once, then classify the remaining cap from evidence.
+
+Run gate loops sequentially when later fixes can invalidate earlier evidence. For plan-led hardening, finish the implementation loop first, then run relevant assessment loops in this default order: `assess-accessibility`, `assess-seo`, `assess-agent-readiness`. Run the roast loop after assessment loops so roast reviews the final assessed state. Then run security, cleanup, and docs/comment passes. Parallelize independent investigation inside a loop when it will not create conflicting edits, but integrate patches through the main Execution Loop.
 
 ## Optional Gates
 
-Use optional adjunct gates when the implemented plan has a relevant surface. Optional gates are not hard dependencies for every Crucible run, and they must be skipped with a short reason when irrelevant.
+Use optional adjunct gates only when the implemented plan has a relevant surface or the caller asks Crucible to pair with assessment skills. They are not hard dependencies for every Crucible run.
 
-### Assess Accessibility Gate
-
-Run the sibling `assess-accessibility` skill when the plan or changed surface touches UI, frontend components, forms, public websites, generated documents, PDFs, emails, design systems, human-facing output, or user-facing workflows. Also run it when the caller explicitly asks for accessibility hardening.
-
-Skip Assess Accessibility for backend-only, infrastructure-only, internal refactor-only, test-only, or non-user-facing work unless the caller explicitly asks for it.
-
-If the `assess-accessibility` skill is unavailable but the target has an accessibility surface, perform a smaller evidence-backed accessibility pass and disclose that the actual skill was unavailable.
-
-Treat Assess Accessibility output as an accessibility release gate when it runs:
-- Fix unresolved `Critical` and `High` Assess Accessibility findings before release readiness, unless the caller explicitly accepts them.
-- Fix `Medium` findings when practical inside scope; otherwise document them as follow-up.
-- Fix `Low` findings when cheap, clarifying, or confidence-building.
-- Do not require an Assess Accessibility Grade A unless the caller explicitly asks for accessibility hardening to that level.
-
-Report the Assess Accessibility gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Assess Accessibility grade when produced, and any unresolved `Critical` or `High` accessibility blockers.
-
-### Assess Agent Readiness Gate
-
-Run the sibling `assess-agent-readiness` skill when the plan or changed surface touches public websites, documentation, APIs, SDKs, CLIs, MCP or tool surfaces, agent-facing instructions, automation workflows, structured content, crawl policy, or agent-readable content. Also run it when the caller explicitly asks for agent-readiness hardening.
-
-Skip Assess Agent Readiness for backend-only, infrastructure-only, internal refactor-only, test-only, or non-agent-facing work unless the caller explicitly asks for it.
-
-If the `assess-agent-readiness` skill is unavailable but the target has an agent-facing surface, perform a smaller evidence-backed agent-readiness pass and disclose that the actual skill was unavailable.
-
-Treat Assess Agent Readiness output as an agent-readiness release gate when it runs:
-- Fix unresolved `Critical` and `High` Assess Agent Readiness findings before release readiness, unless the caller explicitly accepts them.
-- Fix `Medium` findings when practical inside scope; otherwise document them as follow-up.
-- Fix `Low` findings when cheap, clarifying, or confidence-building.
-- Do not require an Assess Agent Readiness Grade A unless the caller explicitly asks for agent-readiness hardening to that level.
-
-Report the Assess Agent Readiness gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Assess Agent Readiness grade when produced, and any unresolved `Critical` or `High` agent-readiness blockers.
-
-### Assess SEO Readiness Gate
-
-Run the sibling `assess-seo` skill when the plan or changed surface touches public websites, landing pages, marketing pages, documentation pages, ecommerce pages, local-business pages, crawl/index configuration, structured data, metadata, internal linking, content templates, sitemap generation, redirects, or other organic-search surfaces. Also run it when the caller explicitly asks for SEO hardening.
-
-Skip Assess SEO for backend-only, infrastructure-only, internal refactor-only, test-only, authenticated-only, non-public, or non-search-facing work unless the caller explicitly asks for it.
-
-If the `assess-seo` skill is unavailable but the target has an organic-search surface, perform a smaller evidence-backed SEO-readiness pass and disclose that the actual skill was unavailable.
-
-Treat Assess SEO output as an SEO-readiness release gate when it runs:
-- Fix unresolved `Critical` and `High` Assess SEO findings before release readiness, unless the caller explicitly accepts them.
-- Fix `Medium` findings when practical inside scope; otherwise document them as follow-up.
-- Fix `Low` findings when cheap, clarifying, or confidence-building.
-- Do not require an Assess SEO Grade A unless the caller explicitly asks for SEO hardening to that level.
-- Do not let AI-oriented files such as `llms.txt` compensate for broken classic crawl/index foundations such as `robots.txt`, sitemap discovery, indexability, canonicalization, or crawlable content.
-
-Report the Assess SEO gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Assess SEO grade when produced, and any unresolved `Critical` or `High` SEO-readiness blockers.
+When the caller asks for `assess-accessibility`, `assess-agent-readiness`, or `assess-seo`, or the changed surface clearly makes one relevant, read `helpers/ASSESSMENT-GATES.md` and follow its trigger, skip, fallback, capped-grade, and final-report rules. If no assessment gate is relevant, do not read the helper; report the optional gates as skipped only when that status matters to the final release-readiness explanation.
 
 ## Security Pass
 
-Run a dedicated security pass after review-gate remediation is complete and before final cleanup.
-Prefer a separate sub-agent for this pass when available, especially when the change touches inputs, permissions, storage, shell commands, dependencies, network boundaries, or generated artifacts.
+Run a dedicated security pass after review-gate loops are complete and before cleanup.
+Prefer a separate sub-agent for this pass when available, especially when the change touches inputs, permissions, storage, shell commands, dependencies, network boundaries, or generated artifacts. Parallelize independent security investigation and focused patch review when it will not create conflicting edits.
 
 Inspect:
 - untrusted input reaching shell commands, SQL, paths, templates, HTML, eval-like APIs, redirects, URLs, dynamic imports, regexes, or deserializers
@@ -140,12 +99,24 @@ Inspect:
 - dependency changes, install hooks, lockfiles, network calls, CORS, CSRF, webhook validation, SSRF, open redirects, and unsafe defaults
 - file operations, destructive commands, cleanup behavior, temp paths, and permissions
 
-Patch confirmed security issues through the Execution Loop rules. If a security concern cannot be resolved inside scope, report it with severity, evidence, impact, and the safest next action.
+Patch confirmed security issues through the Execution Loop rules. Rerun focused security checks after patches. If a security concern cannot be resolved inside scope, report it with severity, evidence, impact, and the safest next action.
+
+## Cleanup Gate
+
+Run cleanup after security patches are stable and before the docs/comment sweep. Parallelize independent cleanup checks and small cleanup patches when they do not conflict.
+
+Before final response or handoff:
+
+1. Recheck version-control status.
+2. Confirm there are no new orphaned files, unused helpers, stale fixtures, obsolete comments, outdated docs, dead imports, or accidental generated artifacts.
+3. Confirm local commits were created for each logical slice when commits were authorized. If commits were not authorized, summarize commit-ready groups.
+4. Confirm verification commands and results.
+5. Confirm slice-level sub-agent reviews were integrated, or explain why review was performed locally.
+6. Confirm unresolved risks are Low or nitpick-level only, or explain why release readiness is blocked.
 
 ## Comments And Docs
 
-Do a focused readability sweep after review-gate remediation and the final security pass are stable.
-For broad or user-facing changes, delegate a docs/comment sweep to a sub-agent and reconcile its findings locally.
+Do a focused readability sweep after review-gate loops, the final security pass, and cleanup are stable. Parallelize independent docs/comment review and updates when they do not conflict, then reconcile the final wording locally.
 
 Keep good comments:
 - explain tricky algorithms, unusual constraints, compatibility requirements, security decisions, and non-obvious failure handling
@@ -159,17 +130,6 @@ Remove or rewrite bad comments:
 
 Update user-facing docs, internal docs, examples, and changelogs only when the plan or repo rules require them. Keep docs close to the source of truth.
 
-## Cleanup Gate
-
-Before final response or handoff:
-
-1. Recheck version-control status.
-2. Confirm there are no new orphaned files, unused helpers, stale fixtures, obsolete comments, outdated docs, dead imports, or accidental generated artifacts.
-3. Confirm local commits were created for each logical slice when commits were authorized. If commits were not authorized, summarize commit-ready groups.
-4. Confirm verification commands and results.
-5. Confirm slice-level sub-agent reviews were integrated, or explain why review was performed locally.
-6. Confirm unresolved risks are low priority or lower, or explain why release readiness is blocked.
-
 ## Final Output
 
 Keep the final report concise and evidence-based:
@@ -179,8 +139,8 @@ Keep the final report concise and evidence-based:
 - logical slices completed and commits created, if any
 - how sub-agents were used, or why they were unavailable or disallowed
 - tests and verification run
-- slice-level peer review, security pass, docs/comment sweep, cleanup, and roast role/status
-- optional gate status, including Assess Accessibility, Assess Agent Readiness, and Assess SEO run/skipped/unavailable when relevant
+- slice-level peer review, review gate loops, security pass, cleanup, docs/comment sweep, and roast role/status
+- optional gate loop status, including Assess Accessibility, Assess Agent Readiness, and Assess SEO run/skipped/unavailable when relevant
 - unresolved findings or release blockers
 - whether the final state is releasable
 

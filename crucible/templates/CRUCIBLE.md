@@ -2,9 +2,9 @@
 
 ## Plan Implemented
 
-- Work route: `plan-led/review-led/current-state/combined`.
-- Work source: `plan/review/current-state inspection/other`.
-- State the plan, review, or release-hardening target completed.
+- Work route: `plan-led-no-roast/plan-led-plan-scope-roast/plan-led-project-scope-roast/roast-led-project-scope`.
+- Work source: `supplied plan/full-project roast-led work queue`.
+- State the supplied plan or full-project roast-led work queue completed.
 - Mention any intentional scope limits.
 
 ## Completed Slices
@@ -20,15 +20,17 @@
 
 ## Review And Cleanup
 
-- Summarize slice-level peer review, roast loops and issue remediation, final security pass, docs/comment sweep, and orphan cleanup results.
-- Roast role: `input/post-change gate/current-state gate/skipped/fallback`.
-- Note whether the actual `roast` skill was used, skipped with a reason, or replaced by an equivalent fallback review.
-- Optional gates: state `Assess Accessibility gate: run/skipped/unavailable`, `Assess Agent Readiness gate: run/skipped/unavailable`, and `Assess SEO gate: run/skipped/unavailable`, with skip reasons or fallback notes, grades when produced, and any unresolved Critical/High blockers.
+- Summarize slice-level peer review, review gate loops and issue remediation, final security pass, cleanup pass, and docs/comment sweep results.
+- Roast scope/status: `none/plan-scope/project-scope/fallback/capped`.
+- Note whether the actual `roast` skill was used, omitted with a valid `plan-led-no-roast` reason, replaced by an equivalent fallback review, or capped by documented non-actionable conditions.
+- Gate loops: for every run gate, include the final grade or equivalent status, rerun evidence when available, whether any actionable finding remains above Low or nitpick level, and whether the result is capped by external, owner-blocked, or unverifiable conditions.
+- Gate order: list the assessment gates in the order run and confirm roast ran after assessment fixes when roast was used.
+- Optional gates: state `Assess Accessibility gate: run/skipped/unavailable/capped`, `Assess Agent Readiness gate: run/skipped/unavailable/capped`, and `Assess SEO gate: run/skipped/unavailable/capped`, with skip reasons or fallback notes, final grades or equivalent statuses, and any unresolved findings.
 
 ## Remaining Risk
 
 - List unresolved findings, if any, with severity.
-- State whether remaining issues are low priority or lower.
+- State whether remaining actionable issues are Low or nitpick-level only, and call out any explicitly accepted, external, owner-blocked, or unverifiable Critical, High, or Medium release risk.
 
 ## Release State
 
