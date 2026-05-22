@@ -62,7 +62,7 @@
   <g transform="translate(316 60)">
     <text x="3" y="96" fill="#F25AC6" font-family="Consolas, 'Courier New', monospace" font-size="116" font-weight="800" letter-spacing="0" opacity="0.8">Skills</text>
     <text x="-3" y="91" fill="#58B7FF" font-family="Consolas, 'Courier New', monospace" font-size="116" font-weight="800" letter-spacing="0" opacity="0.72">Skills</text>
-    <text x="0" y="94" fill="url(#wordmark)" font-family="Consolas, 'Courier New', monospace" font-size="116" font-weight="800" letter-spacing="0">Skills</text>
+    <text x="0" y="94" fill="rgb(247, 208, 74)" font-family="Consolas, 'Courier New', monospace" font-size="116" font-weight="800" letter-spacing="0">Skills</text>
     <path d="M6 126H446" stroke="#F25AC6" stroke-width="6" stroke-linecap="square"/>
     <path d="M6 145H350" stroke="#F7D04A" stroke-width="6" stroke-linecap="square"/>
     <path d="M6 164H268" stroke="#19F9B7" stroke-width="6" stroke-linecap="square"/>
