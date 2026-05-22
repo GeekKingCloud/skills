@@ -35,7 +35,7 @@ Use the Review Gate Loop:
 
 Fix actionable Critical, High, and Medium findings. Fix Low findings when they are cheap, clarify real confusion, or affect release confidence. Do not batch unrelated roast findings into one broad refactor.
 
-If the grade is capped by documented external, owner-blocked, or unverifiable conditions, report roast status as `capped` with evidence, unblocker, and next step. Do not keep rerunning roast solely because of a documented non-actionable cap.
+If the grade is capped by documented external, owner-blocked, or unverifiable conditions, report roast status as `capped` with the final grade, evidence, unblocker, and next step. Do not keep rerunning roast solely because of a documented non-actionable cap.
 
 ## Fallbacks And Reporting
 
@@ -48,6 +48,6 @@ Report roast scope/status as one of:
 - `fallback`
 - `capped`
 
-For `none`, include the reason and reduced-confidence disclosure. For `fallback`, include why the actual skill was unavailable and what equivalent review was performed. For `capped`, include the final grade or equivalent status, non-actionable cap evidence, and the exact unblocker.
+Always report the final roast grade or equivalent status and the roast cap reason. Use `None` as the cap reason when the roast gate is not capped. For `none`, include the reason and reduced-confidence disclosure. For `fallback`, include why the actual skill was unavailable and what equivalent review was performed. For `capped`, include non-actionable cap evidence and the exact unblocker.
 
 Do not claim an A-grade release state if tests did not run, roast or equivalent review was sampled, roast was omitted without a valid `plan-led-no-roast` reason, or actionable Critical, High, or Medium findings remain unresolved.

@@ -29,7 +29,7 @@ The target state is:
    - `plan-led-project-scope-roast`: implement a supplied plan, then roast the full current project.
    - `roast-led-project-scope`: roast the full current project, use findings as the work queue, then remediate through the review gate loop.
 4. Check version-control status before editing. Identify unrelated local changes and work around them without reverting them.
-5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, roast scope/status, optional adjunct gates, security pass, cleanup, docs/comment sweep, and commit or handoff expectations.
+5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, roast scope/status, roast grade, roast cap reason, optional adjunct gates, security pass, cleanup, docs/comment sweep, and commit or handoff expectations.
 
 If no supplied plan exists and the caller did not authorize a full-project roast-led work queue, stop and ask for the missing work source. Stop and ask only when the work source is missing critical product decisions, would require destructive Git history changes, needs credentials, or would materially change security posture, runtime behavior, dependency surface, or public behavior without clear caller approval.
 
@@ -139,7 +139,7 @@ Keep the final report concise and evidence-based:
 - logical slices completed and commits created, if any
 - how sub-agents were used, or why they were unavailable or disallowed
 - tests and verification run
-- slice-level peer review, review gate loops, security pass, cleanup, docs/comment sweep, and roast role/status
+- slice-level peer review, review gate loops, security pass, cleanup, docs/comment sweep, and roast scope/status, grade, and cap reason
 - optional gate loop status, including Assess Accessibility, Assess Agent Readiness, and Assess SEO run/skipped/unavailable when relevant
 - unresolved findings or release blockers
 - whether the final state is releasable

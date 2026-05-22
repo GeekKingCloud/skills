@@ -22,6 +22,8 @@
 
 - Summarize slice-level peer review, review gate loops and issue remediation, final security pass, cleanup pass, and docs/comment sweep results.
 - Roast scope/status: `none/plan-scope/project-scope/fallback/capped`.
+- Roast grade: `<letter or equivalent status>`.
+- Roast cap reason: `<reason or None>`.
 - Note whether the actual `roast` skill was used, omitted with a valid `plan-led-no-roast` reason, replaced by an equivalent fallback review, or capped by documented non-actionable conditions.
 - Gate loops: for every run gate, include the final grade or equivalent status, rerun evidence when available, whether any actionable finding remains above Low or nitpick level, and whether the result is capped by external, owner-blocked, or unverifiable conditions.
 - Gate order: list the assessment gates in the order run and confirm roast ran after assessment fixes when roast was used.
