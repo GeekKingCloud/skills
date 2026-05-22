@@ -1,17 +1,38 @@
 ---
-name: beacon
-description: Agent-readiness audit for websites, apps, APIs, tools, documentation, or codebases. Use when the caller wants research-first assessment of discoverability, crawl policy, agent instructions, structured content, API/tool actionability, MCP/OpenAPI surfaces, docs freshness, safety boundaries, handoff evidence, and practical next steps for coding agents or agentic crawlers.
+name: assess-agent-readiness
+description: Agent-readiness audit for websites, apps, APIs, tools, documentation, or codebases. Use when the caller wants research-first assessment of discoverability, crawl policy, agent instructions, structured content, API/tool actionability, MCP/OpenAPI surfaces, docs freshness, safety boundaries, handoff evidence, and practical next steps for coding agents or agentic crawlers, while keeping classic SEO growth and ranking work separate.
 ---
 
-# Beacon
+# Assess Agent Readiness
 
 Audit how ready a system is for coding agents, agentic crawlers, and agent-mediated user workflows. Focus on whether an agent can discover the system, understand what it offers, choose safe actions, execute or hand off work, recover from errors, and cite or verify results.
 
 This is not an SEO guarantee, AI search certification, crawler compliance claim, MCP certification, OpenAPI certification, or ranking prediction. Use direct, evidence-backed language and distinguish accepted standards from emerging conventions.
 
+## Relationship To Assess SEO
+
+Assess Agent Readiness and Assess SEO overlap on technical discovery, but they answer different questions.
+
+- Assess Agent Readiness asks whether agents and agentic crawlers can discover, understand, use, and verify a system.
+- Assess SEO asks whether a public web surface is ready to earn organic search visibility for human searchers.
+
+Use Assess SEO as an `Optional adjunct gate` when the caller asks for classic SEO readiness, search growth, human organic traffic, keyword coverage, SERP competitiveness, title/meta optimization, local SEO, content strategy, backlinks, rankings, or traffic opportunity. Skip Assess SEO when the target is not public-search-facing or the caller only wants agent-readiness.
+
+Blocking behavior:
+
+- Do not let `llms.txt` or other AI-oriented files compensate for broken conventional crawl foundations. Missing or broken `robots.txt`, sitemap discovery, indexability, canonicalization, redirects, structured data, or crawlable content can be an Assess Agent Readiness finding when it impairs agentic discovery, and it should be handed to Assess SEO when classic SEO impact is in scope.
+- Do not expand Assess Agent Readiness into keyword research, SERP strategy, backlink review, local profile optimization, CTR-focused snippets, traffic forecasting, or ranking predictions. Recommend Assess SEO for those paths.
+- Do not fail an Assess Agent Readiness audit solely because Assess SEO was skipped or unavailable. Report the skip reason and whether classic SEO readiness remains unassessed.
+
+Final-report evidence when Assess SEO is used, skipped, or unavailable:
+
+- `Assess SEO adjunct: Ran/Skipped/Unavailable`
+- `Reason: ...`
+- `Impact on Assess Agent Readiness score: None/discovery finding/grade cap/lower confidence`
+
 ## Quick Start
 
-When asked to use Beacon:
+When asked to use Assess Agent Readiness:
 
 1. Identify the target folder, URL, app, API, tool, documentation set, or artifact.
 2. Read local instructions and product context first, such as `AGENTS.md`, `README.md`, API docs, OpenAPI specs, MCP docs, CLI docs, SDK docs, robots/crawl policy, sitemap files, and product docs.
@@ -19,7 +40,7 @@ When asked to use Beacon:
 4. Research current agent-readiness sources before judging. Prefer current primary sources and say when a convention is emerging or disputed.
 5. Inspect the implementation or live surface: routes, crawl policy, docs, content structure, metadata, structured data, APIs, schemas, tool protocols, auth, errors, examples, and handoff signals.
 6. Capture findings by category, score each applicable category out of 10, then prioritize by agent/user impact.
-7. Use `templates/BEACON.md` as the report skeleton.
+7. Use `templates/ASSESS-AGENT-READINESS.md` as the report skeleton.
 
 Mention verification limits only where they affect confidence, scoring, or grade caps.
 
@@ -60,7 +81,7 @@ Missing source code is not a grade cap by itself. Missing live behavior, unreach
 
 ## Standards Baseline
 
-Report standards and conventions separately from Beacon's practical score. Beacon scores are internal readiness grades, not official SEO, AI search, crawler, protocol, API, or compliance claims.
+Report standards and conventions separately from the practical Assess Agent Readiness score. Assess Agent Readiness scores are internal readiness grades, not official SEO, AI search, crawler, protocol, API, or compliance claims.
 
 Before grading, define:
 
@@ -70,6 +91,7 @@ Before grading, define:
 - evaluated scope
 - evidence mode
 - evidence limits
+- Assess SEO adjunct status when classic SEO readiness is relevant
 
 Treat `llms.txt` as an optional emerging convention. Do not fail a system solely for missing `llms.txt` when the target has strong conventional crawlability, structured content, and agent-facing docs. Do treat it as a missed readiness opportunity when LLM-friendly orientation is important and no equivalent exists.
 
@@ -189,9 +211,9 @@ Grade practical agent readiness, not general product quality or official standar
 
 Score only applicable categories. Mark categories that genuinely do not apply as `N/A` and exclude them from the average. Mark categories that apply but were not evaluated as `Not assessed`, exclude them from the average, and explain the evidence limit. Every assessed score must cite the strongest evidence and the main reason the score is not higher.
 
-Calculate the final Beacon score as the average of applicable assessed category scores, rounded to one decimal.
+Calculate the final Assess Agent Readiness score as the average of applicable assessed category scores, rounded to one decimal.
 
-Map the final Beacon score to a letter grade:
+Map the final Assess Agent Readiness score to a letter grade:
 
 - `A`: 9.0-10
 - `B`: 8.0-8.9
@@ -211,7 +233,7 @@ Report the cap as one field: `Grade cap: None` when no cap applies, or `Grade ca
 
 ## Live Or Black-Box Targets
 
-Beacon can audit a live website, app, API, or tool without source code, but the evidence changes.
+Assess Agent Readiness can audit a live website, app, API, or tool without source code, but the evidence changes.
 
 For live-only targets:
 
@@ -229,7 +251,9 @@ Do not:
 - claim official agent-readiness certification
 - claim guaranteed ranking, citation, retrieval, or crawler behavior
 - treat `llms.txt` as required by Google or any other system without source-specific evidence
-- confuse human accessibility with Beacon's agent-readiness scope
+- treat `llms.txt` or AI-oriented files as replacements for `robots.txt`, sitemaps, crawlable HTML, canonicals, redirects, or structured data
+- perform keyword research, backlink review, local SEO/profile optimization, SERP strategy, or ranking/traffic forecasts inside Assess Agent Readiness unless the caller explicitly asks for a lightweight note and you clearly recommend Assess SEO for the full pass
+- confuse human accessibility with the Assess Agent Readiness scope
 - invent API/tool support without evidence
 - recommend bypassing auth, rate limits, robots policy, or terms of service
 - bury safety and consent risks under discovery or SEO language
@@ -241,8 +265,9 @@ Do:
 - connect findings to realistic agent tasks and user outcomes
 - prefer primary sources and current documentation
 - give a practical first-fix sequence
+- recommend Assess SEO when classic SEO readiness or human organic-search performance is materially in scope
 - recommend live API/tool/browser checks when source evidence is insufficient
 
 ## Orchestrator Use
 
-Other workflow skills may use Beacon as an optional adjunct gate when a target has an agent-facing surface. Report evidence mode, score, grade cap, blockers, and skipped or not-assessed categories clearly enough for the parent workflow to decide whether agent-readiness issues block release readiness. Beacon does not depend on those orchestrator skills; it remains a standalone agent-readiness audit skill.
+Other workflow skills may use Assess Agent Readiness as an optional adjunct gate when a target has an agent-facing surface. Report evidence mode, score, grade cap, blockers, and skipped or not-assessed categories clearly enough for the parent workflow to decide whether agent-readiness issues block release readiness. Assess Agent Readiness does not depend on those orchestrator skills; it remains a standalone agent-readiness audit skill.

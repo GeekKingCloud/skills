@@ -1,4 +1,4 @@
-# Collaboration Feedback Report
+# Agent Feedback Report
 
 ## Evidence Reviewed
 
@@ -27,7 +27,7 @@ If the decision is `Incomplete run`, stop after `Evidence Reviewed` and `Evidenc
 
 For general collaboration-improvement requests, full-depth review is the default. `Preliminary only` still requires evidence beyond the active conversation. If the report would mostly analyze the current thread, stop and request broader history.
 
-For narrow collaboration-feedback requests, full-depth review still applies within that narrower scope. Do not substitute a lightweight scan for the requested evidence review.
+For narrow Agent Feedback requests, full-depth review still applies within that narrower scope. Do not substitute a lightweight scan for the requested evidence review.
 
 Do not confuse available corpus with completed inspection. If broad history exists but was not inspected deeply enough, continue reviewing. If continuing is blocked, mark the run `Incomplete run`; do not present a lower-confidence finished report merely because the workflow did not dig enough.
 
@@ -49,7 +49,7 @@ Omit sections or items that the evidence cannot support, unless the absence itse
 
 ## Generalization Boundary
 
-[State exactly which tasks, repos, session summaries, transcripts, or artifacts this feedback can generalize across, and which it cannot.]
+[State exactly which tasks, repos, session summaries, transcripts, or artifacts this agent feedback can generalize across, and which it cannot.]
 
 ## Confidence Model
 
@@ -123,9 +123,9 @@ Repeat only for evidence-supported changes, maximum three.
 
 ## Better Prompt Patterns
 
-History access for general feedback:
+History access for general agent feedback:
 ```text
-Use the feedback skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
+Use the `agent-feedback` skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
 ```
 
 Repo or scope boundary:
@@ -135,7 +135,7 @@ Repo or scope boundary:
 
 Evidence sufficiency:
 ```text
-Use the feedback skill on [scope]. If there is not enough cross-task history to produce evidence-bound feedback, say that and list what inputs you need.
+Use the `agent-feedback` skill on [scope]. If there is not enough cross-task history to produce evidence-bound agent feedback, say that and list what inputs you need.
 ```
 
 Stop, audit, or continue correction:

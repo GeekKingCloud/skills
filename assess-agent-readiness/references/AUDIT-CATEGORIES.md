@@ -1,6 +1,6 @@
 # Audit Categories
 
-Use this file as Beacon's default category map. Omit categories that do not apply, add target-specific categories when needed, and keep scoring separate from official standards claims.
+Use this file as Assess Agent Readiness's default category map. Omit categories that do not apply, add target-specific categories when needed, and keep scoring separate from official standards claims.
 
 ## Contents
 
@@ -127,7 +127,7 @@ Every assessed category score must include a one-line rationale naming the stron
 
 ## Final Score Rules
 
-Calculate the final Beacon score as the average of applicable assessed category scores, rounded to one decimal.
+Calculate the final Assess Agent Readiness score as the average of applicable assessed category scores, rounded to one decimal.
 
 Map the final score to a letter grade:
 

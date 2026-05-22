@@ -26,13 +26,13 @@ Use compliance sources only when the product context makes them relevant:
 
 ## Grading And Conformance
 
-Do not invent an official accessibility score. Record standards alignment separately from Universal's practical score.
+Do not invent an official accessibility score. Record standards alignment separately from Assess Accessibility's practical score.
 
 - WCAG 2.x uses A, AA, and AAA conformance levels, not numeric grades. A web page must satisfy all applicable success criteria at the target level to conform. Source: https://w3c.github.io/wcag/understanding/conformance
 - WCAG-EM provides an evaluation methodology and report structure. It supports consistent evaluation but does not add WCAG requirements or make a sampled audit automatically become a full conformance claim. Source: https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/
 - ACT defines a format and rules for consistent accessibility conformance testing. It supports test consistency and tool methodology; it is not an audit grade. Source: https://www.w3.org/WAI/standards-guidelines/act/
 - ACR/VPAT reporting uses support statuses such as `Supports`, `Partially Supports`, `Does Not Support`, and `Not Applicable` against applicable standards. It is not a 0-10 score. Source: https://www.section508.gov/sell/acr-vpat-faq/
-- WCAG 3 drafts describe Bronze, Silver, and Gold conformance concepts, but WCAG 3 is not the stable basis for Universal grading unless the caller explicitly asks for draft-oriented analysis. Source: https://w3c.github.io/wcag3/guidelines/
+- WCAG 3 drafts describe Bronze, Silver, and Gold conformance concepts, but WCAG 3 is not the stable basis for Assess Accessibility grading unless the caller explicitly asks for draft-oriented analysis. Source: https://w3c.github.io/wcag3/guidelines/
 
 For web and web-like products, default the target to WCAG 2.2 AA unless project docs, legal scope, procurement requirements, or caller context specify otherwise. For non-web products, use the relevant platform guidance and use ACR/VPAT-style statuses only when compliance context applies.
 

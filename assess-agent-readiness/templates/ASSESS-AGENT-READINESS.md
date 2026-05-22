@@ -1,4 +1,4 @@
-# Beacon Agent-Readiness Audit
+# Assess Agent Readiness Audit
 
 ## Scope
 
@@ -23,9 +23,15 @@
 - Official claim status: `No official SEO, AI search, crawler, MCP, OpenAPI, or compliance claim.`
 - Notes:
 
-## Beacon Score
+## Assess SEO Adjunct
 
-Beacon readiness score: `/10`
+- Assess SEO adjunct: `Ran/Skipped/Unavailable`
+- Reason:
+- Impact on Assess Agent Readiness score: `None/discovery finding/grade cap/lower confidence`
+
+## Assess Agent Readiness Score
+
+Assess Agent Readiness score: `/10`
 
 Letter grade: `A/B/C/D/F`
 
@@ -187,6 +193,7 @@ Reason:
 - Authenticated workflow checks:
 - Structured data or schema validation:
 - Agent instruction review:
+- Assess SEO adjunct:
 - User/domain review:
 
 ## Next Steps

@@ -1,6 +1,6 @@
 # Research Sources
 
-Use this file as Beacon's starting source map. Refresh sources during each audit because agent-readiness practices change quickly.
+Use this file as Assess Agent Readiness's starting source map. Refresh sources during each audit because agent-readiness practices change quickly.
 
 ## Source Rules
 
@@ -22,7 +22,7 @@ Use this file as Beacon's starting source map. Refresh sources during each audit
 
 - Source: https://web.dev/articles/ai-agent-site-ux
 - Use for: browser-agent behavior, screenshots, raw HTML, accessibility-tree signals, stable layouts, semantic actionable elements, labels, and visible action state.
-- Treat as: current vendor guidance and practical best practice, not a universal standard or certification model.
+- Treat as: current vendor guidance and practical best practice, not a general standard or certification model.
 
 ### Robots Exclusion Protocol
 
@@ -40,7 +40,7 @@ Use this file as Beacon's starting source map. Refresh sources during each audit
 
 - Source: https://llmstxt.org/
 - Use for: emerging LLM-friendly Markdown site orientation and curated links.
-- Treat as: proposal/convention, not a universal standard and not a guaranteed signal for major AI systems.
+- Treat as: proposal/convention, not a general standard and not a guaranteed signal for major AI systems.
 - Audit note: missing `llms.txt` is not automatically a failure. It can be a readiness gap when the target needs LLM-friendly orientation and no equivalent exists.
 
 ### AGENTS.md
@@ -67,6 +67,12 @@ Use this file as Beacon's starting source map. Refresh sources during each audit
 - Use for: structured data vocabulary, entity description, JSON-LD, microdata, and RDFa.
 - Treat as: widely used structured data vocabulary, not proof that a search or AI system will use every field.
 
+### Assess SEO Skill
+
+- Source: `assess-seo/SKILL.md` from the repository root
+- Use for: classic SEO readiness, human organic-search visibility, search intent, keyword coverage, snippets, local/entity SEO, performance/page experience, measurement, competitive visibility, rankings, and traffic opportunity.
+- Treat as: adjacent local workflow, not a replacement for Assess Agent Readiness's agent-readiness audit categories.
+
 ## Useful Secondary Checks
 
 - Search documentation for JavaScript SEO, structured data, canonical URLs, pagination, and internationalization when auditing websites.
@@ -81,3 +87,4 @@ Use this file as Beacon's starting source map. Refresh sources during each audit
 - Which standards are actually applicable, and which are only speculative conventions?
 - Are there public and authorized/private surfaces that need separate scoring?
 - What evidence is unavailable, and does that limit the grade or only lower confidence?
+- Is classic SEO readiness also in scope, requiring an Assess SEO adjunct pass or a clear skip reason?

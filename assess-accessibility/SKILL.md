@@ -1,9 +1,9 @@
 ---
-name: universal
+name: assess-accessibility
 description: Accessibility audit of a codebase, interface, app, document workflow, or UI surface. Use when the caller wants project-specific accessibility research, standards baseline, color/contrast, typography, scaling, mobile/responsive behavior, keyboard/focus access, semantics, forms, motion, dynamic content, user-impact priorities, per-category scores, and a practical final grade with next steps.
 ---
 
-# Universal
+# Assess Accessibility
 
 Audit accessibility as a first-class product quality concern. Stay focused on whether real users with different vision, motor, cognitive, language, device, and assistive-technology needs can perceive, understand, navigate, and operate the system.
 
@@ -11,7 +11,7 @@ This is not a roast. Use direct, evidence-backed language without jokes, contemp
 
 ## Quick Start
 
-When asked to use Universal:
+When asked to use Assess Accessibility:
 
 1. Identify the target folder, URL, app, surface, or artifact from the caller's request.
 2. Read local instructions and product context first, such as `AGENTS.md`, `README.md`, design-system docs, platform docs, contribution docs, and obvious config files.
@@ -19,7 +19,7 @@ When asked to use Universal:
 4. Research the applicable accessibility standards and platform guidance before judging. Prefer current primary sources.
 5. Inspect the actual implementation or running surface: components, styles, design tokens, routes/screens, rendered markup where code is available, forms, state changes, content, and responsive behavior.
 6. Capture findings by accessibility category, score each applicable category out of 10, then prioritize by user impact.
-7. Use `templates/UNIVERSAL.md` as the report skeleton.
+7. Use `templates/ASSESS-ACCESSIBILITY.md` as the report skeleton.
 
 Do not include test coverage or accessibility tooling gaps as standing categories unless the caller explicitly asks for them. Mention verification limits only where they affect confidence in the audit.
 
@@ -46,7 +46,7 @@ In the final report, list the sources actually used. If live research was unavai
 
 ## Standards Baseline
 
-Report standards alignment separately from Universal's practical score. Universal scores are not WCAG conformance claims, certifications, VPATs, or legal compliance findings.
+Report standards alignment separately from Assess Accessibility's practical score. Assess Accessibility scores are not WCAG conformance claims, certifications, VPATs, or legal compliance findings.
 
 Before grading, define:
 - target standard or platform guidance
@@ -184,9 +184,9 @@ Grade accessibility readiness, not general code quality or standards conformance
 
 Score only applicable categories. Mark categories that genuinely do not apply as `N/A` and exclude them from the average. Mark categories that apply but were not evaluated as `Not assessed`, exclude them from the average, and explain the evidence limit. Every non-`N/A` and non-`Not assessed` score must cite the strongest evidence and the main reason the score is not higher.
 
-Calculate the final Universal score as the average of applicable assessed category scores, rounded to one decimal.
+Calculate the final Assess Accessibility score as the average of applicable assessed category scores, rounded to one decimal.
 
-Map the final Universal score to a letter grade:
+Map the final Assess Accessibility score to a letter grade:
 - `A`: 9.0-10
 - `B`: 8.0-8.9
 - `C`: 7.0-7.9
@@ -206,7 +206,7 @@ Do not apply a grade cap merely because source code is unavailable. A rendered-o
 
 ## App Or Website Without Source Code
 
-Universal can audit a live app, website, prototype, or document workflow without source code, but the evidence changes. Use browser, device, screenshot, system accessibility, and interaction tools available in the session. If a needed tool is unavailable, say so and mark affected categories as `Not assessed` or lower confidence.
+Assess Accessibility can audit a live app, website, prototype, or document workflow without source code, but the evidence changes. Use browser, device, screenshot, system accessibility, and interaction tools available in the session. If a needed tool is unavailable, say so and mark affected categories as `Not assessed` or lower confidence.
 
 For source-unavailable targets:
 - research the product context, platform, expected users, and applicable standard before interacting with it
@@ -243,4 +243,4 @@ Do:
 
 ## Orchestrator Use
 
-Other workflow skills may use Universal as an optional adjunct gate when a target has an accessibility-relevant surface. Report evidence mode, score, grade cap, blockers, and skipped or not-assessed categories clearly enough for the parent workflow to decide whether accessibility issues block release readiness. Universal does not depend on those orchestrator skills; it remains a standalone accessibility audit skill.
+Other workflow skills may use Assess Accessibility as an optional adjunct gate when a target has an accessibility-relevant surface. Report evidence mode, score, grade cap, blockers, and skipped or not-assessed categories clearly enough for the parent workflow to decide whether accessibility issues block release readiness. Assess Accessibility does not depend on those orchestrator skills; it remains a standalone accessibility audit skill.

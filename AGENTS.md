@@ -39,6 +39,7 @@ Optional examples may live in `examples/` when they support trigger behavior, ou
 - `SKILL.md` is required and is the entry point for the skill.
 - `SKILL.md` frontmatter must include `name` and `description`; treat those fields as the portable skill-selection contract.
 - Do not create visible root-level non-skill folders. Use `.assets/` for repo presentation assets.
+- Keep skill categories as README/catalog organization only. Do not create visible grouping folders such as `development/`, `assessment/`, or `workflow/`; nested skill folders make discovery and install paths less predictable.
 - `references/` is for longer factual or background material the skill may lean on.
 - `assets/` is for static resources consumed by the skill's output, such as document templates, images, fonts, fixtures, or boilerplate.
 - `helpers/` is for smaller supporting Markdown files that belong to the parent skill.
@@ -46,7 +47,7 @@ Optional examples may live in `examples/` when they support trigger behavior, ou
 - `examples/` is optional and only for concrete sample inputs or outputs that improve trigger behavior, output expectations, or forward-testing.
 - Existing `context/` folders may remain, but prefer `references/` for new reference material.
 - `agents/openai.yaml` and similar client-specific metadata files are optional and should be omitted unless this repository adopts them consistently.
-- Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `feedback/templates/FEEDBACK.md`, `handoff/templates/HANDOFF.md`.
+- Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `agent-feedback/templates/AGENT-FEEDBACK.md`, `handoff/templates/HANDOFF.md`.
 - Only create directories that the skill actually uses. Avoid empty scaffolding.
 
 ## Skill Relationships
@@ -85,7 +86,7 @@ Use `templates/` only for reusable output skeletons that the skill asks the codi
 
 Examples:
 
-- `feedback/templates/FEEDBACK.md`
+- `agent-feedback/templates/AGENT-FEEDBACK.md`
 - `handoff/templates/HANDOFF.md`
 
 Do not create empty `templates/` folders. Keep workflow notes, tone files, and checklists in `helpers/`, not `templates/`.

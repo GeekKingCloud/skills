@@ -79,37 +79,54 @@ If roast is skipped or unavailable, report the role as `skipped` or `fallback` i
 
 Use optional adjunct gates when the implemented plan has a relevant surface. Optional gates are not hard dependencies for every Crucible run, and they must be skipped with a short reason when irrelevant.
 
-### Universal Accessibility Gate
+### Assess Accessibility Gate
 
-Run the sibling `universal` skill when the plan or changed surface touches UI, frontend components, forms, public websites, generated documents, PDFs, emails, design systems, human-facing output, or user-facing workflows. Also run it when the caller explicitly asks for accessibility hardening.
+Run the sibling `assess-accessibility` skill when the plan or changed surface touches UI, frontend components, forms, public websites, generated documents, PDFs, emails, design systems, human-facing output, or user-facing workflows. Also run it when the caller explicitly asks for accessibility hardening.
 
-Skip Universal for backend-only, infrastructure-only, internal refactor-only, test-only, or non-user-facing work unless the caller explicitly asks for it.
+Skip Assess Accessibility for backend-only, infrastructure-only, internal refactor-only, test-only, or non-user-facing work unless the caller explicitly asks for it.
 
-If the `universal` skill is unavailable but the target has an accessibility surface, perform a smaller evidence-backed accessibility pass and disclose that the actual skill was unavailable.
+If the `assess-accessibility` skill is unavailable but the target has an accessibility surface, perform a smaller evidence-backed accessibility pass and disclose that the actual skill was unavailable.
 
-Treat Universal output as an accessibility release gate when it runs:
-- Fix unresolved `Critical` and `High` Universal findings before release readiness, unless the caller explicitly accepts them.
+Treat Assess Accessibility output as an accessibility release gate when it runs:
+- Fix unresolved `Critical` and `High` Assess Accessibility findings before release readiness, unless the caller explicitly accepts them.
 - Fix `Medium` findings when practical inside scope; otherwise document them as follow-up.
 - Fix `Low` findings when cheap, clarifying, or confidence-building.
-- Do not require a Universal Grade A unless the caller explicitly asks for accessibility hardening to that level.
+- Do not require an Assess Accessibility Grade A unless the caller explicitly asks for accessibility hardening to that level.
 
-Report the Universal gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Universal grade when produced, and any unresolved `Critical` or `High` accessibility blockers.
+Report the Assess Accessibility gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Assess Accessibility grade when produced, and any unresolved `Critical` or `High` accessibility blockers.
 
-### Beacon Agent-Readiness Gate
+### Assess Agent Readiness Gate
 
-Run the sibling `beacon` skill when the plan or changed surface touches public websites, documentation, APIs, SDKs, CLIs, MCP or tool surfaces, agent-facing instructions, automation workflows, structured content, crawl policy, or agent-readable content. Also run it when the caller explicitly asks for agent-readiness hardening.
+Run the sibling `assess-agent-readiness` skill when the plan or changed surface touches public websites, documentation, APIs, SDKs, CLIs, MCP or tool surfaces, agent-facing instructions, automation workflows, structured content, crawl policy, or agent-readable content. Also run it when the caller explicitly asks for agent-readiness hardening.
 
-Skip Beacon for backend-only, infrastructure-only, internal refactor-only, test-only, or non-agent-facing work unless the caller explicitly asks for it.
+Skip Assess Agent Readiness for backend-only, infrastructure-only, internal refactor-only, test-only, or non-agent-facing work unless the caller explicitly asks for it.
 
-If the `beacon` skill is unavailable but the target has an agent-facing surface, perform a smaller evidence-backed agent-readiness pass and disclose that the actual skill was unavailable.
+If the `assess-agent-readiness` skill is unavailable but the target has an agent-facing surface, perform a smaller evidence-backed agent-readiness pass and disclose that the actual skill was unavailable.
 
-Treat Beacon output as an agent-readiness release gate when it runs:
-- Fix unresolved `Critical` and `High` Beacon findings before release readiness, unless the caller explicitly accepts them.
+Treat Assess Agent Readiness output as an agent-readiness release gate when it runs:
+- Fix unresolved `Critical` and `High` Assess Agent Readiness findings before release readiness, unless the caller explicitly accepts them.
 - Fix `Medium` findings when practical inside scope; otherwise document them as follow-up.
 - Fix `Low` findings when cheap, clarifying, or confidence-building.
-- Do not require a Beacon Grade A unless the caller explicitly asks for agent-readiness hardening to that level.
+- Do not require an Assess Agent Readiness Grade A unless the caller explicitly asks for agent-readiness hardening to that level.
 
-Report the Beacon gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Beacon grade when produced, and any unresolved `Critical` or `High` agent-readiness blockers.
+Report the Assess Agent Readiness gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Assess Agent Readiness grade when produced, and any unresolved `Critical` or `High` agent-readiness blockers.
+
+### Assess SEO Readiness Gate
+
+Run the sibling `assess-seo` skill when the plan or changed surface touches public websites, landing pages, marketing pages, documentation pages, ecommerce pages, local-business pages, crawl/index configuration, structured data, metadata, internal linking, content templates, sitemap generation, redirects, or other organic-search surfaces. Also run it when the caller explicitly asks for SEO hardening.
+
+Skip Assess SEO for backend-only, infrastructure-only, internal refactor-only, test-only, authenticated-only, non-public, or non-search-facing work unless the caller explicitly asks for it.
+
+If the `assess-seo` skill is unavailable but the target has an organic-search surface, perform a smaller evidence-backed SEO-readiness pass and disclose that the actual skill was unavailable.
+
+Treat Assess SEO output as an SEO-readiness release gate when it runs:
+- Fix unresolved `Critical` and `High` Assess SEO findings before release readiness, unless the caller explicitly accepts them.
+- Fix `Medium` findings when practical inside scope; otherwise document them as follow-up.
+- Fix `Low` findings when cheap, clarifying, or confidence-building.
+- Do not require an Assess SEO Grade A unless the caller explicitly asks for SEO hardening to that level.
+- Do not let AI-oriented files such as `llms.txt` compensate for broken classic crawl/index foundations such as `robots.txt`, sitemap discovery, indexability, canonicalization, or crawlable content.
+
+Report the Assess SEO gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Assess SEO grade when produced, and any unresolved `Critical` or `High` SEO-readiness blockers.
 
 ## Security Pass
 
@@ -163,7 +180,7 @@ Keep the final report concise and evidence-based:
 - how sub-agents were used, or why they were unavailable or disallowed
 - tests and verification run
 - slice-level peer review, security pass, docs/comment sweep, cleanup, and roast role/status
-- optional gate status, including Universal and Beacon run/skipped/unavailable when relevant
+- optional gate status, including Assess Accessibility, Assess Agent Readiness, and Assess SEO run/skipped/unavailable when relevant
 - unresolved findings or release blockers
 - whether the final state is releasable
 

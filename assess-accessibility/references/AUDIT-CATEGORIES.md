@@ -1,6 +1,6 @@
 # Audit Categories
 
-Use this file as the default category map for Universal audits. Omit categories that do not apply to the target, and add platform-specific categories when the research baseline requires them.
+Use this file as the default category map for Assess Accessibility audits. Omit categories that do not apply to the target, and add platform-specific categories when the research baseline requires them.
 
 ## Contents
 
@@ -160,7 +160,7 @@ For websites without source code, missing XML sitemaps, blocked route discovery,
 
 ## Final Score Rules
 
-Calculate the final Universal score as the average of applicable assessed category scores, rounded to one decimal.
+Calculate the final Assess Accessibility score as the average of applicable assessed category scores, rounded to one decimal.
 
 Map the final score to a letter grade:
 

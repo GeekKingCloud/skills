@@ -1,4 +1,4 @@
-# Universal Accessibility Audit
+# Assess Accessibility Audit
 
 ## Scope
 
@@ -44,9 +44,9 @@ Delete this section unless compliance or procurement scope applies.
 - Does not support:
 - Not applicable:
 
-## Universal Score
+## Assess Accessibility Score
 
-Universal accessibility readiness score: `/10`
+Assess Accessibility readiness score: `/10`
 
 Letter grade: `A/B/C/D/F`
 
