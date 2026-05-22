@@ -7,6 +7,8 @@
 - Tech stack:
 - Reviewed surfaces:
 - Not reviewed:
+- Route discovery method:
+- Evidence mode: `Source + rendered/Source only/Rendered only/Artifact only`
 - Evidence limits:
 
 ## Research Baseline
@@ -48,9 +50,9 @@ Universal accessibility readiness score: `/10`
 
 Letter grade: `A/B/C/D/F`
 
-Cap applied: `None/Critical finding/Low category score/Missing rendered evidence/Missing assistive-technology evidence`
+Grade cap: `None` or `<cap>, <reason>`
 
-Reason:
+Source availability impact: `None/Lower confidence only/Behavior-level fixes only/Blocked categories: ...`
 
 Grade mapping:
 
@@ -86,54 +88,22 @@ Grade mapping:
 
 ## Findings By Category
 
-| Category | Score /10 | Priority Ceiling | Conformance Notes | Confidence | Top Fix |
+| Category | Score /10 | Priority | Conformance Notes | Confidence | Top Fix |
 | --- | ---: | --- | --- | --- | --- |
-| Visual Perception |  |  |  |  |  |
-| Typography And Scaling |  |  |  |  |  |
-| Responsive And Mobile Use |  |  |  |  |  |
 | Keyboard And Focus |  |  |  |  |  |
 | Semantics And Assistive Technology |  |  |  |  |  |
 | Forms And Error Recovery |  |  |  |  |  |
+| Visual Perception |  |  |  |  |  |
+| Responsive And Mobile Use |  |  |  |  |  |
+| Typography And Scaling |  |  |  |  |  |
 | Motion, Timing, And Change |  |  |  |  |  |
 | Content And Comprehension |  |  |  |  |  |
 
-Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit. Repeat the finding block under each category as needed; write `No scoped findings` only after that category was actually reviewed.
+Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit. Do not include `Not assessed` categories in the score table; list them immediately underneath as `Not assessed: ...` followed by the reason. Repeat the finding block under each assessed category as needed; write `No scoped findings` only after that category was actually reviewed.
 
-### Visual Perception
+Not assessed:
 
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Typography And Scaling
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Responsive And Mobile Use
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
+Reason:
 
 ### Keyboard And Focus
 
@@ -160,6 +130,42 @@ Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when
 - Confidence:
 
 ### Forms And Error Recovery
+
+- Finding:
+- Score /10:
+- Score rationale:
+- Priority:
+- Evidence:
+- Who is affected:
+- Why it matters:
+- Fix direction:
+- Confidence:
+
+### Visual Perception
+
+- Finding:
+- Score /10:
+- Score rationale:
+- Priority:
+- Evidence:
+- Who is affected:
+- Why it matters:
+- Fix direction:
+- Confidence:
+
+### Responsive And Mobile Use
+
+- Finding:
+- Score /10:
+- Score rationale:
+- Priority:
+- Evidence:
+- Who is affected:
+- Why it matters:
+- Fix direction:
+- Confidence:
+
+### Typography And Scaling
 
 - Finding:
 - Score /10:

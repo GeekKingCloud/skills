@@ -49,6 +49,27 @@ Optional examples may live in `examples/` when they support trigger behavior, ou
 - Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `feedback/templates/FEEDBACK.md`, `handoff/templates/HANDOFF.md`.
 - Only create directories that the skill actually uses. Avoid empty scaffolding.
 
+## Skill Relationships
+
+Some skills intentionally reference other skills. Keep those relationships explicit in plain skill instructions and templates; do not add machine-readable dependency metadata unless the repository adopts a formal schema later.
+
+Use these relationship types:
+
+- `Work source`: the input that defines the parent skill's work queue, such as a plan, existing review, current-state inspection, or another skill's findings.
+- `Default core gate`: a referenced skill or equivalent pass expected in the parent skill's normal success path, but skippable with evidence and final-report disclosure.
+- `Optional adjunct gate`: a referenced skill or equivalent pass used only when the target surface makes it relevant.
+- `Fallback pass`: the local review or workflow to perform when a referenced skill is unavailable.
+
+When adding or updating a relationship, state:
+
+- whether the relationship is a work source, default core gate, optional adjunct gate, or fallback pass
+- trigger conditions that make the relationship apply
+- skip conditions that make the relationship irrelevant
+- blocking behavior for unresolved findings
+- final-report evidence required when the relationship runs, is skipped, or is unavailable
+
+Optional adjunct gates must not read as mandatory in frontmatter descriptions. Describe them in the body where their relevance rules, skip rules, and reporting requirements can be clear.
+
 ## Helpers
 
 Some skills may need smaller helper files for specialized subtasks. When that happens:

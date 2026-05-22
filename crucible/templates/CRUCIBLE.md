@@ -2,7 +2,9 @@
 
 ## Plan Implemented
 
-- State the plan or release-hardening target completed.
+- Work route: `plan-led/review-led/current-state/combined`.
+- Work source: `plan/review/current-state inspection/other`.
+- State the plan, review, or release-hardening target completed.
 - Mention any intentional scope limits.
 
 ## Completed Slices
@@ -19,7 +21,9 @@
 ## Review And Cleanup
 
 - Summarize slice-level peer review, roast loops and issue remediation, final security pass, docs/comment sweep, and orphan cleanup results.
-- Note whether the actual `roast` skill was used or an equivalent fallback review was performed.
+- Roast role: `input/post-change gate/current-state gate/skipped/fallback`.
+- Note whether the actual `roast` skill was used, skipped with a reason, or replaced by an equivalent fallback review.
+- Optional gates: state `Universal gate: run/skipped/unavailable`, with skip reason or fallback note, Universal grade when produced, and any unresolved Critical/High accessibility blockers.
 
 ## Remaining Risk
 

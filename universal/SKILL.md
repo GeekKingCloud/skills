@@ -13,11 +13,11 @@ This is not a roast. Use direct, evidence-backed language without jokes, contemp
 
 When asked to use Universal:
 
-1. Identify the target folder, surface, or artifact from the caller's request.
+1. Identify the target folder, URL, app, surface, or artifact from the caller's request.
 2. Read local instructions and product context first, such as `AGENTS.md`, `README.md`, design-system docs, platform docs, contribution docs, and obvious config files.
 3. Determine the project type, tech stack, target platforms, likely users, input methods, rendering formats, and assistive-technology surface.
 4. Research the applicable accessibility standards and platform guidance before judging. Prefer current primary sources.
-5. Inspect the actual implementation: components, styles, design tokens, routes/screens, rendered markup where available, forms, state changes, content, and responsive behavior.
+5. Inspect the actual implementation or running surface: components, styles, design tokens, routes/screens, rendered markup where code is available, forms, state changes, content, and responsive behavior.
 6. Capture findings by accessibility category, score each applicable category out of 10, then prioritize by user impact.
 7. Use `templates/UNIVERSAL.md` as the report skeleton.
 
@@ -52,48 +52,20 @@ Before grading, define:
 - target standard or platform guidance
 - target level or status model
 - evaluated scope
+- evidence mode
 - evidence limits
 
 Default web and web-like targets to WCAG 2.2 AA unless project docs, legal scope, procurement context, or the caller specifies another target. For non-web products, use the relevant platform guidance. Use ACR/VPAT-style support statuses only when compliance or procurement context applies.
 
+Use one of these evidence modes:
+- `Source + rendered`: code and running UI were both inspected.
+- `Source only`: code was inspected, but the UI could not be rendered or interacted with.
+- `Rendered only`: a live app, website, prototype, screenshot set, or document output was inspected without source code.
+- `Artifact only`: a static file, image, PDF, email, export, or recording was inspected without interactive access.
+
 ## Audit Categories
 
-Use these categories as the default pass list. Omit categories that clearly do not apply, and add project-specific categories when the researched platform requires them.
-
-### Visual Perception
-
-Inspect:
-- text and non-text color contrast
-- foreground/background combinations across states
-- hover, focus, active, selected, disabled, error, and success states
-- color-only meaning
-- charts, maps, heatmaps, badges, labels, and status indicators
-- dark mode, high-contrast mode, forced-colors mode, and transparency effects when relevant
-
-Look for places where color, contrast, opacity, background imagery, or state styling makes information hard to perceive.
-
-### Typography And Scaling
-
-Inspect:
-- font sizes, line height, letter spacing, and text density
-- user font scaling, browser zoom, OS text settings, and dynamic type behavior
-- truncation, clipping, fixed-height containers, and overflow
-- long words, localization expansion, mixed scripts, and narrow viewports
-- readable hierarchy without using headings only as visual decoration
-
-Flag text that only works at the designer's preferred viewport, font, language, or zoom level.
-
-### Responsive And Mobile Use
-
-Inspect:
-- small-screen layout, portrait and landscape behavior, and reflow
-- touch target size and spacing
-- gestures without alternatives
-- fixed viewport assumptions
-- sticky headers, modals, drawers, bottom sheets, and overlays
-- virtual keyboard interactions and safe-area insets when relevant
-
-Focus on whether core workflows remain operable on constrained screens and non-mouse input.
+Use these categories as the default pass list, in this order. The order starts with barriers most likely to block operation, then moves into perception, layout, comfort, and comprehension. Omit categories that clearly do not apply, and add project-specific categories when the researched platform requires them.
 
 ### Keyboard And Focus
 
@@ -129,6 +101,41 @@ Inspect:
 - disabled states, loading states, and destructive confirmations
 
 Judge whether users can complete forms without relying on color, memory, pointer precision, or hidden context.
+
+### Visual Perception
+
+Inspect:
+- text and non-text color contrast
+- foreground/background combinations across states
+- hover, focus, active, selected, disabled, error, and success states
+- color-only meaning
+- charts, maps, heatmaps, badges, labels, and status indicators
+- dark mode, high-contrast mode, forced-colors mode, and transparency effects when relevant
+
+Look for places where color, contrast, opacity, background imagery, or state styling makes information hard to perceive.
+
+### Responsive And Mobile Use
+
+Inspect:
+- small-screen layout, portrait and landscape behavior, and reflow
+- touch target size and spacing
+- gestures without alternatives
+- fixed viewport assumptions
+- sticky headers, modals, drawers, bottom sheets, and overlays
+- virtual keyboard interactions and safe-area insets when relevant
+
+Focus on whether core workflows remain operable on constrained screens and non-mouse input.
+
+### Typography And Scaling
+
+Inspect:
+- font sizes, line height, letter spacing, and text density
+- user font scaling, browser zoom, OS text settings, and dynamic type behavior
+- truncation, clipping, fixed-height containers, and overflow
+- long words, localization expansion, mixed scripts, and narrow viewports
+- readable hierarchy without using headings only as visual decoration
+
+Flag text that only works at the designer's preferred viewport, font, language, or zoom level.
 
 ### Motion, Timing, And Change
 
@@ -186,13 +193,36 @@ Map the final Universal score to a letter grade:
 - `D`: 6.0-6.9
 - `F`: 0-5.9
 
-Apply caps after averaging:
-- any unresolved `Critical` finding caps the final grade at `F`
-- any applicable category scored `0-3` caps the final grade at `D`
-- missing rendered or platform evidence caps the final grade at `B`
-- missing assistive-technology evidence for a UI-heavy product caps the final grade at `C`
+Apply grade caps after averaging:
+- any unresolved `Critical` finding applies a grade cap of `F`
+- any applicable category scored `0-3` applies a grade cap of `D`
+- missing rendered or platform evidence for an interactive product applies a grade cap of `B`
+- missing assistive-technology evidence for a UI-heavy product applies a grade cap of `C`
+- incomplete crawl, blocked routes, missing credentials, or inaccessible discovery paths can apply a grade cap of `B` or lower when they prevent judging important public or user-facing workflows
 
-Apply the most restrictive cap when multiple caps apply: `F` beats `D`, `D` beats `C`, and `C` beats `B`. Always report the cap reason when a cap changes the final grade. Do not award an `A` if the audit lacked enough rendered or platform-specific evidence to judge core workflows.
+Apply the most restrictive grade cap when multiple caps apply: `F` beats `D`, `D` beats `C`, and `C` beats `B`. Report the cap as one field: `Grade cap: None` when no cap applies, or `Grade cap: <cap>, <reason>` when a cap applies. Do not award an `A` if the audit lacked enough rendered or platform-specific evidence to judge core workflows.
+
+Do not apply a grade cap merely because source code is unavailable. A rendered-only audit can still receive a high score when the running surface, responsive states, keyboard paths, accessibility tree, and assistive-technology behavior are sufficiently inspected. Missing source should affect confidence, evidence limits, and fix specificity, not the score by itself.
+
+## App Or Website Without Source Code
+
+Universal can audit a live app, website, prototype, or document workflow without source code, but the evidence changes. Use browser, device, screenshot, system accessibility, and interaction tools available in the session. If a needed tool is unavailable, say so and mark affected categories as `Not assessed` or lower confidence.
+
+For source-unavailable targets:
+- research the product context, platform, expected users, and applicable standard before interacting with it
+- discover public routes through visible navigation, footer links, site search, `sitemap.xml`, robots hints, indexed search results, and in-page links when available
+- inspect rendered DOM, computed styles, accessibility tree, keyboard behavior, responsive breakpoints, and browser console output when browser tools are available
+- use screenshots or visual inspection for contrast, layout, truncation, zoom, reflow, focus visibility, and motion
+- use keyboard-only walkthroughs for every core workflow that can be reached
+- use screen reader, platform accessibility inspector, or browser accessibility-tree tools when available
+- avoid claiming implementation causes when only rendered behavior is visible
+- record credentials, permissions, geography, feature flags, blocked routes, and authentication limits as evidence limits
+- score only observed behavior and reachable states; do not infer hidden screens, account types, or implementation quality
+- make fix directions behavior-level when source is unavailable, such as "expose this control as a button with a programmatic name" rather than naming a component or file
+- cap only for evidence that is actually missing, such as no keyboard walkthrough, no responsive/device pass, no accessibility-tree or assistive-technology pass, or blocked core flows
+- keep `Not assessed` categories out of the score table and list them underneath with a shared reason when the same evidence limit applies
+
+Do not treat a missing XML sitemap as an accessibility failure by itself; XML sitemaps primarily support crawlers, not end users. Treat it as an audit evidence limit when it prevents a complete route inventory. Treat missing or weak user-facing discovery as an accessibility issue when users cannot reasonably find important pages, workflows, support paths, policies, or content through navigation, search, breadcrumbs, footer links, an HTML sitemap, or equivalent information architecture.
 
 ## Boundaries
 
@@ -210,3 +240,7 @@ Do:
 - name the standard or platform expectation when it materially supports the finding
 - give a practical first-fix sequence
 - recommend manual assistive-technology or device checks when code evidence is insufficient
+
+## Orchestrator Use
+
+Other workflow skills may use Universal as an optional adjunct gate when a target has an accessibility-relevant surface. Report evidence mode, score, grade cap, blockers, and skipped or not-assessed categories clearly enough for the parent workflow to decide whether accessibility issues block release readiness. Universal does not depend on those orchestrator skills; it remains a standalone accessibility audit skill.

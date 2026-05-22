@@ -137,6 +137,10 @@ Use `templates/ROAST.md` as the report skeleton.
 
 If no issues are found in a category, say so briefly and mention any limits of the review. Do not fake a problem to make the roast spicier.
 
+## Orchestrator Use
+
+Other workflow skills may use Roast output as a remediation work source or as a post-change review gate. Keep findings concrete enough to be acted on one at a time: severity, evidence, impact, and fix direction. Roast does not depend on those orchestrator skills; it remains a standalone review skill.
+
 ## Grading
 
 Use the whole codebase, not just the count of findings:
