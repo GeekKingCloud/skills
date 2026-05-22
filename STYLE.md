@@ -159,6 +159,13 @@ Reference files should:
 - stay focused on one topic each
 - avoid repeating the full skill instructions
 
+For fast-moving, research-first skills:
+
+- cite current primary sources where practical
+- distinguish accepted standards from proposals, conventions, vendor guidance, and commentary
+- avoid score or grade wording that implies official certification, guaranteed ranking, guaranteed retrieval, or compliance unless the skill actually performs that formal evaluation
+- state source access dates and evidence limits in the final output
+
 ## Assets
 
 Use `assets/` for static files the skill consumes or adapts as output resources.

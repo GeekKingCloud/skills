@@ -18,10 +18,16 @@ See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
   npx skills@latest add GeekKingCloud/skills/handoff
   ```
 
-- **crucible** — Implement plans to release-ready state through a sub-agent-heavy loop with tests, peer review, cleanup, security and docs/comment sweeps, and roast-gated remediation.
+- **crucible** — Orchestrate release-hardening work from plans, review findings, or current codebase state through sub-agent-heavy implementation, review gates, security pass, docs/comment sweep, cleanup, and release-readiness reporting.
 
   ```
   npx skills@latest add GeekKingCloud/skills/crucible
+  ```
+
+- **beacon** — Audit agent-readiness for websites, apps, APIs, tools, documentation, and codebases across crawl policy, agent instructions, structured content, action surfaces, safety, recovery, docs freshness, and handoff evidence.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/beacon
   ```
 
 - **feedback** — Review collaboration history deeply, then produce evidence-bound feedback on prompting, handoffs, corrections, failures, and agent-side rules.

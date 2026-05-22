@@ -95,6 +95,22 @@ Treat Universal output as an accessibility release gate when it runs:
 
 Report the Universal gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Universal grade when produced, and any unresolved `Critical` or `High` accessibility blockers.
 
+### Beacon Agent-Readiness Gate
+
+Run the sibling `beacon` skill when the plan or changed surface touches public websites, documentation, APIs, SDKs, CLIs, MCP or tool surfaces, agent-facing instructions, automation workflows, structured content, crawl policy, or agent-readable content. Also run it when the caller explicitly asks for agent-readiness hardening.
+
+Skip Beacon for backend-only, infrastructure-only, internal refactor-only, test-only, or non-agent-facing work unless the caller explicitly asks for it.
+
+If the `beacon` skill is unavailable but the target has an agent-facing surface, perform a smaller evidence-backed agent-readiness pass and disclose that the actual skill was unavailable.
+
+Treat Beacon output as an agent-readiness release gate when it runs:
+- Fix unresolved `Critical` and `High` Beacon findings before release readiness, unless the caller explicitly accepts them.
+- Fix `Medium` findings when practical inside scope; otherwise document them as follow-up.
+- Fix `Low` findings when cheap, clarifying, or confidence-building.
+- Do not require a Beacon Grade A unless the caller explicitly asks for agent-readiness hardening to that level.
+
+Report the Beacon gate status in the final output as `run`, `skipped`, or `unavailable`. Include the skip reason, fallback note, Beacon grade when produced, and any unresolved `Critical` or `High` agent-readiness blockers.
+
 ## Security Pass
 
 Run a dedicated security pass after review-gate remediation is complete and before final cleanup.
@@ -147,7 +163,7 @@ Keep the final report concise and evidence-based:
 - how sub-agents were used, or why they were unavailable or disallowed
 - tests and verification run
 - slice-level peer review, security pass, docs/comment sweep, cleanup, and roast role/status
-- optional gate status, including Universal run/skipped/unavailable when relevant
+- optional gate status, including Universal and Beacon run/skipped/unavailable when relevant
 - unresolved findings or release blockers
 - whether the final state is releasable
 
