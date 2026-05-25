@@ -40,6 +40,7 @@ Optional examples may live in `examples/` when they support trigger behavior, ou
 - `SKILL.md` frontmatter must include `name` and `description`; treat those fields as the portable skill-selection contract.
 - Do not create visible root-level non-skill folders. Use `.assets/` for repo presentation assets.
 - Keep skill categories as README/catalog organization only. Do not create visible grouping folders such as `development/`, `assessment/`, or `workflow/`; nested skill folders make discovery and install paths less predictable.
+- Put novelty or tone-only skills under a README/catalog category such as `Just For Fun`; keep them as normal top-level skill folders, not nested category folders.
 - `references/` is for longer factual or background material the skill may lean on.
 - `assets/` is for static resources consumed by the skill's output, such as document templates, images, fonts, fixtures, or boilerplate.
 - `helpers/` is for smaller supporting Markdown files that belong to the parent skill.

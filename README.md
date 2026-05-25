@@ -65,3 +65,11 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
   ```
   npx skills@latest add GeekKingCloud/skills/feedback
   ```
+
+## Just For Fun
+
+- **eldritch** — Toggleable haunted narration mode for normal coding-agent work, with escalating cosmic-horror style, sparse glyph corruption, and strict protection for code, commands, paths, configs, logs, PR text, and other copy-pasteable artifacts.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/eldritch
+  ```
