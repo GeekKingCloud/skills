@@ -47,6 +47,17 @@ Mention verification limits only where they affect confidence, scoring, or grade
 
 Use `Assessment Coverage` as the first report section after the title, not a terse caveat list: state what was assessed, what was not assessed, what the caller can provide or permit for a deeper/fairer/more accurate assessment, and what that extra evidence would improve. Use `Start Here` as the report's single prioritized action plan. Do not add a second `Next Steps` section unless the caller explicitly wants a separate follow-up roadmap.
 
+## Report Assembly Rules
+
+Use the template as a skeleton, not as text to copy blindly. Fill every placeholder, delete empty optional sections, and do not leave template instructions or rationale about why a section exists in the final report.
+
+- `Assessment Coverage`: write only report-facing bullets for `Assessed`, `Not assessed`, what the caller can provide or permit to improve confidence, and the expected impact of that evidence. Do not add a sentence explaining why the section appears first.
+- `Start Here`: keep this as the single prioritized action plan. Do not duplicate it later as `Next Steps` unless the caller requested a separate roadmap.
+- `Findings By Priority`: for each priority level, either list scoped findings or write one clear state such as `No scoped findings after review.` or `Not assessed; evidence limit: ...`.
+- `Findings By Category`: populate the score table from the applicable assessed categories in `references/AUDIT-CATEGORIES.md`. Keep that reference file as the source of truth for category names, order, scoring rules, and grade caps.
+- Category scoring: use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, explain the evidence limit in `Assessment Coverage`, and do not include `Not assessed` categories in the score table.
+- Category detail blocks: repeat the generic category block once for each assessed category from `references/AUDIT-CATEGORIES.md`.
+
 ## References
 
 - Read `references/RESEARCH-SOURCES.md` before auditing when the target platform, standards, or source list is not already obvious from the request and local project docs.

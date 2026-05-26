@@ -2,15 +2,13 @@
 
 ## Assessment Coverage
 
-Use this section to tell the reader, in plain terms, what the assessment did cover and what would make a follow-up assessment deeper, fairer, or more accurate.
-
 - Assessed:
 - Not assessed:
-- To get a deeper, fairer, or more accurate assessment, provide or permit:
+- To improve assessment confidence, provide or permit:
   1.
   2.
   3.
-- Expected impact of that extra evidence:
+- Expected impact:
 
 ## Scope
 
@@ -72,29 +70,25 @@ Grade mapping:
 2.
 3.
 
-Use this as the single prioritized action plan. Do not duplicate it later as `Next Steps` unless the caller requested a separate roadmap.
-
 ## Findings By Priority
 
 ### Critical
 
-- Replace with exactly one state: `No scoped findings after review.` or `Not assessed; evidence limit: ...`
+-
 
 ### High
 
-- Replace with exactly one state: `No scoped findings after review.` or `Not assessed; evidence limit: ...`
+-
 
 ### Medium
 
-- Replace with exactly one state: `No scoped findings after review.` or `Not assessed; evidence limit: ...`
+-
 
 ### Low
 
-- Replace with exactly one state: `No scoped findings after review.` or `Not assessed; evidence limit: ...`
+-
 
 ## Findings By Category
-
-Populate this table from the applicable assessed categories in `references/AUDIT-CATEGORIES.md`. Keep the reference file as the source of truth for category names, order, scoring rules, and grade caps.
 
 | Category                                      | Score   | Priority   | Confidence   |
 | --------------------------------------------- | ------: | ---------- | ------------ |
@@ -103,10 +97,6 @@ Populate this table from the applicable assessed categories in `references/AUDIT
 Top fixes by category:
 
 -
-
-Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit in `Assessment Coverage`, not here. Do not include `Not assessed` categories in the score table.
-
-Repeat this block for each assessed category from `references/AUDIT-CATEGORIES.md`:
 
 ### <Category Name>
 
