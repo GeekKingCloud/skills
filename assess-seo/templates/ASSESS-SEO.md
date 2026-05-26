@@ -1,5 +1,17 @@
 # Assess SEO Readiness Audit
 
+## Assessment Coverage
+
+Use this section to tell the reader, in plain terms, what the assessment did cover and what would make a follow-up assessment deeper, fairer, or more accurate.
+
+- Assessed:
+- Not assessed:
+- To get a deeper, fairer, or more accurate assessment, provide or permit:
+  1.
+  2.
+  3.
+- Expected impact of that extra evidence:
+
 ## Scope
 
 - Target:
@@ -33,6 +45,13 @@
 - Reason:
 - Impact on Assess SEO score: `None/technical finding/grade cap/lower confidence`
 
+## Key Observations
+
+- Evidence strengths:
+- Highest-impact risks:
+- Important caveats:
+- Notable positives:
+
 ## Assess SEO Score
 
 Assess SEO readiness score: `/10`
@@ -57,6 +76,8 @@ Grade mapping:
 2.
 3.
 
+Use this as the single prioritized action plan. Do not duplicate it later as `Next Steps` unless the caller requested a separate roadmap.
+
 ## Findings By Priority
 
 ### Critical
@@ -77,26 +98,21 @@ Grade mapping:
 
 ## Findings By Category
 
-| Category | Score /10 | Priority | Standards Or Guidance Notes | Confidence | Top Fix |
-| --- | ---: | --- | --- | --- | --- |
-| Crawl, Indexing, And Technical Foundation |  |  |  |  |  |
-| Search Intent And Query Coverage |  |  |  |  |  |
-| On-Page Metadata And Snippet Readiness |  |  |  |  |  |
-| Content Quality, Usefulness, And Trust |  |  |  |  |  |
-| Information Architecture And Internal Linking |  |  |  |  |  |
-| Structured Data And Rich Result Eligibility |  |  |  |  |  |
-| Local, Entity, And Brand Signals |  |  |  |  |  |
-| Performance, Mobile, And Page Experience |  |  |  |  |  |
-| Measurement, Diagnostics, And Change Control |  |  |  |  |  |
-| Competitive Visibility And Off-Site Signals |  |  |  |  |  |
+Populate this table from the applicable assessed categories in `references/AUDIT-CATEGORIES.md`. Keep the reference file as the source of truth for category names, order, scoring rules, and grade caps.
 
-Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit. Do not include `Not assessed` categories in the score table; list them immediately underneath as `Not assessed: ...` followed by the reason.
+| Category                                      | Score   | Priority   | Confidence   |
+| --------------------------------------------- | ------: | ---------- | ------------ |
+| <Category from references/AUDIT-CATEGORIES.md> | <score> | <priority> | <confidence> |
 
-Not assessed:
+Top fixes by category:
 
-Reason:
+-
 
-### Crawl, Indexing, And Technical Foundation
+Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit in `Assessment Coverage`, not here. Do not include `Not assessed` categories in the score table.
+
+Repeat this block for each assessed category from `references/AUDIT-CATEGORIES.md`:
+
+### <Category Name>
 
 - Finding:
 - Score /10:
@@ -107,129 +123,3 @@ Reason:
 - Why it matters:
 - Fix direction:
 - Confidence:
-
-### Search Intent And Query Coverage
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Search/user impact:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### On-Page Metadata And Snippet Readiness
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Search/user impact:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Content Quality, Usefulness, And Trust
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Search/user impact:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Information Architecture And Internal Linking
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Search/user impact:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Structured Data And Rich Result Eligibility
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Search/user impact:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Local, Entity, And Brand Signals
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Search/user impact:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Performance, Mobile, And Page Experience
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Search/user impact:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Measurement, Diagnostics, And Change Control
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Search/user impact:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Competitive Visibility And Off-Site Signals
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Search/user impact:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-## Verification Needed
-
-- Live crawl or route inventory:
-- Rendered HTML and metadata checks:
-- Structured data validation:
-- Search Console or indexing evidence:
-- Analytics or conversion evidence:
-- Rank/SERP checks:
-- Backlink or citation checks:
-- Assess Agent Readiness adjunct:
-- User/domain review:
-
-## Next Steps
-
-1.
-2.
-3.

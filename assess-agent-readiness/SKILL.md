@@ -30,19 +30,22 @@ Final-report evidence when Assess SEO is used, skipped, or unavailable:
 - `Reason: ...`
 - `Impact on Assess Agent Readiness score: None/discovery finding/grade cap/lower confidence`
 
-## Quick Start
+## Required Audit Workflow
 
 When asked to use Assess Agent Readiness:
 
 1. Identify the target folder, URL, app, API, tool, documentation set, or artifact.
 2. Read local instructions and product context first, such as `AGENTS.md`, `README.md`, API docs, OpenAPI specs, MCP docs, CLI docs, SDK docs, robots/crawl policy, sitemap files, and product docs.
 3. Determine the system type, target users, target agents, public/private boundary, action surfaces, authentication model, and likely agent tasks.
-4. Research current agent-readiness sources before judging. Prefer current primary sources and say when a convention is emerging or disputed.
-5. Inspect the implementation or live surface: routes, crawl policy, docs, content structure, metadata, structured data, APIs, schemas, tool protocols, auth, errors, examples, and handoff signals.
-6. Capture findings by category, score each applicable category out of 10, then prioritize by agent/user impact.
-7. Use `templates/ASSESS-AGENT-READINESS.md` as the report skeleton.
+4. Push for the strongest evidence practical before scoring: run the project when source is available and safe, inspect reachable production or development URLs, check live crawl/docs/API surfaces, and use lightweight network checks such as DNS, ping, headers, or HTTP probes when they clarify reachability or host behavior.
+5. Research current agent-readiness sources before judging. Prefer current primary sources and say when a convention is emerging or disputed.
+6. Inspect the implementation or live surface: routes, crawl policy, docs, content structure, metadata, structured data, APIs, schemas, tool protocols, auth, errors, examples, and handoff signals.
+7. Capture findings by category, score each applicable category out of 10, then prioritize by agent/user impact.
+8. Use `templates/ASSESS-AGENT-READINESS.md` as the report skeleton.
 
 Mention verification limits only where they affect confidence, scoring, or grade caps.
+
+Use `Assessment Coverage` as the first report section after the title, not a terse caveat list: state what was assessed, what was not assessed, what the caller can provide or permit for a deeper/fairer/more accurate assessment, and what that extra evidence would improve. Use `Start Here` as the report's single prioritized action plan. Do not add a second `Next Steps` section unless the caller explicitly wants a separate follow-up roadmap.
 
 ## References
 
@@ -95,141 +98,11 @@ Before grading, define:
 
 Treat `llms.txt` as an optional emerging convention. Do not fail a system solely for missing `llms.txt` when the target has strong conventional crawlability, structured content, and agent-facing docs. Do treat it as a missed readiness opportunity when LLM-friendly orientation is important and no equivalent exists.
 
-## Audit Categories
+## Audit Categories, Prioritization, And Scoring
 
-Use these categories as the default pass list, in this order. Omit categories that clearly do not apply, and add target-specific categories when the researched platform requires them.
+Use `references/AUDIT-CATEGORIES.md` as Assess Agent Readiness's source of truth for the category map, priority definitions, score rubric, final score rules, and grade-cap rules. Do not duplicate those definitions in `SKILL.md`; keep this file focused on execution flow, evidence expectations, report structure, boundaries, and when to consult the reference.
 
-### Discovery And Crawl Policy
-
-Inspect:
-- `robots.txt`, crawl directives, crawler allow/deny intent, and AI crawler policy
-- sitemap files, route indexes, canonical URLs, redirects, status codes, and broken links
-- public route discovery through navigation, in-page links, docs indexes, and search results
-- `llms.txt`, Markdown variants, text exports, and low-boilerplate indexes when present
-- JavaScript rendering, SSR/static fallbacks, pagination, locale routing, and duplicate content
-
-Judge whether an agent can find the right public or authorized surfaces without guessing.
-
-### Agent Instructions And Orientation
-
-Inspect:
-- `AGENTS.md`, README, quick starts, docs landing pages, capability maps, and task-oriented guides
-- setup, run, test, build, deploy, authentication, and environment instructions
-- "what can this system do" and "when should I use it" guidance
-- repo structure, ownership boundaries, examples, and known limitations
-- API/tool orientation for non-human or automated consumers
-
-Judge whether a new agent can quickly understand the system and act without rediscovering basic context.
-
-### Content Extractability And Semantics
-
-Inspect:
-- semantic HTML, headings, main content separation, metadata, and structured data
-- Schema.org, JSON-LD, Open Graph, canonical metadata, and entity clarity
-- boilerplate-to-content ratio, hidden critical content, PDFs/images-only content, and script-only content
-- localized content, dates, authorship, source provenance, and citation clarity
-- concise answerable sections, summaries, FAQs, and machine-readable context where useful
-
-Judge whether agents can extract accurate meaning without fragile scraping or hallucination-prone inference.
-
-### Action Surfaces And Protocols
-
-Inspect:
-- OpenAPI or equivalent API descriptions, endpoint docs, schemas, SDKs, CLIs, webhooks, and examples
-- MCP servers, tools, resources, prompts, manifests, or agent-specific integration docs when present
-- sandbox/test modes, sample credentials, dry-run support, and local/dev workflows
-- action preconditions, inputs, outputs, side effects, idempotency, and versioning
-- form and browser-only workflows that lack an API or tool alternative
-
-Judge whether agents can do useful work through stable interfaces instead of brittle browser emulation.
-
-### Auth, Permissions, And Safety
-
-Inspect:
-- auth flows, scopes, tokens, tenant boundaries, consent, and user delegation
-- crawler policy, rate limits, abuse controls, and bot contact/escalation paths
-- destructive-action boundaries, confirmation requirements, payment/order/booking safeguards, and rollback paths
-- privacy, data retention, terms, attribution, and allowed-use policy for automated access
-- secret handling in docs, examples, configs, and logs
-
-Judge whether agents can act safely and within intended permission boundaries.
-
-### Error Recovery And Determinism
-
-Inspect:
-- machine-readable errors, status codes, retry guidance, pagination, cursors, timeouts, and rate-limit headers
-- deterministic examples, stable identifiers, stable URLs, and version compatibility
-- validation errors, partial failures, idempotency keys, duplicate prevention, and recovery instructions
-- observability, status pages, deprecation notices, and incident messaging
-
-Judge whether agents can recover from failure without guessing or repeating unsafe actions.
-
-### Documentation Freshness And Examples
-
-Inspect:
-- docs freshness, changelogs, release notes, deprecation notes, migration guides, and versioned docs
-- runnable examples, SDK examples, cURL examples, sample payloads, and test fixtures
-- stale screenshots, old command names, old endpoint names, and unsupported flows
-- docs-to-implementation drift and missing examples for core workflows
-
-Judge whether docs are current enough for agents to rely on during execution.
-
-### Handoff And Verification
-
-Inspect:
-- receipts, confirmations, audit logs, status endpoints, transaction IDs, and downloadable records
-- human review checkpoints, approval flows, support routes, escalation paths, and rollback instructions
-- post-action state visibility, notifications, and reconciliation guidance
-- reportable evidence an agent can return to the user after completing work
-
-Judge whether agents can prove what happened and hand control back to a user safely.
-
-## Prioritization
-
-Prioritize by agent/user impact:
-
-- `Critical`: blocks or endangers a core agent workflow, causes unsafe actions, or makes agent output likely to be materially wrong.
-- `High`: makes a core workflow unreliable, opaque, unsafe, or difficult to automate.
-- `Medium`: affects important secondary workflows, repeated use, recovery, freshness, or confidence.
-- `Low`: polish or narrow-scope issue with limited agent impact.
-
-For each finding, include:
-
-- `Category`
-- `Priority`
-- `Evidence`
-- `Who or what is affected`
-- `Why it matters`
-- `Fix direction`
-- `Confidence`
-
-Use file paths, URLs, endpoint names, schemas, route names, screenshots, or response examples where practical. Separate confirmed findings from likely risks.
-
-## Grading And Scoring
-
-Grade practical agent readiness, not general product quality or official standards conformance.
-
-Score only applicable categories. Mark categories that genuinely do not apply as `N/A` and exclude them from the average. Mark categories that apply but were not evaluated as `Not assessed`, exclude them from the average, and explain the evidence limit. Every assessed score must cite the strongest evidence and the main reason the score is not higher.
-
-Calculate the final Assess Agent Readiness score as the average of applicable assessed category scores, rounded to one decimal.
-
-Map the final Assess Agent Readiness score to a letter grade:
-
-- `A`: 9.0-10
-- `B`: 8.0-8.9
-- `C`: 7.0-7.9
-- `D`: 6.0-6.9
-- `F`: 0-5.9
-
-Apply grade caps after averaging:
-
-- any unresolved `Critical` finding applies a grade cap of `F`
-- any applicable category scored `0-3` applies a grade cap of `D`
-- missing live evidence for a system with important runtime action surfaces applies a grade cap of `B`
-- missing API/tool execution evidence for an action-oriented product applies a grade cap of `C`
-- incomplete crawl, blocked docs, missing credentials, or inaccessible discovery paths can apply a grade cap of `B` or lower when they prevent judging important agent workflows
-
-Report the cap as one field: `Grade cap: None` when no cap applies, or `Grade cap: <cap>, <reason>` when a cap applies.
+When running an audit, load that reference before the category pass, then adapt only for target-specific categories that the researched platform or user request clearly requires. Keep `N/A` and `Not assessed` handling aligned with the reference, and summarize skipped or limited categories in the report's `Assessment Coverage` section instead of scattering caveats throughout the report.
 
 ## Live Or Black-Box Targets
 

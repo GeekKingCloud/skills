@@ -9,19 +9,22 @@ Audit accessibility as a first-class product quality concern. Stay focused on wh
 
 This is not a roast. Use direct, evidence-backed language without jokes, contempt, or performative harshness.
 
-## Quick Start
+## Required Audit Workflow
 
 When asked to use Assess Accessibility:
 
 1. Identify the target folder, URL, app, surface, or artifact from the caller's request.
 2. Read local instructions and product context first, such as `AGENTS.md`, `README.md`, design-system docs, platform docs, contribution docs, and obvious config files.
 3. Determine the project type, tech stack, target platforms, likely users, input methods, rendering formats, and assistive-technology surface.
-4. Research the applicable accessibility standards and platform guidance before judging. Prefer current primary sources.
-5. Inspect the actual implementation or running surface: components, styles, design tokens, routes/screens, rendered markup where code is available, forms, state changes, content, and responsive behavior.
-6. Capture findings by accessibility category, score each applicable category out of 10, then prioritize by user impact.
-7. Use `templates/ASSESS-ACCESSIBILITY.md` as the report skeleton.
+4. Push for the strongest evidence practical before scoring: run the project when source is available and safe, inspect reachable production or development URLs, check representative routes/screens, and use lightweight network checks such as DNS, ping, headers, or HTTP probes when they clarify reachability or host behavior.
+5. Research the applicable accessibility standards and platform guidance before judging. Prefer current primary sources.
+6. Inspect the actual implementation or running surface: components, styles, design tokens, routes/screens, rendered markup where code is available, forms, state changes, content, and responsive behavior.
+7. Capture findings by accessibility category, score each applicable category out of 10, then prioritize by user impact.
+8. Use `templates/ASSESS-ACCESSIBILITY.md` as the report skeleton.
 
 Do not include test coverage or accessibility tooling gaps as standing categories unless the caller explicitly asks for them. Mention verification limits only where they affect confidence in the audit.
+
+Use `Assessment Coverage` as the first report section after the title, not a terse caveat list: state what was assessed, what was not assessed, what the caller can provide or permit for a deeper/fairer/more accurate assessment, and what that extra evidence would improve. Use `Start Here` as the report's single prioritized action plan. Do not add a second `Next Steps` section unless the caller explicitly wants a separate follow-up roadmap.
 
 ## References
 
@@ -63,146 +66,11 @@ Use one of these evidence modes:
 - `Rendered only`: a live app, website, prototype, screenshot set, or document output was inspected without source code.
 - `Artifact only`: a static file, image, PDF, email, export, or recording was inspected without interactive access.
 
-## Audit Categories
+## Audit Categories, Prioritization, And Scoring
 
-Use these categories as the default pass list, in this order. The order starts with barriers most likely to block operation, then moves into perception, layout, comfort, and comprehension. Omit categories that clearly do not apply, and add project-specific categories when the researched platform requires them.
+Use `references/AUDIT-CATEGORIES.md` as Assess Accessibility's source of truth for the category map, priority definitions, score rubric, final score rules, and grade-cap rules. Do not duplicate those definitions in `SKILL.md`; keep this file focused on execution flow, evidence expectations, report structure, boundaries, and when to consult the reference.
 
-### Keyboard And Focus
-
-Inspect:
-- complete keyboard access for interactive controls
-- visible focus indicators
-- logical tab order and focus return after dialogs or route changes
-- skip links, landmarks, and bypass mechanisms
-- focus traps, hidden focusable elements, and keyboard dead ends
-- custom widget keyboard behavior against platform expectations
-
-Treat blocked keyboard operation as high impact unless the target platform genuinely has no keyboard or switch-control equivalent.
-
-### Semantics And Assistive Technology
-
-Inspect:
-- semantic elements, roles, names, states, and values
-- heading structure, landmarks, labels, descriptions, and alternative text
-- custom controls that should expose native semantics
-- dialogs, menus, tabs, comboboxes, grids, live regions, and disclosure widgets
-- screen-reader-only text and visually hidden content
-- redundant, misleading, or harmful ARIA
-
-Prefer native semantics over ARIA. Flag ARIA that tries to fix markup while breaking the accessibility tree.
-
-### Forms And Error Recovery
-
-Inspect:
-- labels, instructions, required fields, grouping, and help text
-- error identification, error prevention, and recovery paths
-- input format hints and validation timing
-- autocomplete, password managers, and one-time-code workflows
-- disabled states, loading states, and destructive confirmations
-
-Judge whether users can complete forms without relying on color, memory, pointer precision, or hidden context.
-
-### Visual Perception
-
-Inspect:
-- text and non-text color contrast
-- foreground/background combinations across states
-- hover, focus, active, selected, disabled, error, and success states
-- color-only meaning
-- charts, maps, heatmaps, badges, labels, and status indicators
-- dark mode, high-contrast mode, forced-colors mode, and transparency effects when relevant
-
-Look for places where color, contrast, opacity, background imagery, or state styling makes information hard to perceive.
-
-### Responsive And Mobile Use
-
-Inspect:
-- small-screen layout, portrait and landscape behavior, and reflow
-- touch target size and spacing
-- gestures without alternatives
-- fixed viewport assumptions
-- sticky headers, modals, drawers, bottom sheets, and overlays
-- virtual keyboard interactions and safe-area insets when relevant
-
-Focus on whether core workflows remain operable on constrained screens and non-mouse input.
-
-### Typography And Scaling
-
-Inspect:
-- font sizes, line height, letter spacing, and text density
-- user font scaling, browser zoom, OS text settings, and dynamic type behavior
-- truncation, clipping, fixed-height containers, and overflow
-- long words, localization expansion, mixed scripts, and narrow viewports
-- readable hierarchy without using headings only as visual decoration
-
-Flag text that only works at the designer's preferred viewport, font, language, or zoom level.
-
-### Motion, Timing, And Change
-
-Inspect:
-- animation, parallax, flashing, autoplay, and reduced-motion handling
-- time limits, auto-refresh, carousels, toasts, and disappearing messages
-- loading states, skeletons, async updates, and live announcements
-- route transitions and focus movement after dynamic updates
-
-Flag motion or timing that removes control, hides information, or creates vestibular, seizure, cognitive, or screen-reader problems.
-
-### Content And Comprehension
-
-Inspect:
-- button and link names
-- headings, page titles, labels, and empty states
-- instructions, error copy, status messages, and confirmation text
-- jargon, ambiguity, reading load, and content that assumes insider knowledge
-- language declarations and multilingual content when relevant
-
-Treat unclear content as an accessibility issue when it blocks understanding or recovery.
-
-## Prioritization
-
-Prioritize by user impact, not implementation convenience:
-
-- `Critical`: blocks a core workflow for a disability group or assistive-technology path.
-- `High`: makes a core workflow substantially harder, error-prone, or unreliable.
-- `Medium`: affects important secondary workflows, repeated use, comprehension, or comfort.
-- `Low`: polish issue with limited impact or a narrow context.
-
-For each finding, include:
-- `Category`
-- `Priority`
-- `Evidence`
-- `Who is affected`
-- `Why it matters`
-- `Fix direction`
-- `Confidence`
-
-Use line references, component names, selectors, screen names, or screenshots where practical. Separate confirmed findings from likely risks.
-
-## Grading And Scoring
-
-Grade accessibility readiness, not general code quality or standards conformance.
-
-Score only applicable categories. Mark categories that genuinely do not apply as `N/A` and exclude them from the average. Mark categories that apply but were not evaluated as `Not assessed`, exclude them from the average, and explain the evidence limit. Every non-`N/A` and non-`Not assessed` score must cite the strongest evidence and the main reason the score is not higher.
-
-Calculate the final Assess Accessibility score as the average of applicable assessed category scores, rounded to one decimal.
-
-Map the final Assess Accessibility score to a letter grade:
-- `A`: 9.0-10
-- `B`: 8.0-8.9
-- `C`: 7.0-7.9
-- `D`: 6.0-6.9
-- `F`: 0-5.9
-
-Apply grade caps after averaging:
-- any unresolved `Critical` finding applies a grade cap of `F`
-- any applicable category scored `0-3` applies a grade cap of `D`
-- missing rendered or platform evidence for an interactive product applies a grade cap of `B`
-- missing assistive-technology evidence for a UI-heavy product applies a grade cap of `C`
-- incomplete crawl, blocked routes, missing credentials, or inaccessible discovery paths can apply a grade cap of `B` or lower when they prevent judging important public or user-facing workflows
-
-Apply the most restrictive grade cap when multiple caps apply: `F` beats `D`, `D` beats `C`, and `C` beats `B`. Report the cap as one field: `Grade cap: None` when no cap applies, or `Grade cap: <cap>, <reason>` when a cap applies. Do not award an `A` if the audit lacked enough rendered or platform-specific evidence to judge core workflows.
-
-Do not apply a grade cap merely because source code is unavailable. A rendered-only audit can still receive a high score when the running surface, responsive states, keyboard paths, accessibility tree, and assistive-technology behavior are sufficiently inspected. Missing source should affect confidence, evidence limits, and fix specificity, not the score by itself.
+When running an audit, load that reference before the category pass, then adapt only for target-specific categories that the researched platform or user request clearly requires. Keep `N/A` and `Not assessed` handling aligned with the reference, and summarize skipped or limited categories in the report's `Assessment Coverage` section instead of scattering caveats throughout the report.
 
 ## App Or Website Without Source Code
 

@@ -9,20 +9,23 @@ Audit whether a public web surface is ready to earn and sustain organic search v
 
 Assess SEO is not a ranking guarantee, traffic forecast, paid search audit, brand strategy review, legal compliance review, accessibility audit, or agent-readiness certification. Use evidence-backed language and distinguish directly observed issues from opportunities, hypotheses, and items that need Search Console, analytics, backlink, or rank-tracking access.
 
-## Quick Start
+## Required Audit Workflow
 
 When asked to use Assess SEO:
 
 1. Identify the target site, page set, business, market, geography, content type, and search goals.
 2. Read local project context first when source is available, such as `AGENTS.md`, README files, CMS docs, route files, SEO config, content templates, structured data, sitemap generation, redirects, and analytics docs.
 3. Determine the evidence mode: `Source + live`, `Source only`, `Live only`, or `Artifact only`.
-4. Research the current search baseline before judging. Prefer current primary sources and record sources used with access dates.
-5. Inspect the live or source surface: crawl policy, indexability, sitemap, canonicals, redirects, status codes, rendered content, metadata, headings, structured data, links, media, performance signals, local/entity data, and visible conversion paths.
-6. Compare representative pages against likely queries, search intent, SERP features, and direct competitors when the target market is known.
-7. Capture findings by category, score each applicable category out of 10, then prioritize by expected search/user impact.
-8. Use `templates/ASSESS-SEO.md` as the report skeleton.
+4. Push for the strongest evidence practical before scoring: run the project when source is available and safe, inspect reachable production or development URLs, check live crawl files and route status, and use lightweight network checks such as DNS, ping, headers, or HTTP probes when they clarify reachability or host behavior.
+5. Research the current search baseline before judging. Prefer current primary sources and record sources used with access dates.
+6. Inspect the live or source surface: crawl policy, indexability, sitemap, canonicals, redirects, status codes, rendered content, metadata, headings, structured data, links, media, performance signals, local/entity data, and visible conversion paths.
+7. Compare representative pages against likely queries, search intent, SERP features, and direct competitors when the target market is known.
+8. Capture findings by category, score each applicable category out of 10, then prioritize by expected search/user impact.
+9. Use `templates/ASSESS-SEO.md` as the report skeleton.
 
 Mention verification limits only where they affect confidence, scoring, or grade caps.
+
+Use `Assessment Coverage` as the first report section after the title, not a terse caveat list: state what was assessed, what was not assessed, what the caller can provide or permit for a deeper/fairer/more accurate assessment, and what that extra evidence would improve. Use `Start Here` as the report's single prioritized action plan. Do not add a second `Next Steps` section unless the caller explicitly wants a separate follow-up roadmap.
 
 ## Relationship To Assess Agent Readiness
 
@@ -96,147 +99,11 @@ Before grading, define:
 
 Avoid claiming that any fix guarantees rankings, traffic, citations, snippets, or AI retrieval.
 
-## Audit Categories
+## Audit Categories, Prioritization, And Scoring
 
-Use these categories as the default pass list, in this order. Omit categories that clearly do not apply, and add target-specific categories when the researched platform requires them.
+Use `references/AUDIT-CATEGORIES.md` as Assess SEO's source of truth for the category map, priority definitions, score rubric, final score rules, and grade-cap rules. Do not duplicate those definitions in `SKILL.md`; keep this file focused on execution flow, evidence expectations, report structure, boundaries, and when to consult the reference.
 
-### Crawl, Indexing, And Technical Foundation
-
-Inspect:
-- `robots.txt`, sitemap files, indexability, canonical tags, redirects, status codes, broken links, duplicate routes, pagination, hreflang, and faceted navigation
-- crawlable rendered HTML, JavaScript rendering risks, SSR/static fallbacks, blocked assets, and soft 404 behavior
-- URL structure, migration state, redirect chains, mixed protocols, trailing-slash variants, and environment leakage
-
-Judge whether search engines can discover, crawl, render, index, and consolidate the right pages.
-
-### Search Intent And Query Coverage
-
-Inspect:
-- target queries, implied audience, funnel stage, geography, and task intent
-- page-to-query fit, topic gaps, cannibalization, thin coverage, and mismatched landing pages
-- SERP features, competing result types, commercial/local/informational intent, and likely answer formats
-
-Judge whether the site has the right pages for the searches it wants to win.
-
-### On-Page Metadata And Snippet Readiness
-
-Inspect:
-- title tags, meta descriptions, headings, canonical display names, Open Graph/Twitter metadata, and visible page summaries
-- snippet clarity, uniqueness, truncation risk, query relevance, dates, prices, availability, reviews, and entity naming
-- duplicate or missing titles/descriptions and templates that produce weak search snippets
-
-Judge whether search results can present the page clearly and attract qualified clicks.
-
-### Content Quality, Usefulness, And Trust
-
-Inspect:
-- main content depth, originality, helpfulness, accuracy, freshness, authorship, citations, expertise signals, and source provenance
-- thin pages, boilerplate-heavy pages, AI-generated or duplicated content risks, doorway patterns, and unsupported claims
-- media alternatives, FAQs, comparisons, examples, policies, and practical user task completion
-
-Judge whether the content deserves to satisfy the search intent better than alternatives.
-
-### Information Architecture And Internal Linking
-
-Inspect:
-- navigation, breadcrumbs, hub pages, related links, footer/header links, orphan pages, crawl depth, and anchor text
-- category/tag taxonomy, faceted paths, pagination, topic clusters, and duplicate internal routes
-- important pages that lack internal prominence or contextual links
-
-Judge whether users and crawlers can understand page relationships and priority.
-
-### Structured Data And Rich Result Eligibility
-
-Inspect:
-- Schema.org JSON-LD, microdata, RDFa, entity consistency, required/recommended fields, and page-type fit
-- product, local business, organization, article, FAQ, breadcrumb, review, event, job, software, course, or documentation schema when relevant
-- validation errors, spammy markup, content/markup mismatch, and unsupported rich-result expectations
-
-Judge whether structured data accurately clarifies entities and can qualify for relevant search features.
-
-### Local, Entity, And Brand Signals
-
-Inspect:
-- business name, address, phone, service area, hours, locations, staff, credentials, reviews, maps/profile consistency, and local landing pages
-- organization/person/product entity clarity, sameAs links, knowledge graph cues, brand naming, and reputation evidence
-- inconsistent NAP data, missing location context, weak trust pages, and unclear ownership
-
-Judge whether search systems and users can identify who or what the site represents.
-
-### Performance, Mobile, And Page Experience
-
-Inspect:
-- mobile usability, Core Web Vitals evidence, loading behavior, image/video weight, layout shifts, intrusive interstitials, ads, consent banners, and font/render blocking
-- template-level performance issues and page types most likely to affect organic entry pages
-- lab data, field data, or observed interaction limits depending on available evidence
-
-Judge whether organic visitors can use the page comfortably after clicking from search.
-
-### Measurement, Diagnostics, And Change Control
-
-Inspect:
-- Search Console, analytics, rank tracking, crawl exports, server logs, sitemap submission, redirect maps, release process, changelogs, and SEO QA
-- conversion events, goal tracking, attribution caveats, annotations, monitoring, and regression checks
-- missing data needed to prioritize, verify, or debug SEO changes
-
-Judge whether the team can measure organic visibility and detect regressions.
-
-### Competitive Visibility And Off-Site Signals
-
-Inspect:
-- visible SERP competitors, backlink/profile evidence when available, reviews, citations, marketplaces, directories, social/profile consistency, and content differentiation
-- direct competitors' page types, content depth, snippets, schema, local presence, and authority cues
-- off-site gaps that affect trust, entity clarity, or ability to compete
-
-Judge whether the site is positioned against the results it must displace.
-
-## Prioritization
-
-Prioritize by expected search/user impact:
-
-- `Critical`: likely blocks crawling, indexing, consolidation, or trust for core organic pages; creates serious spam/manual-action risk; or makes the audit's main search goal impossible to evaluate.
-- `High`: materially weakens core query coverage, snippets, content usefulness, internal authority flow, local/entity clarity, or measurement.
-- `Medium`: affects important secondary pages, repeated templates, visibility confidence, page experience, or prioritization.
-- `Low`: polish or narrow-scope issue with limited search impact.
-
-For each finding, include:
-
-- `Category`
-- `Priority`
-- `Evidence`
-- `Search/user impact`
-- `Why it matters`
-- `Fix direction`
-- `Confidence`
-
-Use file paths, URLs, route names, rendered text, metadata values, schema excerpts, crawl results, SERP observations, screenshots, or data-export references where practical. Separate confirmed findings from likely risks.
-
-## Grading And Scoring
-
-Grade practical SEO readiness, not general product quality or official search-engine conformance.
-
-Score only applicable categories. Mark categories that genuinely do not apply as `N/A` and exclude them from the average. Mark categories that apply but were not evaluated as `Not assessed`, exclude them from the average, and explain the evidence limit. Every assessed score must cite the strongest evidence and the main reason the score is not higher.
-
-Calculate the final Assess SEO score as the average of applicable assessed category scores, rounded to one decimal.
-
-Map the final Assess SEO score to a letter grade:
-
-- `A`: 9.0-10
-- `B`: 8.0-8.9
-- `C`: 7.0-7.9
-- `D`: 6.0-6.9
-- `F`: 0-5.9
-
-Apply grade caps after averaging:
-
-- any unresolved `Critical` finding applies a grade cap of `F`
-- any core crawl/index category scored `0-3` applies a grade cap of `D`
-- missing live evidence for a public website applies a grade cap of `B`
-- missing rendered-page evidence for a JavaScript-heavy site applies a grade cap of `C` when it prevents judging indexable content
-- missing Search Console/analytics/backlink/rank data can cap only the affected measurement, off-site, or competitive categories unless the caller asked for a data-backed growth plan
-- unsupported ranking, traffic, or competitor claims must be removed or marked as hypotheses; do not inflate scores from unverified assumptions
-
-Report the cap as one field: `Grade cap: None` when no cap applies, or `Grade cap: <cap>, <reason>` when a cap applies.
+When running an audit, load that reference before the category pass, then adapt only for target-specific categories that the researched platform or user request clearly requires. Keep `N/A` and `Not assessed` handling aligned with the reference, and summarize skipped or limited categories in the report's `Assessment Coverage` section instead of scattering caveats throughout the report.
 
 ## Live Or Black-Box Targets
 

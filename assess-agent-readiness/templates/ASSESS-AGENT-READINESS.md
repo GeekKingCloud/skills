@@ -1,5 +1,17 @@
 # Assess Agent Readiness Audit
 
+## Assessment Coverage
+
+Use this section to tell the reader, in plain terms, what the assessment did cover and what would make a follow-up assessment deeper, fairer, or more accurate.
+
+- Assessed:
+- Not assessed:
+- To get a deeper, fairer, or more accurate assessment, provide or permit:
+  1.
+  2.
+  3.
+- Expected impact of that extra evidence:
+
 ## Scope
 
 - Target:
@@ -29,6 +41,13 @@
 - Reason:
 - Impact on Assess Agent Readiness score: `None/discovery finding/grade cap/lower confidence`
 
+## Key Observations
+
+- Evidence strengths:
+- Highest-impact risks:
+- Important caveats:
+- Notable positives:
+
 ## Assess Agent Readiness Score
 
 Assess Agent Readiness score: `/10`
@@ -53,6 +72,8 @@ Grade mapping:
 2.
 3.
 
+Use this as the single prioritized action plan. Do not duplicate it later as `Next Steps` unless the caller requested a separate roadmap.
+
 ## Findings By Priority
 
 ### Critical
@@ -73,24 +94,21 @@ Grade mapping:
 
 ## Findings By Category
 
-| Category | Score /10 | Priority | Standards Or Convention Notes | Confidence | Top Fix |
-| --- | ---: | --- | --- | --- | --- |
-| Discovery And Crawl Policy |  |  |  |  |  |
-| Agent Instructions And Orientation |  |  |  |  |  |
-| Content Extractability And Semantics |  |  |  |  |  |
-| Action Surfaces And Protocols |  |  |  |  |  |
-| Auth, Permissions, And Safety |  |  |  |  |  |
-| Error Recovery And Determinism |  |  |  |  |  |
-| Documentation Freshness And Examples |  |  |  |  |  |
-| Handoff And Verification |  |  |  |  |  |
+Populate this table from the applicable assessed categories in `references/AUDIT-CATEGORIES.md`. Keep the reference file as the source of truth for category names, order, scoring rules, and grade caps.
 
-Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit. Do not include `Not assessed` categories in the score table; list them immediately underneath as `Not assessed: ...` followed by the reason.
+| Category                                      | Score   | Priority   | Confidence   |
+| --------------------------------------------- | ------: | ---------- | ------------ |
+| <Category from references/AUDIT-CATEGORIES.md> | <score> | <priority> | <confidence> |
 
-Not assessed:
+Top fixes by category:
 
-Reason:
+-
 
-### Discovery And Crawl Policy
+Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit in `Assessment Coverage`, not here. Do not include `Not assessed` categories in the score table.
+
+Repeat this block for each assessed category from `references/AUDIT-CATEGORIES.md`:
+
+### <Category Name>
 
 - Finding:
 - Score /10:
@@ -101,103 +119,3 @@ Reason:
 - Why it matters:
 - Fix direction:
 - Confidence:
-
-### Agent Instructions And Orientation
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who or what is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Content Extractability And Semantics
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who or what is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Action Surfaces And Protocols
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who or what is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Auth, Permissions, And Safety
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who or what is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Error Recovery And Determinism
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who or what is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Documentation Freshness And Examples
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who or what is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Handoff And Verification
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who or what is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-## Verification Needed
-
-- Live crawl or route inventory:
-- API/tool execution:
-- Authenticated workflow checks:
-- Structured data or schema validation:
-- Agent instruction review:
-- Assess SEO adjunct:
-- User/domain review:
-
-## Next Steps
-
-1.
-2.
-3.

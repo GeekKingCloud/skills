@@ -1,5 +1,17 @@
 # Assess Accessibility Audit
 
+## Assessment Coverage
+
+Use this section to tell the reader, in plain terms, what the assessment did cover and what would make a follow-up assessment deeper, fairer, or more accurate.
+
+- Assessed:
+- Not assessed:
+- To get a deeper, fairer, or more accurate assessment, provide or permit:
+  1.
+  2.
+  3.
+- Expected impact of that extra evidence:
+
 ## Scope
 
 - Target:
@@ -18,7 +30,7 @@
 - Target level or status model:
 - Target users, devices, input methods, and assistive-technology assumptions:
 
-## Standards Baseline
+## Standards And Claims
 
 Use this section for the target being judged against, not for repeating source notes.
 
@@ -27,13 +39,6 @@ Use this section for the target being judged against, not for repeating source n
 - Evaluated scope:
 - Evidence limits:
 - Conformance claim status: `Not claimed unless the caller explicitly requested a formal conformance evaluation.`
-
-## Standards Observations
-
-- Standards alignment:
-- Relevant failures or risks:
-- Relevant strengths:
-- Notes:
 
 ## Optional ACR/VPAT Status
 
@@ -44,6 +49,13 @@ Delete this section unless compliance or procurement scope applies.
 - Does not support:
 - Not applicable:
 
+## Key Observations
+
+- Evidence strengths:
+- Highest-impact risks:
+- Important caveats:
+- Notable positives:
+
 ## Assess Accessibility Score
 
 Assess Accessibility readiness score: `/10`
@@ -52,7 +64,7 @@ Letter grade: `A/B/C/D/F`
 
 Grade cap: `None` or `<cap>, <reason>`
 
-Source availability impact: `None/Lower confidence only/Behavior-level fixes only/Blocked categories: ...`
+Evidence impact: `None/Lower confidence only/Behavior-level fixes only/Blocked categories: ...`
 
 Grade mapping:
 
@@ -64,9 +76,11 @@ Grade mapping:
 
 ## Start Here
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
+
+Use this as the single prioritized action plan. Do not duplicate it later as `Next Steps` unless the caller requested a separate roadmap.
 
 ## Findings By Priority
 
@@ -88,24 +102,21 @@ Grade mapping:
 
 ## Findings By Category
 
-| Category | Score /10 | Priority | Conformance Notes | Confidence | Top Fix |
-| --- | ---: | --- | --- | --- | --- |
-| Keyboard And Focus |  |  |  |  |  |
-| Semantics And Assistive Technology |  |  |  |  |  |
-| Forms And Error Recovery |  |  |  |  |  |
-| Visual Perception |  |  |  |  |  |
-| Responsive And Mobile Use |  |  |  |  |  |
-| Typography And Scaling |  |  |  |  |  |
-| Motion, Timing, And Change |  |  |  |  |  |
-| Content And Comprehension |  |  |  |  |  |
+Populate this table from the applicable assessed categories in `references/AUDIT-CATEGORIES.md`. Keep the reference file as the source of truth for category names, order, scoring rules, and grade caps.
 
-Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit. Do not include `Not assessed` categories in the score table; list them immediately underneath as `Not assessed: ...` followed by the reason. Repeat the finding block under each assessed category as needed; write `No scoped findings` only after that category was actually reviewed.
+| Category                                      | Score   | Priority   | Confidence   |
+| --------------------------------------------- | ------: | ---------- | ------------ |
+| <Category from references/AUDIT-CATEGORIES.md> | <score> | <priority> | <confidence> |
 
-Not assessed:
+Top fixes by category:
 
-Reason:
+-
 
-### Keyboard And Focus
+Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, and explain the evidence limit in `Assessment Coverage`, not here. Do not include `Not assessed` categories in the score table.
+
+Repeat this block for each assessed category from `references/AUDIT-CATEGORIES.md`:
+
+### <Category Name>
 
 - Finding:
 - Score /10:
@@ -116,101 +127,3 @@ Reason:
 - Why it matters:
 - Fix direction:
 - Confidence:
-
-### Semantics And Assistive Technology
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Forms And Error Recovery
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Visual Perception
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Responsive And Mobile Use
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Typography And Scaling
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Motion, Timing, And Change
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-### Content And Comprehension
-
-- Finding:
-- Score /10:
-- Score rationale:
-- Priority:
-- Evidence:
-- Who is affected:
-- Why it matters:
-- Fix direction:
-- Confidence:
-
-## Verification Needed
-
-- Rendered UI checks:
-- Keyboard checks:
-- Screen reader or assistive-technology checks:
-- Device or viewport checks:
-- User or domain review:
-
-## Next Steps
-
-1. 
-2. 
-3. 
