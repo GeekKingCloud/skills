@@ -19,6 +19,12 @@ The target state is:
 - unresolved issues are Low or nitpick-level only, and no run gate has unresolved Critical, High, or Medium findings unless the caller explicitly accepts the release risk
 - the final state is ready to release, merge, or hand off with clear evidence
 
+## Startup Permission
+
+Before starting route selection, repository exploration, implementation, or review work, check whether sub-agents are already approved by the environment or explicitly granted by the caller's Crucible invocation. If not, ask once: "Crucible gets best results with sub-agents for peer review, validation, security, cleanup, and regression checks. May I use sub-agents where useful for this run?"
+
+If permission is declined or sub-agents are unavailable, continue locally and state that independent review coverage is reduced. Do not repeat the question per slice; the startup answer covers bounded Crucible delegation for the run.
+
 ## Start And Work Route
 
 1. Read the nearest `AGENTS.md` first. If it points to `STYLE.md`, `README.md`, handoff files, plans, or project docs, read the relevant files before editing.
@@ -34,6 +40,8 @@ The target state is:
 If no supplied plan exists and the caller did not authorize a full-project roast-led work queue, stop and ask for the missing work source. Stop and ask only when the work source is missing critical product decisions, would require destructive Git history changes, needs credentials, or would materially change security posture, runtime behavior, dependency surface, or public behavior without clear caller approval.
 
 ## Sub-Agent Operating Model
+
+Follow the startup permission rule before using this operating model.
 
 For meaningful Crucible work, treat sub-agents as the default way to improve coverage when the environment supports them and delegation is allowed. At each stage, actively look for independent work to delegate: codebase search, implementation of isolated slices, in-the-moment peer review, regression hunting, test review, security review, docs/comment sweeps, cleanup checks, and review-gate follow-up.
 
