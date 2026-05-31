@@ -106,4 +106,4 @@ Use this file as Assess SEO's starting source map. Refresh sources during each a
 - Which representative queries and geographies matter?
 - Which search-engine guidance is directly applicable, and which observations are only hypotheses?
 - Are Search Console, analytics, crawl logs, rank tracking, or backlink data available?
-- Are agent-facing discovery surfaces also in scope, requiring an Assess Agent Readiness adjunct pass?
+- Are agent-facing discovery surfaces materially in scope, requiring an Assess Agent Readiness adjunct pass or a separate audit recommendation?

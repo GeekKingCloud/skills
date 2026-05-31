@@ -33,12 +33,6 @@
 - Official claim status: `No official SEO, AI search, crawler, MCP, OpenAPI, or compliance claim.`
 - Notes:
 
-## Assess SEO Adjunct
-
-- Assess SEO adjunct: `Ran/Skipped/Unavailable`
-- Reason:
-- Impact on Assess Agent Readiness score: `None/discovery finding/grade cap/lower confidence`
-
 ## Key Observations
 
 - Evidence strengths:

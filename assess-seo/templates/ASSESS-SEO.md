@@ -37,12 +37,6 @@
 - Official claim status: `No official ranking, traffic, indexing, rich-result, or SEO certification claim.`
 - Notes:
 
-## Assess Agent Readiness Adjunct
-
-- Assess Agent Readiness adjunct: `Ran/Skipped/Unavailable`
-- Reason:
-- Impact on Assess SEO score: `None/technical finding/grade cap/lower confidence`
-
 ## Key Observations
 
 - Evidence strengths:

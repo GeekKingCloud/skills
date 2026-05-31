@@ -16,19 +16,15 @@ Assess Agent Readiness and Assess SEO overlap on technical discovery, but they a
 - Assess Agent Readiness asks whether agents and agentic crawlers can discover, understand, use, and verify a system.
 - Assess SEO asks whether a public web surface is ready to earn organic search visibility for human searchers.
 
-Use Assess SEO as an `Optional adjunct gate` when the caller asks for classic SEO readiness, search growth, human organic traffic, keyword coverage, SERP competitiveness, title/meta optimization, local SEO, content strategy, backlinks, rankings, or traffic opportunity. Skip Assess SEO when the target is not public-search-facing or the caller only wants agent-readiness.
+Use Assess SEO as an optional adjunct only when the caller asks for classic SEO readiness, search growth, human organic traffic, keyword coverage, SERP competitiveness, title/meta optimization, local SEO, content strategy, backlinks, rankings, or traffic opportunity. For targets that are not public-search-facing, or when the caller only wants agent-readiness, omit Assess SEO from the report entirely.
 
 Blocking behavior:
 
 - Do not let `llms.txt` or other AI-oriented files compensate for broken conventional crawl foundations. Missing or broken `robots.txt`, sitemap discovery, indexability, canonicalization, redirects, structured data, or crawlable content can be an Assess Agent Readiness finding when it impairs agentic discovery, and it should be handed to Assess SEO when classic SEO impact is in scope.
 - Do not expand Assess Agent Readiness into keyword research, SERP strategy, backlink review, local profile optimization, CTR-focused snippets, traffic forecasting, or ranking predictions. Recommend Assess SEO for those paths.
-- Do not fail an Assess Agent Readiness audit solely because Assess SEO was skipped or unavailable. Report the skip reason and whether classic SEO readiness remains unassessed.
+- Do not fail or lower an Assess Agent Readiness audit solely because Assess SEO was skipped or unavailable.
 
-Final-report evidence when Assess SEO is used, skipped, or unavailable:
-
-- `Assess SEO adjunct: Ran/Skipped/Unavailable`
-- `Reason: ...`
-- `Impact on Assess Agent Readiness score: None/discovery finding/grade cap/lower confidence`
+If classic SEO readiness or human organic-search performance is materially relevant to the user's agent-readiness question, add a short note recommending Assess SEO as a separate audit. If Assess SEO actually runs or directly affects an agent-readiness finding, report that evidence and its impact. Otherwise, do not mention Assess SEO in the final report.
 
 ## Required Audit Workflow
 
@@ -105,7 +101,7 @@ Before grading, define:
 - evaluated scope
 - evidence mode
 - evidence limits
-- Assess SEO adjunct status when classic SEO readiness is relevant
+- Assess SEO status only when it is materially relevant, actually run, or directly affects an agent-readiness finding
 
 Treat `llms.txt` as an optional emerging convention. Do not fail a system solely for missing `llms.txt` when the target has strong conventional crawlability, structured content, and agent-facing docs. Do treat it as a missed readiness opportunity when LLM-friendly orientation is important and no equivalent exists.
 

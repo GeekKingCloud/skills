@@ -87,4 +87,4 @@ Use this file as Assess Agent Readiness's starting source map. Refresh sources d
 - Which standards are actually applicable, and which are only speculative conventions?
 - Are there public and authorized/private surfaces that need separate scoring?
 - What evidence is unavailable, and does that limit the grade or only lower confidence?
-- Is classic SEO readiness also in scope, requiring an Assess SEO adjunct pass or a clear skip reason?
+- Is classic SEO readiness materially in scope, requiring an Assess SEO adjunct pass or a separate audit recommendation?

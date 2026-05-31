@@ -45,20 +45,16 @@ Assess Agent Readiness and Assess SEO overlap on technical discovery, but they a
 - Assess SEO asks whether the target can compete for organic search visibility and satisfy human search intent.
 - Assess Agent Readiness asks whether agents and agentic crawlers can discover, understand, act on, and verify the system.
 
-Use Assess Agent Readiness as an `Optional adjunct gate` when the target has important agent-facing, AI-crawler, API/tool, documentation, or machine-action surfaces. Skip Assess Agent Readiness when the target is a conventional marketing/content site and the caller only wants classic SEO readiness. If Assess Agent Readiness is unavailable but agent-facing discovery is relevant, run a fallback pass covering agent/crawler orientation, `llms.txt` or equivalent, structured content extractability, and action-surface clarity.
+Use Assess Agent Readiness as an optional adjunct only when the target has important agent-facing, AI-crawler, API/tool, documentation, or machine-action surfaces and that scope is materially relevant to the user's SEO question. For conventional marketing/content sites where the caller only wants classic SEO readiness, omit Assess Agent Readiness from the report entirely.
 
 Blocking behavior:
 
 - Do not let `llms.txt` or AI-oriented files compensate for broken classic crawl/index foundations. Missing or broken `robots.txt`, sitemap discovery, indexability, canonicalization, or crawlable content can be an Assess SEO blocker even when agent-facing files exist.
 - Do not expand Assess SEO into agent instructions, MCP/tool protocols, API actionability, auth delegation, agent-safe execution, deterministic recovery, or handoff verification except as a short relevance note that routes the work to Assess Agent Readiness.
-- Do not fail an Assess SEO audit solely because Assess Agent Readiness was skipped or unavailable. Report the skip reason and whether agentic readiness remains unassessed.
+- Do not fail or lower an Assess SEO audit solely because Assess Agent Readiness was skipped or unavailable.
 - If Assess Agent Readiness finds a critical machine-discovery issue that also affects public crawlability, reflect it in Assess SEO's technical findings and grade cap.
 
-Final-report evidence when Assess Agent Readiness is used, skipped, or unavailable:
-
-- `Assess Agent Readiness adjunct: Ran/Skipped/Unavailable`
-- `Reason: ...`
-- `Impact on Assess SEO score: None/technical finding/grade cap/lower confidence`
+If agent-facing discovery or machine-action readiness is materially relevant to the user's SEO question, add a short note recommending Assess Agent Readiness as a separate audit. If Assess Agent Readiness actually runs or directly affects an SEO finding, report that evidence and its impact. Otherwise, do not mention Assess Agent Readiness in the final report.
 
 ## References
 
@@ -106,7 +102,7 @@ Before grading, define:
 - evaluated scope
 - evidence mode
 - evidence limits
-- Assess Agent Readiness adjunct status when agent-facing readiness is relevant
+- Assess Agent Readiness status only when it is materially relevant, actually run, or directly affects an SEO finding
 
 Avoid claiming that any fix guarantees rankings, traffic, citations, snippets, or AI retrieval.
 
@@ -152,4 +148,4 @@ Do:
 
 ## Orchestrator Use
 
-Other workflow skills may use Assess SEO as an optional adjunct gate when a target has a public organic-search surface. Report evidence mode, score, grade cap, blockers, Assess Agent Readiness adjunct status, and skipped or not-assessed categories clearly enough for the parent workflow to decide whether SEO-readiness issues block release readiness. Assess SEO does not depend on those orchestrator skills; it remains a standalone SEO-readiness audit skill.
+Other workflow skills may use Assess SEO as an optional adjunct gate when a target has a public organic-search surface. Report evidence mode, score, grade cap, blockers, and skipped or not-assessed categories clearly enough for the parent workflow to decide whether SEO-readiness issues block release readiness. Include Assess Agent Readiness status only when it is materially relevant, actually run, or directly affects an SEO finding. Assess SEO does not depend on those orchestrator skills; it remains a standalone SEO-readiness audit skill.
