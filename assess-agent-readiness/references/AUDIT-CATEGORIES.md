@@ -7,6 +7,7 @@ Use this file as Assess Agent Readiness's default category map. Omit categories 
 - Discovery And Crawl Policy
 - Agent Instructions And Orientation
 - Content Extractability And Semantics
+- Data Access And Coverage
 - Action Surfaces And Protocols
 - Auth, Permissions, And Safety
 - Error Recovery And Determinism
@@ -47,13 +48,25 @@ Inspect:
 - main-content separation, boilerplate, hidden critical content, PDFs/images-only content, and script-only content
 - dates, authorship, source provenance, entities, summaries, FAQs, and citation clarity
 
-## Action Surfaces And Protocols
+## Data Access And Coverage
 
-Check whether agents can perform useful work through stable interfaces.
+Check whether agents can reach the authoritative data behind the surface quickly and completely enough for realistic tasks.
 
 Inspect:
 
-- OpenAPI or equivalent specs, API docs, SDKs, CLIs, webhooks, and examples
+- documented data APIs, endpoint inventories, feeds, bulk exports, downloadable datasets, search endpoints, and read-only tool resources
+- OpenAPI or equivalent schemas for response shape, field definitions, filtering, sorting, pagination, freshness, localization, and versioning
+- coverage parity between public pages, docs, apps, exports, APIs, feeds, and private/authenticated states
+- data provenance, update cadence, stable IDs, canonical records, timestamps, and citation or attribution fields
+- limits that force brittle scraping, manual lookup, screenshots, PDFs, browser-only navigation, or guesswork for core data retrieval
+
+## Action Surfaces And Protocols
+
+Check whether agents can perform useful work through stable interfaces after they understand the data surface.
+
+Inspect:
+
+- write/update endpoints, transactional APIs, SDKs, CLIs, webhooks, and executable examples
 - MCP tools, resources, prompts, manifests, and integration docs
 - sandbox/test mode, dry-run support, sample payloads, idempotency, side effects, and versioning
 - browser-only workflows that lack API/tool alternatives
@@ -114,7 +127,7 @@ For each finding, capture category, priority, evidence, affected agent/user path
 
 Score each applicable category out of 10 after reviewing findings and evidence.
 
-- `10`: no meaningful issues found; strong evidence across relevant routes, docs, APIs/tools, auth states, and recovery paths.
+- `10`: no meaningful issues found; strong evidence across relevant routes, docs, data access paths, APIs/tools, auth states, and recovery paths.
 - `8-9`: minor issues only; no core agent workflow barriers.
 - `6-7`: moderate issues affecting repeated use, secondary workflows, recovery, or confidence.
 - `4-5`: serious issues affecting core workflows for some agents or task types.
@@ -143,6 +156,7 @@ Apply grade caps after averaging:
 - Any category scored `0-3` applies a grade cap of `D`.
 - Missing live evidence for important runtime action surfaces applies a grade cap of `B`.
 - Missing API/tool execution evidence for an action-oriented product applies a grade cap of `C`.
+- Missing documented data/API coverage for a product whose core value is structured data retrieval applies a grade cap of `C`.
 - Incomplete crawl, blocked docs, missing credentials, or inaccessible discovery paths can apply a grade cap of `B` or lower when they prevent judging important agent workflows.
 
 Report the cap as one field: `Grade cap: None` or `Grade cap: <cap>, <reason>`.

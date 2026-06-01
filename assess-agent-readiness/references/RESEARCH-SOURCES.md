@@ -76,7 +76,8 @@ Use this file as Assess Agent Readiness's starting source map. Refresh sources d
 ## Useful Secondary Checks
 
 - Search documentation for JavaScript SEO, structured data, canonical URLs, pagination, and internationalization when auditing websites.
-- API docs for auth, scopes, rate limits, idempotency, errors, versioning, and webhooks when auditing action surfaces.
+- API docs for endpoint inventory, schemas, response fields, filtering, sorting, pagination, freshness, auth, scopes, rate limits, idempotency, errors, versioning, and webhooks when auditing data or action surfaces.
+- Data exports, feeds, bulk-download docs, SDK reference docs, and schema references when the target's main value is data retrieval rather than page reading.
 - SDK docs, CLIs, changelogs, examples, and sample apps when auditing developer-facing tools.
 - Status pages, support docs, incident history, and deprecation notices when auditing reliability and recovery.
 

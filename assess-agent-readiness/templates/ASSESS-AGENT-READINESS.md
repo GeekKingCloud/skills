@@ -27,6 +27,15 @@
 - Emerging or speculative conventions:
 - Target agents, automated consumers, and likely tasks:
 
+## Agent Data And Action Path
+
+- Core data or actions agents need:
+- Authoritative access path:
+- API/tool/feed/export coverage:
+- Browser-only or scraping-dependent gaps:
+- Auth, rate-limit, or permission constraints:
+- Fastest safe integration path:
+
 ## Standards And Claims
 
 - Relevant standards or conventions:
