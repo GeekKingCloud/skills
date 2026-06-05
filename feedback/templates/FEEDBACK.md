@@ -3,6 +3,7 @@
 ## Evidence Reviewed
 
 - Sources:
+- Feedback mode: [Current conversation / Single artifact / Limited history / Deep cross-session]
 - Time or project scope:
 - Task/session coverage:
 - Agent or tool contexts represented:
@@ -21,13 +22,13 @@
 - Generalization boundary:
 - Better inputs needed:
 
-If the decision is `Not enough evidence`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision`. Do not fill the rest of the report with generic collaboration coaching.
+If the decision is `Not enough evidence`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision`. Do not fill the rest of the report with generic collaboration coaching; offer a narrower evidence-supported feedback mode when possible.
 
-If the decision is `Incomplete run`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision` unless the user explicitly asks for interim notes. List what was reviewed, what remains, and what blocker prevented full-depth review.
+If the decision is `Incomplete run`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision` unless the user explicitly asks for interim notes. List what was reviewed, what remains, and what blocker prevented completing the requested scope.
 
-For general collaboration-improvement requests, full-depth review is the default. `Preliminary only` still requires evidence beyond the active conversation. If the report would mostly analyze the current thread, stop and request broader history.
+For broad collaboration-improvement requests, deep cross-session review is the default. If the report would mostly analyze the current thread, either switch to explicitly scoped current-conversation feedback or request broader history.
 
-For narrow Agent Feedback requests, full-depth review still applies within that narrower scope. Do not substitute a lightweight scan for the requested evidence review.
+For narrow Agent Feedback requests, review the narrower scope deeply enough to support useful feedback. Do not substitute generic advice for the requested evidence review.
 
 Do not confuse available corpus with completed inspection. If broad history exists but was not inspected deeply enough, continue reviewing. If continuing is blocked, mark the run `Incomplete run`; do not present a lower-confidence finished report merely because the workflow did not dig enough.
 
@@ -123,7 +124,7 @@ Repeat only for evidence-supported changes, maximum three.
 
 ## Better Prompt Patterns
 
-History access for general agent feedback:
+History access for broad agent feedback:
 ```text
 Use the `feedback` skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
 ```
@@ -135,7 +136,7 @@ Repo or scope boundary:
 
 Evidence sufficiency:
 ```text
-Use the `feedback` skill on [scope]. If there is not enough cross-task history to produce evidence-bound agent feedback, say that and list what inputs you need.
+Use the `feedback` skill on [scope]. If there is not enough evidence to produce feedback for that scope, say that and list what inputs would unlock it. If only narrower feedback is supported, say so and offer that mode.
 ```
 
 Stop, audit, or continue correction:
