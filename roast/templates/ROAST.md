@@ -38,13 +38,13 @@ Scope: [what was inspected and what was skipped]
   Impact: [exploit, failure mode, or maintenance cost]
   Fix: [concrete remediation direction]
 
-## Architecture Detention
+## Architecture Review
 - [Architecture issue or `No major architecture findings in reviewed scope.`]
 
-## Style Crimes
+## Maintainability And Style
 - [Style or maintainability issue, or `No notable style findings in reviewed scope.`]
 
-## Test Report Card
+## Test Coverage
 - [Testing assessment and missing coverage]
 
 ## What To Fix First
@@ -52,5 +52,5 @@ Scope: [what was inspected and what was skipped]
 2. [Next fix]
 3. [Next fix]
 
-Grade: [A+ to F]
-Teacher's remark: [one blunt one-liner]
+Grade: [A to F]
+Review verdict: [one concise evidence-backed verdict]
