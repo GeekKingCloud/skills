@@ -16,12 +16,13 @@ When asked to use Assess SEO:
 1. Identify the target site, page set, business, market, geography, content type, and search goals.
 2. Read local project context first when source is available, such as `AGENTS.md`, README files, CMS docs, route files, SEO config, content templates, structured data, sitemap generation, redirects, and analytics docs.
 3. Determine the evidence mode: `Source + live`, `Source only`, `Live only`, or `Artifact only`.
-4. Push for the strongest evidence practical before scoring: run the project when source is available and safe, inspect reachable production or development URLs, check live crawl files and route status, and use lightweight network checks such as DNS, ping, headers, or HTTP probes when they clarify reachability or host behavior.
-5. Research the current search baseline before judging. Prefer current primary sources and record sources used with access dates.
-6. Inspect the live or source surface: crawl policy, indexability, sitemap, canonicals, redirects, status codes, rendered content, metadata, headings, structured data, links, media, performance signals, local/entity data, and visible conversion paths.
-7. Compare representative pages against likely queries, search intent, SERP features, and direct competitors when the target market is known.
-8. Capture findings by category, score each applicable category out of 10, then prioritize by expected search/user impact.
-9. Use `templates/ASSESS-SEO.md` as the report skeleton.
+4. Determine site-type category applicability before scoring, including which categories are applicable, `N/A`, or `Not assessed` because evidence such as target queries, geography, Search Console, analytics, rank, backlink, crawl, or competitor data is unavailable.
+5. Push for the strongest evidence practical before scoring: run the project when source is available and safe, inspect reachable production or development URLs, check live crawl files and route status, and use lightweight network checks such as DNS, ping, headers, or HTTP probes when they clarify reachability or host behavior.
+6. Research the current search baseline before judging. Prefer current primary sources and record sources used with access dates.
+7. Inspect the live or source surface: crawl policy, indexability, sitemap, canonicals, redirects, status codes, rendered content, metadata, headings, structured data, links, media, performance signals, local/entity data, and visible conversion paths.
+8. Compare representative pages against likely queries, search intent, SERP features, and direct competitors when the target market is known.
+9. Capture findings by category, score each applicable category out of 10, then prioritize by expected search/user impact.
+10. Use `templates/ASSESS-SEO.md` as the report skeleton.
 
 Mention verification limits only where they affect confidence, scoring, or grade caps.
 
@@ -32,6 +33,7 @@ Use `Assessment Coverage` as the first report section after the title, not a ter
 Use the template as a skeleton, not as text to copy blindly. Fill every placeholder, delete empty optional sections, and do not leave template instructions or rationale about why a section exists in the final report.
 
 - `Assessment Coverage`: write only report-facing bullets for `Assessed`, `Not assessed`, what the caller can provide or permit to improve confidence, and the expected impact of that evidence. Do not add a sentence explaining why the section appears first.
+- `Category Applicability`: summarize which categories were scored, marked `N/A`, or marked `Not assessed`, and why. Do not quietly score categories that depend on unavailable target queries, market/geography, private analytics, backlink/rank data, or competitor evidence.
 - `Start Here`: keep this as the single prioritized action plan. Do not duplicate it later as `Next Steps` unless the caller requested a separate roadmap.
 - `Findings By Priority`: for each priority level, either list scoped findings or write one clear state such as `No scoped findings after review.` or `Not assessed; evidence limit: ...`.
 - `Findings By Category`: populate the score table from the applicable assessed categories in `references/AUDIT-CATEGORIES.md`. Keep that reference file as the source of truth for category names, order, scoring rules, and grade caps.
@@ -43,7 +45,7 @@ Use the template as a skeleton, not as text to copy blindly. Fill every placehol
 Assess Agent Readiness and Assess SEO overlap on technical discovery, but they answer different questions.
 
 - Assess SEO asks whether the target can compete for organic search visibility and satisfy human search intent.
-- Assess Agent Readiness asks whether agents and agentic crawlers can discover, understand, act on, and verify the system.
+- Assess Agent Readiness asks whether solution or coding agents can discover, understand, retrieve from, act on, and verify agent-facing data and action surfaces.
 
 Use Assess Agent Readiness as an optional adjunct only when the target has important agent-facing, AI-crawler, API/tool, documentation, or machine-action surfaces and that scope is materially relevant to the user's SEO question. For conventional marketing/content sites where the caller only wants classic SEO readiness, omit Assess Agent Readiness from the report entirely.
 
@@ -89,6 +91,17 @@ Use one evidence mode:
 
 Missing Search Console, analytics, backlink, rank-tracking, or server-log access is not a grade cap by itself. It lowers confidence or prevents scoring categories that depend on those data sources. Missing live crawl evidence can cap the grade when technical indexability or rendered content cannot be verified.
 
+## Site-Type And Evidence Defaults
+
+Before scoring, decide which categories apply to the target's site type and evidence. Use this section to avoid inflating scores from weak or unavailable data.
+
+- Crawl, indexing, metadata, content, internal linking, structured data, and page experience usually apply to public websites, landing pages, documentation sites, ecommerce pages, local-business sites, and content libraries.
+- Search intent and query coverage require stated search goals, representative query themes, known keywords, or enough market/page evidence to derive them responsibly. If none are available, mark the category `Not assessed` or keep findings explicitly preliminary instead of assigning a confident score.
+- Local, entity, and brand signals apply when the target represents a business, location, service area, person, organization, product, venue, or brand that search systems and users need to identify. Mark local-specific checks `N/A` for non-local products or docs, but keep entity/brand clarity when ownership or source trust matters.
+- Measurement, diagnostics, and change control require Search Console, analytics, crawl exports, logs, rank tracking, release records, or equivalent project evidence. If those are unavailable, mark unavailable subareas `Not assessed`; do not penalize unrelated public-page readiness unless the caller asked for a data-backed growth plan.
+- Competitive visibility and off-site signals require a known market/geography, representative SERPs, competitor set, review/citation evidence, backlink/profile data, or caller-provided competitive context. If those are missing, mark the category `Not assessed` or score only the directly observed subset with a clear confidence limit.
+- Ecommerce, marketplace, local-business, documentation, and content-library targets may need different category weights. Do not treat a category as applicable merely because it exists in the default map; explain `N/A` and `Not assessed` decisions in `Assessment Coverage` and `Category Applicability`.
+
 ## Standards Baseline
 
 Report standards, official guidance, and Assess SEO's practical score separately. Assess SEO scores are internal readiness grades, not official ranking, rich-result, Search Console, or SEO certification claims.
@@ -98,6 +111,7 @@ Before grading, define:
 - target site type and market
 - target audience and search goals
 - representative query themes or known keywords
+- site-type category applicability, including categories marked `N/A` or `Not assessed`
 - relevant standards, search-engine guidance, and platform conventions
 - evaluated scope
 - evidence mode
