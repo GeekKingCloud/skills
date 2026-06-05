@@ -13,7 +13,7 @@ When asked to recover:
 1. Read nearby instructions first, such as `AGENTS.md`, repo guides, and any current handoff note.
 2. Build an evidence inventory from conversation/session context, workspace artifacts, logs, commands, diffs, and recent files.
 3. Identify candidate interrupted tasks and rank them by evidence strength.
-4. Pick a recovery mode: continue, ask one confirmation, offer a choice list, or stop with insufficient evidence.
+4. Pick a recovery mode: continue, summarize, ask one confirmation, offer a choice list, or stop with insufficient evidence.
 5. State facts, guesses, risks, and the recommended next step separately.
 6. Once aligned, leave recovery mode and continue normal execution.
 
@@ -54,11 +54,23 @@ Choose one mode:
 ### Continue
 
 Continue without asking when:
+- the caller's wording implies resuming execution, such as "recover and continue", "pick this back up", "resume the work", "keep going", or equivalent
 - the target task is high confidence
 - the next action is low risk and reversible
 - repo instructions and success criteria are available
 
 First give a compact recovery summary, then act.
+
+Do not continue merely because confidence is high. If the caller asks what happened, asks for a recovery summary, asks to inspect the interrupted state, or uses ambiguous wording like "recover this", summarize first and give the recommended next step without editing files or restarting work.
+
+### Summarize
+
+Summarize without continuing when:
+- the likely task is high confidence, but the caller did not clearly ask to resume execution
+- the caller asks for status, reconstruction, context, or what to do next
+- continuing could surprise the user by changing files, starting commands, or spending meaningful time
+
+Use the recovery summary template, write `No confirmation needed; summary only` in the `Confirmation` section when appropriate, and stop after the recommended next step unless the caller then asks to continue.
 
 ### Confirm
 
@@ -112,7 +124,7 @@ For the `Confirmation` section, either ask one direct question with a recommende
 - if session evidence is ambiguous, partial, or conflicts with repo evidence, confirm the likely thread before giving a confident recovery summary
 - protect user work; preserve partial files and unrelated changes
 - once the user confirms or corrects the thread, treat that correction as authoritative
-- once aligned, switch from recovery into normal execution
+- once aligned and the caller has asked to continue, switch from recovery into normal execution
 
 ## Quality bar
 
