@@ -22,18 +22,6 @@
 - Generalization boundary:
 - Better inputs needed:
 
-If the decision is `Not enough evidence`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision`. Do not fill the rest of the report with generic collaboration coaching; offer a narrower evidence-supported feedback mode when possible.
-
-If the decision is `Incomplete run`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision` unless the user explicitly asks for interim notes. List what was reviewed, what remains, and what blocker prevented completing the requested scope.
-
-For broad collaboration-improvement requests, deep cross-session review is the default. If the report would mostly analyze the current thread, either switch to explicitly scoped current-conversation feedback or request broader history.
-
-For narrow Agent Feedback requests, review the narrower scope deeply enough to support useful feedback. Do not substitute generic advice for the requested evidence review.
-
-Do not confuse available corpus with completed inspection. If broad history exists but was not inspected deeply enough, continue reviewing. If continuing is blocked, mark the run `Incomplete run`; do not present a lower-confidence finished report merely because the workflow did not dig enough.
-
-Omit sections or items that the evidence cannot support, unless the absence itself is useful to report.
-
 ## Evidence Inventory
 
 - **E1:** [Source and scope]
@@ -80,7 +68,7 @@ Omit sections or items that the evidence cannot support, unless the absence itse
 
 ## Top Changes
 
-Repeat only for evidence-supported changes, maximum three.
+[Up to three evidence-supported changes.]
 
 1. [Specific change]
    - Evidence basis: [E1, E2]
