@@ -3,6 +3,9 @@
 ## Goal
 [What success looks like]
 
+## Handoff File
+[Path where this note is saved, or `Not written: <reason>`]
+
 ## Workflow Stage
 [Current phase]
 

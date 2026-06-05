@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Capture restart-safe handoff notes for unfinished work. Use when pausing, transferring, or resuming after context loss, token pressure, machine restart, session change, or any stop that needs goal, status, blockers, artifacts, and next steps preserved.
+description: Capture restart-safe handoff notes for unfinished work in a reachable HANDOFF.md file by default. Use when pausing, transferring, or resuming after context loss, token pressure, machine restart, session change, or any stop that needs goal, status, blockers, artifacts, and next steps preserved.
 ---
 
 # Handoff
@@ -14,7 +14,8 @@ When asked to hand off work:
 2. State the end goal and current workflow stage in plain language.
 3. Record what is complete, what is in progress, and what stopped the work.
 4. Include exact file paths, commands, tests, and blockers.
-5. Be explicit about uncertainty; do not imply work was finished when it was only planned.
+5. Write the handoff to a reachable `HANDOFF.md` by default, then report the path.
+6. Be explicit about uncertainty; do not imply work was finished when it was only planned.
 
 ## Gather facts
 
@@ -24,6 +25,18 @@ Check the workspace instead of relying on memory:
 - tests run, skipped, or still failing
 - branch state and uncommitted changes when relevant
 - decisions, assumptions, and open questions
+
+## Choose the file location
+
+Default to a user-reachable file named `HANDOFF.md`:
+
+- Use the explicit target repo, project folder, or workspace root when the caller names one.
+- Otherwise use the current working directory if it is the obvious active workspace.
+- Do not default to hidden tool scratch paths, temp UUID folders, `.codex` runtime folders, or other locations a user is unlikely to open directly.
+- If multiple plausible roots exist, no writable project root is available, or the request only asks for handoff text without a clear workspace, ask one short location question before writing.
+- If a same-task `HANDOFF.md` already exists, update it in place.
+- If `HANDOFF.md` exists but appears to describe unrelated work, ask before replacing it; offer to append a dated section or write a clearly named adjacent file such as `HANDOFF-<topic>.md`.
+- After writing, state the final path and whether the file was created, updated, appended, or intentionally not written.
 
 ## Write the handoff
 
