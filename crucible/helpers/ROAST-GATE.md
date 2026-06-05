@@ -25,7 +25,7 @@ Use `roast-led-project-scope` when no separate implementation plan is supplied a
 
 ## Running Roast
 
-Run roast as a serious, evidence-backed release audit unless the caller explicitly asks for a snarkier presentation.
+Run roast as a serious, evidence-backed release audit.
 
 Use the Review Gate Loop:
 - collect findings, grade, evidence, and scope limitations
