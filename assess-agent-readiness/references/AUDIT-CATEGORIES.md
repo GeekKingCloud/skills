@@ -19,7 +19,7 @@ Use this file as Assess Agent Readiness's default category map. Omit categories 
 
 ## Discovery And Crawl Policy
 
-Check whether agents can find the right public or authorized surfaces.
+Check whether solution or coding agents can find the right public or authorized surfaces for the user task being evaluated.
 
 Inspect:
 
@@ -47,10 +47,11 @@ Inspect:
 - semantic HTML, headings, metadata, canonical tags, structured data, and Schema.org
 - main-content separation, boilerplate, hidden critical content, PDFs/images-only content, and script-only content
 - dates, authorship, source provenance, entities, summaries, FAQs, and citation clarity
+- whether browser-mediated agent workflows can identify the main task state, available actions, and authoritative answer without confusing navigation, marketing boilerplate, ads, or unrelated content for source data
 
 ## Data Access And Coverage
 
-Check whether agents can reach the authoritative data behind the surface quickly and completely enough for realistic tasks.
+Check whether solution or coding agents can reach the authoritative data behind the surface quickly and completely enough for realistic user tasks.
 
 Inspect:
 
@@ -59,6 +60,7 @@ Inspect:
 - coverage parity between public pages, docs, apps, exports, APIs, feeds, and private/authenticated states
 - data provenance, update cadence, stable IDs, canonical records, timestamps, and citation or attribution fields
 - limits that force brittle scraping, manual lookup, screenshots, PDFs, browser-only navigation, or guesswork for core data retrieval
+- whether public, authenticated, read-only, and action-oriented surfaces need separate scores because evidence or capability differs materially
 
 ## Action Surfaces And Protocols
 
@@ -121,7 +123,7 @@ Classify findings by agent/user impact:
 - `Medium`: affects important secondary workflows, repeated use, recovery, freshness, or confidence.
 - `Low`: polish or narrow-scope issue with limited agent impact.
 
-For each finding, capture category, priority, evidence, affected agent/user path, impact, fix direction, and confidence.
+For each finding, capture category, priority, evidence, target agent profile, affected agent/user path, impact, fix direction, and confidence.
 
 ## Category Score Rubric
 
@@ -134,7 +136,7 @@ Score each applicable category out of 10 after reviewing findings and evidence.
 - `1-3`: major blockers for discovery, understanding, safe action, or verification.
 - `0`: category cannot be meaningfully used or evaluated because of a blocking readiness failure.
 
-Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated. Exclude `N/A` and `Not assessed` categories from the final average and explain evidence limits.
+Use `N/A` only when a category genuinely does not apply to the selected target agent profile and user task. Use `Not assessed` when a category applies but was not evaluated. Exclude `N/A` and `Not assessed` categories from the final average and explain evidence limits. When public and authenticated, read-only and write, or browser and API surfaces differ materially, score them separately or state the split in the category rationale.
 
 Every assessed category score must include a one-line rationale naming the strongest evidence and the main reason the score is not higher.
 
