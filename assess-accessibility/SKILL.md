@@ -18,9 +18,10 @@ When asked to use Assess Accessibility:
 3. Determine the project type, tech stack, target platforms, likely users, input methods, rendering formats, and assistive-technology surface.
 4. Push for the strongest evidence practical before scoring: run the project when source is available and safe, inspect reachable production or development URLs, check representative routes/screens, and use lightweight network checks such as DNS, ping, headers, or HTTP probes when they clarify reachability or host behavior.
 5. Research the applicable accessibility standards and platform guidance before judging. Prefer current primary sources.
-6. Inspect the actual implementation or running surface: components, styles, design tokens, routes/screens, rendered markup where code is available, forms, state changes, content, and responsive behavior.
-7. Capture findings by accessibility category, score each applicable category out of 10, then prioritize by user impact.
-8. Use `templates/ASSESS-ACCESSIBILITY.md` as the report skeleton.
+6. For UI-heavy targets, complete the minimum UI evidence checklist before scoring or document exactly which checks could not run and how that affects confidence, blocked categories, or grade caps.
+7. Inspect the actual implementation or running surface: components, styles, design tokens, routes/screens, rendered markup where code is available, forms, state changes, content, and responsive behavior.
+8. Capture findings by accessibility category, score each applicable category out of 10, then prioritize by user impact.
+9. Use `templates/ASSESS-ACCESSIBILITY.md` as the report skeleton.
 
 Do not include test coverage or accessibility tooling gaps as standing categories unless the caller explicitly asks for them. Mention verification limits only where they affect confidence in the audit.
 
@@ -31,6 +32,7 @@ Use `Assessment Coverage` as the first report section after the title, not a ter
 Use the template as a skeleton, not as text to copy blindly. Fill every placeholder, delete empty optional sections, and do not leave template instructions or rationale about why a section exists in the final report.
 
 - `Assessment Coverage`: write only report-facing bullets for `Assessed`, `Not assessed`, what the caller can provide or permit to improve confidence, and the expected impact of that evidence. Do not add a sentence explaining why the section appears first.
+- `Minimum UI Evidence`: include this section for UI-heavy targets. Mark each checklist item as `Done`, `Blocked`, or `N/A`; summarize the effect on scoring. Omit the section for non-UI artifacts only when the checklist genuinely does not apply.
 - `Standards And Claims`: state the target being judged against. Do not use it to repeat source notes.
 - Optional ACR/VPAT status: include a support-status section only when compliance or procurement scope applies; otherwise omit it.
 - `Start Here`: keep this as the single prioritized action plan. Do not duplicate it later as `Next Steps` unless the caller requested a separate roadmap.
@@ -78,6 +80,21 @@ Use one of these evidence modes:
 - `Source only`: code was inspected, but the UI could not be rendered or interacted with.
 - `Rendered only`: a live app, website, prototype, screenshot set, or document output was inspected without source code.
 - `Artifact only`: a static file, image, PDF, email, export, or recording was inspected without interactive access.
+
+## Minimum UI Evidence
+
+For UI-heavy websites, apps, prototypes, design systems, generated documents with interactive review paths, or human-facing workflows, check as many of these as the environment allows before scoring:
+
+- Keyboard access and focus behavior for representative core workflows.
+- Semantics, accessible names, roles, states, labels, headings, landmarks, and live regions through rendered markup, an accessibility tree, platform inspector, or equivalent source evidence.
+- Zoom, text scaling, reflow, long text, and truncation at representative desktop and mobile widths.
+- Responsive or mobile behavior, touch target spacing, orientation assumptions, virtual-keyboard behavior, and sticky or overlay UI.
+- Visual contrast, color-only meaning, focus indicators, disabled/error/success states, and high-contrast or forced-color behavior when relevant.
+- Motion, timing, auto-advance, async updates, focus movement, and reduced-motion behavior when the product uses dynamic UI.
+- Form labels, instructions, validation timing, error recovery, destructive-action confirmation, and loading or partial-failure states when forms or transactions exist.
+- Assistive-technology proof, such as screen reader, platform accessibility inspector, browser accessibility tree, or source-level semantics review when direct AT is unavailable.
+
+If a checklist item applies but cannot be checked, mark the affected categories as lower confidence or `Not assessed`, and apply the grade caps in `references/AUDIT-CATEGORIES.md` when the missing evidence blocks judgment. Do not score a UI-heavy target as if rendered, keyboard, responsive, or assistive-technology evidence exists when it does not.
 
 ## Audit Categories, Prioritization, And Scoring
 
