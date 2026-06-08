@@ -49,6 +49,8 @@ Use only sources that are available in the current workspace or explicitly provi
 
 Prefer sources that expose multiple user-agent exchanges across time. Treat the active conversation as supplemental only; it cannot support the skill's overall feedback goal by itself.
 
+Before sampling, perform a history discovery pass. Look across every exposed coding-agent history source available to the current session, including session indexes, summaries, logs, memory files, handoffs, project notes, repo guidance, issue or PR discussions, and user-provided exports. Do not stop at the current conversation, current workspace, or first history root found. Record which roots, tools, projects, and time ranges were searched, which were inaccessible, and why.
+
 Do not claim access to private chats, hidden history, inaccessible memories, or external systems. If a source would materially improve the report but is unavailable, list it under missing evidence.
 
 Do not browse unrelated or sensitive local histories just because they exist. For an Agent Feedback request, first look for exposed indexes, summaries, handoffs, repo guidance, or user-provided history that clearly relate to prior coding-agent work. If the available index points to relevant session summaries or transcript paths, follow those references deeply enough to meet the full-depth run standard. If the available history boundary is unclear or would require reading unrelated records, ask before expanding.
