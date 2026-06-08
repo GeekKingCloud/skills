@@ -142,22 +142,12 @@ Score each applicable category out of 10 after reviewing findings and evidence.
 
 Use `N/A` only when a category genuinely does not apply to the target site type or search goal. Use `Not assessed` when a category applies but was not evaluated because the needed evidence is unavailable. Exclude `N/A` and `Not assessed` categories from the final average and explain evidence limits. Do not assign confident scores to search intent, competitive visibility, off-site signals, local signals, or measurement categories from weak inference alone.
 
-Default applicability notes:
+Category applicability notes:
 
 - `Search Intent And Query Coverage` is `Not assessed` when no search goals, representative query themes, known keywords, market, or page-to-query evidence is available.
 - `Local, Entity, And Brand Signals` is `N/A` for purely internal, non-public, or non-entity-bearing surfaces; local-specific checks are `N/A` for non-local sites, but entity/source clarity can still apply to documentation, products, and organizations.
 - `Measurement, Diagnostics, And Change Control` is `Not assessed` for private data-dependent subareas when Search Console, analytics, logs, crawl exports, rank tracking, or release evidence is unavailable.
 - `Competitive Visibility And Off-Site Signals` is `Not assessed` when market/geography, representative SERPs, competitor set, backlink/profile data, reviews/citations, or caller-provided competitive context is unavailable.
-
-Site-type defaults:
-
-| Site type | Usually scored | Often `N/A` | Often `Not assessed` without extra evidence |
-| --------- | -------------- | ----------- | ------------------------------------------- |
-| Marketing or landing site | Crawl/index, intent, metadata, content, internal linking, structured data when present, page experience, entity/brand | Local checks when no local/service-area intent exists | Competitive/off-site without market or SERP evidence; measurement without private data |
-| Local business site | Crawl/index, intent, metadata, content, internal linking, structured data, local/entity, page experience | Ecommerce/product catalog checks when no catalog exists | Competitive/off-site without local SERP, review, citation, or profile evidence; measurement without private data |
-| Ecommerce or product catalog | Crawl/index, intent, metadata, content, internal linking, structured data, page experience, entity/brand | Local checks when no local/service-area intent exists | Competitive/off-site without SERP, marketplace, review, backlink, or rank evidence; measurement without analytics or Search Console |
-| Documentation or content library | Crawl/index, intent, metadata, content, internal linking, structured data when relevant, page experience, entity/source trust | Local checks and commercial local intent | Competitive/off-site without search market evidence; measurement without Search Console, analytics, crawl exports, or logs |
-| Private app, authenticated surface, API, or non-public tool | Usually outside classic SEO scope unless public docs, landing pages, or marketing surfaces exist | Public organic categories for fully private surfaces | Public-search categories when no crawlable organic surface exists; route to Assess Agent Readiness for agent-facing APIs/tools |
 
 Every assessed category score must include a one-line rationale naming the strongest evidence and the main reason the score is not higher.
 
