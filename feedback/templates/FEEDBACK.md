@@ -86,6 +86,7 @@
    - Example wording:
    - Use when:
    - Do not overuse when:
+   - Durable encoding: [prompt habit / repo guidance / AGENTS.md-style block / skill rule / handoff pattern / project doc / not needed]
    - Expected improvement: [faster work / fewer corrections / lower token waste / stronger verification / safer autonomy]
    - Agent response rule:
    - Agent capability nuance:
@@ -114,15 +115,28 @@
    - Evidence basis: [E1, E2]
    - Inferred need:
    - Trigger:
-   - Where the user can encode it: [prompt / repo guidance / skill / handoff / project doc / test]
+   - Where the user can encode it: [prompt / repo guidance / AGENTS.md-style instruction file / skill / handoff / project doc / test]
+   - Suggested durable wording:
    - Expected future-agent behavior:
 
 2. [Specific rule future agents should follow]
    - Evidence basis: [E1, E2]
    - Inferred need:
    - Trigger:
-   - Where the user can encode it: [prompt / repo guidance / skill / handoff / project doc / test]
+   - Where the user can encode it: [prompt / repo guidance / AGENTS.md-style instruction file / skill / handoff / project doc / test]
+   - Suggested durable wording:
    - Expected future-agent behavior:
+
+## Repo Guidance Worth Encoding
+
+- **Evidence:** [E1, E2, or omit if no durable repo/project rule is justified]
+  **Target:** [existing repo guidance file / AGENTS.md-style instruction file / project doc / skill / no durable target visible]
+  **Why this belongs outside the chat:** [Repeated pattern or future-agent risk]
+  **Suggested wording:**
+  ```md
+  [Concrete instruction block]
+  ```
+  **Ask before applying:** [Yes / No, depending on user authorization and repo context]
 
 ## Reusable Prompt And Correction Patterns
 
@@ -155,7 +169,7 @@ Before editing, state the success check. After editing, run the narrowest meanin
 
 Durable update:
 ```text
-If this correction is likely to recur, propose the exact repo guidance, skill, handoff, or project-doc wording that would prevent it next time.
+If this correction is likely to recur, propose the exact repo guidance, AGENTS.md-style instruction block, skill, handoff, or project-doc wording that would prevent it next time.
 ```
 
 ## Recommended Durable Updates

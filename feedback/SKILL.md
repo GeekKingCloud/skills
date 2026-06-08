@@ -23,7 +23,7 @@ When asked to use Agent Feedback:
 7. Read enough evidence to identify repeated communication patterns, not isolated moments.
 8. Separate corpus coverage, sample depth, evidence fidelity, and confidence.
 9. Separate observed facts, interpretations, and recommendations.
-10. Convert each repeated pattern into a teachable collaboration lesson: observed user move, agent response effect, better wording, when to use it, and how to encode it as a prompt habit, repo instruction, skill rule, or handoff pattern.
+10. Convert each repeated pattern into a teachable collaboration lesson: observed user move, agent response effect, better wording, when to use it, and how to encode it as a prompt habit, repo guidance, AGENTS.md-style instruction block when that convention exists, skill rule, or handoff pattern.
 
 If there is not enough evidence to produce reliable cross-session communication feedback, say so plainly and ask for better inputs. Never pretend to have read history that is unavailable. If enough relevant history appears to exist but the current run has not inspected it deeply enough, continue the inspection or label the result `Incomplete run` with the specific blocker.
 
@@ -141,7 +141,7 @@ User-side communication patterns:
 - verification requests: whether the user asks for the narrowest meaningful proof and expects honest reporting of commands that failed or could not run
 - correction patterns: how quickly and specifically the user redirects wrong assumptions, bad edits, weak plans, or incomplete checks
 - recovery and handoff habits: whether long work preserves goals, changed files, blockers, next steps, and exact commands in reachable notes
-- durable instruction habits: whether repeated corrections become repo guidance, skill wording, prompt templates, handoff rules, or project docs
+- durable instruction habits: whether repeated corrections become repo guidance, AGENTS.md-style instruction blocks when that convention exists, skill wording, prompt templates, handoff rules, or project docs
 - context efficiency: whether the user frontloads high-signal context, avoids noisy repetition, clears stale threads, or asks for summarization before context becomes expensive
 - capability matching: how communication changes for newer coding agents, less capable agents, stronger agents, tool-limited environments, and long-running autonomous work
 
@@ -150,7 +150,7 @@ Agent-side rules to encode:
 - where agents fail to read repo guidance or available artifacts
 - whether agents report uncertainty honestly
 - whether agents verify outcomes against the user's actual goal
-- which durable instructions should be written into repo docs or reusable skills
+- which durable instructions should be written into repo guidance, AGENTS.md-style instruction files when present, project docs, or reusable skills
 - where agents should ask for history, scope, examples, or success criteria before giving agent feedback
 - what the current agent can infer about its own context needs and limits
 
@@ -160,6 +160,7 @@ Every major user-side recommendation must include:
 - `Use this wording`: a concrete replacement phrase, prompt pattern, correction, or handoff structure
 - `When to use it`: the task type or collaboration moment where it applies
 - `Do not overuse when`: the case where extra structure would add noise or slow the work
+- `Durable encoding`: whether this should become a prompt habit, repo-guidance/AGENTS.md-style block, skill rule, handoff pattern, or project doc update
 - `Evidence IDs`: the reviewed evidence that supports the recommendation
 
 Treat agent feedback as a communication audit and teaching report, not a user-blame exercise. Sections about agent behavior should be framed as future-agent expectations only when they include a place the user can encode or trigger them, such as a prompt pattern, repo guidance, skill wording, handoff note, or project doc. Do not imply the user directly controls future agents at runtime.
@@ -174,11 +175,14 @@ When using the template, omit sections or items that the evidence cannot support
 
 For general communication-improvement requests, include advice that is portable across coding-agent versions. Call out where the advice is capability-sensitive, such as giving more explicit boundaries to less capable agents or delegating more discovery to stronger agents that can inspect repositories and history safely.
 
+When a repeated lesson would help future agents in the same repo or project, include a concise repo-guidance recommendation. If the workspace uses an AGENTS.md-style instruction file, name that as the target and offer draftable wording or a concrete diff. If no durable file convention is visible, say where the caller could place the guidance instead of assuming a filename.
+
 Make recommendations concrete. Prefer examples such as:
 - `Say the target repo and the exact boundary up front.`
 - `Name the success check before implementation starts.`
 - `When correcting an agent, state whether to stop, audit, or continue.`
 - `Give the agent the prior decision, the current goal, and the thing that changed.`
+- `If this keeps recurring, add a short repo-guidance/AGENTS.md-style rule so future agents inherit it.`
 - `Ask the agent to write durable repo guidance when the same correction repeats.`
 - `Tell the agent what history it may inspect before asking for a communication retrospective.`
 - `Ask the agent to state what context it needs before it gives broad collaboration advice.`
