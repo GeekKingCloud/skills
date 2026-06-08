@@ -56,7 +56,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
   npx skills@latest add GeekKingCloud/skills/handoff
   ```
 
-- **feedback** — Review scoped or cross-session collaboration evidence, then produce evidence-bound agent feedback on prompting, handoffs, corrections, strengths, improvement opportunities, and agent-side rules.
+- **feedback** — Deeply review available coding-agent collaboration history, then produce evidence-bound teaching feedback on communication, prompting, context-setting, corrections, verification, handoffs, and durable agent instructions.
 
   ```
   npx skills@latest add GeekKingCloud/skills/feedback
