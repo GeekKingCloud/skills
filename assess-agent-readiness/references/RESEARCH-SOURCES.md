@@ -21,7 +21,7 @@ Use this file as Assess Agent Readiness's starting source map. Refresh sources d
 ### Agent-Friendly Website Guidance
 
 - Source: https://web.dev/articles/ai-agent-site-ux
-- Use for: browser-agent behavior, screenshots, raw HTML, accessibility-tree signals, stable layouts, semantic actionable elements, labels, and visible action state.
+- Use for: browser-mediated solution-agent behavior, screenshots, raw HTML, accessibility-tree signals, stable layouts, semantic actionable elements, labels, and visible action state.
 - Treat as: current vendor guidance and practical best practice, not a general standard or certification model.
 
 ### Robots Exclusion Protocol
@@ -70,7 +70,7 @@ Use this file as Assess Agent Readiness's starting source map. Refresh sources d
 ### Assess SEO Skill
 
 - Source: `assess-seo/SKILL.md` from the repository root
-- Use for: classic SEO readiness, human organic-search visibility, search intent, keyword coverage, snippets, local/entity SEO, performance/page experience, measurement, competitive visibility, rankings, and traffic opportunity.
+- Use for: generic search-crawler discovery, classic SEO readiness, human organic-search visibility, search intent, keyword coverage, snippets, local/entity SEO, performance/page experience, measurement, competitive visibility, rankings, and traffic opportunity.
 - Treat as: adjacent local workflow, not a replacement for Assess Agent Readiness's agent-readiness audit categories.
 
 ## Useful Secondary Checks
@@ -83,8 +83,10 @@ Use this file as Assess Agent Readiness's starting source map. Refresh sources d
 
 ## Research Questions Per Audit
 
-- What target agents or automated consumers are realistic for this system?
+- What solution or coding-agent profile is realistic for this system: browser-mediated research agent, API/tool consumer, repository agent, documentation agent, or a caller-specific workflow?
+- What is the agent trying to retrieve, decide, update, purchase, book, compare, generate, or verify for the user?
 - Is the target primarily content retrieval, task execution, developer tooling, commerce, support, or operations?
+- Do public, authenticated, read-only, and write/action surfaces need separate scoring because evidence or capability differs materially?
 - Which standards are actually applicable, and which are only speculative conventions?
 - Are there public and authorized/private surfaces that need separate scoring?
 - What evidence is unavailable, and does that limit the grade or only lower confidence?

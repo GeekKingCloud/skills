@@ -31,6 +31,21 @@
 - Data sources available:
 - Data sources unavailable:
 
+## Category Applicability
+
+| Category | Status (`Scored/N/A/Not assessed`) | Reason |
+| -------- | ---------------------------------- | ------ |
+| Crawl, Indexing, And Technical Foundation | | |
+| Search Intent And Query Coverage | | |
+| On-Page Metadata And Snippet Readiness | | |
+| Content Quality, Usefulness, And Trust | | |
+| Information Architecture And Internal Linking | | |
+| Structured Data And Rich Result Eligibility | | |
+| Local, Entity, And Brand Signals | | |
+| Performance, Mobile, And Page Experience | | |
+| Measurement, Diagnostics, And Change Control | | |
+| Competitive Visibility And Off-Site Signals | | |
+
 ## Standards And Claims
 
 - Relevant standards or search guidance:

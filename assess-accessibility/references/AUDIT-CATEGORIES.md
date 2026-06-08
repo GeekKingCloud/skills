@@ -156,6 +156,8 @@ Name the evidence mode before scoring:
 
 Missing source code is not a grade cap by itself. It lowers confidence, limits cause analysis, and usually makes fix directions less specific. Score rendered-only audits on observed behavior, reachable states, and available accessibility evidence.
 
+For UI-heavy targets, complete or explicitly account for the minimum UI evidence checklist in `SKILL.md` before scoring. Missing checklist proof should affect the categories it blocks, not appear as a generic caveat after a confident grade. Use `Not assessed` for applicable categories that could not be evaluated, and keep them out of the score table.
+
 For websites without source code, missing XML sitemaps, blocked route discovery, unavailable credentials, or inaccessible pages are evidence limits when they prevent a complete crawl. Do not score a missing XML sitemap as a user accessibility defect by itself. Score weak user-facing discovery when important pages or workflows cannot be found through navigation, search, breadcrumbs, footer links, an HTML sitemap, or equivalent information architecture.
 
 ## Final Score Rules
@@ -175,7 +177,9 @@ Apply grade caps after averaging:
 - Any unresolved `Critical` finding applies a grade cap of `F`.
 - Any category scored `0-3` applies a grade cap of `D`.
 - Missing rendered or platform evidence for an interactive product applies a grade cap of `B`.
+- Missing keyboard/focus or responsive/mobile evidence for a UI-heavy product applies a grade cap of `B`.
 - Missing assistive-technology evidence for a UI-heavy product applies a grade cap of `C`.
+- Missing both rendered interaction evidence and assistive-technology or accessibility-tree evidence for a UI-heavy product applies a grade cap of `C`.
 - Incomplete crawl or blocked route discovery can apply a grade cap of `B` or lower when important public or user-facing workflows could not be inventoried.
 
 Apply the most restrictive grade cap when multiple caps apply: `F` beats `D`, `D` beats `C`, and `C` beats `B`. Report the cap as one field: `Grade cap: None` when no cap applies, or `Grade cap: <cap>, <reason>` when a cap applies.

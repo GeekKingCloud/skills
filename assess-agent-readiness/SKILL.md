@@ -1,13 +1,15 @@
 ---
 name: assess-agent-readiness
-description: Agent-readiness audit for websites, apps, APIs, tools, documentation, or codebases. Use when the caller wants research-first assessment of discoverability, crawl policy, agent instructions, structured content, API/tool actionability, MCP/OpenAPI surfaces, docs freshness, safety boundaries, handoff evidence, and practical next steps for coding agents or agentic crawlers, while keeping classic SEO growth and ranking work separate.
+description: Agent-readiness audit for websites, apps, APIs, tools, documentation, or codebases. Use when the caller wants research-first assessment of whether solution or coding agents can discover, understand, retrieve, act on, and verify authoritative information through web, docs, API, feed, MCP/OpenAPI, or tool surfaces, while keeping generic crawler SEO, rankings, and search-growth work separate.
 ---
 
 # Assess Agent Readiness
 
-Audit how ready a system is for coding agents, agentic crawlers, and agent-mediated user workflows. Focus on whether an agent can discover the system, understand what it offers, locate authoritative data and action surfaces, choose safe actions, execute or hand off work, recover from errors, and cite or verify results.
+Audit how ready a system is for solution agents, coding agents, and agent-mediated user workflows. Focus on whether an agent acting for a user can discover the system, understand what it offers, locate authoritative data and action surfaces, choose safe actions, execute or hand off work, recover from errors, and cite or verify results.
 
 The core question is not just whether an agent can read the website. The audit must determine whether an agent can quickly find the canonical data, docs, schemas, APIs, feeds, exports, tools, or protocols needed to retrieve or act on the system's information without brittle page scraping. Crawl policy, sitemaps, and structured pages matter when they help agents discover and understand the surface; API coverage, data coverage, documentation quality, auth boundaries, and executable examples decide whether agents can use the system reliably.
+
+The default target is not a generic search crawler. Browser-mediated agents matter when they are acting as solution agents for a user: opening pages, reading docs, filling forms, comparing options, calling APIs, using tools, or producing verified answers. Generic search crawling, ranking, SERP visibility, and human organic traffic belong in Assess SEO unless those foundations directly block a solution agent from finding or using the authoritative surface.
 
 This is not an SEO guarantee, AI search certification, crawler compliance claim, MCP certification, OpenAPI certification, or ranking prediction. Use direct, evidence-backed language and distinguish accepted standards from emerging conventions.
 
@@ -15,7 +17,7 @@ This is not an SEO guarantee, AI search certification, crawler compliance claim,
 
 Assess Agent Readiness and Assess SEO overlap on technical discovery, but they answer different questions.
 
-- Assess Agent Readiness asks whether agents and agentic crawlers can discover, understand, use, and verify a system.
+- Assess Agent Readiness asks whether solution or coding agents can discover, understand, retrieve from, act on, and verify a system for a user.
 - Assess SEO asks whether a public web surface is ready to earn organic search visibility for human searchers.
 
 Use Assess SEO as an optional adjunct only when the caller asks for classic SEO readiness, search growth, human organic traffic, keyword coverage, SERP competitiveness, title/meta optimization, local SEO, content strategy, backlinks, rankings, or traffic opportunity. For targets that are not public-search-facing, or when the caller only wants agent-readiness, omit Assess SEO from the report entirely.
@@ -35,12 +37,13 @@ When asked to use Assess Agent Readiness:
 1. Identify the target folder, URL, app, API, tool, documentation set, or artifact.
 2. Read local instructions and product context first, such as `AGENTS.md`, `README.md`, API docs, OpenAPI specs, MCP docs, CLI docs, SDK docs, robots/crawl policy, sitemap files, and product docs.
 3. Determine the system type, target users, target agents, public/private boundary, action surfaces, authentication model, and likely agent tasks.
-4. Map the agent data and action path: what data agents need, where the authoritative source lives, whether a documented API/tool/feed/export exists, what the API/tool covers, what requires browser scraping, what auth or permissions apply, and what evidence proves coverage.
-5. Push for the strongest evidence practical before scoring: run the project when source is available and safe, inspect reachable production or development URLs, check live crawl/docs/API surfaces, and use lightweight network checks such as DNS, ping, headers, or HTTP probes when they clarify reachability or host behavior.
-6. Research current agent-readiness sources before judging. Prefer current primary sources and say when a convention is emerging or disputed.
-7. Inspect the implementation or live surface: routes, crawl policy, docs, content structure, metadata, structured data, data schemas, APIs, feeds, exports, SDKs, CLIs, tool protocols, auth, errors, examples, and handoff signals.
-8. Capture findings by category, score each applicable category out of 10, then prioritize by agent/user impact.
-9. Use `templates/ASSESS-AGENT-READINESS.md` as the report skeleton.
+4. Define the target agent profile before scoring: solution/coding agent, browser-mediated agent workflow, API/tool consumer, repository agent, documentation agent, or another caller-specific profile. State what the agent is trying to retrieve or do for the user.
+5. Map the agent data and action path: what data agents need, where the authoritative source lives, whether a documented API/tool/feed/export exists, what the API/tool covers, what requires browser interaction or brittle scraping, what auth or permissions apply, and what evidence proves coverage.
+6. Push for the strongest evidence practical before scoring: run the project when source is available and safe, inspect reachable production or development URLs, check live crawl/docs/API surfaces, and use lightweight network checks such as DNS, ping, headers, or HTTP probes when they clarify reachability or host behavior.
+7. Research current agent-readiness sources before judging. Prefer current primary sources and say when a convention is emerging or disputed.
+8. Inspect the implementation or live surface: routes, crawl policy, docs, content structure, metadata, structured data, data schemas, APIs, feeds, exports, SDKs, CLIs, tool protocols, auth, errors, examples, and handoff signals.
+9. Capture findings by category, score each applicable category out of 10, then prioritize by agent/user impact.
+10. Use `templates/ASSESS-AGENT-READINESS.md` as the report skeleton.
 
 Mention verification limits only where they affect confidence, scoring, or grade caps.
 
@@ -51,6 +54,7 @@ Use `Assessment Coverage` as the first report section after the title, not a ter
 Use the template as a skeleton, not as text to copy blindly. Fill every placeholder, delete empty optional sections, and do not leave template instructions or rationale about why a section exists in the final report.
 
 - `Assessment Coverage`: write only report-facing bullets for `Assessed`, `Not assessed`, what the caller can provide or permit to improve confidence, and the expected impact of that evidence. Do not add a sentence explaining why the section appears first.
+- `Target Agent Profile`: name the agent profile, the user task, and whether the assessed path is public, authenticated, read-only, or action-oriented. If multiple profiles or auth surfaces have materially different evidence, separate them instead of blending them into one score.
 - `Agent Data And Action Path`: always answer this section directly. If the target has no API, data export, feed, SDK, CLI, MCP server, or other tool surface, state that explicitly, identify whether that is acceptable for the system type, and explain what agents must scrape or ask a human to do instead.
 - `Start Here`: keep this as the single prioritized action plan. Do not duplicate it later as `Next Steps` unless the caller requested a separate roadmap.
 - `Findings By Priority`: for each priority level, either list scoped findings or write one clear state such as `No scoped findings after review.` or `Not assessed; evidence limit: ...`.
@@ -101,8 +105,9 @@ Before grading, define:
 
 - target system type
 - relevant standards, specs, and conventions
-- target agents or agent tasks
+- target agent profile and likely user task
 - agent data needs and authoritative access paths
+- public, authenticated, read-only, and write/action surfaces evaluated separately when their evidence differs
 - evaluated scope
 - evidence mode
 - evidence limits

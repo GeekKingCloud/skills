@@ -140,7 +140,14 @@ Score each applicable category out of 10 after reviewing findings and evidence.
 - `1-3`: major blockers for crawling, indexing, consolidation, user trust, or ability to satisfy target search intent.
 - `0`: category cannot be meaningfully used or evaluated because of a blocking SEO readiness failure.
 
-Use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated. Exclude `N/A` and `Not assessed` categories from the final average and explain evidence limits.
+Use `N/A` only when a category genuinely does not apply to the target site type or search goal. Use `Not assessed` when a category applies but was not evaluated because the needed evidence is unavailable. Exclude `N/A` and `Not assessed` categories from the final average and explain evidence limits. Do not assign confident scores to search intent, competitive visibility, off-site signals, local signals, or measurement categories from weak inference alone.
+
+Category applicability notes:
+
+- `Search Intent And Query Coverage` is `Not assessed` when no search goals, representative query themes, known keywords, market, or page-to-query evidence is available.
+- `Local, Entity, And Brand Signals` is `N/A` for purely internal, non-public, or non-entity-bearing surfaces; local-specific checks are `N/A` for non-local sites, but entity/source clarity can still apply to documentation, products, and organizations.
+- `Measurement, Diagnostics, And Change Control` is `Not assessed` for private data-dependent subareas when Search Console, analytics, logs, crawl exports, rank tracking, or release evidence is unavailable.
+- `Competitive Visibility And Off-Site Signals` is `Not assessed` when market/geography, representative SERPs, competitor set, backlink/profile data, reviews/citations, or caller-provided competitive context is unavailable.
 
 Every assessed category score must include a one-line rationale naming the strongest evidence and the main reason the score is not higher.
 
@@ -163,6 +170,7 @@ Apply grade caps after averaging:
 - Missing live evidence for a public website applies a grade cap of `B`.
 - Missing rendered-page evidence for a JavaScript-heavy site applies a grade cap of `C` when it prevents judging indexable content.
 - Missing Search Console, analytics, backlink, or rank data caps only the affected measurement, off-site, or competitive categories unless the caller asked for a data-backed growth plan.
+- Missing target queries, geography, competitor context, or private performance data should normally produce `Not assessed` categories or lower confidence, not guessed scores.
 - Unsupported ranking, traffic, or competitor claims must be removed or marked as hypotheses.
 
 Report the cap as one field: `Grade cap: None` or `Grade cap: <cap>, <reason>`.

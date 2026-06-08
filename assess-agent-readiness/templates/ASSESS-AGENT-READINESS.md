@@ -25,7 +25,16 @@
 - Sources used and checked/accessed dates:
 - Applicable standards, specs, and conventions:
 - Emerging or speculative conventions:
-- Target agents, automated consumers, and likely tasks:
+- Target agent profile and likely user task:
+
+## Target Agent Profile
+
+- Agent type:
+- User task:
+- Public, authenticated, read-only, or action-oriented path:
+- Browser-mediated steps:
+- API/tool/feed/export steps:
+- Surfaces scored separately:
 
 ## Agent Data And Action Path
 

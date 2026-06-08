@@ -1,8 +1,9 @@
-# Agent Feedback Report
+# Coding-Agent Collaboration Feedback Report
 
 ## Evidence Reviewed
 
 - Sources:
+- Review type: Deep cross-session coding-agent communication review
 - Time or project scope:
 - Task/session coverage:
 - Agent or tool contexts represented:
@@ -21,35 +22,29 @@
 - Generalization boundary:
 - Better inputs needed:
 
-If the decision is `Not enough evidence`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision`. Do not fill the rest of the report with generic collaboration coaching.
-
-If the decision is `Incomplete run`, stop after `Evidence Reviewed` and `Evidence Sufficiency Decision` unless the user explicitly asks for interim notes. List what was reviewed, what remains, and what blocker prevented full-depth review.
-
-For general collaboration-improvement requests, full-depth review is the default. `Preliminary only` still requires evidence beyond the active conversation. If the report would mostly analyze the current thread, stop and request broader history.
-
-For narrow Agent Feedback requests, full-depth review still applies within that narrower scope. Do not substitute a lightweight scan for the requested evidence review.
-
-Do not confuse available corpus with completed inspection. If broad history exists but was not inspected deeply enough, continue reviewing. If continuing is blocked, mark the run `Incomplete run`; do not present a lower-confidence finished report merely because the workflow did not dig enough.
-
-Omit sections or items that the evidence cannot support, unless the absence itself is useful to report.
-
 ## Evidence Inventory
 
 - **E1:** [Source and scope]
   - Can prove:
+  - User communication move:
+  - Agent response effect:
+  - Teachable rewrite:
   - Limitations:
 
 - **E2:** [Source and scope]
   - Can prove:
+  - User communication move:
+  - Agent response effect:
+  - Teachable rewrite:
   - Limitations:
 
-## Executive Summary
+## Learning Summary
 
-[Two to five sentences on the biggest collaboration patterns and highest-impact changes.]
+[Two to five sentences on the biggest communication patterns, why they affect coding-agent output, and the highest-impact habits to change or preserve.]
 
 ## Generalization Boundary
 
-[State exactly which tasks, repos, session summaries, transcripts, or artifacts this agent feedback can generalize across, and which it cannot.]
+[State exactly which tasks, repos, session summaries, transcripts, or artifacts this feedback can generalize across, and which it cannot.]
 
 ## Confidence Model
 
@@ -60,70 +55,80 @@ Omit sections or items that the evidence cannot support, unless the absence itse
 - Pattern confidence notes:
 - If confidence is below high, evidence reason: [missing transcripts / narrow corpus / summary-only evidence / one-sided evidence / inaccessible sources]
 
-## What Is Working
+## Communication Strengths To Preserve
 
 - **Evidence:** [E1, E2, or omit this item if no reviewed evidence supports it]
-  **Observed:** [Concrete pattern]
-  **Inferred:** [What this suggests about collaboration]
-  **Why it helps:** [Effect on coding-agent work]
-  **Recommended:** [Specific habit to preserve]
+  **Observed habit:** [Concrete user communication behavior]
+  **Agent response effect:** [How this improves coding-agent behavior, speed, risk control, or verification]
+  **Why it works:** [The collaboration mechanism]
+  **Keep doing this when:** [Task/context]
+  **Example to reuse:** `[Prompt, correction, verification, or handoff pattern]`
 
-## Friction Patterns
+## Communication Friction And Repair Habits
 
 - **Evidence:** [E1, E2, or omit this item if no reviewed evidence supports it]
-  **Observed:** [Concrete pattern]
-  **Inferred:** [Likely collaboration issue]
-  **Impact:** [How it causes rework, wrong assumptions, slowdowns, or trust loss]
-  **Confidence:** [High, Medium, or Low]
-  **Recommended:** [User-side change and matching agent-side adaptation]
+  **Observed pattern:** [Concrete communication pattern]
+  **What tends to go wrong:** [Agent/user collaboration failure]
+  **Impact:** [Rework, wrong assumptions, slowdowns, token waste, weak verification, or trust loss]
+  **Repair habit:** [Specific user-side communication change]
+  **Matching agent adaptation:** [What future agents should do]
+  **Confidence:** [High / Medium / Low]
 
-## Top Changes
+## Highest-Impact Collaboration Habits
 
-Repeat only for evidence-supported changes, maximum three.
+[Up to three evidence-supported changes.]
 
-1. [Specific change]
+1. [Habit]
    - Evidence basis: [E1, E2]
-   - Why this matters:
-   - When to use it:
-   - Example prompt: `[Example wording]`
+   - Current pattern:
+   - Why it changes agent behavior:
+   - Better pattern:
+   - Example wording:
+   - Use when:
+   - Do not overuse when:
+   - Expected improvement: [faster work / fewer corrections / lower token waste / stronger verification / safer autonomy]
    - Agent response rule:
    - Agent capability nuance:
 
-## How The User Can Communicate Better
+## Prompting, Context, Correction, Verification, And Handoff Habits
 
-1. [Specific behavior change]
+1. [Specific communication change]
    - Evidence basis: [E1, E2]
+   - Observed user-agent pattern:
    - Inferred need:
-   - Recommended change:
+   - Replacement habit:
    - Use when:
-   - Example:
+   - Example wording:
 
-2. [Specific behavior change]
+2. [Specific communication change]
    - Evidence basis: [E1, E2]
+   - Observed user-agent pattern:
    - Inferred need:
-   - Recommended change:
+   - Replacement habit:
    - Use when:
-   - Example:
+   - Example wording:
 
-## Agent-Side Rules To Encode
+## Future-Agent Guardrails The User Can Encode
 
 1. [Specific rule future agents should follow]
    - Evidence basis: [E1, E2]
    - Inferred need:
    - Trigger:
-   - Where the user can encode it: [prompt / AGENTS.md / skill / handoff / project doc / test]
+   - Where the user can encode it: [prompt / repo guidance / skill / handoff / project doc / test]
    - Expected future-agent behavior:
 
 2. [Specific rule future agents should follow]
    - Evidence basis: [E1, E2]
    - Inferred need:
    - Trigger:
-   - Where the user can encode it: [prompt / AGENTS.md / skill / handoff / project doc / test]
+   - Where the user can encode it: [prompt / repo guidance / skill / handoff / project doc / test]
    - Expected future-agent behavior:
 
-## Better Prompt Patterns
+## Reusable Prompt And Correction Patterns
 
-History access for general agent feedback:
+Include only prompt patterns that directly answer an evidence-supported friction or strength. Do not include generic prompt advice just because it is usually useful.
+
+History access for agent feedback:
 ```text
 Use the `feedback` skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
 ```
@@ -135,7 +140,7 @@ Repo or scope boundary:
 
 Evidence sufficiency:
 ```text
-Use the `feedback` skill on [scope]. If there is not enough cross-task history to produce evidence-bound agent feedback, say that and list what inputs you need.
+Use the `feedback` skill for a deep cross-session communication review. If there is not enough cross-task history to produce evidence-bound communication feedback, say that and list what inputs would unlock the review.
 ```
 
 Stop, audit, or continue correction:
@@ -150,12 +155,15 @@ Before editing, state the success check. After editing, run the narrowest meanin
 
 Durable update:
 ```text
-If this correction is likely to recur, propose the exact AGENTS.md, skill, handoff, or project-doc wording that would prevent it next time.
+If this correction is likely to recur, propose the exact repo guidance, skill, handoff, or project-doc wording that would prevent it next time.
 ```
 
 ## Recommended Durable Updates
 
 - [Doc, skill, template, or workflow update]
+  - Evidence basis:
+  - Trigger:
+  - Expected improvement:
 
 ## Caveats
 
