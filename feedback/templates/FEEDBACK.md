@@ -3,7 +3,7 @@
 ## Evidence Reviewed
 
 - Sources:
-- Feedback mode: [Current conversation / Single artifact / Limited history / Deep cross-session]
+- Review type: Deep cross-session collaboration history review
 - Time or project scope:
 - Task/session coverage:
 - Agent or tool contexts represented:
@@ -112,7 +112,7 @@
 
 ## Better Prompt Patterns
 
-History access for broad agent feedback:
+History access for agent feedback:
 ```text
 Use the `feedback` skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
 ```
@@ -124,7 +124,7 @@ Repo or scope boundary:
 
 Evidence sufficiency:
 ```text
-Use the `feedback` skill on [scope]. If there is not enough evidence to produce feedback for that scope, say that and list what inputs would unlock it. If only narrower feedback is supported, say so and offer that mode.
+Use the `feedback` skill for a deep cross-session collaboration review. If there is not enough cross-task history to produce evidence-bound agent feedback, say that and list what inputs would unlock the review.
 ```
 
 Stop, audit, or continue correction:
