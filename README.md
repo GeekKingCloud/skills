@@ -10,13 +10,23 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
 
 ## Development And Release
 
-- **crucible** — Orchestrate release-hardening work from plans, review findings, or current codebase state through sub-agent-heavy implementation, review gates, security pass, docs/comment sweep, cleanup, and release-readiness reporting.
+- **crucible** — Orchestrate release-hardening work from plans, review findings, or current codebase state through sub-agent-heavy implementation, verification evidence checks, review gates, security pass, docs/comment sweep, cleanup, and release-readiness reporting.
 
   ```
   npx skills@latest add GeekKingCloud/skills/crucible
   ```
 
-- **roast** — Strictly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade.
+- **plan-mcp** — Assess an existing backend, API, database-backed service, or system surface, then produce a decision-complete plan for adding a safe MCP layer.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/plan-mcp
+  ```
+
+- **roast** — Harshly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade.
+
+  Defaults to a serious strict-teacher tone. Ask for a snarky, mean, comedy,
+  burn, putdown, or savage roast to switch the presentation style while keeping
+  findings evidence-backed and actionable.
 
   ```
   npx skills@latest add GeekKingCloud/skills/roast
@@ -60,6 +70,14 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
 
   ```
   npx skills@latest add GeekKingCloud/skills/feedback
+  ```
+
+## Media
+
+- **remix-voiceover** — Repair commentary-over-background audio or video with separate mic/commentary and background/system tracks into a listener-first REMIX-VOICEOVER output, using fresh source evidence, editorial mix planning, adversarial validation, copied video, preserved original audio, cleanup, and honest confidence labels.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/remix-voiceover
   ```
 
 ## Just For Fun

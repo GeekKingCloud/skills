@@ -1,95 +1,163 @@
 ---
 name: remix-voiceover
-description: Recover OBS-style voiceover recordings with separate mic and game/system tracks. Use when the goal is a listenable mic-over-game output, copied video, same-folder REMIX-VOICEOVER file, and clean temporary scratch handling without heavyweight proof bureaucracy.
+description: Repair commentary-over-background audio or video with separate mic/commentary and background/system tracks into a listener-first REMIX-VOICEOVER output, using fresh source evidence, editorial mix planning, adversarial validation, copied video, preserved original audio, cleanup, and honest confidence labels.
 ---
 
 # Remix Voiceover
 
-Use this for OBS-style recordings with separate mic and game/system audio where the default audio should become a clear, pleasant mic-over-game mix. The goal is not to pass a checker. The goal is a video a viewer can listen to without straining, riding volume, or losing either the voice or the game.
+Use this when a recording has separate commentary/mic and background/system audio and needs a repaired voiceover-style mix.
 
-## Permissions
+The goal is not to satisfy a verifier. The goal is a file a viewer can watch without losing the commentary, losing the background, hearing obvious pumping, or wondering whether the audio broke.
 
-- Before track-role decisions or candidate rendering, ask: "Approve reviewer-backed mode for this remix? If approved, I will use subagents/reviewers to challenge track roles, acceptance windows, mix choices, and final sanity. If not approved or unavailable, I will continue locally and report that no reviewers were used."
-- Do not treat the skill text itself as reviewer approval. Do not proceed past source/stream inspection until the reviewer decision is explicit. If reviewer-backed mode is not approved, continue local-only and say so.
-- If the final output path is outside the writable workspace, create and verify scratch candidates first when practical, then ask for exact approval to write `<source-stem>-REMIX-VOICEOVER<suffix>` beside the source. Scratch analysis does not replace final-path approval.
+Before rendering, read:
 
-## Non-Negotiables
+- `helpers/EDITORIAL-MODEL.md` for stream mapping, commentary repair, background placement, and mix decisions.
+- `helpers/ADVERSARIAL-VALIDATION.md` for evidence integrity, reviewers, confidence labels, and final report requirements.
+- `templates/REMIX-VOICEOVER.md` when writing the final report.
 
-- Output beside the source as `<source-stem>-REMIX-VOICEOVER<suffix>`.
-- Copy video unchanged with stream copy: no resize, re-encode, transcode, fps change, pixel-format change, or video compression.
-- Make the remix the first/default audio track.
-- Preserve useful original audio tracks after the remix, with originals non-default.
-- Use scratch/temp for work files. Delete bulky scratch media before finishing; keep only small text notes/proof.
-- Build candidates from the source file for this run. Do not reuse, promote, or tune from an older candidate unless the caller explicitly asks for reuse.
+## Operating Principle
 
-## Track Roles
+Treat every run as an editorial repair with adversarial validation.
 
-First convert every audio stream into full-file timeline datapoints. Record stream IDs as both `0:a:N` and `Stream #0:N`.
+- The source evidence describes the file.
+- The editorial plan explains what the mix should do.
+- The candidate proves what it actually did.
+- The adversarial review tries to prove why the candidate could still sound bad.
+- The final report labels the result honestly.
 
-Use the datapoints to classify:
+Never let the candidate define the only evidence frame used to accept itself. A detector, route map, proof packet, or reviewer summary can be useful, but it is not ground truth.
 
-- `mic`: sparse speech, natural silence between speech, usually not continuous music/game.
-- `game/system`: continuous or near-continuous gameplay/system audio.
-- `existing mix`: continuous audio that resembles a combined mic+game track.
+## Non-Negotiable Outcome
 
-For generic OBS labels, prefer the common pattern that Track1 may be an existing mix and later tracks may be mic/game, but prove it from datapoints. If a separate mic/game pair exists, mix from those separate tracks, not from an existing combined mix. If roles remain ambiguous, stop before final output.
+A candidate is not acceptable unless all are true:
 
-## Balance Model
+- The remix uses separate mic/commentary and background lanes when they exist, not the existing combined mix.
+- Commentary remains the priority wherever recoverable speech exists.
+- Sustained mic capture regimes are found from the whole source, including quiet, weak, recovered, intermittent, and hot sections.
+- Weak or buried commentary is not excluded just because a speech detector marks it inactive.
+- The background remains present and natural under normal commentary, not crushed or switched on and off.
+- Major commentary-level transitions recover quickly and do not leave a section sounding broken.
+- The proof is for the exact retained candidate or final output.
+- Reviewer or local adversarial checks inspect likely blind spots, not only the candidate's reported pass windows.
+- Each retained candidate has an immutable manifest tying source identity, selected streams, render settings, candidate hash, proof inputs, proof outputs, verifier status, and cleanup status together.
+- No unresolved recoverable-commentary or ambiguous listener-risk cluster remains in weak, buried, transition, or late-recovery regions.
+- Any required listener-risk reviewer has returned. A pending reviewer is a stop condition, not a reason to proceed locally.
 
-Treat the mix as two bounded lanes:
+If any condition fails, do not call the result successful. Render a materially different candidate, stop with the best scratch candidate and its risks, or report blocked.
 
-- Set a usable active-speech lane first, then place game below it.
-- Account for long-form mic gain drift before gap balancing. If intro or late speech is healthy but the middle is much quieter, that usually means the capture level changed. The mix should keep sustained conversation in a consistent listener lane without flattening whispers, yells, or short expressive changes.
-- During recoverable speech-over-game, target a mic-over-game median near `+8.5 dB`.
-- Do not use mean alone. A few easy windows must not hide buried speech.
-- Important recoverable overlap windows should usually stay at or above about `+6.5 dB`.
-- Gap alone is not enough: active speech needs usable absolute loudness before game balance is judged. Use level checks as sanity checks, not hard gates. Speech in the high `-20s dBFS` is often usable; speech around `-37 dBFS` is probably too quiet even if the gap passes.
-- During speech, game should sit under the mic while staying audible and natural. Do not make the game bed the reference if that leaves speech too quiet.
-- Low mic level alone is recoverable. Mark speech source-limited only when the raw mic is absent, clipped beyond repair, indistinguishable from noise, or not actually speech.
+## Fresh Run Rules
 
-The mic may rise and fall naturally, and silence should remain silent. Do not gate/chop syllables, lift silent mic noise into a floor, or make the mic abruptly drop after an intro. If the mic sounds harsh, strained, distorted, or over-gained, lower the game ceiling instead of pushing mic gain harder.
+- Start from the raw source every time unless the caller explicitly asks to verify or promote a named artifact.
+- Use a fresh scratch/artifact folder and record source path, start time, output mode, and scratch path.
+- Do not reuse old candidates, route maps, detector thresholds, proof windows, settings, or timestamps as solution inputs.
+- Treat caller-provided timestamps as examples of failure classes. Use them to guide full-file detection, never as hand-authored fix ranges.
+- During testing, render audio-only candidates first. Mux video only after a candidate is useful enough to recommend for caller listening, or after the caller explicitly asks for a preview despite disclosed risks.
+- For video inputs, copy the original video unchanged.
+- Add the remixed audio as the first/default audio stream and preserve original audio streams afterward when possible.
+- Keep scratch lean and write a cleanup summary before finishing.
 
-The game should stay present. Ducking is allowed only as shallow, smooth help; it must not turn the game mute-like during speech or let game-only sections blast back in with sudden jumps.
+## Required Workflow
 
-## Pitfalls To Account For
+### 1. Build Neutral Source Evidence
 
-- A hot intro, quiet middle, and hot late section is a failed listener experience even if selected broad-section medians look acceptable.
-- Fixed speech thresholds can hide weak recoverable speech. Detect active speech relative to the local mic section, and include weak/low-tail speech instead of only loud active seconds.
-- Narrow proof windows can pass while adjacent speech fails. Check around caller-reported transitions and the low-tail of recoverable speech: p10/p25 gap and loudness, seconds where game still beats mic, and seconds where speech cuts in or out.
-- Gate-like or cliff-shaped compand/expander curves can make weak speech pop in and out. Be especially careful with pre-gain gates on known weak mic material; use denoise/gating only after proving it does not reduce recoverable speech in the weakest windows.
+Before choosing a mix strategy, map the source independently of any candidate:
 
-## Acceptance Windows
+- identify every audio stream as `0:a:N` and container stream number;
+- classify likely `commentary/mic`, `background/system`, and `existing mix`;
+- measure full-file rolling behavior for the separate mic and background lanes;
+- identify healthy, weak, recovered, hot, intermittent, silence/noise, and background-only regions;
+- build a suspect-blind-spot set: weak-mic/loud-bed clusters, detector-uncertain spans, inactive/background-active samples selected without the candidate's accepted active mask or mix settings, first drops after healthy speech, late recoveries, starts/tails after pauses, and caller-seeded examples as failure classes.
 
-Choose windows from the raw source before processing, then keep those same windows through candidate checks. Do not choose important windows from processed output thresholds like "mic is already loud"; that hides the failures this skill exists to fix.
+This evidence is neutral. It exists to challenge the candidate later. Do not tune it after seeing whether a candidate passed.
 
-Within each window, measure the active speech portions. Silence, pauses, intro-only speech, or game-only spans must not improve the mic-over-game score.
+### 2. Write An Editorial Plan
 
-Include at least:
+Write a compact plan before rendering:
 
-- start and early gameplay
-- post-intro transition after the first 30-90 seconds, especially where capture levels change after an initially good mic
-- rolling windows around any caller-reported drop, such as `00:44`, and any later level return, such as `36:31`
-- caller-disputed timestamps
-- weakest recoverable speech under game
-- loud game under speech
-- middle and late gameplay
-- broad active-speech section checks across the file, including before and after any sustained mic-level return
-- game-only and silence/noise sections
-- one random speech-over-game overlap
+- chosen stream roles and why the existing mix is excluded or preserved only as an original;
+- commentary regimes and intended treatment for each;
+- ordinary-speaking reference and comfortable mic ceiling;
+- background baseline and hearable floor;
+- when shallow bed riding is allowed;
+- when mic-follow is allowed for background rises;
+- what source-limited areas cannot be fixed;
+- what blind spots the candidate must survive.
 
-For each recoverable overlap window, ask: would a viewer understand the voice here without turning volume up? If no, revise the mix. A candidate can have source-limited weak spots, but do not redefine buried recoverable speech as source-limited just to finish.
+Prefer simple, source-aware gain and shallow smooth bed control. Use dynamic processors only when their failure modes are checked: lifted silence, chopped syllables, slow recovery, pumping, harsh peaks, and lost background.
 
-## Build And Verify
+### 3. Render A Candidate
 
-- Build a full-file mix from the chosen mic and game tracks. Do not rely on isolated snippets for stateful filters or sidechain behavior.
-- Prefer bounded game-level control and smooth automation over aggressive mic gain, deep sidechain compression, or many hard cuts.
-- Verify the encoded candidate audio, not only pre-encode stems. Leave headroom and avoid clipping/overs.
-- Check the fixed acceptance windows for mic gap, active speech loudness, game presence, abrupt jumps, chopped speech, and mute-like ducking.
-- Check broad processed active-speech medians and low-tail values by section: intro, post-intro, middle, late, and any caller-disputed transition. Overall `mean_volume`, max peak, headroom, or a few selected proof windows are not proof that the voice stays usable through the file.
-- Confirm the final file still has copied video, default remix audio first, and preserved original tracks after it.
+Render a full-file audio candidate that implements the plan. A generic normalizer, fixed gain, or sidechain graph is only valid when the source evidence shows one stable regime.
 
-Do not promote the final output yet when the track map is unproven, copied video would be lost, active recoverable speech is still too quiet, the mic drops/chops abruptly, the processed mic lane has sustained section-to-section volume swings that would make the viewer change playback volume, game disappears under normal speech, or the result passes numbers but is still likely bad to listen to. Revise the scratch candidate until those are cleared, then render or promote the final output.
+For each candidate, save compact proof:
 
-Candidate loops should diagnose, not brute-force. After two candidates fail the same axis, change the strategy or get reviewer help instead of only nudging numbers. Do not run more than about five candidate renders unless the caller or reviewers explicitly choose to continue; report the best candidate and the remaining blocker instead.
+- immutable `candidate_manifest.json` with candidate id, source path/hash when practical, stream map, render command or script path/hash, candidate path/hash, proof files, verifier inputs, verifier outputs, reviewer status, final mux linkage, and cleanup state;
+- render lineage and stream maps;
+- processed mic and processed background evidence where possible;
+- headroom and duration checks;
+- regime parity checks;
+- transition recovery checks;
+- background-under-commentary and background-only checks;
+- blind-spot checks from the neutral source evidence.
 
-Final report: source path, output path, track map, short mix strategy, candidate count, broad section speech-lane medians, worst checked windows, weakest remaining source-limited spots, video-copy status, scratch cleanup status, whether reviewers were used, and whether any human listening happened. Do not claim listener validation if nobody listened.
+Do not rank candidates by aggregate risk count alone. A lower risk count does not matter if the remaining risks are concentrated in listener-critical weak commentary, transition recovery, late recovery, phrase starts/tails, or buried speech. One unresolved listener-critical cluster is enough to block delivery.
+
+### 4. Try To Disprove The Candidate
+
+Before any confidence label, run the adversarial checks in `helpers/ADVERSARIAL-VALIDATION.md`.
+
+The candidate fails if it passes only because:
+
+- weak commentary was marked inactive;
+- excluded windows were never inspected;
+- selected windows look good while whole regimes still sound wrong;
+- the background is audible only when nobody talks;
+- the background competes with speech then vanishes under speech;
+- the mix is a near-constant ratio that destroys natural dynamics;
+- the proof packet, reviewer packet, or final report hides unresolved risk.
+- unresolved `ambiguous listener-risk` windows are moved into caller-test notes instead of blocking delivery.
+- a proof/listener-risk reviewer is requested but has not returned.
+
+Use reviewers when available. Ask them to disprove stream roles, source evidence coverage, listener-risk windows, and confidence labels. A reviewer who only checks hashes, headroom, and proof consistency is not enough.
+
+### 5. Decide Honestly
+
+Use these labels:
+
+- `listener-accepted`: a human listened to representative worst windows and accepted them.
+- `independently-verified-ready-for-listener-test`: a read-only verifier or reviewer that did not tune or render the candidate found no blocking issue, but no human listener accepted the file.
+- `producer-checked-candidate`: the producing agent's local checks found no blocking issue, but no independent verifier or human listener accepted the file.
+- `preview-with-known-risks`: structurally safe and possibly useful, but known risks remain. This is not a deliverable label by default.
+- `blocked/source-limited`: raw speech is absent, clipped beyond repair, or indistinguishable from noise in controlling areas.
+- `blocked`: stream roles, tooling, evidence, candidate behavior, or permissions prevent a safe useful output.
+
+Do not use `technical-only success` as a success claim. The producing agent cannot promote its own output above `producer-checked-candidate` without human listener acceptance or independent read-only verification.
+
+`producer-checked-candidate` is not a deliverable label. It may only produce a retained scratch candidate and a report explaining why independent review or human listening is still needed. Do not write a beside-source final output for a producer-checked candidate unless the caller explicitly asks for a preview after seeing the unresolved risks.
+
+If any blind-spot result is still classified as `ambiguous listener-risk`, or any recoverable-commentary cluster still has negative or near-zero mic-over-background gap, the candidate is `preview-with-known-risks` at best. Do not convert those windows into caller-test instructions for a final mux.
+
+## Final Mux
+
+Mux beside the source only after a candidate is externally cleared:
+
+- `listener-accepted`
+- `independently-verified-ready-for-listener-test`
+
+If the best label is `producer-checked-candidate` or `preview-with-known-risks`, stop before final/beside-source mux by default. Keep the best candidate in scratch, report why it is not ready as a final deliverable, and ask whether the caller wants a preview mux anyway. A preview mux is allowed only when the caller explicitly requested a preview up front or approves one after seeing the downgrade reason.
+
+Exact-path write approval does not override quality approval. If the candidate has unresolved listener-risk evidence, interpret write approval as permission to create a preview only after the caller has been told the downgrade reason. Never present that preview as final, ready, accepted, or verified.
+
+For final video:
+
+- stream-copy the original video;
+- place remixed audio first/default;
+- preserve original audio afterward when possible;
+- verify video properties, stream order, duration, and default flags;
+- preserve proof and cleanup summaries.
+
+## Final Report
+
+Use `templates/REMIX-VOICEOVER.md`. Keep the report short and evidence-bound.
+
+If the file is only ready for the caller to test, call it that. Do not describe it as done.

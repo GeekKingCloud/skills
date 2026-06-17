@@ -1,6 +1,6 @@
 ---
 name: crucible
-description: Orchestrate release-hardening work from a supplied plan or full-project roast-led work queue through sub-agent-heavy implementation, remediation, verification, review gates, security pass, cleanup, docs/comment sweep, and release-readiness reporting.
+description: Orchestrate release-hardening work from a supplied plan or full-project roast-led work queue through sub-agent-heavy implementation, verification evidence checks, remediation, review gates, security pass, cleanup, docs/comment sweep, and release-readiness reporting.
 ---
 
 # Crucible
@@ -12,8 +12,9 @@ Use this skill to turn a supplied plan or a full-project roast-led work queue in
 The target state is:
 - the selected work source is implemented or remediated
 - meaningful tests and checks pass
+- material behavior, release, compatibility, documentation, and final-report claims are mapped to current-run evidence
 - peer review and default review-gate findings are resolved or explicitly accepted
-- relevant optional gate findings are resolved through the same rerun-and-fix loop as default review gates, or explicitly accepted
+- relevant adjunct gate findings are resolved through the same rerun-and-fix loop as default review gates, or explicitly accepted
 - no orphaned code, stale comments, stale docs, unused fixtures, or abandoned config remain from the work
 - comments explain tricky or unusual code without narrating obvious code
 - unresolved issues are Low or nitpick-level only, and no run gate has unresolved Critical, High, or Medium findings unless the caller explicitly accepts the release risk
@@ -35,7 +36,7 @@ If permission is declined or sub-agents are unavailable, continue locally and st
    - `plan-led-project-scope-roast`: implement a supplied plan, then roast the full current project.
    - `roast-led-project-scope`: roast the full current project, use findings as the work queue, then remediate through the review gate loop.
 4. Check version-control status before editing. Identify unrelated local changes and work around them without reverting them.
-5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, roast scope/status, roast grade, roast cap reason, optional adjunct gates, security pass, cleanup, docs/comment sweep, and commit or handoff expectations.
+5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, Evidence Gate status, claim evidence summary, unresolved claim gaps, roast scope/status, roast grade, roast cap reason, adjunct assessment gates, security pass, cleanup, docs/comment sweep, and commit or handoff expectations.
 
 If no supplied plan exists and the caller did not authorize a full-project roast-led work queue, stop and ask for the missing work source. Stop and ask only when the work source is missing critical product decisions, would require destructive Git history changes, needs credentials, or would materially change security posture, runtime behavior, dependency surface, or public behavior without clear caller approval.
 
@@ -69,9 +70,15 @@ Use the sibling `roast` skill as Crucible's default broad code-quality review ga
 
 Read `helpers/ROAST-GATE.md` when choosing roast scope, running roast, using roast as the work queue, falling back because `roast` is unavailable, or explaining why a plan-led route has no roast. Keep the detailed route and scope rules in that helper.
 
+## Evidence Gate
+
+Use `helpers/EVIDENCE-GATE.md` as Crucible's default proof-boundary gate for every run. Run it after implementation and focused verification, before adjunct assessment gates and roast.
+
+The Evidence Gate verifies that material behavior, release, compatibility, documentation, package, install, security, cleanup, and final-report claims are supported by current-run evidence. It is not a duplicate roast: narrow unsupported claims, add missing verification, or fix contradicted behavior through the Review Gate Loop before claiming release readiness.
+
 ## Review Gate Loop
 
-Use the same outer loop for every gate that runs, whether it is the default roast gate, an optional adjunct gate, or an evidence-backed fallback pass:
+Use the same outer loop for every gate that runs, whether it is the default Evidence Gate, default roast gate, an adjunct assessment gate, or an evidence-backed fallback pass:
 
 1. Run the skill or equivalent fallback pass against the current changed state.
 2. Capture the grade, severity list, evidence, and scope limitations.
@@ -87,13 +94,13 @@ If a skill does not produce a letter grade, treat the gate as passing only when 
 
 Do not use `external`, `owner-blocked`, or `unverifiable` as an escape hatch for findings that can be fixed or tested in the current workspace. When in doubt, attempt the narrowest reasonable fix or verification once, then classify the remaining cap from evidence.
 
-Run gate loops sequentially when later fixes can invalidate earlier evidence. For plan-led hardening, finish the implementation loop first, then run relevant assessment loops in this default order: `assess-accessibility`, `assess-seo`, `assess-agent-readiness`. Run the roast loop after assessment loops so roast reviews the final assessed state. Then run security, cleanup, and docs/comment passes. Parallelize independent investigation inside a loop when it will not create conflicting edits, but integrate patches through the main Execution Loop.
+Run gate loops sequentially when later fixes can invalidate earlier evidence. For plan-led hardening, finish the implementation loop first, then run the Evidence Gate. Run selected adjunct assessment gates in the concrete order documented by `helpers/ASSESSMENT-GATES.md`. Run the roast loop after assessment fixes so roast reviews the final assessed state. Then run security, cleanup, and docs/comment passes. Parallelize independent investigation inside a loop when it will not create conflicting edits, but integrate patches through the main Execution Loop.
 
-## Optional Gates
+## Adjunct Assessment Gates
 
-Use optional adjunct gates only when the implemented plan has a relevant surface or the caller asks Crucible to pair with assessment skills. They are not hard dependencies for every Crucible run.
+Use adjunct assessment gates only when the implemented plan has a relevant surface, the caller asks Crucible to pair with an assessment skill, or a concrete requirement or scan is needed for release confidence. They are not hard dependencies for every Crucible run.
 
-When the caller asks for `assess-accessibility`, `assess-agent-readiness`, or `assess-seo`, or the changed surface clearly makes one relevant, read `helpers/ASSESSMENT-GATES.md` and follow its trigger, skip, fallback, capped-grade, and final-report rules. If no assessment gate is relevant, do not read the helper; report the optional gates as skipped only when that status matters to the final release-readiness explanation.
+When the caller asks for an assessment skill or scan, or the changed surface clearly makes one relevant, read `helpers/ASSESSMENT-GATES.md` and follow its selection, trigger, skip, fallback, capped-grade, and final-report rules. Named assessment skills such as accessibility, agent-readiness, SEO, performance, security, compliance, package, or platform checks are examples, not mandatory fixed gates. If no assessment gate is relevant, do not read the helper; report adjunct gates as skipped only when that status matters to the final release-readiness explanation.
 
 ## Security Pass
 
@@ -147,8 +154,9 @@ Keep the final report concise and evidence-based:
 - logical slices completed and commits created, if any
 - how sub-agents were used, or why they were unavailable or disallowed
 - tests and verification run
+- Evidence Gate status, claim evidence summary, unresolved claim gaps, and whether final claims were narrowed to match proof
 - slice-level peer review, review gate loops, security pass, cleanup, docs/comment sweep, and roast scope/status, grade, and cap reason
-- optional gate loop status, including Assess Accessibility, Assess Agent Readiness, and Assess SEO run/skipped/unavailable when relevant
+- adjunct assessment gate loop status for every selected gate, including gate name, run/skipped/unavailable/capped status, final grade or equivalent, cap reason, and unresolved findings
 - unresolved findings or release blockers
 - whether the final state is releasable
 
