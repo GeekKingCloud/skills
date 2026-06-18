@@ -4,7 +4,7 @@ Read this helper for every Crucible run. Maintain it as a running internal proof
 
 Relationship type: default core gate.
 
-The Evidence Gate verifies proof boundaries. It does not judge code style, architecture, or broad quality; that remains the roast gate's job. Its job is to compare claims against evidence, identify which release, behavior, compatibility, documentation, package, install, security, workflow, remediation, and final-readiness claims are actually proven, and feed unresolved proof gaps back into the Crucible Execution Loop.
+The Evidence Gate verifies proof boundaries. It does not judge code style, architecture, or broad quality; that remains the Roast gate's job. Its job is to compare claims against evidence, identify which release, behavior, compatibility, documentation, package, install, security, workflow, remediation, and final-readiness claims are actually proven, and feed unresolved proof gaps back into the Crucible Execution Loop.
 
 ## Evidence Inputs
 
@@ -77,7 +77,7 @@ Low and nitpick findings do not block release readiness when they are documented
 
 ## Remediation Loop
 
-Use the Crucible Review Gate Loop for actionable evidence findings:
+Use the Crucible Gate Remediation Loop for actionable evidence findings:
 
 1. Replace unsupported claims with narrower, evidence-true language, or run the missing verification.
 2. Fix implementation, docs, packaging, tests, or examples when the evidence shows the claim is false.

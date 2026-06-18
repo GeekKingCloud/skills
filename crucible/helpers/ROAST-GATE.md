@@ -2,6 +2,10 @@
 
 Read this helper when choosing roast scope, running roast, using roast as Crucible's work queue, falling back because the `roast` skill is unavailable, or explaining why a plan-led route has no roast.
 
+Relationship type: default core gate when the selected route includes roast.
+
+Dependency: the sibling `roast` skill, or an equivalent serious fallback review when that skill is unavailable. Report the dependency status as execution evidence; do not present Crucible as advertising or requiring a public bundle of skills.
+
 ## Routes
 
 Crucible has exactly four valid routes:
@@ -9,7 +13,7 @@ Crucible has exactly four valid routes:
 - `plan-led-no-roast`: implement a supplied plan and run the non-roast hardening gates.
 - `plan-led-plan-scope-roast`: implement a supplied plan, then roast only the changed plan scope.
 - `plan-led-project-scope-roast`: implement a supplied plan, then roast the full current project.
-- `roast-led-project-scope`: roast the full current project, use findings as the work queue, then remediate through the Review Gate Loop.
+- `roast-led-project-scope`: roast the full current project, use findings as the work queue, then remediate through the Gate Remediation Loop.
 
 Do not use legacy route names outside the four valid routes above. Do not treat `roast skipped` as its own route. A no-roast run is only valid as `plan-led-no-roast`, and it still requires a concrete supplied plan.
 
@@ -27,7 +31,7 @@ Use `roast-led-project-scope` when no separate implementation plan is supplied a
 
 Run roast as a serious, evidence-backed release audit.
 
-Use the Review Gate Loop:
+Use the Gate Remediation Loop:
 - collect findings, grade, evidence, and scope limitations
 - fix one finding or root-cause group at a time through the Execution Loop
 - rerun roast, a focused roast, or the closest equivalent verification after fixes

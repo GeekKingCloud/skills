@@ -1,6 +1,6 @@
 ---
 name: crucible
-description: Orchestrate release-hardening work from a supplied plan or full-project roast-led work queue through sub-agent-heavy implementation, verification evidence checks, remediation, review gates, security pass, cleanup, docs/comment sweep, and release-readiness reporting.
+description: Orchestrate release-hardening work from a supplied plan or full-project roast-led work queue through sub-agent-heavy implementation, verification evidence checks, remediation, Roast gate or selected adjunct gates, security pass, cleanup, docs/comment sweep, and release-readiness reporting.
 ---
 
 # Crucible
@@ -13,8 +13,8 @@ The target state is:
 - the selected work source is implemented or remediated
 - meaningful tests and checks pass
 - a running Evidence Gate ledger maps material behavior, release, compatibility, documentation, remediation, and final-report claims to current-run evidence
-- peer review and default review-gate findings are resolved or explicitly accepted
-- relevant adjunct gate findings are resolved through the same rerun-and-fix loop as default review gates, or explicitly accepted
+- peer review and default Roast gate findings are resolved or explicitly accepted
+- relevant adjunct gate findings are resolved through the same Gate Remediation Loop as the Roast gate, or explicitly accepted
 - no orphaned code, stale comments, stale docs, unused fixtures, or abandoned config remain from the work
 - comments explain tricky or unusual code without narrating obvious code
 - unresolved issues are Low or nitpick-level only, and no run gate has unresolved Critical, High, or Medium findings unless the caller explicitly accepts the release risk
@@ -34,9 +34,9 @@ If permission is declined or sub-agents are unavailable, continue locally and st
    - `plan-led-no-roast`: implement a supplied plan and run the non-roast hardening gates.
    - `plan-led-plan-scope-roast`: implement a supplied plan, then roast only the changed plan scope.
    - `plan-led-project-scope-roast`: implement a supplied plan, then roast the full current project.
-   - `roast-led-project-scope`: roast the full current project, use findings as the work queue, then remediate through the review gate loop.
+   - `roast-led-project-scope`: roast the full current project, use findings as the work queue, then remediate through the Gate Remediation Loop.
 4. Check version-control status before editing. Identify unrelated local changes and work around them without reverting them.
-5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, running Evidence Gate ledger, final Evidence Gate sweep status, evidence-ledger summary, unresolved claim gaps, roast scope/status, roast grade, roast cap reason, adjunct assessment gates, security pass, cleanup, docs/comment sweep, and commit or handoff expectations.
+5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, running Evidence Gate ledger, final Evidence Gate sweep status, evidence-ledger summary, unresolved claim gaps, Roast gate scope/status, Roast gate grade, Roast gate cap reason, adjunct assessment gates, security pass, cleanup, docs/comment sweep, and commit or handoff expectations.
 
 If no supplied plan exists and the caller did not authorize a full-project roast-led work queue, stop and ask for the missing work source. Stop and ask only when the work source is missing critical product decisions, would require destructive Git history changes, needs credentials, or would materially change security posture, runtime behavior, dependency surface, or public behavior without clear caller approval.
 
@@ -44,7 +44,7 @@ If no supplied plan exists and the caller did not authorize a full-project roast
 
 Follow the startup permission rule before using this operating model.
 
-For meaningful Crucible work, treat sub-agents as the default way to improve coverage when the environment supports them and delegation is allowed. At each stage, actively look for independent work to delegate: codebase search, implementation of isolated slices, in-the-moment peer review, regression hunting, test review, security review, docs/comment sweeps, cleanup checks, and review-gate follow-up.
+For meaningful Crucible work, treat sub-agents as the default way to improve coverage when the environment supports them and delegation is allowed. At each stage, actively look for independent work to delegate: codebase search, implementation of isolated slices, in-the-moment peer review, regression hunting, test review, security review, docs/comment sweeps, cleanup checks, and gate-remediation follow-up.
 
 Keep delegated tasks bounded, parallel, and source-grounded. Give each sub-agent a clear scope, expected output, and ownership boundary. Keep blocking product decisions, final integration, and release-readiness judgment in the main thread, and verify sub-agent findings against the repository before acting.
 
@@ -67,7 +67,7 @@ If verification fails, fix the cause and rerun the relevant check. Do not change
 
 ## Roast Review Gate
 
-Use the sibling `roast` skill as Crucible's default broad code-quality review gate and as the only no-plan work source. Roast is central to Crucible's release-hardening identity, but plan-led work may explicitly choose no roast.
+Use the sibling `roast` skill as Crucible's default Roast gate for broad code-quality review and as the only no-plan work source. This is a managed skill dependency, not a bundle advertisement: report whether `roast` ran, was omitted for a valid route reason, or was replaced by fallback review, but do not present Crucible as promoting a required combo of skills. Roast is central to Crucible's release-hardening identity, but plan-led work may explicitly choose no roast.
 
 Read `helpers/ROAST-GATE.md` when choosing roast scope, running roast, using roast as the work queue, falling back because `roast` is unavailable, or explaining why a plan-led route has no roast. Keep the detailed route and scope rules in that helper.
 
@@ -77,9 +77,9 @@ Use `helpers/EVIDENCE-GATE.md` as Crucible's default proof-boundary mechanism fo
 
 The Evidence Gate verifies that material behavior, release, compatibility, documentation, package, install, security, cleanup, remediation, and final-report claims are supported by current-run evidence. It is not a duplicate roast or a standalone report: unresolved actionable evidence gaps become work items for the Crucible Execution Loop. Narrow unsupported claims, add missing verification, or fix contradicted behavior before claiming a slice, gate finding, or release is complete.
 
-## Review Gate Loop
+## Gate Remediation Loop
 
-Use the same outer loop for every gate that runs, whether it is the default Evidence Gate, default roast gate, an adjunct assessment gate, or an evidence-backed fallback pass:
+Use the same outer loop for every gate that runs, whether it is the default Evidence Gate, default Roast gate, an adjunct assessment gate, or an evidence-backed fallback pass:
 
 1. Run the skill or equivalent fallback pass against the current changed state.
 2. Capture the grade, severity list, evidence, and scope limitations.
@@ -95,7 +95,7 @@ If a skill does not produce a letter grade, treat the gate as passing only when 
 
 Do not use `external`, `owner-blocked`, or `unverifiable` as an escape hatch for findings that can be fixed or tested in the current workspace. When in doubt, attempt the narrowest reasonable fix or verification once, then classify the remaining cap from evidence.
 
-Run gate loops sequentially when later fixes can invalidate earlier evidence. For plan-led hardening, finish the initial implementation loop while maintaining the Evidence Gate ledger. Run selected adjunct assessment gates in the concrete order documented by `helpers/ASSESSMENT-GATES.md`, converting their actionable findings into Execution Loop slices and updating the evidence ledger after each fix. Run the roast loop after assessment fixes so roast reviews the final assessed state, again treating actionable roast findings as Execution Loop slices with evidence-ledger updates. Then run security, cleanup, and docs/comment passes. After those passes are stable, run the final Evidence Gate sweep against the completed state and final release claims. Parallelize independent investigation inside a loop when it will not create conflicting edits, but integrate patches through the main Execution Loop.
+Run gate remediation loops sequentially when later fixes can invalidate earlier evidence. For plan-led hardening, finish the initial implementation loop while maintaining the Evidence Gate ledger. Run selected adjunct assessment gates in the concrete order documented by `helpers/ASSESSMENT-GATES.md`, converting their actionable findings into Execution Loop slices and updating the evidence ledger after each fix. Run the Roast gate after assessment fixes so roast reviews the final assessed state, again treating actionable roast findings as Execution Loop slices with evidence-ledger updates. Then run security, cleanup, and docs/comment passes. After those passes are stable, run the final Evidence Gate sweep against the completed state and final release claims. Parallelize independent investigation inside a loop when it will not create conflicting edits, but integrate patches through the main Execution Loop.
 
 ## Adjunct Assessment Gates
 
@@ -105,7 +105,7 @@ When the caller asks for an assessment skill or scan, or the changed surface cle
 
 ## Security Pass
 
-Run a dedicated security pass after review-gate loops are complete and before cleanup.
+Run a dedicated security pass after gate remediation loops are complete and before cleanup.
 Prefer a separate sub-agent for this pass when available, especially when the change touches inputs, permissions, storage, shell commands, dependencies, network boundaries, or generated artifacts. Parallelize independent security investigation and focused patch review when it will not create conflicting edits.
 
 Inspect:
@@ -132,7 +132,7 @@ Before final response or handoff:
 
 ## Comments And Docs
 
-Do a focused readability sweep after review-gate loops, the final security pass, and cleanup are stable. Parallelize independent docs/comment review and updates when they do not conflict, then reconcile the final wording locally.
+Do a focused readability sweep after gate remediation loops, the final security pass, and cleanup are stable. Parallelize independent docs/comment review and updates when they do not conflict, then reconcile the final wording locally.
 
 Keep good comments:
 - explain tricky algorithms, unusual constraints, compatibility requirements, security decisions, and non-obvious failure handling
@@ -156,8 +156,8 @@ Keep the final report concise and evidence-based:
 - how sub-agents were used, or why they were unavailable or disallowed
 - tests and verification run
 - Evidence Gate ledger summary, final sweep status, unresolved claim gaps, and whether final claims were narrowed to match proof
-- slice-level peer review, review gate loops, security pass, cleanup, docs/comment sweep, and roast scope/status, grade, and cap reason
-- adjunct assessment gate loop status for every selected gate, including gate name, run/skipped/unavailable/capped status, final grade or equivalent, cap reason, and unresolved findings
+- slice-level peer review, gate remediation loops, security pass, cleanup, docs/comment sweep, and Roast gate scope/status, grade, and cap reason
+- Gate Remediation Loop status for every selected adjunct assessment gate, including gate name, run/skipped/unavailable/capped status, final grade or equivalent, cap reason, and unresolved findings
 - unresolved findings or release blockers
 - whether the final state is releasable
 
