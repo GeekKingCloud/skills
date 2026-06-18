@@ -12,7 +12,7 @@ Use this skill to turn a supplied plan or a full-project roast-led work queue in
 The target state is:
 - the selected work source is implemented or remediated
 - meaningful tests and checks pass
-- material behavior, release, compatibility, documentation, and final-report claims are mapped to current-run evidence
+- a running Evidence Gate ledger maps material behavior, release, compatibility, documentation, remediation, and final-report claims to current-run evidence
 - peer review and default review-gate findings are resolved or explicitly accepted
 - relevant adjunct gate findings are resolved through the same rerun-and-fix loop as default review gates, or explicitly accepted
 - no orphaned code, stale comments, stale docs, unused fixtures, or abandoned config remain from the work
@@ -36,7 +36,7 @@ If permission is declined or sub-agents are unavailable, continue locally and st
    - `plan-led-project-scope-roast`: implement a supplied plan, then roast the full current project.
    - `roast-led-project-scope`: roast the full current project, use findings as the work queue, then remediate through the review gate loop.
 4. Check version-control status before editing. Identify unrelated local changes and work around them without reverting them.
-5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, Evidence Gate status, claim evidence summary, unresolved claim gaps, roast scope/status, roast grade, roast cap reason, adjunct assessment gates, security pass, cleanup, docs/comment sweep, and commit or handoff expectations.
+5. Define the acceptance gates: implementation or remediation outcome, tests, peer review, running Evidence Gate ledger, final Evidence Gate sweep status, evidence-ledger summary, unresolved claim gaps, roast scope/status, roast grade, roast cap reason, adjunct assessment gates, security pass, cleanup, docs/comment sweep, and commit or handoff expectations.
 
 If no supplied plan exists and the caller did not authorize a full-project roast-led work queue, stop and ask for the missing work source. Stop and ask only when the work source is missing critical product decisions, would require destructive Git history changes, needs credentials, or would materially change security posture, runtime behavior, dependency surface, or public behavior without clear caller approval.
 
@@ -58,9 +58,10 @@ Work in logically connected slices. For each slice:
 4. Implement or remediate the slice with the smallest change that satisfies the work source and repo instructions.
 5. Add or update focused tests when the slice changes behavior, fixes a bug, touches shared contracts, or guards a regression.
 6. Run the narrowest meaningful verification. Broaden verification as risk or shared surface increases.
-7. Ask reviewers to check the actual slice for correctness bugs, regressions, missing tests, security risks, stale comments/docs, orphaned code, and maintainability problems. Integrate findings critically; verify against source before changing code.
-8. Review the slice for dead code, stale helpers, orphaned files, stale comments, stale docs, and unnecessary dependencies introduced by the change.
-9. Commit the slice when local commits are authorized by the caller or repo workflow. Treat an explicit Crucible request as authorization for local logical commits unless the caller or repo instructions say otherwise. Do not push, force-push, rewrite history, tag releases, or publish artifacts without explicit approval.
+7. Update the Evidence Gate ledger for the slice: record the claim, evidence, verdict, severity, and any next check or fix needed before the slice can be treated as complete.
+8. Ask reviewers to check the actual slice for correctness bugs, regressions, missing tests, security risks, stale comments/docs, orphaned code, and maintainability problems. Integrate findings critically; verify against source before changing code.
+9. Review the slice for dead code, stale helpers, orphaned files, stale comments, stale docs, and unnecessary dependencies introduced by the change.
+10. Commit the slice when local commits are authorized by the caller or repo workflow. Treat an explicit Crucible request as authorization for local logical commits unless the caller or repo instructions say otherwise. Do not push, force-push, rewrite history, tag releases, or publish artifacts without explicit approval.
 
 If verification fails, fix the cause and rerun the relevant check. Do not change tests merely to pass; align tests and implementation with the intended behavior.
 
@@ -72,9 +73,9 @@ Read `helpers/ROAST-GATE.md` when choosing roast scope, running roast, using roa
 
 ## Evidence Gate
 
-Use `helpers/EVIDENCE-GATE.md` as Crucible's default proof-boundary gate for every run. Run it after implementation and focused verification, before adjunct assessment gates and roast.
+Use `helpers/EVIDENCE-GATE.md` as Crucible's default proof-boundary mechanism for every run. Maintain it as a running internal ledger throughout every implementation slice, assessment remediation, roast remediation, security fix, cleanup fix, and docs/comment change. Run a final Evidence Gate sweep only after selected assessment gates, roast, security, cleanup, and docs/comment passes are stable.
 
-The Evidence Gate verifies that material behavior, release, compatibility, documentation, package, install, security, cleanup, and final-report claims are supported by current-run evidence. It is not a duplicate roast: narrow unsupported claims, add missing verification, or fix contradicted behavior through the Review Gate Loop before claiming release readiness.
+The Evidence Gate verifies that material behavior, release, compatibility, documentation, package, install, security, cleanup, remediation, and final-report claims are supported by current-run evidence. It is not a duplicate roast or a standalone report: unresolved actionable evidence gaps become work items for the Crucible Execution Loop. Narrow unsupported claims, add missing verification, or fix contradicted behavior before claiming a slice, gate finding, or release is complete.
 
 ## Review Gate Loop
 
@@ -94,7 +95,7 @@ If a skill does not produce a letter grade, treat the gate as passing only when 
 
 Do not use `external`, `owner-blocked`, or `unverifiable` as an escape hatch for findings that can be fixed or tested in the current workspace. When in doubt, attempt the narrowest reasonable fix or verification once, then classify the remaining cap from evidence.
 
-Run gate loops sequentially when later fixes can invalidate earlier evidence. For plan-led hardening, finish the implementation loop first, then run the Evidence Gate. Run selected adjunct assessment gates in the concrete order documented by `helpers/ASSESSMENT-GATES.md`. Run the roast loop after assessment fixes so roast reviews the final assessed state. Then run security, cleanup, and docs/comment passes. Parallelize independent investigation inside a loop when it will not create conflicting edits, but integrate patches through the main Execution Loop.
+Run gate loops sequentially when later fixes can invalidate earlier evidence. For plan-led hardening, finish the initial implementation loop while maintaining the Evidence Gate ledger. Run selected adjunct assessment gates in the concrete order documented by `helpers/ASSESSMENT-GATES.md`, converting their actionable findings into Execution Loop slices and updating the evidence ledger after each fix. Run the roast loop after assessment fixes so roast reviews the final assessed state, again treating actionable roast findings as Execution Loop slices with evidence-ledger updates. Then run security, cleanup, and docs/comment passes. After those passes are stable, run the final Evidence Gate sweep against the completed state and final release claims. Parallelize independent investigation inside a loop when it will not create conflicting edits, but integrate patches through the main Execution Loop.
 
 ## Adjunct Assessment Gates
 
@@ -154,7 +155,7 @@ Keep the final report concise and evidence-based:
 - logical slices completed and commits created, if any
 - how sub-agents were used, or why they were unavailable or disallowed
 - tests and verification run
-- Evidence Gate status, claim evidence summary, unresolved claim gaps, and whether final claims were narrowed to match proof
+- Evidence Gate ledger summary, final sweep status, unresolved claim gaps, and whether final claims were narrowed to match proof
 - slice-level peer review, review gate loops, security pass, cleanup, docs/comment sweep, and roast scope/status, grade, and cap reason
 - adjunct assessment gate loop status for every selected gate, including gate name, run/skipped/unavailable/capped status, final grade or equivalent, cap reason, and unresolved findings
 - unresolved findings or release blockers

@@ -1,10 +1,10 @@
 # Evidence Gate
 
-Read this helper for every Crucible run after implementation and focused verification, before adjunct assessment gates and roast.
+Read this helper for every Crucible run. Maintain it as a running internal proof ledger throughout implementation, gate remediation, security, cleanup, docs/comment work, and final release-readiness review.
 
 Relationship type: default core gate.
 
-The Evidence Gate verifies proof boundaries. It does not judge code style, architecture, or broad quality; that remains the roast gate's job. Its job is to compare claims against evidence and identify which release, behavior, compatibility, documentation, package, install, security, or workflow claims are actually proven.
+The Evidence Gate verifies proof boundaries. It does not judge code style, architecture, or broad quality; that remains the roast gate's job. Its job is to compare claims against evidence, identify which release, behavior, compatibility, documentation, package, install, security, workflow, remediation, and final-readiness claims are actually proven, and feed unresolved proof gaps back into the Crucible Execution Loop.
 
 ## Evidence Inputs
 
@@ -13,6 +13,7 @@ Build the evidence map from current-run sources whenever possible:
 - tests, builds, linters, format checks, type checks, package smoke tests, install smoke tests, CI results, manual commands, screenshots, logs, generated artifacts, docs checks, and review outputs
 - changed source, configs, scripts, package metadata, docs, examples, templates, and release notes
 - caller-provided acceptance criteria, issue text, handoff files, plans, and final-report claims
+- assessment, roast, security, cleanup, docs/comment, and peer-review findings that become Crucible work items
 
 Do not treat old handoff notes, remembered results, previous CI runs, stale logs, or intended behavior as verified evidence unless the current run revalidates them or clearly labels them as reused and potentially stale.
 
@@ -25,9 +26,27 @@ Extract claims that matter to release readiness, including:
 - API, CLI, MCP, automation, or integration claims
 - security, permission, privacy, destructive-operation, credential, or data-handling claims
 - documentation, example, changelog, migration, or release-note claims
+- remediation claims such as an assessment finding, roast finding, security issue, cleanup issue, or docs/comment issue being fixed
 - test, verification, CI, review, assessment, or cleanup claims made in the final report
 
 Group duplicate claims by root behavior. Keep each claim concrete enough that a reader can tell what evidence would prove it.
+
+## Working Evidence Ledger
+
+Maintain an internal ledger while the Crucible run is in progress. The ledger is a work queue control surface, not just a final report.
+
+For each material slice, gate finding, remediation, or final release claim, record:
+
+- claim
+- source of the claim, such as plan item, assessment finding, roast finding, security issue, cleanup item, docs/comment change, or final release statement
+- evidence checked
+- verdict
+- severity
+- next check or fix when unresolved
+- rerun result after remediation
+- final state: `closed`, `capped`, `accepted`, or `blocked`
+
+Do not stop at producing an evidence report. Treat unresolved actionable evidence gaps as work items for the Crucible Execution Loop. A slice is not complete until its material claims are verified, narrowed to match evidence, capped with evidence, or explicitly accepted by the caller.
 
 ## Verdicts
 
@@ -63,18 +82,27 @@ Use the Crucible Review Gate Loop for actionable evidence findings:
 1. Replace unsupported claims with narrower, evidence-true language, or run the missing verification.
 2. Fix implementation, docs, packaging, tests, or examples when the evidence shows the claim is false.
 3. Rerun the narrowest check that can prove the updated claim.
-4. Update the evidence map and final report after every fix.
+4. Update the evidence ledger after every fix.
 
 Do not add broad claims just because a related narrow check passed. Do not mark a claim verified because a reviewer agreed with the design; reviewers are evidence for review coverage, not proof that behavior works.
 
-## Reporting
+## Final Sweep And Summary
 
-Report the Evidence Gate as `run`, `capped`, or `blocked`.
+After implementation, selected adjunct assessment gates, roast, security, cleanup, and docs/comment passes are stable, run a final Evidence Gate sweep against the completed state and final release claims.
 
-Include:
+Use the final sweep to:
+
+- confirm the ledger has no unresolved actionable Critical, High, or Medium evidence gaps
+- confirm public release, package install, launcher, update, migration, platform, security, destructive-operation, and credential-handling claims are verified or explicitly accepted
+- confirm final report wording is no broader than the evidence
+- reopen the Execution Loop if a final claim is unsupported, contradicted, or too broad
+
+Summarize the Evidence Gate as `run`, `capped`, or `blocked` only after the ledger has been used to drive remediation.
+
+In the final Crucible report, include:
 
 - the evidence sources inspected
-- a concise claim evidence summary
+- a concise evidence-ledger summary
 - every unresolved `Critical`, `High`, and `Medium` claim gap
 - any Low or nitpick gaps that materially affect confidence
 - capped conditions with evidence, unblocker, and exact next step

@@ -17,8 +17,8 @@
 
 - List tests, builds, checks, review passes, and security checks run.
 - State any checks that could not run and why.
-- Evidence Gate status: `run/capped/blocked`.
-- Claim evidence summary: list the material claims checked and the evidence source for each.
+- Evidence Gate ledger summary: list the material slice, remediation, and final release claims checked and the evidence source for each.
+- Evidence Gate final sweep status: `run/capped/blocked`.
 - Unresolved claim gaps: list every unresolved `Critical`, `High`, or `Medium` evidence gap, plus Low or nitpick gaps that affect confidence.
 - Final-claim narrowing: state whether final report, docs, release, package, compatibility, or behavior claims were narrowed to match available proof.
 
@@ -30,7 +30,7 @@
 - Roast cap reason: `<reason or None>`.
 - Note whether the actual `roast` skill was used, omitted with a valid `plan-led-no-roast` reason, replaced by an equivalent fallback review, or capped by documented non-actionable conditions.
 - Gate loops: for every run gate, include the final grade or equivalent status, rerun evidence when available, whether any actionable finding remains above Low or nitpick level, and whether the result is capped by external, owner-blocked, or unverifiable conditions.
-- Gate order: list Evidence Gate, selected adjunct assessment gates in the order run, and confirm roast ran after assessment fixes when roast was used.
+- Gate order: list selected adjunct assessment gates in the order run, confirm roast ran after assessment fixes when roast was used, and confirm the final Evidence Gate sweep ran after assessment, roast, security, cleanup, and docs/comment passes stabilized.
 - Adjunct assessment gates: for every selected gate, state `<Gate name>: run/skipped/unavailable/capped`, trigger or skip reason, fallback note when relevant, final grade or equivalent status, cap reason, and unresolved findings.
 - If no adjunct assessment gate was selected, state the reason when it matters to release readiness.
 

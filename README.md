@@ -16,12 +16,6 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
   npx skills@latest add GeekKingCloud/skills/crucible
   ```
 
-- **plan-mcp** — Assess an existing backend, API, database-backed service, or system surface, then produce a decision-complete plan for adding a safe MCP layer.
-
-  ```
-  npx skills@latest add GeekKingCloud/skills/plan-mcp
-  ```
-
 - **roast** — Harshly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade.
 
   Defaults to a serious strict-teacher tone. Ask for a snarky, mean, comedy,
@@ -70,14 +64,6 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
 
   ```
   npx skills@latest add GeekKingCloud/skills/feedback
-  ```
-
-## Media
-
-- **remix-voiceover** — Repair commentary-over-background audio or video with separate mic/commentary and background/system tracks into a listener-first REMIX-VOICEOVER output, using fresh source evidence, editorial mix planning, adversarial validation, copied video, preserved original audio, cleanup, and honest confidence labels.
-
-  ```
-  npx skills@latest add GeekKingCloud/skills/remix-voiceover
   ```
 
 ## Just For Fun
