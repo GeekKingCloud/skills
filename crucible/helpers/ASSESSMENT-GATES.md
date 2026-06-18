@@ -11,7 +11,7 @@ Choose assessment gates from concrete current-run evidence:
 - caller-requested skills, scans, or requirements
 - changed surfaces such as UI, docs, public sites, APIs, SDKs, CLIs, packages, installers, workflows, generated documents, auth boundaries, data handling, platform support, performance-sensitive paths, compliance-sensitive flows, or agent-facing content
 - repository instructions, release criteria, issue text, handoff files, plans, CI requirements, or deployment constraints
-- gaps exposed by the Evidence Gate
+- gaps exposed by the running Evidence Gate ledger
 
 Each selected gate must have:
 
@@ -60,7 +60,7 @@ Default ordering principles:
 - Run foundational discovery, packaging, install, compatibility, or contract gates before higher-level workflow and agent-facing gates that depend on those foundations.
 - Run target-specific assessment gates before roast, so roast reviews the final assessed state.
 
-If two gates are independent and will not create conflicting edits, their investigation can run in parallel, but patch integration still goes through the main Crucible Execution Loop.
+If two gates are independent and will not create conflicting edits, their investigation can run in parallel, but patch integration still goes through the main Crucible Execution Loop and updates the Evidence Gate ledger after each remediation slice.
 
 ## Fallbacks
 
