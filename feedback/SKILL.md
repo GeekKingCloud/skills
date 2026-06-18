@@ -1,13 +1,13 @@
 ---
 name: feedback
-description: Deeply review available coding-agent collaboration history, then produce an evidence-bound teaching report that helps the caller communicate better with coding agents through prompting, context-setting, boundaries, corrections, verification requests, handoffs, and durable agent instructions. Use for full-history retrospectives at any user skill level without inventing unsupported history or substituting current-conversation advice.
+description: Deeply review available coding-agent collaboration history, then produce an evidence-bound teaching report that helps the caller communicate better with coding agents through prompting, context-setting, boundaries, corrections, verification requests, handoffs, durable agent instructions, and reusable context/tooling infrastructure. Use for full-history retrospectives at any user skill level without inventing unsupported history or substituting current-conversation advice.
 ---
 
 # Agent Feedback
 
-Run a deep review of the available coding-agent collaboration record across tasks, projects, and sessions. The deliverable is a teaching report: show the caller how their communication patterns affect coding-agent behavior, then give better prompt moves, context-packaging habits, boundary-setting language, correction patterns, verification requests, handoff structures, and durable instruction updates for future work.
+Run a deep review of the available coding-agent collaboration record across tasks, projects, and sessions. The deliverable is a teaching report: show the caller how their communication patterns affect coding-agent behavior, then give better prompt moves, context-packaging habits, boundary-setting language, correction patterns, verification requests, handoff structures, durable instruction updates, and agent-enablement infrastructure habits for future work.
 
-This is primarily a communication-improvement skill. It should help new and seasoned coding-agent users understand how to ask for work, provide context, set autonomy boundaries, correct mistakes, request proof, reduce wasted tokens, and get stronger output from coding agents over time.
+This is primarily a communication-improvement skill. It should help new and seasoned coding-agent users understand how to ask for work, provide context, set autonomy boundaries, correct mistakes, request proof, reduce wasted tokens, and get stronger output from coding agents over time. It should also teach users when to ask agents to build durable maps, indexes, scripts, manifests, or other lightweight workbench infrastructure so repeated work becomes cheaper, more accurate, and easier to verify.
 
 Full-depth cross-session review is the normal route. Do not offer current-conversation feedback, single-artifact feedback, quick feedback, lightweight feedback, or medium-depth feedback as alternate modes. If the caller provides a limited corpus or the environment exposes only limited history, inspect that corpus deeply, state the corpus limit, and avoid claims that reach beyond it.
 
@@ -23,7 +23,7 @@ When asked to use Agent Feedback:
 7. Read enough evidence to identify repeated communication patterns, not isolated moments.
 8. Separate corpus coverage, sample depth, evidence fidelity, and confidence.
 9. Separate observed facts, interpretations, and recommendations.
-10. Convert each repeated pattern into a teachable collaboration lesson: observed user move, agent response effect, better wording, when to use it, and how to encode it as a prompt habit, repo guidance, AGENTS.md-style instruction block when that convention exists, skill rule, or handoff pattern.
+10. Convert each repeated pattern into a teachable collaboration lesson: observed user move, agent response effect, better wording, when to use it, and how to encode it as a prompt habit, repo guidance, AGENTS.md-style instruction block when that convention exists, skill rule, handoff pattern, or reusable context/tooling infrastructure.
 
 If there is not enough evidence to produce reliable cross-session communication feedback, say so plainly and ask for better inputs. Never pretend to have read history that is unavailable. If enough relevant history appears to exist but the current run has not inspected it deeply enough, continue the inspection or label the result `Incomplete run` with the specific blocker.
 
@@ -142,6 +142,7 @@ User-side communication patterns:
 - correction patterns: how quickly and specifically the user redirects wrong assumptions, bad edits, weak plans, or incomplete checks
 - recovery and handoff habits: whether long work preserves goals, changed files, blockers, next steps, and exact commands in reachable notes
 - durable instruction habits: whether repeated corrections become repo guidance, AGENTS.md-style instruction blocks when that convention exists, skill wording, prompt templates, handoff rules, or project docs
+- agent enablement infrastructure: whether the user asks agents to build bounded, reusable maps, indexes, manifests, inspection scripts, command shortcuts, databases, or folder inventories for authorized work when repeated manual inspection would be slow, expensive, or error-prone
 - context efficiency: whether the user frontloads high-signal context, avoids noisy repetition, clears stale threads, or asks for summarization before context becomes expensive
 - capability matching: how communication changes for newer coding agents, less capable agents, stronger agents, tool-limited environments, and long-running autonomous work
 
@@ -154,13 +155,28 @@ Agent-side rules to encode:
 - where agents should ask for history, scope, examples, or success criteria before giving agent feedback
 - what the current agent can infer about its own context needs and limits
 
+Agent enablement infrastructure:
+- Look for repeated large-corpus work such as spreadsheets, logs, tickets, screenshots, generated outputs, many files, or broad repo analysis where the user keeps asking direct questions against authorized raw artifacts.
+- Treat conversation history as first-class evidence. The strongest signal may be the user's exchanges about creating, updating, ignoring, or struggling to maintain reusable agent-facing context, even when no durable folder structure is visible in the workspace.
+- Recommend a durable workbench only when evidence shows repeated lookup cost, context-limit friction, inconsistent answers, slow re-inspection, or recurring questions over the same corpus.
+- Let the coding agent propose the simplest useful representation: a Markdown inventory for small stable corpora, a JSON/CSV manifest for structured metadata, a script or command for repeatable inspection, or a local database/index for large structured recurring queries.
+- Require a validation or refresh rule for any generated map, index, database, or manifest so future agents know when it is accurate enough to use and when it must be rebuilt.
+- Avoid overbuilding. If the reviewed work was one-off, small, fast to inspect directly, or likely to change before reuse, say no infrastructure is needed.
+- Frame this as helping agents think with better materials, not as making the user responsible for internal agent reasoning.
+
+Choose the infrastructure recommendation lane from evidence:
+- `Foundation`: use when the user has little or no durable agent-facing infrastructure, or their history shows they mainly point agents at raw files, folders, logs, tickets, or transcripts. Recommend one small first step, such as asking the agent to inventory an authorized scope, capture important commands or file roles, and propose where a short reusable note should live. Give beginner-safe wording and avoid assuming the user knows what kind of artifact to create.
+- `Growth`: use when the user already has some repo guidance, maps, scripts, handoffs, project notes, or conversation patterns about improving agent workflows. Recommend the next refinement: splitting reusable context by purpose, adding refresh/staleness rules, adding verification commands, turning repeated critique or review expectations into a gate, or consolidating scattered notes into the existing source of truth.
+- `Advanced`: use only when evidence shows the user already maintains meaningful agent workbench structure. Recommend higher-leverage improvements such as generated inventories, local indexes, command catalogs, task-specific specialist prompts, or critique/check gates, but still require scope, validation, and cleanup rules.
+- `Not applicable`: use when reviewed work is one-off, small, fast to rediscover, too unstable, or unsupported by evidence. Do not cap the overall feedback report for this; simply omit the infrastructure section or state that no durable workbench is needed.
+
 Every major user-side recommendation must include:
 - `Observed pattern`: what the user actually did across reviewed evidence
 - `Agent response effect`: how that communication helped or hurt the agent's behavior
 - `Use this wording`: a concrete replacement phrase, prompt pattern, correction, or handoff structure
 - `When to use it`: the task type or collaboration moment where it applies
 - `Do not overuse when`: the case where extra structure would add noise or slow the work
-- `Durable encoding`: whether this should become a prompt habit, repo-guidance/AGENTS.md-style block, skill rule, handoff pattern, or project doc update
+- `Durable encoding`: whether this should become a prompt habit, repo-guidance/AGENTS.md-style block, skill rule, handoff pattern, project doc update, reusable map, index, script, manifest, command, or database
 - `Evidence IDs`: the reviewed evidence that supports the recommendation
 
 Treat agent feedback as a communication audit and teaching report, not a user-blame exercise. Sections about agent behavior should be framed as future-agent expectations only when they include a place the user can encode or trigger them, such as a prompt pattern, repo guidance, skill wording, handoff note, or project doc. Do not imply the user directly controls future agents at runtime.
@@ -177,12 +193,18 @@ For general communication-improvement requests, include advice that is portable 
 
 When a repeated lesson would help future agents in the same repo or project, include a concise repo-guidance recommendation. If the workspace uses an AGENTS.md-style instruction file, name that as the target and offer draftable wording or a concrete diff. If no durable file convention is visible, say where the caller could place the guidance instead of assuming a filename.
 
+When repeated work over the same corpus would be cheaper or more reliable with agent-built infrastructure, include an agent-enablement recommendation. State the smallest durable artifact that would help, who or what should refresh it, how to validate it against the raw source, and when direct inspection is still better.
+
 Make recommendations concrete. Prefer examples such as:
 - `Say the target repo and the exact boundary up front.`
 - `Name the success check before implementation starts.`
 - `When correcting an agent, state whether to stop, audit, or continue.`
 - `Give the agent the prior decision, the current goal, and the thing that changed.`
 - `If this keeps recurring, add a short repo-guidance/AGENTS.md-style rule so future agents inherit it.`
+- `Before asking repeated questions about this folder, ask the agent to inventory the files and create a small map it can verify and reuse.`
+- `For a large structured corpus, ask the agent to propose the cheapest useful index, then validate it against a sample before relying on it.`
+- `If you are starting from zero, ask the agent: inspect this authorized folder, tell me what reusable note or map would help future sessions, create the smallest useful version, and include how to refresh it.`
+- `If you already have guidance files or workbench notes, ask the agent to find duplication, stale entries, missing verification commands, and unclear ownership before adding anything new.`
 - `Ask the agent to write durable repo guidance when the same correction repeats.`
 - `Tell the agent what history it may inspect before asking for a communication retrospective.`
 - `Ask the agent to state what context it needs before it gives broad collaboration advice.`

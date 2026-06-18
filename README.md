@@ -66,7 +66,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
   npx skills@latest add GeekKingCloud/skills/handoff
   ```
 
-- **feedback** — Deeply review available coding-agent collaboration history, then produce evidence-bound teaching feedback on communication, prompting, context-setting, corrections, verification, handoffs, and durable agent instructions.
+- **feedback** — Deeply review available coding-agent collaboration history, then produce evidence-bound teaching feedback on communication, prompting, context-setting, corrections, verification, handoffs, durable agent instructions, and reusable context/tooling infrastructure.
 
   ```
   npx skills@latest add GeekKingCloud/skills/feedback

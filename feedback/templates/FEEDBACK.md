@@ -29,6 +29,9 @@
   - User communication move:
   - Agent response effect:
   - Teachable rewrite:
+  - Reusable context/tooling signal:
+  - Infrastructure maturity signal:
+  - Infrastructure risk:
   - Limitations:
 
 - **E2:** [Source and scope]
@@ -36,6 +39,9 @@
   - User communication move:
   - Agent response effect:
   - Teachable rewrite:
+  - Reusable context/tooling signal:
+  - Infrastructure maturity signal:
+  - Infrastructure risk:
   - Limitations:
 
 ## Learning Summary
@@ -86,7 +92,10 @@
    - Example wording:
    - Use when:
    - Do not overuse when:
-   - Durable encoding: [prompt habit / repo guidance / AGENTS.md-style block / skill rule / handoff pattern / project doc / not needed]
+   - Durable encoding: [prompt habit / repo guidance / AGENTS.md-style block / skill rule / handoff pattern / project doc / reusable map / index / script / manifest / command / database / not needed]
+   - Durable context/tooling recommendation:
+   - Justification threshold:
+   - Do not build when:
    - Expected improvement: [faster work / fewer corrections / lower token waste / stronger verification / safer autonomy]
    - Agent response rule:
    - Agent capability nuance:
@@ -115,6 +124,8 @@
    - Evidence basis: [E1, E2]
    - Inferred need:
    - Trigger:
+   - Reuse trigger:
+   - Refresh or staleness rule:
    - Where the user can encode it: [prompt / repo guidance / AGENTS.md-style instruction file / skill / handoff / project doc / test]
    - Suggested durable wording:
    - Expected future-agent behavior:
@@ -123,6 +134,8 @@
    - Evidence basis: [E1, E2]
    - Inferred need:
    - Trigger:
+   - Reuse trigger:
+   - Refresh or staleness rule:
    - Where the user can encode it: [prompt / repo guidance / AGENTS.md-style instruction file / skill / handoff / project doc / test]
    - Suggested durable wording:
    - Expected future-agent behavior:
@@ -137,6 +150,24 @@
   [Concrete instruction block]
   ```
   **Ask before applying:** [Yes / No, depending on user authorization and repo context]
+
+## Agent Enablement Infrastructure
+
+- **Evidence:** [E1, E2, or omit if reviewed evidence does not justify infrastructure]
+  **Evidence type:** [Conversation pattern / workspace artifact / both / absence of durable structure]
+  **Maturity lane:** [Foundation / Growth / Advanced / Not applicable]
+  **Current pattern:** [How the user currently points the agent at raw artifacts or repeats expensive lookup]
+  **Missed enablement opportunity:** [What reusable context/tooling would have made the agent faster or more accurate]
+  **Recommended infrastructure:** [Markdown map / JSON or CSV manifest / inspection script / command shortcut / local database or index / folder structure / no infrastructure needed]
+  **First step for a foundation user:** [Smallest beginner-safe prompt or artifact, or `Not needed`]
+  **Next refinement for an existing setup:** [Cleanup, split, refresh rule, validation command, critique gate, command catalog, or `Not needed`]
+  **Why this helps the agent:** [Speed, token use, accuracy, repeatability, verification, or reduced rework]
+  **Validation or refresh rule:** [How to prove the artifact matches the raw source and when to rebuild it]
+  **Example prompt:**
+  ```text
+  [Ask the agent to propose or build the smallest useful bounded map/index/tool for an authorized scope before repeated work]
+  ```
+  **Do not build this when:** [One-off, small, unstable, faster to inspect directly, or not supported by evidence]
 
 ## Reusable Prompt And Correction Patterns
 
@@ -177,6 +208,8 @@ If this correction is likely to recur, propose the exact repo guidance, AGENTS.m
 - [Doc, skill, template, or workflow update]
   - Evidence basis:
   - Trigger:
+  - Artifact target:
+  - Maintenance owner or refresh condition:
   - Expected improvement:
 
 ## Caveats
