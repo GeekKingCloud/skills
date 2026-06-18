@@ -27,7 +27,9 @@ Examples of possible assessment gates include accessibility, classic SEO, agent-
 
 ## Shared Gate Rules
 
-Use the Crucible Review Gate Loop for every selected assessment gate.
+Use the Crucible Gate Remediation Loop for every selected assessment gate.
+
+Treat selected assessment skills or tools as optional adjunct dependencies, not as a promoted skill bundle. Report which gate ran, what evidence or fallback was used, and why it was relevant to this target surface. Do not list unselected assessment skills as missing features or imply they are mandatory Crucible companions.
 
 Classify every assessment finding as:
 

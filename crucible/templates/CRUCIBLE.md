@@ -24,12 +24,12 @@
 
 ## Review And Cleanup
 
-- Summarize slice-level peer review, review gate loops and issue remediation, final security pass, cleanup pass, and docs/comment sweep results.
+- Summarize slice-level peer review, Gate Remediation Loop outcomes, final security pass, cleanup pass, and docs/comment sweep results.
 - Roast scope/status: `none/plan-scope/project-scope/fallback/capped`.
 - Roast grade: `<letter or equivalent status>`.
 - Roast cap reason: `<reason or None>`.
 - Note whether the actual `roast` skill was used, omitted with a valid `plan-led-no-roast` reason, replaced by an equivalent fallback review, or capped by documented non-actionable conditions.
-- Gate loops: for every run gate, include the final grade or equivalent status, rerun evidence when available, whether any actionable finding remains above Low or nitpick level, and whether the result is capped by external, owner-blocked, or unverifiable conditions.
+- Gate Remediation Loops: for every run gate, include the dependency used or fallback performed, final grade or equivalent status, rerun evidence when available, whether any actionable finding remains above Low or nitpick level, and whether the result is capped by external, owner-blocked, or unverifiable conditions.
 - Gate order: list selected adjunct assessment gates in the order run, confirm roast ran after assessment fixes when roast was used, and confirm the final Evidence Gate sweep ran after assessment, roast, security, cleanup, and docs/comment passes stabilized.
 - Adjunct assessment gates: for every selected gate, state `<Gate name>: run/skipped/unavailable/capped`, trigger or skip reason, fallback note when relevant, final grade or equivalent status, cap reason, and unresolved findings.
 - If no adjunct assessment gate was selected, state the reason when it matters to release readiness.
