@@ -16,11 +16,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
   npx skills@latest add GeekKingCloud/skills/crucible
   ```
 
-- **roast** — Harshly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade.
-
-  Defaults to a serious strict-teacher tone. Ask for a snarky, mean, comedy,
-  burn, putdown, or savage roast to switch the presentation style while keeping
-  findings evidence-backed and actionable.
+- **roast** — Strictly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade.
 
   ```
   npx skills@latest add GeekKingCloud/skills/roast
