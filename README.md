@@ -10,7 +10,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
 
 ## Development And Release
 
-- **crucible** — Orchestrate release-hardening work from plans, review findings, or current codebase state through sub-agent-heavy implementation, review gates, security pass, docs/comment sweep, cleanup, and release-readiness reporting.
+- **crucible** — Orchestrate release-hardening work from plans, review findings, or current codebase state through sub-agent-heavy implementation, verification evidence checks, review gates, security pass, docs/comment sweep, cleanup, and release-readiness reporting.
 
   ```
   npx skills@latest add GeekKingCloud/skills/crucible
@@ -56,7 +56,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
   npx skills@latest add GeekKingCloud/skills/handoff
   ```
 
-- **feedback** — Deeply review available coding-agent collaboration history, then produce evidence-bound teaching feedback on communication, prompting, context-setting, corrections, verification, handoffs, and durable agent instructions.
+- **feedback** — Deeply review available coding-agent collaboration history, then produce evidence-bound teaching feedback on communication, prompting, context-setting, corrections, verification, handoffs, durable agent instructions, and reusable context/tooling infrastructure.
 
   ```
   npx skills@latest add GeekKingCloud/skills/feedback
