@@ -1,6 +1,6 @@
 ---
 name: crucible
-description: Orchestrate release-hardening work from a supplied plan or full-project roast-led work queue through sub-agent-heavy implementation, verification evidence checks, remediation, Roast gate or selected adjunct gates, security pass, cleanup, docs/comment sweep, and release-readiness reporting.
+description: Orchestrate release-hardening work from a supplied plan or full-project roast-led work queue through sub-agent-heavy implementation, verification evidence checks, remediation, Roast gate or selected adjunct gates, security pass, cleanup, docs/comment sweep, and release-readiness reporting; requires explicit sub-agent approval or explicit degraded local-only confirmation before proceeding.
 ---
 
 # Crucible
@@ -22,9 +22,9 @@ The target state is:
 
 ## Startup Permission
 
-Before starting route selection, repository exploration, implementation, or review work, check whether sub-agents are already approved by the environment or explicitly granted by the caller's Crucible invocation. If not, ask once: "Crucible gets best results with sub-agents for peer review, validation, security, cleanup, and regression checks. May I use sub-agents where useful for this run?"
+Before starting route selection, repository exploration, implementation, or review work, check whether sub-agents are already approved by the environment or explicitly granted by the caller's Crucible invocation. If not, stop immediately and ask: "Crucible gets best results with sub-agents for peer review, validation, security, cleanup, and regression checks. May I use sub-agents where useful for this run?"
 
-If permission is declined or sub-agents are unavailable, continue locally and state that independent review coverage is reduced. Do not repeat the question per slice; the startup answer covers bounded Crucible delegation for the run.
+Do not continue Crucible work while that question is unanswered. If permission is declined or sub-agents are unavailable, stop and ask whether the caller wants to abort, switch to a narrower non-Crucible local workflow, or continue Crucible in explicitly degraded local-only mode. Do not proceed in degraded local-only mode unless the caller explicitly confirms that tradeoff after being told independent review coverage is reduced. Do not repeat the sub-agent question per slice; the startup answer covers bounded Crucible delegation for the run.
 
 ## Start And Work Route
 
@@ -53,7 +53,7 @@ Keep delegated tasks bounded, parallel, and source-grounded. Give each sub-agent
 Work in logically connected slices. For each slice:
 
 1. State the slice goal and verification target.
-2. Decide what can be delegated before editing. Use sub-agents by default for independent, bounded work such as codebase search, isolated implementation, risk review, test review, regression search, or patch review. If sub-agents are unavailable or delegation is not allowed, say so and do the pass locally.
+2. Decide what can be delegated before editing. Use sub-agents by default for independent, bounded work such as codebase search, isolated implementation, risk review, test review, regression search, or patch review. If sub-agents become unavailable or delegation is no longer allowed after startup approval, pause the Crucible run and ask whether to abort, wait for availability, or continue in explicitly degraded local-only mode.
 3. Use at least one sub-agent as a peer reviewer or sounding board for each meaningful change when available. Give reviewers the slice goal, changed files or intended files, suspected risk areas, expected tests, and repo instructions.
 4. Implement or remediate the slice with the smallest change that satisfies the work source and repo instructions.
 5. Add or update focused tests when the slice changes behavior, fixes a bug, touches shared contracts, or guards a regression.
