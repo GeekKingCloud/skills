@@ -1,6 +1,6 @@
 # Adjunct Assessment Gates
 
-Read this helper only when the caller asks Crucible to pair with an assessment skill, requirement, or scan, or when the plan or changed surface makes an assessment gate relevant to release confidence.
+Read this helper only when the caller asks Crucible to pair with an assessment skill, requirement, or scan, or when the work source or changed target makes an assessment gate relevant to readiness confidence.
 
 Adjunct assessment gates are optional. They are selected for the current target surface; they are not a fixed checklist that every Crucible run must execute.
 
@@ -9,7 +9,7 @@ Adjunct assessment gates are optional. They are selected for the current target 
 Choose assessment gates from concrete current-run evidence:
 
 - caller-requested skills, scans, or requirements
-- changed surfaces such as UI, docs, public sites, APIs, SDKs, CLIs, packages, installers, workflows, generated documents, auth boundaries, data handling, platform support, performance-sensitive paths, compliance-sensitive flows, or agent-facing content
+- changed surfaces such as UI, designs, images, documents, contracts, policies, plans, public sites, APIs, SDKs, CLIs, packages, installers, workflows, auth boundaries, data handling, platform support, performance-sensitive paths, compliance-sensitive material, or agent-facing content
 - repository instructions, release criteria, issue text, handoff files, plans, CI requirements, or deployment constraints
 - gaps exposed by the running Evidence Gate ledger
 
@@ -23,7 +23,7 @@ Each selected gate must have:
 - blocking behavior for unresolved findings
 - final-report fields for status, grade or equivalent result, cap reason, and unresolved findings
 
-Examples of possible assessment gates include accessibility, classic SEO, agent-readiness, performance, package/install smoke, platform compatibility, API contract checks, documentation freshness, compliance requirements, or project-specific release scans. Treat named examples as examples only; do not report them as mandatory fields unless they were selected for the run.
+Examples of possible assessment gates include accessibility, classic SEO, agent-readiness, performance, package/install smoke, platform compatibility, API or document contract checks, factual/source review, visual quality, usability, documentation freshness, compliance requirements, or target-specific readiness scans. Treat named examples as examples only; do not report them as mandatory fields unless they were selected for the run.
 
 ## Shared Gate Rules
 
@@ -38,19 +38,19 @@ Classify every assessment finding as:
 - `unverifiable with current access`
 - `explicitly accepted`
 
-Loop on actionable Critical, High, and Medium findings. Fix Low or nitpick findings when they are cheap, clarifying, or release-confidence-building.
+Loop on actionable Critical, High, and Medium findings. Fix Low or nitpick findings when they are cheap, clarifying, or readiness-confidence-building.
 
 Do not keep rerunning a gate solely because its grade is capped by documented external, owner-blocked, or unverifiable conditions. After actionable fixes are exhausted, treat the gate as `capped` rather than failed when the remaining above-Low findings are outside Crucible's current ability to change or verify.
 
 For capped gates, report:
 
 - evidence for the cap
-- why Crucible cannot resolve or verify it from the current workspace
+- why Crucible cannot resolve or verify it with current access
 - who or what would unblock it
-- whether the cap affects release readiness
+- whether the cap affects the intended ready state
 - the exact next step
 
-Do not use `external`, `owner-blocked`, or `unverifiable` as an escape hatch for findings that can be fixed or tested in the current workspace. When in doubt, attempt the narrowest reasonable fix or verification once, then classify the remaining cap from evidence.
+Do not use `external`, `owner-blocked`, or `unverifiable` as an escape hatch for findings that can be fixed or verified within the authorized target and current access. When in doubt, attempt the narrowest reasonable fix or verification once, then classify the remaining cap from evidence.
 
 ## Gate Order
 
@@ -58,9 +58,9 @@ When more than one assessment gate applies, choose an order that prevents later 
 
 Default ordering principles:
 
-- Run gates that can change source, generated output, markup, packaging, or docs before gates that judge final publication or consumption.
+- Run gates that can change source, content, design, generated output, markup, packaging, or supporting material before gates that judge final publication, delivery, approval, or consumption.
 - Run foundational discovery, packaging, install, compatibility, or contract gates before higher-level workflow and agent-facing gates that depend on those foundations.
-- Run target-specific assessment gates before roast, so roast reviews the final assessed state.
+- Run target-specific assessment gates before Roast, so Roast reviews the final assessed state.
 
 If two gates are independent and will not create conflicting edits, their investigation can run in parallel, but patch integration still goes through the main Crucible Execution Loop and updates the Evidence Gate ledger after each remediation slice.
 
@@ -74,7 +74,7 @@ Report fallback gates as `unavailable` when the named skill or tool could not ru
 - why it could not run
 - what fallback was performed
 - what the fallback could and could not prove
-- whether unresolved gaps cap the gate or block release readiness
+- whether unresolved gaps cap the gate or block the intended ready state
 
 Do not claim the same confidence as the unavailable assessment unless the fallback produced equivalent evidence.
 
@@ -90,4 +90,4 @@ For every selected adjunct assessment gate, report:
 - unresolved findings by severity
 - cap reason, owner or unblocker, and exact next step when capped
 
-For gates not selected, report nothing unless the omission could be misread as a missing release check. When relevant, say `No adjunct assessment gates selected` with the reason.
+For gates not selected, report nothing unless the omission could be misread as a missing readiness check. When relevant, say `No adjunct assessment gates selected` with the reason.
