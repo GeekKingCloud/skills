@@ -50,7 +50,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
   npx skills@latest add GeekKingCloud/skills/find
   ```
 
-- **recover** — Recover interrupted coding work from chats, handoffs, workspace artifacts, and temp files, then realign on the next step.
+- **recover** — Recover interrupted or transferred coding work across sessions and coding agents by locating available history and workspace evidence, reconstructing past progress, current state, and intended future direction, then producing a safe semantic continuation.
 
   ```
   npx skills@latest add GeekKingCloud/skills/recover
