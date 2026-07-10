@@ -8,9 +8,9 @@ See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
 
 Skills are grouped below for browsing only. Each skill remains a visible top-level folder so discovery and install paths stay predictable.
 
-## Development And Release
+## Iterative Work And Review
 
-- **crucible** — Orchestrate release-hardening work from plans, review findings, or current codebase state through sub-agent-heavy implementation, verification evidence checks, review gates, security pass, docs/comment sweep, cleanup, and release-readiness reporting.
+- **crucible** — Orchestrate iterative, sub-agent-heavy work on software, documents, contracts, plans, workflows, policies, designs, images, or other targets through create-review-verify-repair loops, evidence checks, risk review, cleanup, and readiness reporting.
 
   ```
   npx skills@latest add GeekKingCloud/skills/crucible
