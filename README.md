@@ -16,7 +16,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
   npx skills@latest add GeekKingCloud/skills/crucible
   ```
 
-- **roast** — Strictly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade.
+- **roast** — Strictly review code, documents, contracts, plans, workflows, designs, images, or other directed targets through evidence-backed lenses, with severity, fix directions, and a grade.
 
   ```
   npx skills@latest add GeekKingCloud/skills/roast
