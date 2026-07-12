@@ -10,7 +10,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
 
 ## Iterative Work And Review
 
-- **crucible** — Orchestrate iterative, sub-agent-heavy work on software, documents, contracts, plans, workflows, policies, designs, images, or other targets through create-review-verify-repair loops, evidence checks, risk review, cleanup, and readiness reporting.
+- **crucible** — Orchestrate iterative, role-guided, sub-agent-heavy work on software, documents, contracts, plans, workflows, policies, designs, images, or other targets through create-review-verify-repair loops, evidence checks, risk review, cleanup, and readiness reporting.
 
   ```
   npx skills@latest add GeekKingCloud/skills/crucible

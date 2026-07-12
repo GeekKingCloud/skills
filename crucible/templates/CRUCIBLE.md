@@ -16,7 +16,10 @@
 
 - List each logical slice and its outcome.
 - Include commit identifiers when local commits were authorized and created.
-- Summarize sub-agent usage, or state why delegation was unavailable or disallowed.
+- Role assignments: list Steward, Challenger, Verifier, and any justified optional role with its distinct question, bounded scope, and artifact revision.
+- Independence: state who made each material artifact or claim and who verified it.
+- Material disagreements: summarize each recorded conflict, targeted rebuttal, evidence or owner decision, and closure status.
+- Summarize other sub-agent usage, or state why delegation was unavailable or disallowed.
 
 ## Verification
 

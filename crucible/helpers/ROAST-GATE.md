@@ -38,6 +38,8 @@ Use `roast-led-whole-target` when no separate work source is supplied and the ca
 
 Run Roast as a serious, evidence-backed review through caller-specified and target-appropriate lenses. Use the full engineering and release lens for software; do not force software categories onto other targets.
 
+Keep the Challenger role and Roast distinct. Challenger attempts to falsify a bounded plan, artifact, or decision during the work; Roast is the selected broad-quality gate against the current changed state. If one sub-agent performs both sequentially, close the Challenger pass, issue a new Roast charter, and produce a separate Roast report bound to the current artifact revision. Never treat Challenger agreement or silence as a Roast result.
+
 Use the Gate Remediation Loop:
 - collect findings, grade, evidence, and scope limitations
 - fix one finding or root-cause group at a time through the Execution Loop

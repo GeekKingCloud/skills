@@ -17,6 +17,8 @@ Build the evidence map from current-run sources whenever possible:
 
 Do not treat old handoff notes, remembered results, previous CI runs, stale logs, or intended behavior as verified evidence unless the current run revalidates them or clearly labels them as reused and potentially stale.
 
+Bind delegated review and verification outputs to the exact artifact revision, hash, saved version, or equivalent identifier inspected. Treat an output as stale when a changed surface intersects its claim, check, or reviewed scope; rerun the narrowest affected check before using it as current-run evidence. Reuse evidence across an unrelated change only when the non-intersection is recorded and demonstrable.
+
 ## Claim Extraction
 
 Extract claims that matter to the intended ready state, including:
@@ -86,7 +88,7 @@ Use the Crucible Gate Remediation Loop for actionable evidence findings:
 3. Rerun the narrowest check that can prove the updated claim.
 4. Update the evidence ledger after every fix.
 
-Do not add broad claims just because a related narrow check passed. Do not mark a claim verified because a reviewer agreed with the design; reviewers are evidence for review coverage, not proof that behavior works.
+Do not add broad claims just because a related narrow check passed. Do not mark a claim verified because a role conclusion or reviewer agreement says it is correct; those are evidence for review coverage, not proof that behavior works. Reproducible current-run checks and inspectable artifacts may support a claim when their provenance, scope, and revision binding are sound, including in degraded local-only mode. Do not report the maker's self-check as independent Verifier coverage; assign the independent Verifier pass to someone who did not make the material claim or artifact.
 
 ## Final Sweep And Summary
 
