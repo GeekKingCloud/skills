@@ -1,6 +1,6 @@
 ---
 name: crucible
-description: Orchestrate iterative, sub-agent-heavy work on software, documents, contracts, plans, workflows, policies, designs, images, or other directed targets from a supplied work source or whole-target Roast queue through create-review-verify-repair loops, Evidence Gate checks, remediation, risk review, cleanup, and readiness reporting. Use for development and release hardening or any substantial work that should converge through independent critique and evidence; requires explicit sub-agent approval or explicit degraded local-only confirmation before proceeding.
+description: Orchestrate iterative, role-guided, sub-agent-heavy work on software, documents, contracts, plans, workflows, policies, designs, images, or other directed targets from a supplied work source or whole-target Roast queue through create-review-verify-repair loops, Evidence Gate checks, remediation, risk review, cleanup, and readiness reporting. Use for development and release hardening or any substantial work that should converge through independent critique and evidence; requires explicit sub-agent approval or explicit degraded local-only confirmation before proceeding.
 ---
 
 # Crucible
@@ -24,7 +24,23 @@ The target state is:
 
 Before starting route selection, target exploration, creation, implementation, or review work, check whether sub-agents are already approved by the environment or explicitly granted by the caller's Crucible invocation. If not, stop immediately and ask: "Crucible gets best results with sub-agents for independent research, peer review, validation, risk checks, cleanup, and regression or contradiction hunting. May I use sub-agents where useful for this run?"
 
-Do not continue Crucible work while that question is unanswered. If permission is declined or sub-agents are unavailable, stop and ask whether the caller wants to abort, switch to a narrower non-Crucible local workflow, or continue Crucible in explicitly degraded local-only mode. Do not proceed in degraded local-only mode unless the caller explicitly confirms that tradeoff after being told independent review coverage is reduced. Do not repeat the sub-agent question per slice; the startup answer covers bounded Crucible delegation for the run.
+Do not continue Crucible work while that question is unanswered. If permission is declined or sub-agents are unavailable, stop and ask whether the caller wants to abort, switch to a narrower non-Crucible local workflow, or continue Crucible in explicitly degraded local-only mode. Do not proceed in degraded local-only mode unless the caller explicitly confirms that tradeoff after being told independent review coverage is reduced. In degraded local-only mode, role-shaped self-checks may guide the work but do not count as independent review or maker/verifier separation. Reproducible direct current-run evidence may still verify an appropriately narrow claim, but it does not establish independent Verifier coverage. Report that limitation and block or cap only claims whose confidence materially depends on missing independent judgment, according to Evidence Gate severity and any explicit risk acceptance. Do not repeat the sub-agent question per slice; the startup answer covers bounded Crucible delegation for the run.
+
+## Role-Guided Collaboration
+
+Use roles to create distinct reasoning surfaces, not decorative titles or unlimited debate. For meaningful work, read and apply the three core role contracts:
+
+- `roles/STEWARD.md`: preserve intent, proportionality, scope, and decision ownership. The main orchestrator normally holds this role.
+- `roles/CHALLENGER.md`: attempt to falsify the current plan, artifact, or decision and identify consequential failure modes.
+- `roles/VERIFIER.md`: independently test material claims against current evidence. The maker cannot supply the independent Verifier pass for its own material claims or artifacts.
+
+Use separate Challenger and Verifier passes across each meaningful run and for every risk-bearing slice. Roles supplement the Execution Loop, Roast, Evidence Gate, risk/security, and readiness judgment; they never replace those gates. Challenger and Roast remain separate passes and outputs even when the same sub-agent performs them sequentially.
+
+Give every delegated role a bounded charter containing: role and core question; exact artifact or slice; authoritative context and allowed evidence; protected value or failure modes; expected output; non-goals and ownership boundary; current artifact revision, hash, or equivalent identifier; and closure or escalation condition. Let roles form independent first-pass conclusions before sharing other agents' conclusions.
+
+Record only material disagreements. Allow one targeted rebuttal round per material conflict, then resolve it through evidence or, for preference, authority, scope, or risk-acceptance questions, an explicit owner decision. An owner decision may accept a factual contradiction's readiness risk but cannot convert it into verification; preserve the evidence verdict and blocking or cap effect. Define the role-deliberation rerun budget and closure condition at startup; it never limits required gate remediation. Reopen settled debate only when a change intersects the settled question or its evidence, new actionable above-Low evidence appears, or a required gate remains unresolved.
+
+Read `roles/OPTIONAL.md` only when the target needs a perspective not covered by the core roles. Select an optional role only for a distinct question or protected value; do not add roles merely to increase agent count.
 
 ## Target Adaptation
 
@@ -71,7 +87,7 @@ If no supplied work source exists and the caller did not authorize a whole-targe
 
 Follow the startup permission rule before using this operating model.
 
-For meaningful Crucible work, treat sub-agents as the default way to improve coverage when the environment supports them and delegation is allowed. At each stage, actively look for independent work to delegate: source or context research, target inspection, alternative approaches, isolated slices, in-the-moment peer review, adversarial or stakeholder lenses, regression or contradiction hunting, verification review, risk and security review, readability sweeps, cleanup checks, and gate-remediation follow-up.
+For meaningful Crucible work, treat sub-agents as the default way to improve coverage when the environment supports them and delegation is allowed. Assign the core or optional role whose question matches the work rather than asking for generic review. At each stage, actively look for independent work to delegate: source or context research, target inspection, alternative approaches, isolated slices, in-the-moment peer review, adversarial or stakeholder lenses, regression or contradiction hunting, verification review, risk and security review, readability sweeps, cleanup checks, and gate-remediation follow-up.
 
 Keep delegated tasks bounded, parallel, and source-grounded. Give each sub-agent a clear scope, expected output, and ownership boundary. Keep blocking decisions, final integration, and readiness judgment in the main thread, and verify sub-agent findings against the target and authoritative context before acting. Do not average subjective opinions; resolve them against the work source, audience, evidence, and selected quality bar.
 
@@ -82,13 +98,13 @@ Delegate sensitive contracts, policies, private images, credentials, personal da
 Work in logically connected slices. For each slice:
 
 1. State the slice goal and verification target.
-2. Decide what can be delegated before editing. Use sub-agents by default for independent, bounded work such as source inspection, alternative generation, isolated creation or revision, risk review, verification review, contradiction search, or patch/artifact review. If sub-agents become unavailable or delegation is no longer allowed after startup approval, pause the Crucible run and ask whether to abort, wait for availability, or continue in explicitly degraded local-only mode.
-3. Use at least one sub-agent as a peer reviewer or sounding board for each meaningful change when available. Give reviewers the slice goal, changed or intended artifacts, selected lenses, suspected risks, expected verification, and target instructions.
+2. Decide what can be delegated before editing. Select the core and any justified optional roles, write bounded charters, bind each review to the current artifact revision, and define closure. Use sub-agents by default for independent work such as source inspection, alternative generation, isolated creation or revision, risk review, verification review, contradiction search, or patch/artifact review. If sub-agents become unavailable or delegation is no longer allowed after startup approval, pause the Crucible run and ask whether to abort, wait for availability, or continue in explicitly degraded local-only mode.
+3. Across each meaningful run, and for every risk-bearing slice, use distinct Challenger and Verifier passes when available. Let Challenger test the bounded plan or artifact question before convergence; let a Verifier who did not make the material claim or artifact check the completed current revision. Do not repeat both passes for trivial slices that do not change their reviewed claims. Preserve independent first passes and bounded disagreement resolution.
 4. Create, implement, revise, or remediate the slice with the smallest coherent change that satisfies the work source and target instructions.
 5. Add or update focused tests for software behavior and other durable checks when the slice changes an important claim, fixes a defect, touches a shared contract, or guards a regression.
 6. Run the narrowest meaningful verification. Broaden verification as risk or shared surface increases.
-7. Update the Evidence Gate ledger for the slice: record the claim, evidence, verdict, severity, and any next check or fix needed before the slice can be treated as complete.
-8. Ask reviewers to check the actual slice for correctness, contradictions, regressions, missing verification, security or other material risks, stale material, orphaned content, usability, clarity, and maintainability. Integrate findings critically; verify them against the target and authoritative context before changing anything.
+7. Update the Evidence Gate ledger for the slice: record the claim, evidence, verdict, severity, pre-artifact challenges, and any next check or fix needed before the slice can be treated as complete.
+8. Ask the Verifier and other reviewers to check the completed current revision for correctness, contradictions, regressions, missing verification, security or other material risks, stale material, orphaned content, usability, clarity, and maintainability. Record their verdicts and findings in the Evidence Gate ledger, remediate them critically against the target and authoritative context, rerun every affected check, and update the ledger after each change.
 9. Review the slice for dead, stale, duplicated, orphaned, contradictory, placeholder, or unnecessary material introduced or exposed by the change.
 10. Commit a version-controlled slice when local commits are authorized by the caller or target workflow; otherwise save or version the artifact as authorized. Treat an explicit Crucible request as authorization for local logical commits unless the caller or target instructions say otherwise. Do not push, force-push, rewrite history, publish, send, sign, approve, or release anything without explicit approval.
 
@@ -189,7 +205,7 @@ Keep the final report concise and evidence-based:
 - what work source was completed
 - work route and work source used
 - logical slices completed and commits created, if any
-- how sub-agents were used, or why they were unavailable or disallowed
+- how sub-agents and roles were used, including artifact revisions, maker/verifier independence, and material disagreement outcomes, or why they were unavailable or disallowed
 - target-appropriate tests, checks, comparisons, renders, walkthroughs, or other verification run
 - Evidence Gate ledger summary, final sweep status, unresolved claim gaps, and whether final claims were narrowed to match proof
 - slice-level peer review, gate remediation loops, risk and security pass, cleanup, readability/supporting-material sweep, and Roast gate scope, status, grade, and cap reason
