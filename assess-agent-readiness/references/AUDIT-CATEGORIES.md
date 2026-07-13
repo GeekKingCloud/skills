@@ -15,6 +15,7 @@ Use this file as Assess Agent Readiness's default category map. Omit categories 
 - Handoff And Verification
 - Priority Mapping
 - Category Score Rubric
+- Core Coverage
 - Final Score Rules
 
 ## Discovery And Crawl Policy
@@ -140,9 +141,23 @@ Use `N/A` only when a category genuinely does not apply to the selected target a
 
 Every assessed category score must include a one-line rationale naming the strongest evidence and the main reason the score is not higher.
 
+## Core Coverage
+
+Before grading, name the core categories for the selected target agent profile and user task:
+
+- `Discovery And Crawl Policy` is core for public web, documentation, and route-discovery workflows.
+- `Agent Instructions And Orientation` is core for repository, setup, documentation, and integration workflows.
+- `Content Extractability And Semantics` is core when agents must retrieve meaning from pages, documents, or browser UI.
+- `Data Access And Coverage` is core when authoritative data retrieval is part of the main goal.
+- `Action Surfaces And Protocols` and `Auth, Permissions, And Safety` are core for authenticated, delegated, write, transactional, or otherwise consequential actions.
+- `Error Recovery And Determinism` and `Handoff And Verification` are core when agents must execute, recover, or prove completion.
+- `Documentation Freshness And Examples` is core when reliable operation depends on docs, schemas, commands, or examples.
+
+An applicable category outside the selected agent task may remain peripheral. Do not label it core merely to create a grade cap.
+
 ## Final Score Rules
 
-Calculate the final Assess Agent Readiness score as the average of applicable assessed category scores, rounded to one decimal.
+Calculate the final Assess Agent Readiness score as the average of applicable assessed category scores, rounded to one decimal, only when the evidence is sufficient to judge the main agent task. If the authoritative data/action path or enough applicable core coverage cannot be judged, use `Not graded`; report findings and evidence needs without a numeric score, letter grade, or grade cap.
 
 Map the final score to a letter grade:
 
@@ -152,13 +167,16 @@ Map the final score to a letter grade:
 - `D`: 6.0-6.9
 - `F`: 0-5.9
 
+An `A` requires adequate current evidence across every applicable core category. `N/A` categories do not enter the average and never cap the grade. An applicable core category marked `Not assessed`, or core evidence too stale or indirect to support an `A`, applies a grade cap of `B` unless the audit must be `Not graded`.
+
 Apply grade caps after averaging:
 
 - Any unresolved `Critical` finding applies a grade cap of `F`.
 - Any category scored `0-3` applies a grade cap of `D`.
+- Any applicable core category scored `4-5` applies a grade cap of `B`.
 - Missing live evidence for important runtime action surfaces applies a grade cap of `B`.
 - Missing API/tool execution evidence for an action-oriented product applies a grade cap of `C`.
 - Missing documented data/API coverage for a product whose core value is structured data retrieval applies a grade cap of `C`.
 - Incomplete crawl, blocked docs, missing credentials, or inaccessible discovery paths can apply a grade cap of `B` or lower when they prevent judging important agent workflows.
 
-Report the cap as one field: `Grade cap: None` or `Grade cap: <cap>, <reason>`.
+Apply the most restrictive grade cap. Report the cap as one field: `Grade cap: None` or `Grade cap: <cap>, <reason>`.

@@ -61,11 +61,13 @@
 
 ## Assess SEO Score
 
-Assess SEO readiness score: `/10`
+Core categories for this audit:
 
-Letter grade: `A/B/C/D/F`
+Assess SEO readiness score: `/10` or `Not graded`
 
-Grade cap: `None` or `<cap>, <reason>`
+Letter grade: `A/B/C/D/F` or `Not graded`
+
+Grade cap: `None`, `<cap>, <reason>`, or `Not applicable (Not graded)`
 
 Evidence impact: `None/Lower confidence only/Behavior-level fixes only/Blocked categories: ...`
 

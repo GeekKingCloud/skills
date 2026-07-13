@@ -30,16 +30,16 @@
 
 ## Minimum UI Evidence
 
-| Evidence check                                      | Status (`Done/Blocked/N/A`) | Impact on confidence or scoring  |
-| --------------------------------------------------- | --------------------------- | -------------------------------- |
-| Keyboard and focus walkthrough                      |                             |                                  |
-| Semantics and accessibility tree or equivalent      |                             |                                  |
-| Zoom, scaling, reflow, and truncation               |                             |                                  |
-| Responsive/mobile and touch behavior                |                             |                                  |
-| Visual contrast and non-color cues                  |                             |                                  |
-| Motion, timing, dynamic updates, and reduced motion |                             |                                  |
-| Forms, validation, and error recovery               |                             |                                  |
-| Assistive-technology or platform-inspector proof    |                             |                                  |
+| Evidence check                                      | Status (`Done/Blocked/N/A`) | Impact on confidence or scoring |
+| --------------------------------------------------- | --------------------------- | ------------------------------- |
+| Keyboard and focus walkthrough                      |                             |                                 |
+| Semantics and accessibility-tree proxy evidence     |                             |                                 |
+| Zoom, scaling, reflow, and truncation               |                             |                                 |
+| Responsive/mobile and touch behavior                |                             |                                 |
+| Visual contrast and non-color cues                  |                             |                                 |
+| Motion, timing, dynamic updates, and reduced motion |                             |                                 |
+| Forms, validation, and error recovery               |                             |                                 |
+| Direct assistive-technology interaction             |                             |                                 |
 
 ## Standards And Claims
 
@@ -58,11 +58,13 @@
 
 ## Assess Accessibility Score
 
-Assess Accessibility readiness score: `/10`
+Core categories for this audit:
 
-Letter grade: `A/B/C/D/F`
+Assess Accessibility readiness score: `/10` or `Not graded`
 
-Grade cap: `None` or `<cap>, <reason>`
+Letter grade: `A/B/C/D/F` or `Not graded`
+
+Grade cap: `None`, `<cap>, <reason>`, or `Not applicable (Not graded)`
 
 Evidence impact: `None/Lower confidence only/Behavior-level fixes only/Blocked categories: ...`
 

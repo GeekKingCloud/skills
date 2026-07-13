@@ -16,6 +16,7 @@ Use this file as Assess SEO's default category map. Omit categories that do not 
 - Competitive Visibility And Off-Site Signals
 - Priority Mapping
 - Category Score Rubric
+- Core Coverage
 - Final Score Rules
 
 ## Crawl, Indexing, And Technical Foundation
@@ -151,9 +152,23 @@ Category applicability notes:
 
 Every assessed category score must include a one-line rationale naming the strongest evidence and the main reason the score is not higher.
 
+## Core Coverage
+
+Before grading, name the core categories for the target site type and main search goal:
+
+- `Crawl, Indexing, And Technical Foundation` is core for site-level and public-page readiness.
+- `Search Intent And Query Coverage`, `On-Page Metadata And Snippet Readiness`, `Content Quality, Usefulness, And Trust`, and `Information Architecture And Internal Linking` are core when judging whether pages can satisfy target organic searches.
+- `Local, Entity, And Brand Signals` is core for local, venue, service-area, person, organization, product, or brand discovery goals.
+- `Performance, Mobile, And Page Experience` is core when live organic landing-page experience is part of the goal.
+- `Structured Data And Rich Result Eligibility` is core only when entity markup or eligible search features are material to the goal.
+- `Measurement, Diagnostics, And Change Control` is core for a data-backed growth, regression, or change-control audit.
+- `Competitive Visibility And Off-Site Signals` is core for a competitive-market or off-site visibility audit.
+
+An applicable category outside the selected search goal may remain peripheral. Do not label it core merely to create a grade cap.
+
 ## Final Score Rules
 
-Calculate the final Assess SEO score as the average of applicable assessed category scores, rounded to one decimal.
+Calculate the final Assess SEO score as the average of applicable assessed category scores, rounded to one decimal, only when the evidence is sufficient to judge the main search goal. If core crawl/page evidence or the search intent needed for that goal cannot be judged, use `Not graded`; report findings and evidence needs without a numeric score, letter grade, or grade cap.
 
 Map the final score to a letter grade:
 
@@ -163,14 +178,17 @@ Map the final score to a letter grade:
 - `D`: 6.0-6.9
 - `F`: 0-5.9
 
+An `A` requires adequate current evidence across every applicable core category. `N/A` categories do not enter the average and never cap the grade. An applicable core category marked `Not assessed`, or core evidence too stale or indirect to support an `A`, applies a grade cap of `B` unless the audit must be `Not graded`.
+
 Apply grade caps after averaging:
 
 - Any unresolved `Critical` finding applies a grade cap of `F`.
-- Any core crawl/index category scored `0-3` applies a grade cap of `D`.
+- Any applicable core category scored `0-3` applies a grade cap of `D`.
+- Any applicable core category scored `4-5` applies a grade cap of `B`.
 - Missing live evidence for a public website applies a grade cap of `B`.
 - Missing rendered-page evidence for a JavaScript-heavy site applies a grade cap of `C` when it prevents judging indexable content.
 - Missing Search Console, analytics, backlink, or rank data caps only the affected measurement, off-site, or competitive categories unless the caller asked for a data-backed growth plan.
 - Missing target queries, geography, competitor context, or private performance data should normally produce `Not assessed` categories or lower confidence, not guessed scores.
 - Unsupported ranking, traffic, or competitor claims must be removed or marked as hypotheses.
 
-Report the cap as one field: `Grade cap: None` or `Grade cap: <cap>, <reason>`.
+Apply the most restrictive grade cap. Report the cap as one field: `Grade cap: None` or `Grade cap: <cap>, <reason>`.

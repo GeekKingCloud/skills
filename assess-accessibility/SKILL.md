@@ -27,6 +27,12 @@ Do not include test coverage or accessibility tooling gaps as standing categorie
 
 Use `Assessment Coverage` as the first report section after the title, not a terse caveat list: state what was assessed, what was not assessed, what the caller can provide or permit for a deeper/fairer/more accurate assessment, and what that extra evidence would improve. Use `Start Here` as the report's single prioritized action plan. Do not add a second `Next Steps` section unless the caller explicitly wants a separate follow-up roadmap.
 
+## Audit Mode And Missing Evidence
+
+Default to a report-only accessibility audit. Do not change components, styles, content, focus behavior, semantics, forms, or platform settings unless the caller requests remediation. When remediation is requested, keep the pre-change assessment distinct from post-change checks and re-grade only from verified current user-path evidence.
+
+Infer product type, supported platforms, users, input methods, and likely assistive-technology paths from the caller's prompt, target, source, artifacts, or rendered surface. Ordinary missing device or assistive-technology evidence is not a stop gate: continue, mark affected applicable categories `Not assessed`, and apply the reference's grade limits. Ask only when the target or main user goal is genuinely indeterminate. If representative user paths cannot be evaluated well enough to judge that goal, report findings and evidence needs as `Not graded` instead of averaging a partial view.
+
 ## Report Assembly Rules
 
 Use the template as a skeleton, not as text to copy blindly. Fill every placeholder, delete empty optional sections, and do not leave template instructions or rationale about why a section exists in the final report.
@@ -38,7 +44,7 @@ Use the template as a skeleton, not as text to copy blindly. Fill every placehol
 - `Start Here`: keep this as the single prioritized action plan. Do not duplicate it later as `Next Steps` unless the caller requested a separate roadmap.
 - `Findings By Priority`: for each priority level, either list scoped findings or write one clear state such as `No scoped findings after review.` or `Not assessed; evidence limit: ...`.
 - `Findings By Category`: populate the score table from the applicable assessed categories in `references/AUDIT-CATEGORIES.md`. Keep that reference file as the source of truth for category names, order, scoring rules, and grade caps.
-- Category scoring: use `N/A` only when a category genuinely does not apply. Use `Not assessed` when a category applies but was not evaluated, explain the evidence limit in `Assessment Coverage`, and do not include `Not assessed` categories in the score table.
+- Category scoring: use `N/A` only when a category genuinely does not apply; it neither counts nor caps the grade. Use `Not assessed` when a category applies but was not evaluated, explain the evidence limit in `Assessment Coverage`, and do not include `Not assessed` categories in the score table.
 - Category detail blocks: repeat the generic category block once for each assessed category from `references/AUDIT-CATEGORIES.md`.
 
 ## References
@@ -92,9 +98,10 @@ For UI-heavy websites, apps, prototypes, design systems, generated documents wit
 - Visual contrast, color-only meaning, focus indicators, disabled/error/success states, and high-contrast or forced-color behavior when relevant.
 - Motion, timing, auto-advance, async updates, focus movement, and reduced-motion behavior when the product uses dynamic UI.
 - Form labels, instructions, validation timing, error recovery, destructive-action confirmation, and loading or partial-failure states when forms or transactions exist.
-- Assistive-technology proof, such as screen reader, platform accessibility inspector, browser accessibility tree, or source-level semantics review when direct AT is unavailable.
+- Assistive-technology proxy evidence from source semantics, rendered markup, a browser or platform accessibility tree, automated checks, or inspector output.
+- Direct assistive-technology evidence from operating representative workflows with a screen reader or another relevant platform accessibility feature.
 
-If a checklist item applies but cannot be checked, mark the affected categories as lower confidence or `Not assessed`, and apply the grade caps in `references/AUDIT-CATEGORIES.md` when the missing evidence blocks judgment. Do not score a UI-heavy target as if rendered, keyboard, responsive, or assistive-technology evidence exists when it does not.
+Proxy evidence is valuable for finding structural defects, but it is not direct screen-reader or platform interaction proof. If a checklist item applies but cannot be checked, mark the affected categories as lower confidence or `Not assessed`, and apply the grade caps in `references/AUDIT-CATEGORIES.md` when the missing evidence blocks judgment. Do not score a UI-heavy target as if rendered, keyboard, responsive, or direct assistive-technology evidence exists when it does not.
 
 ## Audit Categories, Prioritization, And Scoring
 

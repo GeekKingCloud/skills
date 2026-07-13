@@ -16,7 +16,8 @@
 - Intended outcome: [source-authored goal]
 - Stage: [discovery, implementation, validation, review, handoff, or unknown]
 - Source session/task: [title, identifier, or unavailable]
-- Source status: [active, inactive, or unknown, with evidence]
+- Source conversation status: [active, inactive, or unknown, with evidence]
+- Workspace mutation status: [active, inactive, or unknown, based on child work, writers, processes, locks, and changing workspace evidence]
 
 ## Recovery Locations
 - Session/context source: [path, sanitized locator, export, index, or unavailable]
@@ -56,7 +57,7 @@
 ## Safety And Permission Boundaries
 - Source approvals: [historical evidence only]
 - Current authorization: [what the caller currently permits]
-- Coordination risk: [live-session, concurrent-write, duplicate-work, or process risk]
+- Coordination risk: [source-conversation, active/unknown workspace mutation, concurrent-write, duplicate-work, or process risk]
 - Fresh confirmation required for: [mutating, destructive, publishing, external, credentialed, or takeover action]
 
 ## Risk

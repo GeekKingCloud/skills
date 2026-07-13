@@ -54,9 +54,7 @@ Evidence limits: [relevant material that was unavailable or not assessed]
 - [Checks performed, evidence limitations, confidence limits, and unreviewed surfaces]
 
 ## What To Fix First
-1. [Highest-impact fix]
-2. [Next fix]
-3. [Next fix]
+1. [Highest-priority supported fix]
 
 Grade: [A to F for the reviewed scope, or Not graded]
 Grade basis: [why the evidence and findings earn this grade]
