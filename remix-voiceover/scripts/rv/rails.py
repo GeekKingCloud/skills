@@ -8,12 +8,12 @@ from typing import Any
 from .util import RvError, read_json
 
 
-def rails_path() -> Path:
-    return Path(__file__).resolve().parents[2] / "assets" / "default-rails.json"
+def audio_policy_path() -> Path:
+    return Path(__file__).resolve().with_name("audio-policy.json")
 
 
 def load_default_rails() -> dict[str, Any]:
-    return read_json(rails_path())
+    return read_json(audio_policy_path())
 
 
 def adjusted_rails(defaults: dict[str, Any], adjustment: dict[str, Any] | None) -> dict[str, Any]:
@@ -151,10 +151,10 @@ def _descend(current: Any, part: str) -> Any:
     raise TypeError(part)
 
 
-def require_rails_file() -> None:
-    if not rails_path().exists():
+def require_audio_policy_file() -> None:
+    if not audio_policy_path().exists():
         raise RvError(
-            "missing default rails file",
+            "missing audio policy file",
             ['python remix-voiceover/scripts/rv.py plan-init --analysis "<analysis.json>" --out "<render_plan.json>"'],
         )
 

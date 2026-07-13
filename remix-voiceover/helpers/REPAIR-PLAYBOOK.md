@@ -90,7 +90,7 @@ Adjacent mic gains jump too far; first add `ramp_in_seconds` or `ramp_out_second
 
 ### `rails_adjustment_out_of_bounds`
 
-A target shift exceeds `assets/default-rails.json`; first bring the shift inside bounds, second remove the adjustment and solve with segment gains or bed yield; clears when adjusted rails validate.
+A target shift exceeds `scripts/rv/audio-policy.json`; first bring the shift inside bounds, second remove the adjustment and solve with segment gains or bed yield; clears when adjusted rails validate.
 
 ### `rails_adjustment_missing_evidence`
 
@@ -122,7 +122,7 @@ Components differ in length; first rerun `render` so mic, bed, and mix are expli
 
 ### `null_test_failed`
 
-Mix is not the exact component sum; first rerun `render`, second inspect stale replacement or partial writes; clears when null residual is within `assets/default-rails.json`.
+Mix is not the exact component sum; first rerun `render`, second inspect stale replacement or partial writes; clears when null residual is within `scripts/rv/audio-policy.json`.
 
 ### `sample_peak_exceeded`
 
@@ -134,7 +134,7 @@ True peak was not reported; first rerun with an ffmpeg build that supports ebur1
 
 ### `true_peak_exceeded`
 
-True peak exceeds the rail; first enable or tune declared mic-only peak control, then use structural event trims over any remaining named peaks. Do not trim a whole regime for one event and never limit the bed or mix. Clears when post-control mic, bed, and mix true peak are <= -1.0 dBTP.
+True peak exceeds the rail; first enable or tune declared mic-only peak control, then use structural event trims over any remaining named peaks. Do not trim a whole regime for one event and never limit the bed or mix. Clears when post-control mic, bed, and mix true peak satisfy `true_peak_dbtp.max` in `scripts/rv/audio-policy.json`.
 
 ### `peak_control_reshaped_body`
 

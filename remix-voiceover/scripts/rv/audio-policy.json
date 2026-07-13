@@ -37,14 +37,14 @@
     "maximum_counterfactual_media_seconds": 172800.0,
     "counterfactual_media_passes_per_attempt": 6,
     "counterfactual_disk_safety_factor": 1.25,
-    "trace": "Upper gap alone is not a blocker. For deliberate deep attenuation, schema-3 planning recenters the final macro bed globally and verification independently proves that no material masking-safe lift remains. Peak counterfactual work retains at most one bounded attempt and preflights disk and decoded-media work budgets."
+    "trace": "Upper gap alone is not a blocker. For deliberate deep attenuation, schema-3 planning recenters the final macro bed globally and verification independently proves that no material masking-safe lift remains. Peak counterfactual work uses a bounded search, retains only one scratch attempt at a time, and preflights disk and decoded-media work budgets."
   },
   "macro_balance_consistency": {
     "maximum_bed_correction_db": 1.5,
     "minimum_balance_section_seconds": 120.0,
     "minimum_meaningful_windows": 10,
     "maximum_informational_gap_spread_db": 4.0,
-    "trace": "After independent mic and bed capture-state stitching, intersect sustained mic regimes with bed baselines and move meaningful bed by at most 1.5 dB toward consistent long-form balance. Short, sparse, and absent-bed sections remain unchanged; masking safety may still lower the bed. Gap spread is diagnostic rather than a new stop gate."
+    "trace": "After independent mic and bed capture-state stitching, intersect sustained mic regimes with bed baselines and move meaningful bed within the configured correction limit toward consistent long-form balance. Short, sparse, and absent-bed sections remain unchanged; masking safety may still lower the bed. Gap spread is diagnostic rather than a new stop gate."
   },
   "bed_stitching_v2": {
     "target_tolerance_db": 1.5,
@@ -69,14 +69,14 @@
     "trace": "Informational only. ATSC A/85 excludes shouting and whispering from the representative typical-dialogue anchor; regime BODY and applied-gain shape checks own promotion so expressive windows are not normalized into conformity."
   },
   "window_tolerance_db": 3.0,
-  "window_tolerance_trace": "Pass 2B live-run calibration: regime BODY remains strict, while natural per-window speech variance and brief quiet-bed windows use a 3 dB widened coverage band. Applied-gain dips remain the automation-artifact gate.",
+  "window_tolerance_trace": "Regime BODY remains strict, while natural per-window speech variance and brief quiet-bed windows use the configured wider coverage band. Applied-gain dips remain the automation-artifact gate.",
   "coverage_floor": {
     "minimum_active_speech_seconds": 10.0,
     "minimum_regime_fraction": 0.02,
     "raw_density_ratio_floor": 0.35,
     "sparse_speech_density_floor": 0.03,
     "semantics": "insufficient_speech_coverage fires when detected processed speech is much thinner than raw-lane speech density, indicating detector or render bug; genuinely sparse regimes are measured over what exists and flagged sparse-speech.",
-    "trace": "Closes coverage false-pass review finding without turning genuinely sparse sources into terminal false stops."
+    "trace": "Prevents detector or render sparsity from passing coverage while keeping genuinely sparse sources measurable over the speech that exists."
   },
   "true_peak_dbtp": {
     "max": -1.0,
@@ -91,7 +91,7 @@
     "headroom_safety_margin_db": 6.0,
     "default_semantics": "evidence_and_audition_threshold_not_universal_artifact_ceiling",
     "above_default_requires": "segment evidence citing this regime's analysis clean_gain_headroom",
-    "trace": "There is no universal clean-gain dB limit. AES TD1008 permits upward normalization subject to source quality, peak headroom, and limiter tradeoffs. Twelve dB is a conservative evidence/audition trigger; above it requires regime-specific noise/headroom evidence and remains bounded by true-peak and peak-control gates."
+    "trace": "There is no universal clean-gain dB limit. AES TD1008 permits upward normalization subject to source quality, peak headroom, and limiter tradeoffs. The configured default is a conservative evidence/audition trigger; exceeding it requires regime-specific noise/headroom evidence and remains bounded by true-peak and peak-control gates."
   },
   "rails_adjustment_bounds": {
     "mic_band_center_shift_db": [-2.0, 2.0],
@@ -102,7 +102,7 @@
   "artifact_detection": {
     "minimum_unexplained_dip_db": 6.0,
     "minimum_duration_seconds": 0.2,
-    "trace": "Detect unexplained applied-gain shape deviations of either sign from 0.2 s onward; no maximum-duration loophole. Comparing processed-minus-raw against the declared gain preserves source expression while catching automation faults."
+    "trace": "Detect unexplained applied-gain shape deviations of either sign from the configured minimum duration onward; no maximum-duration loophole. Comparing processed-minus-raw against the declared gain preserves source expression while catching automation faults."
   },
   "plan_structure": {
     "max_non_exception_segments_per_regime": 3,
@@ -113,7 +113,7 @@
     "max_event_segments_per_plan_per_regime": 6,
     "max_event_duration_fraction_total": 0.05,
     "event_neighborhood_seconds": 5.0,
-    "trace": "Pass 2E structural rail: ordinary segments are owned and counted per regime (at most 3, at least 8 s each). Event segments are owned per regime, limited to 6 and 8% of that regime, limited plan-wide to regimes x 6 and 5% of total duration, and must cite a resolved analysis or prior-promotion event within +/-5 s."
+    "trace": "Ordinary and event segments are owned and counted per regime under the configured count, duration, and plan-wide budgets. Every event must cite a resolved analysis or prior-promotion event inside the configured evidence neighborhood."
   },
   "peak_control_accounting": {
     "bin_seconds": 0.1,
@@ -123,7 +123,7 @@
     "max_regime_duty_fraction": 0.05,
     "max_contiguous_controlled_seconds": 1.0,
     "max_per_bin_attenuation_db": 6.0,
-    "trace": "Pass 2E peak-control honesty rail: compare matched 100 ms pre/post mean-square bins with silent post-control bins retained in the denominator; limit duty globally to 3% and per regime to 5%, contiguous control to 1.0 s, per-bin attenuation to 6 dB, and per-regime BODY energy delta to 0.5 dB."
+    "trace": "Compare matched pre/post mean-square bins at the configured resolution with silent post-control bins retained in the denominator. The configured duty, contiguous-run, attenuation, and BODY-delta limits keep peak control sparse and transparent."
   },
   "null_test": {
     "epsilon_peak": 0.000001,

@@ -1,12 +1,12 @@
 # Audio Engineering Basis
 
-Use this reference when choosing targets, deciding whether gain is clean, interpreting masking, or documenting a quality limitation. The numeric rails in this skill are calibrated house defaults unless this file identifies an external delivery requirement.
+Use this reference when choosing targets, deciding whether gain is clean, interpreting masking, or documenting a quality limitation. `scripts/rv/audio-policy.json` is the runtime authority for the house audio rails it defines. Numeric values in this reference describe external guidance unless explicitly identified otherwise.
 
 ## Dialogue anchor
 
 - Measure representative typical dialogue. Do not use whispers, shouts, or brief expressive events as the normalization anchor. ATSC A/85 explicitly separates typical dialogue from shouting and whispering for long-form measurement.
 - Preserve the relative shape of ordinary speech, whispers, shouts, and emotional peaks. AES loudness guidance favors transparent linear gain and warns that excessive peak limiting reduces clarity and can increase fatigue.
-- Treat `-20.5 LUFS` as this workflow's default commentary anchor, not a universal standard. Current primary references use different delivery targets: AES TD1008 recommends about `-18 LUFS` for speech-anchored internet audio, EBU R 128 uses `-23 LUFS` for broadcast production, and ATSC A/85 uses `-24 LKFS` when no delivery requirement is known.
+- Treat `processed_mic_active_speech_lufs.preferred` in the runtime audio policy as this workflow's commentary anchor, not a universal standard. Current primary references use different delivery targets: AES TD1008 recommends about `-18 LUFS` for speech-anchored internet audio, EBU R 128 uses `-23 LUFS` for broadcast production, and ATSC A/85 uses `-24 LKFS` when no delivery requirement is known.
 
 Primary references:
 
@@ -25,11 +25,11 @@ There is no universal gain value at which artifacts begin. Linear gain changes l
 - limiter duty, duration, attenuation, and effect on speech body;
 - a reviewed A/B sample when a quality limitation or unusually large lift is discussed.
 
-Treat the default `12 dB` sustained lift as an evidence threshold. Above it, require regime-specific headroom and quality evidence. Do not treat it as a physical distortion ceiling.
+Treat `clean_mic_gain_ceiling_db.default` in the runtime audio policy as an evidence threshold. Above it, require regime-specific headroom and quality evidence. Do not treat it as a physical distortion ceiling.
 
 Classify a common-level step only from behavior. If typical speech and the floor move together while their separation stays stable, a large clean restoration may be possible. If speech falls without a matching floor change, lifting it also exposes the floor. Do not label a step "digital" or "analog" unless source metadata proves the cause.
 
-AES TD1008 recommends partial rather than full upward normalization when the limiting required for the full target would cause unacceptable degradation. Its `-1 dBTP` recommendation at lossy codec input remains this workflow's hard default true-peak ceiling. ATSC's `-2 dBTP` guidance is a valid more-conservative delivery choice.
+AES TD1008 recommends partial rather than full upward normalization when the limiting required for the full target would cause unacceptable degradation. It recommends `-1 dBTP` at lossy codec input; this workflow's hard ceiling is defined by `true_peak_dbtp.max` in the runtime audio policy. ATSC's `-2 dBTP` guidance is a valid more-conservative delivery choice.
 
 ## Commentary over background
 

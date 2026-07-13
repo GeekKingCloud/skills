@@ -27,7 +27,7 @@ def _workdir(name: str) -> Path:
         raise AssertionError("RV_TEST_TMPDIR must be set for rv tests")
     base = Path(os.environ["RV_TEST_TMPDIR"]).resolve()
     base.mkdir(parents=True, exist_ok=True)
-    target = base / f"rv3-{name}-{uuid.uuid4().hex}"
+    target = base / f"rv-workflow-{name}-{uuid.uuid4().hex}"
     target.mkdir()
     return target
 

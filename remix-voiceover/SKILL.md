@@ -5,7 +5,7 @@ description: Repair commentary-over-background audio or video, including single-
 
 # Remix Voiceover
 
-Skill version: `2026-07-12.03`
+Skill version: `2026-07-12.05`
 
 Use this when a recording has commentary/mic audio and needs a repaired voiceover-style result. With one audio lane, repair that program without inventing a background component. With separate commentary and background/system lanes, align each component's sustained capture-level sections, place the background beneath the repaired commentary, and deliver `<source-stem>-REMIX-VOICEOVER.<source-extension>` beside the source.
 
