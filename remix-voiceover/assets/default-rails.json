@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "processed_mic_active_speech_lufs": {
+    "min": -23.0,
+    "max": -17.5,
+    "preferred": -20.5,
+    "adjustment_bounds": {
+      "center_shift_db": [-2.0, 2.0]
+    },
+    "trace": "House commentary target favors clear, present speech while retaining headroom; the lower bound rejects outcomes that remain audibly too quiet for commentary-led listening."
+  },
+  "mic_over_bed_gap_db": {
+    "min": 8.0,
+    "max": 13.0,
+    "preferred": 10.5,
+    "adjustment_bounds": {
+      "band_shift_db": [-1.5, 1.5]
+    },
+    "trace": "House balance profile is calibrated from comparative listening and masking checks. No audio standard defines a universal component gap; AES TD1009 says masking depends on level and frequency and that non-dialogue elements are blended around the dialogue anchor."
+  },
+  "sustained_masking": {
+    "house_minimum_gap_db": 8.0,
+    "maximum_duration_fraction_below_minimum": 0.1,
+    "maximum_contiguous_seconds_below_minimum": 2.0,
+    "window_adjacency_tolerance_seconds": 0.15,
+    "trace": "A calibrated house safety rail, not a published universal gap. Duration-weighted low-tail exposure and contiguous runs replace a worst-window veto so brief expressive effects remain legal; AES TD1009 identifies competing level, duration/listening effort, and frequency-dependent masking as the relevant risks."
+  },
+  "bed_retention": {
+    "disclosure_gap_above_preferred_db": 6.0,
+    "negative_gain_epsilon_db": 0.1,
+    "counterfactual_step_db": 0.1,
+    "maximum_unexplained_recoverable_lift_db": 0.11,
+    "planner_recovery_reserve_db": 0.1,
+    "maximum_counterfactual_lift_db": 30.0,
+    "maximum_counterfactual_peak_attempts": 10,
+    "maximum_counterfactual_scratch_bytes": 68719476736,
+    "maximum_counterfactual_media_seconds": 172800.0,
+    "counterfactual_media_passes_per_attempt": 6,
+    "counterfactual_disk_safety_factor": 1.25,
+    "trace": "Upper gap alone is not a blocker. For deliberate deep attenuation, schema-3 planning recenters the final macro bed globally and verification independently proves that no material masking-safe lift remains. Peak counterfactual work retains at most one bounded attempt and preflights disk and decoded-media work budgets."
+  },
+  "macro_balance_consistency": {
+    "maximum_bed_correction_db": 1.5,
+    "minimum_balance_section_seconds": 120.0,
+    "minimum_meaningful_windows": 10,
+    "maximum_informational_gap_spread_db": 4.0,
+    "trace": "After independent mic and bed capture-state stitching, intersect sustained mic regimes with bed baselines and move meaningful bed by at most 1.5 dB toward consistent long-form balance. Short, sparse, and absent-bed sections remain unchanged; masking safety may still lower the bed. Gap spread is diagnostic rather than a new stop gate."
+  },
+  "bed_stitching_v2": {
+    "target_tolerance_db": 1.5,
+    "maximum_adjacent_body_delta_db": 1.5,
+    "maximum_body_spread_db": 2.0,
+    "preserve_unity_processed_body_tolerance_db": 0.1,
+    "trace": "House verification tolerances for independently detected sustained bed capture states after mic-priority yield; source dynamics inside each state remain untouched."
+  },
+  "mic_stitching_v2": {
+    "target_tolerance_db": 1.5,
+    "maximum_adjacent_body_delta_db": 1.5,
+    "maximum_body_spread_db": 2.0,
+    "trace": "Optional when a v2 plan declares a shared mic target. ATSC A/85 measures representative typical dialogue rather than shouting or whispering; these house tolerances align macro bodies while leaving expressive window variation intact."
+  },
+  "transition_recovery": {
+    "active_speech_seconds": 10.0,
+    "preferred_active_speech_seconds": 5.0,
+    "trace": "House recovery timing allows a short natural pause while requiring the first coherent post-transition speech to return promptly."
+  },
+  "mic_window_coverage": {
+    "gross_floor": 0.70,
+    "trace": "Informational only. ATSC A/85 excludes shouting and whispering from the representative typical-dialogue anchor; regime BODY and applied-gain shape checks own promotion so expressive windows are not normalized into conformity."
+  },
+  "window_tolerance_db": 3.0,
+  "window_tolerance_trace": "Pass 2B live-run calibration: regime BODY remains strict, while natural per-window speech variance and brief quiet-bed windows use a 3 dB widened coverage band. Applied-gain dips remain the automation-artifact gate.",
+  "coverage_floor": {
+    "minimum_active_speech_seconds": 10.0,
+    "minimum_regime_fraction": 0.02,
+    "raw_density_ratio_floor": 0.35,
+    "sparse_speech_density_floor": 0.03,
+    "semantics": "insufficient_speech_coverage fires when detected processed speech is much thinner than raw-lane speech density, indicating detector or render bug; genuinely sparse regimes are measured over what exists and flagged sparse-speech.",
+    "trace": "Closes coverage false-pass review finding without turning genuinely sparse sources into terminal false stops."
+  },
+  "true_peak_dbtp": {
+    "max": -1.0,
+    "trace": "House true-peak ceiling preserves final-output headroom without using peak margin as a loudness target."
+  },
+  "mix_integrated_lufs": {
+    "promotion_gate": false,
+    "trace": "Informational only; mix loudness never proves mic audibility."
+  },
+  "clean_mic_gain_ceiling_db": {
+    "default": 12.0,
+    "headroom_safety_margin_db": 6.0,
+    "default_semantics": "evidence_and_audition_threshold_not_universal_artifact_ceiling",
+    "above_default_requires": "segment evidence citing this regime's analysis clean_gain_headroom",
+    "trace": "There is no universal clean-gain dB limit. AES TD1008 permits upward normalization subject to source quality, peak headroom, and limiter tradeoffs. Twelve dB is a conservative evidence/audition trigger; above it requires regime-specific noise/headroom evidence and remains bounded by true-peak and peak-control gates."
+  },
+  "rails_adjustment_bounds": {
+    "mic_band_center_shift_db": [-2.0, 2.0],
+    "gap_band_shift_db": [-1.5, 1.5],
+    "requires_analysis_evidence_citation": true,
+    "trace": "Any adjustment must cite analysis.json evidence fields and be recorded as default, adjusted, and delta in manifests and reports."
+  },
+  "artifact_detection": {
+    "minimum_unexplained_dip_db": 6.0,
+    "minimum_duration_seconds": 0.2,
+    "trace": "Detect unexplained applied-gain shape deviations of either sign from 0.2 s onward; no maximum-duration loophole. Comparing processed-minus-raw against the declared gain preserves source expression while catching automation faults."
+  },
+  "plan_structure": {
+    "max_non_exception_segments_per_regime": 3,
+    "minimum_non_exception_segment_seconds": 8.0,
+    "event_exempt_roles": ["exception", "transition", "transition-class"],
+    "max_event_segments_per_regime": 6,
+    "max_event_duration_fraction_per_regime": 0.08,
+    "max_event_segments_per_plan_per_regime": 6,
+    "max_event_duration_fraction_total": 0.05,
+    "event_neighborhood_seconds": 5.0,
+    "trace": "Pass 2E structural rail: ordinary segments are owned and counted per regime (at most 3, at least 8 s each). Event segments are owned per regime, limited to 6 and 8% of that regime, limited plan-wide to regimes x 6 and 5% of total duration, and must cite a resolved analysis or prior-promotion event within +/-5 s."
+  },
+  "peak_control_accounting": {
+    "bin_seconds": 0.1,
+    "controlled_attenuation_threshold_db": 0.5,
+    "max_body_energy_delta_db_per_regime": 0.5,
+    "max_global_duty_fraction": 0.03,
+    "max_regime_duty_fraction": 0.05,
+    "max_contiguous_controlled_seconds": 1.0,
+    "max_per_bin_attenuation_db": 6.0,
+    "trace": "Pass 2E peak-control honesty rail: compare matched 100 ms pre/post mean-square bins with silent post-control bins retained in the denominator; limit duty globally to 3% and per regime to 5%, contiguous control to 1.0 s, per-bin attenuation to 6 dB, and per-regime BODY energy delta to 0.5 dB."
+  },
+  "null_test": {
+    "epsilon_peak": 0.000001,
+    "trace": "mix minus mic_component plus bed_component must be effectively silent for float component rendering."
+  }
+}
