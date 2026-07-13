@@ -33,18 +33,18 @@
 
 ## Category Applicability
 
-| Category | Status (`Scored/N/A/Not assessed`) | Reason |
-| -------- | ---------------------------------- | ------ |
-| Crawl, Indexing, And Technical Foundation | | |
-| Search Intent And Query Coverage | | |
-| On-Page Metadata And Snippet Readiness | | |
-| Content Quality, Usefulness, And Trust | | |
-| Information Architecture And Internal Linking | | |
-| Structured Data And Rich Result Eligibility | | |
-| Local, Entity, And Brand Signals | | |
-| Performance, Mobile, And Page Experience | | |
-| Measurement, Diagnostics, And Change Control | | |
-| Competitive Visibility And Off-Site Signals | | |
+| Category                                      | Status (`Scored/N/A/Not assessed`) | Reason |
+| --------------------------------------------- | ---------------------------------- | ------ |
+| Crawl, Indexing, And Technical Foundation     |                                    |        |
+| Search Intent And Query Coverage              |                                    |        |
+| On-Page Metadata And Snippet Readiness        |                                    |        |
+| Content Quality, Usefulness, And Trust        |                                    |        |
+| Information Architecture And Internal Linking |                                    |        |
+| Structured Data And Rich Result Eligibility   |                                    |        |
+| Local, Entity, And Brand Signals              |                                    |        |
+| Performance, Mobile, And Page Experience      |                                    |        |
+| Measurement, Diagnostics, And Change Control  |                                    |        |
+| Competitive Visibility And Off-Site Signals   |                                    |        |
 
 ## Standards And Claims
 
@@ -103,8 +103,8 @@ Grade mapping:
 
 ## Findings By Category
 
-| Category                                      | Score   | Priority   | Confidence   |
-| --------------------------------------------- | ------: | ---------- | ------------ |
+| Category                                       | Score   | Priority   | Confidence   |
+| ---------------------------------------------- | ------: | ---------- | ------------ |
 | <Category from references/AUDIT-CATEGORIES.md> | <score> | <priority> | <confidence> |
 
 Top fixes by category:

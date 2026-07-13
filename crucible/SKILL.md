@@ -46,13 +46,13 @@ Read `roles/OPTIONAL.md` only when the target needs a perspective not covered by
 
 Keep the loop invariant while adapting its evidence and vocabulary to the target:
 
-| Concept | Software and release work | Other directed targets |
-| --- | --- | --- |
-| Slice | Code, test, config, package, or docs change | Document revision, redline group, design iteration, plan section, workflow change, or other coherent artifact increment |
-| Verification | Tests, builds, linters, smoke checks, runtime behavior | Requirement trace, factual/source check, calculation, render or visual inspection, scenario walkthrough, consistency check, acceptance review, or comparison |
-| Risk pass | Application, dependency, data, permission, and operational security | Applicable safety, privacy, legal, financial, accessibility, reputational, contractual, or operational exposure |
-| Cleanup | Dead code, stale docs, unused fixtures, generated debris | Stale sections, unresolved placeholders, duplicated content, stray markup, abandoned variants, inconsistent labels, or obsolete support material |
-| Ready state | Releasable or mergeable | Publishable, deliverable, ready for owner or qualified review, executable, adoptable, or handoff-ready |
+| Concept      | Software and release work                                           | Other directed targets                                                                                                                                       |
+| ------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Slice        | Code, test, config, package, or docs change                         | Document revision, redline group, design iteration, plan section, workflow change, or other coherent artifact increment                                      |
+| Verification | Tests, builds, linters, smoke checks, runtime behavior              | Requirement trace, factual/source check, calculation, render or visual inspection, scenario walkthrough, consistency check, acceptance review, or comparison |
+| Risk pass    | Application, dependency, data, permission, and operational security | Applicable safety, privacy, legal, financial, accessibility, reputational, contractual, or operational exposure                                              |
+| Cleanup      | Dead code, stale docs, unused fixtures, generated debris            | Stale sections, unresolved placeholders, duplicated content, stray markup, abandoned variants, inconsistent labels, or obsolete support material             |
+| Ready state  | Releasable or mergeable                                             | Publishable, deliverable, ready for owner or qualified review, executable, adoptable, or handoff-ready                                                       |
 
 Do not force software-only checks or release language onto another target. Do not weaken software mode: when the target is code or a release, run the full engineering, test, security, cleanup, docs/comment, and release-readiness path.
 

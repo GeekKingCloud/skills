@@ -102,8 +102,8 @@ Grade mapping:
 
 ## Findings By Category
 
-| Category                                      | Score   | Priority   | Confidence   |
-| --------------------------------------------- | ------: | ---------- | ------------ |
+| Category                                       | Score   | Priority   | Confidence   |
+| ---------------------------------------------- | ------: | ---------- | ------------ |
 | <Category from references/AUDIT-CATEGORIES.md> | <score> | <priority> | <confidence> |
 
 Top fixes by category:

@@ -15,15 +15,6 @@ Crucible has exactly four valid routes:
 - `work-led-whole-target-roast`: complete a supplied work source, then roast the whole current target.
 - `roast-led-whole-target`: roast the whole current target, use findings as the work queue, then remediate through the Gate Remediation Loop.
 
-Do not use legacy route names outside the four valid routes above. Do not treat `Roast skipped` as its own route. A no-Roast run is only valid as `work-led-no-roast`, and it still requires a concrete supplied work source.
-
-When resuming older work, map legacy names to the current routes and report the current name:
-
-- `plan-led-no-roast` -> `work-led-no-roast`
-- `plan-led-plan-scope-roast` -> `work-led-scope-roast`
-- `plan-led-project-scope-roast` -> `work-led-whole-target-roast`
-- `roast-led-project-scope` -> `roast-led-whole-target`
-
 ## Choosing Roast Scope
 
 Use `work-led-no-roast` only when the caller opts out of Roast, the work is narrow enough that broad review would be disproportionate, or target instructions make Roast inappropriate. Disclose reduced readiness confidence in the final report.

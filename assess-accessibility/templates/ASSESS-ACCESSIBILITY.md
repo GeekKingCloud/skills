@@ -30,16 +30,16 @@
 
 ## Minimum UI Evidence
 
-| Evidence check | Status (`Done/Blocked/N/A`) | Impact on confidence or scoring |
-| -------------- | --------------------------- | -------------------------------- |
-| Keyboard and focus walkthrough | | |
-| Semantics and accessibility tree or equivalent | | |
-| Zoom, scaling, reflow, and truncation | | |
-| Responsive/mobile and touch behavior | | |
-| Visual contrast and non-color cues | | |
-| Motion, timing, dynamic updates, and reduced motion | | |
-| Forms, validation, and error recovery | | |
-| Assistive-technology or platform-inspector proof | | |
+| Evidence check                                      | Status (`Done/Blocked/N/A`) | Impact on confidence or scoring  |
+| --------------------------------------------------- | --------------------------- | -------------------------------- |
+| Keyboard and focus walkthrough                      |                             |                                  |
+| Semantics and accessibility tree or equivalent      |                             |                                  |
+| Zoom, scaling, reflow, and truncation               |                             |                                  |
+| Responsive/mobile and touch behavior                |                             |                                  |
+| Visual contrast and non-color cues                  |                             |                                  |
+| Motion, timing, dynamic updates, and reduced motion |                             |                                  |
+| Forms, validation, and error recovery               |                             |                                  |
+| Assistive-technology or platform-inspector proof    |                             |                                  |
 
 ## Standards And Claims
 
@@ -100,8 +100,8 @@ Grade mapping:
 
 ## Findings By Category
 
-| Category                                      | Score   | Priority   | Confidence   |
-| --------------------------------------------- | ------: | ---------- | ------------ |
+| Category                                       | Score   | Priority   | Confidence   |
+| ---------------------------------------------- | ------: | ---------- | ------------ |
 | <Category from references/AUDIT-CATEGORIES.md> | <score> | <priority> | <confidence> |
 
 Top fixes by category:

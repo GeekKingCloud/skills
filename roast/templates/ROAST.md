@@ -45,8 +45,8 @@ Evidence limits: [relevant material that was unavailable or not assessed]
 
 ## Lens Review
 
-| Lens | Status | Summary |
-| --- | --- | --- |
+| Lens            | Status                           | Summary                             |
+| --------------- | -------------------------------- | ----------------------------------- |
 | [Relevant lens] | [Assessed, N/A, or Not assessed] | [Evidence-backed summary or reason] |
 | [Relevant lens] | [Assessed, N/A, or Not assessed] | [Evidence-backed summary or reason] |
 

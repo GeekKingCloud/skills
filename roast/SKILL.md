@@ -36,12 +36,12 @@ For legal, financial, compliance, medical, or other professionally governed clai
 
 Route evidence and checks to the target rather than forcing a universal checklist:
 
-| Target | Typical evidence and checks |
-| --- | --- |
-| Software | Source, tests, dependencies, runtime behavior, interfaces, security, architecture, and maintainability |
-| Document, contract, or policy | Full text, definitions, claims, obligations, cross-references, ambiguity, consistency, risk allocation, and layout |
-| Design, image, or interface | Full-resolution render, brief, hierarchy, legibility, accessibility, audience fit, and only the states or viewports actually supplied |
-| Plan or workflow | Goals, inputs, outputs, owners, dependencies, decisions, failure paths, acceptance criteria, and verification |
+| Target                        | Typical evidence and checks                                                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Software                      | Source, tests, dependencies, runtime behavior, interfaces, security, architecture, and maintainability                                |
+| Document, contract, or policy | Full text, definitions, claims, obligations, cross-references, ambiguity, consistency, risk allocation, and layout                    |
+| Design, image, or interface   | Full-resolution render, brief, hierarchy, legibility, accessibility, audience fit, and only the states or viewports actually supplied |
+| Plan or workflow              | Goals, inputs, outputs, owners, dependencies, decisions, failure paths, acceptance criteria, and verification                         |
 
 Distinguish review criteria from authorship framing:
 
