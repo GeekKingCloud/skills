@@ -12,6 +12,7 @@ Find prior coding agent conversations without making the caller reconstruct the 
 1. Identify the caller's search target: topic, repo, path, date range, command, error text, person, PR, issue, branch, release, or remembered wording.
 2. Search high-signal indexes and summaries before raw transcripts when available.
 3. Search raw session logs or transcripts within the authorized and relevant scope when summaries are incomplete, vague, or ambiguous.
+   Summaries-first defines search and discovery order; a direct transcript match can still be stronger confirmation evidence.
 4. Build candidates from concrete evidence, not topic similarity alone.
 5. Verify the best candidate enough to identify the session title or name, exact session id, and resume handle when available.
 6. Return the best match first, then alternates when confidence is not high.

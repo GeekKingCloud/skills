@@ -64,6 +64,14 @@ description: Reconstruct interrupted work from recent context and workspace arti
 - Make uncertainty explicit.
 - Use templates only when they improve consistency. Do not create a `templates/` folder for a skill that has no reusable output skeleton.
 
+## Markdown tables
+
+- Treat each contiguous table as a grid and pad every cell so the unescaped `|` delimiters form straight vertical columns in the Markdown source.
+- Compute widths from the widest cell in each column and reflow the whole table when any cell changes; do not align rows individually by eye.
+- Keep one space between each delimiter and its cell content, and extend separator-row dashes to the same source width while preserving alignment colons.
+- Escape a literal pipe inside a cell as `\|` so it does not split the table.
+- Apply this source alignment to tables in root documentation, skill entry points, helpers, references, templates, and examples.
+
 ## Output quality
 
 Every skill must define enough output rules for a coding agent to produce useful work without generic filler.
@@ -228,6 +236,7 @@ When editing a skill:
 
 - preserve the original purpose unless the change is intentional
 - clean up stale or contradictory wording
+- describe only the current skill contract; remove legacy names, aliases, migration maps, and compatibility guidance for earlier versions of the skill
 - keep examples and templates in sync with the current instructions
 - update `README.md` if the top-level skill list changes
 - check for product-specific references and replace them with neutral language

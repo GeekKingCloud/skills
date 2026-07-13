@@ -60,11 +60,13 @@
 
 ## Assess Agent Readiness Score
 
-Assess Agent Readiness score: `/10`
+Core categories for this audit:
 
-Letter grade: `A/B/C/D/F`
+Assess Agent Readiness score: `/10` or `Not graded`
 
-Grade cap: `None` or `<cap>, <reason>`
+Letter grade: `A/B/C/D/F` or `Not graded`
+
+Grade cap: `None`, `<cap>, <reason>`, or `Not applicable (Not graded)`
 
 Evidence impact: `None/Lower confidence only/Behavior-level fixes only/Blocked categories: ...`
 
@@ -102,8 +104,8 @@ Grade mapping:
 
 ## Findings By Category
 
-| Category                                      | Score   | Priority   | Confidence   |
-| --------------------------------------------- | ------: | ---------- | ------------ |
+| Category                                       | Score   | Priority   | Confidence   |
+| ---------------------------------------------- | ------: | ---------- | ------------ |
 | <Category from references/AUDIT-CATEGORIES.md> | <score> | <priority> | <confidence> |
 
 Top fixes by category:

@@ -1,56 +1,63 @@
 # Roast Report
 
 Target: [path or project name]
+Target type: [software, document, contract, policy, design, image, plan, workflow, or other]
+Purpose / success criteria: [what the target is meant to accomplish]
 Context: [user-supplied framing, if any]
 Scope: [what was inspected and what was skipped]
+Review lenses: [caller-specified and context-appropriate lenses]
+Evidence mode: [source, rendered/live behavior, artifact, references, or combination]
+Evidence limits: [relevant material that was unavailable or not assessed]
 
 ## Findings
 
 ### Critical
-- `[path:line]` Finding title
+- `[location or reference]` Finding title
   Severity: Critical
   Problem: [confirmed issue]
-  Evidence: [path, line, or code pattern]
-  Impact: [exploit, failure mode, or maintenance cost]
+  Evidence: [path, line, section, clause, page, frame, region, state, timestamp, pattern, or observed behavior]
+  Impact: [harm, exploit, failure mode, usability cost, or maintenance cost]
   Fix: [concrete remediation direction]
 
 ### High
-- `[path:line]` Finding title
+- `[location or reference]` Finding title
   Severity: High
   Problem: [confirmed issue]
-  Evidence: [path, line, or code pattern]
-  Impact: [exploit, failure mode, or maintenance cost]
+  Evidence: [precise artifact reference or observed behavior]
+  Impact: [harm, exploit, failure mode, usability cost, or maintenance cost]
   Fix: [concrete remediation direction]
 
 ### Medium
-- `[path:line]` Finding title
+- `[location or reference]` Finding title
   Severity: Medium
   Problem: [confirmed issue]
-  Evidence: [path, line, or code pattern]
-  Impact: [exploit, failure mode, or maintenance cost]
+  Evidence: [precise artifact reference or observed behavior]
+  Impact: [harm, exploit, failure mode, usability cost, or maintenance cost]
   Fix: [concrete remediation direction]
 
 ### Low / Nitpicks
-- `[path:line]` Finding title
-  Severity: Low
+- `[location or reference]` Finding title
+  Severity: [Low or Nitpick]
   Problem: [confirmed issue]
-  Evidence: [path, line, or code pattern]
-  Impact: [exploit, failure mode, or maintenance cost]
+  Evidence: [precise artifact reference or observed behavior]
+  Impact: [harm, exploit, failure mode, usability cost, or maintenance cost]
   Fix: [concrete remediation direction]
 
-## Architecture Review
-- [Architecture issue or `No major architecture findings in reviewed scope.`]
+## Lens Review
 
-## Maintainability And Style
-- [Style or maintainability issue, or `No notable style findings in reviewed scope.`]
+| Lens            | Status                           | Summary                             |
+| --------------- | -------------------------------- | ----------------------------------- |
+| [Relevant lens] | [Assessed, N/A, or Not assessed] | [Evidence-backed summary or reason] |
+| [Relevant lens] | [Assessed, N/A, or Not assessed] | [Evidence-backed summary or reason] |
 
-## Test Coverage
-- [Testing assessment and missing coverage]
+## Validation And Evidence
+- [Checks performed, evidence limitations, confidence limits, and unreviewed surfaces]
 
 ## What To Fix First
-1. [Highest-impact fix]
-2. [Next fix]
-3. [Next fix]
+1. [Highest-priority supported fix]
 
-Grade: [A to F]
+Grade: [A to F for the reviewed scope, or Not graded]
+Grade basis: [why the evidence and findings earn this grade]
+Grade cap: [cap reason, or None]
+Confidence: [High, Medium, or Low, with reason]
 Review verdict: [one concise evidence-backed verdict]

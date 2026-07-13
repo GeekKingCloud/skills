@@ -4,7 +4,7 @@
 [What success looks like]
 
 ## Handoff File
-[Path where this note is saved, or `Not written: <reason>`]
+[Repository-relative or sanitized path where this note is saved, or `Not written: <reason>`]
 
 ## Workflow Stage
 [Current phase]
@@ -18,8 +18,8 @@
 ## In Progress
 - [Current line of work or hypothesis]
 
-## Commands Run
-- `[command]` - [result, error, or reason to rerun]
+## Commands Run (Optional)
+- `[required command or redacted form]` - [result, error, or reason to rerun]
 
 ## Tests / Verification
 - [Check run, skipped, failing, or still needed]
@@ -32,8 +32,8 @@
 2. [Next action]
 
 ## Artifacts
-- `[path/to/file]` - why it matters
-- `[command]` - result or reason to rerun
+- `[required path or sanitized locator]` - why it matters
+- `[required command or redacted form]` - result or reason to rerun
 
 ## Risks
 - [Blocker, assumption, or uncertainty]

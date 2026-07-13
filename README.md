@@ -8,15 +8,15 @@ See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
 
 Skills are grouped below for browsing only. Each skill remains a visible top-level folder so discovery and install paths stay predictable.
 
-## Development And Release
+## Iterative Work And Review
 
-- **crucible** — Orchestrate release-hardening work from plans, review findings, or current codebase state through sub-agent-heavy implementation, verification evidence checks, review gates, security pass, docs/comment sweep, cleanup, and release-readiness reporting.
+- **crucible** — Orchestrate iterative, role-guided, sub-agent-heavy work on software, documents, contracts, plans, workflows, policies, designs, images, or other targets through create-review-verify-repair loops, evidence checks, risk review, cleanup, and readiness reporting.
 
   ```
   npx skills@latest add GeekKingCloud/skills/crucible
   ```
 
-- **roast** — Strictly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade.
+- **roast** — Strictly review code, documents, contracts, plans, workflows, designs, images, or other directed targets through evidence-backed lenses, with severity, fix directions, and a grade.
 
   ```
   npx skills@latest add GeekKingCloud/skills/roast
@@ -50,7 +50,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
   npx skills@latest add GeekKingCloud/skills/find
   ```
 
-- **recover** — Recover interrupted coding work from chats, handoffs, workspace artifacts, and temp files, then realign on the next step.
+- **recover** — Recover interrupted or transferred coding work across sessions and coding agents by locating available history and workspace evidence, reconstructing past progress, current state, and intended future direction, then producing a safe semantic continuation.
 
   ```
   npx skills@latest add GeekKingCloud/skills/recover
@@ -66,6 +66,14 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
 
   ```
   npx skills@latest add GeekKingCloud/skills/feedback
+  ```
+
+## Utilities
+
+- **remix-voiceover** — Repair commentary-over-background audio or video with deterministic measurement, sustained-level alignment, listener-first balancing, source-format preservation, and verified delivery.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/remix-voiceover
   ```
 
 ## Just For Fun

@@ -1,23 +1,52 @@
 ---
 name: roast
-description: Strictly review a codebase, PR, module, or directed target with security-first, evidence-backed findings, severity, fixes, and a grade. Use for blunt reviews of code quality, architecture, tests, comments, naming, maintainability, correctness, security, and release risk.
+description: Strictly review any directed target, including a codebase, PR, module, release candidate, document, contract, plan, workflow, policy, design, image, or other artifact, through caller-specified or context-appropriate lenses. Use for blunt, serious, evidence-backed findings about security, correctness, architecture, tests, release risk, quality, coherence, usability, maintainability, clarity, or fitness for purpose, with severity, fix directions, and a grade.
 ---
 
 # Roast
 
-Review a project with a strict, security-first engineering lens. Be direct, specific, and useful. Critique the code and engineering choices, not immutable traits or the person.
+Review any directed target with a strict, evidence-first lens. Code and release review remain the most fully specified mode, but the target does not need to be software. Be direct, specific, and useful. Critique the artifact and the choices embodied in it, not immutable traits or the person.
 
 ## Quick start
 
-When asked to roast a project:
-1. Identify the target folder from the current workspace or the user's supplied path.
-2. Read local instructions first, such as `AGENTS.md`, `README.md`, style guides, contribution docs, and obvious config files.
-3. Inspect the actual code, tests, dependencies, scripts, and public entry points before judging.
-4. Prioritize security and correctness findings over style complaints.
-5. Report findings with file paths, line references when possible, severity, impact, and a blunt fix direction.
-6. End with an overall grade and concise review verdict.
+When asked to roast a target:
+1. Identify the exact artifact, scope, and requested review lens from the workspace, supplied path, attachment, URL, or caller context.
+2. Read the instructions, requirements, source material, standards, and surrounding context that define what good means for that target.
+3. Choose the evidence mode: source, rendered or live behavior, supplied artifact, external references, or an explicit combination.
+4. Inspect the artifact itself before judging. Use the full engineering baseline for code; select only relevant lenses for other targets.
+5. Prioritize safety, security, correctness, legal or operational exposure, and fitness-for-purpose failures over polish when those risks apply.
+6. Report findings with precise locations or references when possible, severity, evidence, impact, and a blunt fix direction.
+7. End with a scope-aware grade and concise review verdict.
 
-If the user supplies context such as who built it, why it exists, time pressure, generated-code excuses, or "don't blame me", treat that as review framing. Acknowledge it briefly, then judge the codebase on the evidence anyway.
+Roast is report-only by default. Do not edit, redline, or remediate the target unless the caller explicitly asks for changes or an orchestrating workflow uses the findings as its work source.
+
+## Review Contract
+
+Infer these modes from the request and available evidence before reviewing:
+
+- `Target and scope`: the whole project or artifact, changed portions, one file, one section, one visual, or one named concern.
+- `Review lenses`: caller-named concerns first, then context-appropriate risks and quality criteria. Do not silently broaden a directed review into an unrelated full audit.
+- `Evidence mode`: what can actually be inspected, such as source, rendered output, live behavior, attachments, requirements, references, or only the artifact itself.
+- `Output mode`: inline report by default, or a saved report, review comment, redline plan, or remediation work queue when requested.
+- `Grade subject`: grade only the reviewed scope against its stated purpose and relevant criteria. Do not imply that unreviewed surfaces passed.
+
+If the target, lens, or success criteria are materially ambiguous, state the narrowest reasonable interpretation and continue when it is safe. Ask only when competing interpretations would produce meaningfully different findings or require domain assumptions the caller must supply.
+
+For legal, financial, compliance, medical, or other professionally governed claims, assert defects only against supplied or verified authority. Otherwise label them as risks, ambiguities, or questions for qualified review rather than authoritative conclusions.
+
+Route evidence and checks to the target rather than forcing a universal checklist:
+
+| Target                        | Typical evidence and checks                                                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Software                      | Source, tests, dependencies, runtime behavior, interfaces, security, architecture, and maintainability                                |
+| Document, contract, or policy | Full text, definitions, claims, obligations, cross-references, ambiguity, consistency, risk allocation, and layout                    |
+| Design, image, or interface   | Full-resolution render, brief, hierarchy, legibility, accessibility, audience fit, and only the states or viewports actually supplied |
+| Plan or workflow              | Goals, inputs, outputs, owners, dependencies, decisions, failure paths, acceptance criteria, and verification                         |
+
+Distinguish review criteria from authorship framing:
+
+- Treat purpose, audience, jurisdiction, brand system, required standard, accepted risk, and requested lens as criteria that define what good means.
+- Treat who built it, time pressure, inherited or generated work, and "don't blame me" as framing that may tune the voice but does not lower the quality bar.
 
 ## User-Supplied Context
 
@@ -27,19 +56,22 @@ Examples:
 - `use the roast skill on this project`
 - `use the roast skill on ../app and remember this was inherited`
 - `roast the API layer; it was generated, so aim your disappointment accordingly`
+- `roast this contract for cybersecurity, ambiguity, and one-sided obligations`
+- `roast this homepage design for hierarchy, accessibility, and conversion friction`
+- `roast this rollout plan for missing decisions, operational risk, and unverifiable acceptance criteria`
 
-Use that context to tune the framing, not to change the quality bar. The code still gets graded as shipped.
+Treat phrases such as `roast this about X`, `focus on Y`, or `look only at Z` as binding scope or lens instructions. Use contextual background to tune the framing, not to excuse defects or lower the relevant quality bar. Judge the target in the state actually supplied.
 
 ## Review Voice
 
 Roast is serious-only. Keep the voice strict, dry, and professional. Let the severity and evidence carry the force of the review.
 
 Do:
-- be blunt about dangerous patterns, lazy naming, needless complexity, missing tests, weak architecture, and sloppy formatting
-- call out security holes with extra force, especially injection routes, unsafe deserialization, secret exposure, auth bypasses, path traversal, XSS, SSRF, insecure crypto, shell execution, weak permission checks, and dependency risk
+- be blunt about dangerous patterns, contradictions, needless complexity, weak structure, unsupported claims, missing validation, poor usability, and sloppy presentation
+- call out safety, security, privacy, legal, financial, accessibility, and operational exposure with extra force when the target has those surfaces
 - distinguish catastrophic issues from minor style issues
 - make the grade feel earned
-- critique code, architecture, tests, naming, comments, spacing, and engineering choices
+- critique the target's substance, structure, evidence, clarity, presentation, and implementation choices through the selected lenses
 
 Do not:
 - invent findings without evidence
@@ -47,83 +79,112 @@ Do not:
 - use comedy framing, jokes, or theatrical headings
 - bury serious security flaws under presentation
 - soften a dangerous issue because the user says someone else wrote it
-- produce only vibes; every major criticism needs a concrete example or a stated evidence gap
+- produce only vibes; every major criticism needs a concrete example, artifact reference, observed behavior, or stated evidence gap
 
 ## Review Passes
 
-Work from highest risk to lowest risk.
+Work from highest risk to lowest risk. Apply the common passes to every target, then use the code baseline or other target-specific lenses that fit the review contract. Mark irrelevant categories `N/A`; do not force software-shaped findings onto a non-software artifact.
 
 ### 1. Orientation
 
 Find:
-- project language, framework, package manager, test runner, and runtime entry points
-- application boundaries, public interfaces, network routes, CLI commands, scheduled jobs, and background workers
-- local rules from repo docs and config
-- generated files or vendored code to ignore unless they are shipped or edited directly
+- the target's purpose, audience, owner, delivery state, and success criteria
+- its boundaries, public or user-facing surfaces, dependencies, inputs, outputs, and constraints
+- local rules, supplied requirements, accepted references, and evaluation criteria
+- generated, inherited, third-party, or out-of-scope material to ignore unless it materially affects the delivered target
 
-Say what was reviewed and what was skipped. If the project is too large for a full review, sample deliberately and disclose the sampling rule.
+For code, additionally identify the language, framework, package manager, test runner, runtime entry points, application boundaries, public interfaces, routes, CLI commands, scheduled jobs, background workers, and generated or vendored material.
 
-### 2. Security
+Say what was reviewed and what was skipped. If the target is too large for a full review, sample deliberately and disclose the sampling rule.
 
-Look hardest at:
+### 2. Safety, Security, And Exposure
+
+Look hardest at applicable failure surfaces:
+- harm, abuse, privacy loss, unauthorized disclosure, one-sided obligations, misleading claims, accessibility barriers, financial exposure, or unsafe operational assumptions
+- missing controls, ownership gaps, vague responsibilities, potentially unenforceable or unverifiable requirements, and dangerous defaults
+- dependencies, external services, third-party assets, data handling, permissions, and lifecycle risks
+
+For code, additionally inspect:
 - untrusted input reaching SQL, shell commands, file paths, templates, HTML, eval-like APIs, dynamic imports, regexes, redirects, URLs, or deserializers
 - authentication, authorization, session handling, token storage, password handling, and tenant boundaries
 - secret handling in source, configs, logs, CI, examples, and error messages
 - network calls, SSRF risk, webhook validation, CORS, CSRF, and open redirects
+- cryptography, key generation, key storage, rotation, algorithm choices, and misuse of security primitives
 - dependency age, abandoned packages, lockfiles, scripts, and install hooks
 - unsafe defaults, debug endpoints, permissive config, and production footguns
 
-For every security finding, include:
+For every safety or security finding, include:
 - `Severity`: Critical, High, Medium, or Low
-- `Evidence`: path and line or exact code pattern
+- `Evidence`: precise location, reference, observed behavior, or exact pattern
 - `Why it is bad`: the exploit or failure mode
 - `Fix`: concrete remediation direction
 
-Use harsher wording for security theater, silent auth failures, or code that pretends validation happened when it did not.
+Use harsher wording for security theater, fake safeguards, silent failures, or artifacts that claim validation happened when it did not.
 
-### 3. Correctness and Reliability
+### 3. Fitness, Correctness, And Reliability
 
 Inspect:
+- whether the target can achieve its stated purpose for its intended audience
+- contradictions, omissions, false assumptions, broken flows, ambiguous decisions, and failure handling
+- edge cases, lifecycle changes, handoffs, dependencies, and realistic misuse or stress conditions
+- whether claims, requirements, recommendations, and conclusions are supported and internally consistent
+
+For code, additionally inspect:
 - error handling, retries, timeouts, cancellation, cleanup, and resource leaks
 - boundary cases, null/empty inputs, encoding, time zones, concurrency, and partial failures
 - data migrations, schema drift, idempotency, and transactional behavior
 - logs and observability that help diagnose real incidents
 
-Call out places where the happy path is being treated as the whole application.
+Call out places where the happy path is being treated as the whole problem.
 
-### 4. Architecture
+### 4. Structure And Coherence
 
 Judge:
-- whether responsibilities are separated or smeared across files
-- whether abstractions remove complexity or hide it
-- whether state, IO, domain logic, and presentation are tangled
-- whether names reflect real concepts or merely describe implementation noise
-- whether configuration is explicit, portable, and documented
-- whether public APIs and module boundaries are coherent
+- whether the organization matches how the audience needs to understand or use the target
+- whether responsibilities, concepts, decisions, flows, and dependencies have clear boundaries
+- whether abstractions, sections, visual hierarchy, or process stages reduce complexity or hide it
+- whether names and labels reflect real concepts
+- whether the target is coherent, navigable, and free of duplication or internal drift
+- whether interfaces, handoffs, and ownership boundaries are explicit
 
-Flag skewed, missing, or badly implemented patterns. If the project claims a pattern but violates it, say so directly.
+For code, explicitly judge separation of state, IO, domain logic, presentation, configuration, public APIs, and module boundaries. Flag skewed, missing, or badly implemented patterns. If the target claims a pattern or principle but violates it, say so directly.
 
-### 5. Tests
+### 5. Validation And Coverage
 
 Look for:
-- meaningful behavioral tests, not just snapshots or import checks
-- coverage of security-sensitive paths, failure paths, and edge cases
-- fixture quality, test determinism, and whether tests exercise real interfaces
-- brittle mocks that prove the implementation instead of the behavior
+- evidence that important claims, requirements, flows, decisions, or outcomes were checked
+- coverage of high-risk paths, failure modes, edge cases, audiences, devices, environments, or scenarios relevant to the target
+- realistic review, approval, testing, research, user feedback, rehearsal, or measurement rather than ceremonial sign-off
+- acceptance criteria that can distinguish success from wishful thinking
+
+For code, inspect meaningful behavioral tests, security-sensitive and failure-path coverage, fixture quality, determinism, real-interface coverage, and brittle mocks that prove the implementation instead of behavior.
 
 Treat missing tests around auth, payments, destructive operations, parsing, migrations, and shell/network execution as serious.
 
-### 6. Maintainability and Style
+### 6. Clarity, Maintainability, And Presentation
 
 Be picky about:
-- inconsistent formatting, spacing, indentation, file layout, and import order
-- vague names, misleading names, abbreviations, and names that lie
-- comments that restate the code, apologize for bad design, or hide TODO debt
-- oversized files, copy-paste logic, dead code, commented-out code, and stale docs
-- magic numbers, boolean parameter soup, hidden globals, and surprising side effects
-- dependency bloat and build scripts that are opaque, fragile, or poorly documented
+- vague or misleading names, labels, headings, claims, and calls to action
+- unnecessary length, repetition, clutter, jargon, hidden assumptions, and cognitive load
+- weak information or visual hierarchy, inconsistent presentation, and poor audience fit
+- stale material, dead sections, unresolved placeholders, contradictory guidance, and avoidable maintenance burden
+- fragile dependencies, unexplained conventions, and surprising side effects
 
-Style findings should still be concrete. Prefer "rename `x` because it is a request-scoped auth token, not a generic value" over "naming is bad".
+For code, additionally inspect formatting, spacing, indentation, file layout, import order, comments, TODO debt, oversized files, copy-paste logic, dead or commented-out code, magic numbers, boolean parameter soup, hidden globals, dependency bloat, and opaque build scripts.
+
+Style and presentation findings must still be concrete. Prefer "rename `x` because it is a request-scoped auth token, not a generic value" or "move the renewal clause before termination because it silently changes the reader's commitment" over "naming is bad" or "this is confusing".
+
+## Severity
+
+Assign severity from consequence, likelihood, reach, and reversibility, not reviewer annoyance:
+
+- `Critical`: credible catastrophic harm or complete failure of the target's core purpose
+- `High`: major likely harm, failure, unusability, or exposure
+- `Medium`: material weakness likely to cause defects, confusion, rework, or avoidable risk
+- `Low`: localized weakness with limited impact
+- `Nitpick`: optional polish that does not materially affect fitness for purpose
+
+Apply severity, evidence, impact, and fix direction to every substantive finding, not only security findings. For subjective surfaces, separate observable defects from taste. A demonstrated contrast failure is a finding; disliking a color is not one without a relevant brief, requirement, or standard.
 
 ## Output Format
 
@@ -131,30 +192,35 @@ Use `templates/ROAST.md` as the report skeleton.
 
 If no issues are found in a category, say so briefly and mention any limits of the review. Do not fake a problem to make the report harsher.
 
+In `What To Fix First`, list up to three highest-priority fixes supported by reported findings. Omit unsupported slots, and omit the priority list entirely when there are no supported findings.
+
 ## Orchestrator Use
 
 Other workflow skills may use Roast output as a remediation work source or as a post-change review gate. Keep findings concrete enough to be acted on one at a time: severity, evidence, impact, and fix direction. Roast does not depend on those orchestrator skills; it remains a standalone review skill.
 
 ## Grading
 
-Use the whole codebase, not just the count of findings:
-- `A`: boringly solid, only minor polish issues
-- `B`: usable, with some debt that will annoy maintainers
-- `C`: works, but the structure and tests are doing the minimum
-- `D`: fragile, risky, or expensive to maintain
-- `F`: unsafe, broken, unreviewable, or built on wishful thinking
+Grade the reviewed scope, not merely the finding count:
+- `A`: unusually solid for its purpose, with only minor polish issues
+- `B`: fit for use, with meaningful but manageable weaknesses
+- `C`: usable, but important structure, validation, clarity, or risk controls are doing the minimum
+- `D`: fragile, confusing, risky, or expensive to use or maintain
+- `F`: unsafe, broken, fundamentally unfit, or internally incoherent
 
-Security findings cap the grade:
-- any unresolved Critical security issue caps at `D`
-- multiple High security issues cap at `C`
-- secret leakage, auth bypass, remote code execution, or injection reachable from untrusted input usually deserves `F` until fixed
+Severity caps apply across target types:
+- any unresolved Critical finding caps the grade at `D`
+- multiple unresolved High findings cap the grade at `C`
+- a fatal safety, security, legal, operational, or fitness-for-purpose defect usually deserves `F` until fixed
+
+Do not cap a grade merely because evidence was unavailable. Narrow the grade to the evidence-backed scope, state the confidence limit, and mark unreviewed categories `Not assessed` rather than treating them as defects. If the available evidence cannot support an honest A-F grade for even a useful bounded scope, use `Not graded` and state exactly what is missing.
 
 ## Evidence Rules
 
-- Use repo-local commands and tools to inspect files when available.
+- Use target-appropriate tools to inspect source, rendered output, live behavior, metadata, or attachments when available.
 - Prefer fast search tools for broad scans.
-- Read relevant files before criticizing them.
-- Reference exact paths and line numbers when practical.
+- Read or view the relevant artifact before criticizing it.
+- Reference exact paths, lines, sections, pages, clauses, frames, regions, states, or timestamps when practical.
 - Separate confirmed findings from suspicions.
-- If a dependency or standard is current-state-sensitive, verify it before claiming it is outdated.
-- If a test or build command is obvious and safe, run a focused check; otherwise state that execution was not performed.
+- If a dependency, law, standard, convention, or external fact is current-state-sensitive, verify it before relying on it.
+- Run focused checks or comparisons when they are obvious, safe, and relevant; otherwise state what was not performed.
+- Do not imply legal, security, accessibility, financial, or other professional certification from a Roast review.

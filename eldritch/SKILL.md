@@ -1,6 +1,6 @@
 ---
 name: eldritch
-description: Toggleable eldritch narration mode for normal coding-agent work. Use when the caller asks to turn on eldritch, haunted, cosmic-horror, Lovecraftian, King in Yellow, Yellow Sign, madness, Zalgo, or corrupted narration; keep applying it in-session until the caller asks to turn it off, use plain text, disable glyphs, or return to technical-only writing.
+description: Toggleable eldritch narration mode for normal coding-agent work. Use only when the caller explicitly asks to activate or use eldritch, haunted, cosmic-horror, Lovecraftian, King in Yellow, Yellow Sign, madness, Zalgo, or corrupted narration; bare literary or topic mentions do not activate it. Keep applying it in-session after valid activation until the caller asks to turn it off, use plain text, disable glyphs, or return to technical-only writing.
 ---
 
 # Eldritch
@@ -9,7 +9,7 @@ Apply session-local haunted narration while normal work continues. The haunting 
 
 ## Toggle
 
-Turn on for phrases like `turn on eldritch`, `use eldritch`, `haunt this session`, `go Lovecraftian`, `King in Yellow`, `Yellow Sign`, `micro eldritch`, or `Zalgo at level 5`. Keep active until `turn off eldritch`, `plain text`, `technical only`, `no glyphs`, `disable haunted mode`, or similar.
+Turn on only when the caller explicitly requests the narration or style, with phrases like `turn on eldritch`, `use eldritch`, `haunt this session`, `go Lovecraftian`, `use King in Yellow narration`, `write in a Yellow Sign style`, `micro eldritch`, or `Zalgo at level 5`. Bare literary or topic mentions such as `King in Yellow` or `Yellow Sign`, and questions or discussion about those subjects, do not activate the mode. Keep active after valid activation until `turn off eldritch`, `plain text`, `technical only`, `no glyphs`, `disable haunted mode`, or similar.
 
 ## Guardrail
 

@@ -14,6 +14,7 @@ Use this file as the default category map for Assess Accessibility audits. Omit 
 - Content And Comprehension
 - Priority Mapping
 - Category Score Rubric
+- Core Coverage
 - Final Score Rules
 
 The default category order is the report order. It starts with barriers most likely to block operation, then moves into perception, layout, comfort, and comprehension.
@@ -158,11 +159,26 @@ Missing source code is not a grade cap by itself. It lowers confidence, limits c
 
 For UI-heavy targets, complete or explicitly account for the minimum UI evidence checklist in `SKILL.md` before scoring. Missing checklist proof should affect the categories it blocks, not appear as a generic caveat after a confident grade. Use `Not assessed` for applicable categories that could not be evaluated, and keep them out of the score table.
 
+Direct assistive-technology evidence means operating representative workflows with a screen reader or another relevant platform accessibility feature. Source semantics, rendered markup, automated checks, browser or platform accessibility trees, and inspector output are proxy evidence. Proxy evidence is valuable, but it is not direct assistive-technology interaction proof.
+
 For websites without source code, missing XML sitemaps, blocked route discovery, unavailable credentials, or inaccessible pages are evidence limits when they prevent a complete crawl. Do not score a missing XML sitemap as a user accessibility defect by itself. Score weak user-facing discovery when important pages or workflows cannot be found through navigation, search, breadcrumbs, footer links, an HTML sitemap, or equivalent information architecture.
+
+## Core Coverage
+
+Before grading, name the core categories for the target platform and main user goal:
+
+- For interactive UI, `Keyboard And Focus`, `Semantics And Assistive Technology`, and `Visual Perception` are core.
+- `Forms And Error Recovery` is core when users must enter, submit, correct, confirm, or recover data.
+- `Responsive And Mobile Use` and `Typography And Scaling` are core for supported viewport, zoom, text-scaling, mobile, or touch paths.
+- `Motion, Timing, And Change` is core when workflows use animation, time limits, auto-updates, async state, or focus movement.
+- `Content And Comprehension` is core when instructions, labels, status, warnings, or recovery language affect task completion.
+- For static or generated artifacts, `Visual Perception`, `Typography And Scaling`, and `Content And Comprehension` are core; `Semantics And Assistive Technology` is also core when the format has a structured reading path.
+
+An applicable category outside the selected user goal may remain peripheral. Do not label it core merely to create a grade cap.
 
 ## Final Score Rules
 
-Calculate the final Assess Accessibility score as the average of applicable assessed category scores, rounded to one decimal.
+Calculate the final Assess Accessibility score as the average of applicable assessed category scores, rounded to one decimal, only when the evidence is sufficient to judge the main user goal. If representative perception or operation paths, or enough applicable core coverage, cannot be judged, use `Not graded`; report findings and evidence needs without a numeric score, letter grade, or grade cap.
 
 Map the final score to a letter grade:
 
@@ -172,14 +188,17 @@ Map the final score to a letter grade:
 - `D`: 6.0-6.9
 - `F`: 0-5.9
 
+An `A` requires adequate current evidence across every applicable core category, including direct assistive-technology evidence when an assistive-technology path applies. `N/A` categories do not enter the average and never cap the grade. An applicable core category marked `Not assessed`, or core evidence too stale or indirect to support an `A`, applies a grade cap of `B` unless the audit must be `Not graded`.
+
 Apply grade caps after averaging:
 
 - Any unresolved `Critical` finding applies a grade cap of `F`.
 - Any category scored `0-3` applies a grade cap of `D`.
+- Any applicable core category scored `4-5` applies a grade cap of `B`.
 - Missing rendered or platform evidence for an interactive product applies a grade cap of `B`.
 - Missing keyboard/focus or responsive/mobile evidence for a UI-heavy product applies a grade cap of `B`.
-- Missing assistive-technology evidence for a UI-heavy product applies a grade cap of `C`.
-- Missing both rendered interaction evidence and assistive-technology or accessibility-tree evidence for a UI-heavy product applies a grade cap of `C`.
+- Missing direct assistive-technology interaction evidence for a UI-heavy product applies a grade cap of `C`.
+- Missing both rendered interaction evidence and semantics/accessibility-tree proxy evidence for a UI-heavy product applies a grade cap of `C`.
 - Incomplete crawl or blocked route discovery can apply a grade cap of `B` or lower when important public or user-facing workflows could not be inventoried.
 
 Apply the most restrictive grade cap when multiple caps apply: `F` beats `D`, `D` beats `C`, and `C` beats `B`. Report the cap as one field: `Grade cap: None` when no cap applies, or `Grade cap: <cap>, <reason>` when a cap applies.
