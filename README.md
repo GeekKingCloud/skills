@@ -44,10 +44,10 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
 
 ## Workflow
 
-- **find** — Locate prior coding agent chat or session conversations by topic, project, date, file path, command, error text, or remembered fragment, then return likely session names or titles, session IDs or resume handles when available, evidence, and alternate candidates.
+- **scour** — Locate prior coding agent chat or session conversations by topic, project, date, file path, command, error text, or remembered fragment, then return likely session names or titles, session IDs or resume handles when available, evidence, and alternate candidates.
 
   ```
-  npx skills@latest add GeekKingCloud/skills/find
+  npx skills@latest add GeekKingCloud/skills/scour
   ```
 
 - **recover** — Recover interrupted or transferred coding work across sessions and coding agents by locating available history and workspace evidence, reconstructing past progress, current state, and intended future direction, then producing a safe semantic continuation.

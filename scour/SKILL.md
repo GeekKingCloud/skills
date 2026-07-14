@@ -1,9 +1,9 @@
 ---
-name: find
+name: scour
 description: Locate prior coding agent chat or session conversations by topic, project, date, file path, command, error text, or remembered fragment, then return the likely session name or title, session id or resume handle when available, evidence, and alternate candidates when the match is ambiguous.
 ---
 
-# Find
+# Scour
 
 Find prior coding agent conversations without making the caller reconstruct the exact session.
 
