@@ -32,7 +32,7 @@
 
 ## Review And Cleanup
 
-- Summarize slice-level peer review, Gate Remediation Loop outcomes, final risk and security pass, cleanup pass, and readability/supporting-material sweep results.
+- Summarize slice-level peer review, Gate Remediation Loop outcomes, final risk and security pass, cleanup pass, and readability/supporting-material sweep results. For cleanup, name the task-owned changed files and directly affected flow inspected, material simplifications or justified retentions, and affected verification reruns; use a concise `no material in-scope excess found` result when nothing needed changing rather than inventorying every construct.
 - Roast scope: `none/work-scope/whole-target`.
 - Roast status: `run/skipped/fallback/capped/blocked`.
 - Roast grade: `<letter or equivalent status>`.

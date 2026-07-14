@@ -171,7 +171,13 @@ Patch confirmed issues through the Execution Loop rules. Rerun focused checks af
 
 ## Cleanup Gate
 
-Run cleanup after risk and security fixes are stable and before the readability/supporting-material sweep. Parallelize independent cleanup checks and small cleanup patches when they do not conflict.
+Run cleanup after risk and security fixes are stable and before the readability/supporting-material sweep. Treat it as a bounded final proportionality pass over every task-owned changed file and the directly affected flow, not permission for a broad refactor. Inspect immediate owners and consumers when needed to judge a concrete candidate, but restrict edits to the task-owned surface unless an adjacent correction is required for correctness or safety. Report other worthwhile cleanup without silently expanding scope. Parallelize independent cleanup checks and small cleanup patches when they do not conflict.
+
+Ask what current requirement, reachable state, demonstrated failure or risk, stable domain concept or boundary, demonstrated reuse, or supported external or persisted contract pays for each added or materially changed layer, guard, fallback, helper, abstraction, configuration surface, compatibility path, or test. Justification alone does not prove placement: keep each responsibility at its narrowest conventional owner, and retain duplicate defense-in-depth only when it protects a distinct boundary or invariant lifetime.
+
+Remove speculative or unsupported machinery that makes the current solution harder to follow, including impossible-state handling, imagined reuse, inactive compatibility paths, and tests that lock only private structure, incidental call order, or temporary implementation detail. Preserve authentication, authorization, trust-boundary validation, escaping, data-integrity checks, meaningful error handling and observability, supported or migration-required compatibility, durable behavioral coverage, and abstractions that name a real concept or protect a meaningful boundary. Fewer lines are not automatically simpler, and one use alone is not a deletion rule.
+
+Route material cleanup fixes through the Execution Loop, rerun every affected check, and repeat until no material in-scope excess remains. If cleanup materially changes the Roast-reviewed target, follow the existing focused or whole-target Roast rerun rule before the final Evidence Gate sweep.
 
 Before final response or handoff:
 
