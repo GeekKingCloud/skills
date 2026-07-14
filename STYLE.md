@@ -26,7 +26,7 @@ Use this guide when creating or updating any skill in this repository.
 - Existing `context/` folders may remain, but prefer `references/` for new reference material.
 - Omit `agents/openai.yaml` and similar client-specific metadata unless the repository intentionally adopts that metadata for all skills.
 - Keep the structure minimal. Add folders only when they serve the skill.
-- Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `feedback/templates/FEEDBACK.md`, `handoff/templates/HANDOFF.md`.
+- Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `coach/templates/COACH.md`, `handoff/templates/HANDOFF.md`.
 
 ## Required `SKILL.md` pieces
 
@@ -163,7 +163,7 @@ Template naming rule:
 
 Examples:
 
-- `feedback/templates/FEEDBACK.md`
+- `coach/templates/COACH.md`
 - `handoff/templates/HANDOFF.md`
 
 Do not use generic names like `REPORT.md` or `SUMMARY.md` when the template belongs to a specific skill. Do not create empty `templates/` folders.
