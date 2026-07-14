@@ -12,7 +12,7 @@
   "mic_over_bed_gap_db": {
     "min": 8.0,
     "max": 13.0,
-    "preferred": 10.5,
+    "preferred": 9.5,
     "adjustment_bounds": {
       "band_shift_db": [-1.5, 1.5]
     },
