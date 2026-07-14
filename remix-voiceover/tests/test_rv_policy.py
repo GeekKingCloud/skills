@@ -12,7 +12,7 @@ from rv import rails
 from rv.rails import audio_policy_path, load_default_rails
 
 
-POLICY_CONTRACT_SHA256 = "0978fee8a47cea4497fb311eec899b195235d4c849df92c8464ead8aaf2c34fd"
+POLICY_CONTRACT_SHA256 = "3ec8e605ac2497b84cdc45262f36423a54ca52d49de38c0d028f9e087c1013bc"
 
 
 def _without_traces(value):
@@ -34,7 +34,9 @@ def test_audio_policy_is_runtime_owned_and_loadable(tmp_path: Path, monkeypatch)
     assert path == Path(rails.__file__).resolve().with_name("audio-policy.json")
     assert path.is_file()
     monkeypatch.chdir(tmp_path)
-    assert _contract_digest(load_default_rails()) == POLICY_CONTRACT_SHA256
+    policy = load_default_rails()
+    assert policy["mic_over_bed_gap_db"]["preferred"] == 9.5
+    assert _contract_digest(policy) == POLICY_CONTRACT_SHA256
 
 
 def test_copied_runtime_package_requires_its_sibling_audio_policy(tmp_path: Path) -> None:

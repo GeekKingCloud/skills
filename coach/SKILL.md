@@ -1,9 +1,9 @@
 ---
-name: feedback
+name: coach
 description: Deeply review available coding-agent collaboration history, then produce an evidence-bound teaching report that helps the caller communicate better with coding agents through prompting, context-setting, boundaries, corrections, verification requests, handoffs, durable agent instructions, and reusable context/tooling infrastructure. Use for full-history retrospectives at any user skill level without inventing unsupported history or substituting current-conversation advice.
 ---
 
-# Agent Feedback
+# Coach
 
 Run a deep review of the available coding-agent collaboration record across tasks, projects, and sessions. The deliverable is a teaching report: show the caller how their communication patterns affect coding-agent behavior, then give better prompt moves, context-packaging habits, boundary-setting language, correction patterns, verification requests, handoff structures, durable instruction updates, and agent-enablement infrastructure habits for future work.
 
@@ -13,7 +13,7 @@ Full-depth cross-session review is the normal route. Do not offer current-conver
 
 ## Quick start
 
-When asked to use Agent Feedback:
+When asked to use Coach:
 1. Treat the request as a cross-session history review of the user's coding-agent communication unless the caller explicitly forbids history access.
 2. Inventory every exposed and authorized history source that may contain coding-agent collaboration.
 3. Build a full-depth sampling plan across available conversations, transcripts, summaries, artifacts, repos, successful sessions, corrected sessions, handoffs, and recovery records.
@@ -31,7 +31,7 @@ Do not let a single active conversation drive the report. Use the active convers
 
 ## Full-depth run standard
 
-For Agent Feedback, inspect enough independent history to make the teaching report genuinely useful:
+For Coach, inspect enough independent history to make the teaching report genuinely useful:
 - at least 8 to 12 independent task histories, summaries, transcripts, handoffs, ticket threads, or equivalent artifacts when available
 - at least 4 different repos, projects, or work domains when available
 - at least 2 successful sessions and 2 failed, corrected, interrupted, or recovery sessions when available
@@ -46,7 +46,7 @@ Use only sources that are available in the current workspace or explicitly provi
 - the active conversation
 - user-provided transcripts, exports, notes, or examples
 - handoff notes, project plans, review reports, and repo guidance files
-- local session summaries, memory files, or logs only when the user has asked for history-based agent feedback and the source is already exposed to the session
+- local session summaries, memory files, or logs only when the user has asked for a history-based Coach review and the source is already exposed to the session
 - issue, pull request, commit, or ticket discussions only within the repo, project, account, or thread the user named or clearly authorized
 
 Prefer sources that expose multiple user-agent exchanges across time. Treat the active conversation as supplemental only; it cannot support the skill's overall teaching goal by itself.
@@ -55,7 +55,7 @@ Before sampling, perform a history discovery pass. Look across every exposed cod
 
 Do not claim access to private chats, hidden history, inaccessible memories, or external systems. If a source would materially improve the report but is unavailable, list it under missing evidence.
 
-Do not browse unrelated or sensitive local histories just because they exist. For an Agent Feedback request, first look for exposed indexes, summaries, handoffs, repo guidance, or user-provided history that clearly relate to prior coding-agent work. If the available index points to relevant session summaries or transcript paths, follow those references deeply enough to meet the full-depth run standard. If the available history boundary is unclear or would require reading unrelated records, ask before expanding.
+Do not browse unrelated or sensitive local histories just because they exist. For a Coach request, first look for exposed indexes, summaries, handoffs, repo guidance, or user-provided history that clearly relate to prior coding-agent work. If the available index points to relevant session summaries or transcript paths, follow those references deeply enough to meet the full-depth run standard. If the available history boundary is unclear or would require reading unrelated records, ask before expanding.
 
 When using summaries or memory files, label them as summary-derived, cite their scope or date when available, and do not infer exact wording, intent, or chronology unless the underlying transcript or log supports it.
 
@@ -100,7 +100,7 @@ Use `Preliminary only` when the available evidence itself is real but thin, yet 
 
 Use `Not enough evidence` when there are no actual examples of user-agent collaboration, no accessible history, only the current request or active conversation is available, or the reviewed material is too narrow to support overall communication feedback.
 
-Use `Incomplete run` when enough evidence likely exists but the workflow could not access or inspect it completely because of permissions, context limits, unavailable transcript paths, tool failures, or an explicit stop. This is not a finished agent feedback report. Include what was reviewed, what remains, and what access or time is needed to complete the full-depth review.
+Use `Incomplete run` when enough evidence likely exists but the workflow could not access or inspect it completely because of permissions, context limits, unavailable transcript paths, tool failures, or an explicit stop. This is not a finished Coach report. Include what was reviewed, what remains, and what access or time is needed to complete the full-depth review.
 
 Use `High confidence` when:
 - multiple conversations or artifacts show the same communication pattern
@@ -126,7 +126,7 @@ Do not collapse all evidence quality into one label. Report at least:
 - `Evidence fidelity`: transcript/log, detailed summary, summary-derived, or one-sided
 - `Pattern confidence`: high, medium, or low for each major finding
 
-If only the current request or active conversation is available, do not produce agent feedback. Say: `I do not have enough cross-task collaboration history to give evidence-bound communication feedback. You can provide transcripts, summaries, project handoffs, or examples from several tasks.`
+If only the current request or active conversation is available, do not produce a Coach report. Say: `I do not have enough cross-task collaboration history to give evidence-bound communication feedback. You can provide transcripts, summaries, project handoffs, or examples from several tasks.`
 
 If confidence is below high, the reason must be missing, inaccessible, narrow, summary-only, or one-sided evidence. Do not cite insufficient run depth as the reason for medium or low confidence in a completed report.
 
@@ -154,7 +154,7 @@ Agent-side rules to encode:
 - whether agents report uncertainty honestly
 - whether agents verify outcomes against the user's actual goal
 - which durable instructions should be written into repo guidance, AGENTS.md-style instruction files when present, project docs, or reusable skills
-- where agents should ask for history, scope, examples, or success criteria before giving agent feedback
+- where agents should ask for history, scope, examples, or success criteria before running Coach
 - what the current agent can infer about its own context needs and limits
 
 Agent enablement infrastructure:
@@ -181,11 +181,11 @@ Every major user-side recommendation must include:
 - `Durable encoding`: whether this should become a prompt habit, repo-guidance/AGENTS.md-style block, skill rule, handoff pattern, project doc update, reusable map, index, script, manifest, command, or database
 - `Evidence IDs`: the reviewed evidence that supports the recommendation
 
-Treat agent feedback as a communication audit and teaching report, not a user-blame exercise. Sections about agent behavior should be framed as future-agent expectations only when they include a place the user can encode or trigger them, such as a prompt pattern, repo guidance, skill wording, handoff note, or project doc. Do not imply the user directly controls future agents at runtime.
+Treat Coach as a communication audit and teaching report, not a user-blame exercise. Sections about agent behavior should be framed as future-agent expectations only when they include a place the user can encode or trigger them, such as a prompt pattern, repo guidance, skill wording, handoff note, or project doc. Do not imply the user directly controls future agents at runtime.
 
 ## Output guidance
 
-Use the report template in `templates/FEEDBACK.md` when the user wants a full report or when the evidence is substantial.
+Use the report template in `templates/COACH.md` when the user wants a full report or when the evidence is substantial.
 
 If the evidence sufficiency decision is `Not enough evidence`, stop after the insufficiency response. Do not fill a full report with generic coaching.
 

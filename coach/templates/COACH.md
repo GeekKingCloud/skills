@@ -173,9 +173,9 @@
 
 Include only prompt patterns that directly answer an evidence-supported friction or strength. Do not include generic prompt advice just because it is usually useful.
 
-History access for agent feedback:
+History access for Coach:
 ```text
-Use the `feedback` skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
+Use the `coach` skill for a deep cross-task communication review. You may inspect [allowed histories, summaries, handoffs, repo docs, tickets]. Do not generalize from the current conversation alone. Separate available corpus, sample depth, evidence fidelity, and confidence per finding.
 ```
 
 Repo or scope boundary:
@@ -185,7 +185,7 @@ Repo or scope boundary:
 
 Evidence sufficiency:
 ```text
-Use the `feedback` skill for a deep cross-session communication review. If there is not enough cross-task history to produce evidence-bound communication feedback, say that and list what inputs would unlock the review.
+Use the `coach` skill for a deep cross-session communication review. If there is not enough cross-task history to produce evidence-bound communication feedback, say that and list what inputs would unlock the review.
 ```
 
 Stop, audit, or continue correction:

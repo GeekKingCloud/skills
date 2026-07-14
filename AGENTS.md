@@ -48,7 +48,7 @@ Optional examples may live in `examples/` when they support trigger behavior, ou
 - `examples/` is optional and only for concrete sample inputs or outputs that improve trigger behavior, output expectations, or forward-testing.
 - Existing `context/` folders may remain, but prefer `references/` for new reference material.
 - `agents/openai.yaml` and similar client-specific metadata files are optional and should be omitted unless this repository adopts them consistently.
-- Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `feedback/templates/FEEDBACK.md`, `handoff/templates/HANDOFF.md`.
+- Template filenames must match the parent skill name in uppercase form, preserving kebab-case. Examples: `coach/templates/COACH.md`, `handoff/templates/HANDOFF.md`.
 - Only create directories that the skill actually uses. Avoid empty scaffolding.
 
 ## Skill Relationships
@@ -87,7 +87,7 @@ Use `templates/` only for reusable output skeletons that the skill asks the codi
 
 Examples:
 
-- `feedback/templates/FEEDBACK.md`
+- `coach/templates/COACH.md`
 - `handoff/templates/HANDOFF.md`
 
 Do not create empty `templates/` folders. Keep workflow notes, tone files, and checklists in `helpers/`, not `templates/`.

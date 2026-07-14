@@ -209,7 +209,7 @@ def test_plan_init_preserves_low_confidence_bed_at_unity(tmp_path: Path) -> None
     assert held["judgment"] == "hold"
     assert held["stitching_policy"] == "preserve-unity-low-confidence"
     assert held["ramp_in_seconds"] == held["ramp_out_seconds"] == 0.0
-    assert plan["targets"]["shared_bed_body_lufs"] == -31.0
+    assert plan["targets"]["shared_bed_body_lufs"] == -30.0
     assert plan["bed_segments"][1]["ramp_in_seconds"] == 0.25
     assert not [row for row in validate_plan(plan, analysis) if row["status"] == "fail"]
 
