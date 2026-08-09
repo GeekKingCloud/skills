@@ -13,12 +13,12 @@ The target state is:
 - the selected work source is completed or remediated
 - meaningful target-appropriate checks pass
 - a running Evidence Gate ledger maps material outcome, behavior, content, quality, compatibility, safety, delivery, remediation, and final-report claims to current-run evidence
-- peer review and selected Roast gate findings are resolved or explicitly accepted, or Roast was validly omitted with reduced-confidence disclosure
-- relevant adjunct gate findings are resolved through the same Gate Remediation Loop as the Roast gate, or explicitly accepted
+- peer review and selected Roast gate findings are resolved or receive evidence-backed current dispositions, or Roast was validly omitted with reduced-confidence disclosure
+- relevant adjunct gate findings are resolved or dispositioned through the same Gate Remediation Loop as the Roast gate
 - no orphaned, stale, contradictory, placeholder, or abandoned material remains from the work
 - code comments, annotations, rationale, and supporting material explain non-obvious decisions without narrating the obvious
-- unresolved issues are Low or nitpick-level only, and no run gate has unresolved Critical, High, or Medium findings unless the caller explicitly accepts the readiness risk
-- the final state is ready to release, merge, publish, deliver, submit for approval, execute, adopt, or hand off with clear evidence
+- no current-milestone blocker remains unresolved; deferred, accepted, external, and unverifiable findings remain visible with their readiness effect
+- the final state is fit for the stated milestone and ready to release, merge, publish, deliver, submit for approval, execute, adopt, or hand off only as current evidence permits
 
 ## Startup Permission
 
@@ -38,7 +38,7 @@ Use separate Challenger and Verifier passes across each meaningful run and for e
 
 Give every delegated role a bounded charter containing: role and core question; exact artifact or slice; authoritative context and allowed evidence; protected value or failure modes; expected output; non-goals and ownership boundary; current artifact revision, hash, or equivalent identifier; and closure or escalation condition. Let roles form independent first-pass conclusions before sharing other agents' conclusions.
 
-Record only material disagreements. Allow one targeted rebuttal round per material conflict, then resolve it through evidence or, for preference, authority, scope, or risk-acceptance questions, an explicit owner decision. An owner decision may accept a factual contradiction's readiness risk but cannot convert it into verification; preserve the evidence verdict and blocking or cap effect. Define the role-deliberation rerun budget and closure condition at startup; it never limits required gate remediation. Reopen settled debate only when a change intersects the settled question or its evidence, new actionable above-Low evidence appears, or a required gate remains unresolved.
+Record only material disagreements. Allow one targeted rebuttal round per material conflict, then resolve it through evidence or, for preference, authority, scope, or risk-acceptance questions, an explicit owner decision. An owner decision may accept a factual contradiction's readiness risk but cannot convert it into verification; preserve the evidence verdict and blocking or cap effect. Define the role-deliberation rerun budget and closure condition at startup. A repeated remediation cycle triggers the proportionality reframe in `helpers/PROPORTIONALITY.md`; it never waives an applicable current-milestone blocker. Reopen settled debate only when a change intersects the settled question or its evidence, new blocker evidence appears, or a required gate remains unresolved.
 
 Read `roles/OPTIONAL.md` only when the target needs a perspective not covered by the core roles. Select an optional role only for a distinct question or protected value; do not add roles merely to increase agent count.
 
@@ -58,10 +58,14 @@ Do not force software-only checks or release language onto another target. Do no
 
 Crucible is an execution workflow. If the caller requests report-only review, do not mutate the target; use Roast or another review workflow as requested and treat its findings as a possible future Crucible work source.
 
-Before route selection, state the run contract:
+Before route selection, read `helpers/PROPORTIONALITY.md` and state the run contract:
 
 - `Target and scope`: the authoritative source artifact and the exact surface allowed to change.
 - `Work source`: the supplied instructions or whole-target Roast queue that defines the work.
+- `Current milestone and assurance posture`: the present lifecycle state and what becomes true after this run.
+- `Present exposure and recoverability`: current blast radius and how safely the state can be undone or recreated.
+- `Current required invariants and deferred lifecycle gates`: what must hold now and what belongs to a named later milestone.
+- `Complexity boundary, blocker policy, and reframe trigger`: how much machinery is justified, what blocks now, and when the Steward must reconsider direction.
 - `Intended ready state`: release, merge, publish, deliver, submit for owner or qualified approval, execute, adopt, or hand off.
 - `Success criteria`: the observable result and quality bar that end the loop.
 - `Evidence mode`: source, rendered or live behavior, artifact comparison, external references, or a combination.
@@ -79,7 +83,7 @@ Preserve originals when redlining or transforming contracts, images, designs, do
    - `work-led-whole-target-roast`: complete a supplied work source, then roast the whole current target.
    - `roast-led-whole-target`: roast the whole current target, use findings as the work queue, then remediate through the Gate Remediation Loop.
 4. Check version-control or saved-artifact status before editing. Identify unrelated local changes, revisions, variants, or working files and preserve them.
-5. Define the acceptance gates: completion or remediation outcome, target-appropriate verification, peer review, running Evidence Gate ledger, final Evidence Gate sweep status, evidence-ledger summary, unresolved claim gaps, Roast gate scope, Roast gate status, Roast gate grade, Roast gate cap reason, adjunct assessment gates, risk and security pass, cleanup, readability and supporting-material sweep, and commit, save, delivery, or handoff expectations.
+5. Define the acceptance gates: fit for the current milestone, completion or remediation outcome, target-appropriate verification, peer review, running Evidence Gate ledger, final Evidence Gate sweep status, evidence-ledger summary, unresolved claim gaps and dispositions, Roast gate scope, Roast gate status, Roast gate grade, adjunct assessment gates, risk and security pass, cleanup, readability and supporting-material sweep, and commit, save, delivery, or handoff expectations.
 
 If no supplied work source exists and the caller did not authorize a whole-target Roast-led work queue, stop and ask for the missing work source. Stop and ask only when the work source lacks a decision that would materially change the result, requires destructive history or artifact changes, needs credentials or professional authority, or would materially change security posture, runtime behavior, obligations, dependency surface, publication state, or public behavior without clear caller approval.
 
@@ -104,7 +108,7 @@ Work in logically connected slices. For each slice:
 5. Add or update focused tests for software behavior and other durable checks when the slice changes an important claim, fixes a defect, touches a shared contract, or guards a regression.
 6. Run the narrowest meaningful verification. Broaden verification as risk or shared surface increases.
 7. Update the Evidence Gate ledger for the slice: record the claim, evidence, verdict, severity, pre-artifact challenges, and any next check or fix needed before the slice can be treated as complete.
-8. Ask the Verifier and other reviewers to check the completed current revision for correctness, contradictions, regressions, missing verification, security or other material risks, stale material, orphaned content, usability, clarity, and maintainability. Record their verdicts and findings in the Evidence Gate ledger, remediate them critically against the target and authoritative context, rerun every affected check, and update the ledger after each change.
+8. Ask the Verifier and other reviewers to check the completed current revision for correctness, contradictions, regressions, missing verification, security or other material risks, stale material, orphaned content, usability, clarity, and maintainability. Record their verdicts and findings in the Evidence Gate ledger, classify and disposition them through `helpers/PROPORTIONALITY.md`, remediate current blockers and justified fixes, rerun every affected check, and update the ledger after each change.
 9. Review the slice for dead, stale, duplicated, orphaned, contradictory, placeholder, or unnecessary material introduced or exposed by the change.
 10. Commit a version-controlled slice when local commits are authorized by the caller or target workflow; otherwise save or version the artifact as authorized. Treat an explicit Crucible request as authorization for local logical commits unless the caller or target instructions say otherwise. Do not push, force-push, rewrite history, publish, send, sign, approve, or release anything without explicit approval.
 
@@ -120,7 +124,7 @@ Read `helpers/ROAST-GATE.md` when choosing Roast scope, running Roast, using Roa
 
 Use `helpers/EVIDENCE-GATE.md` as Crucible's default proof-boundary mechanism for every run. Maintain it as a running internal ledger throughout every creation or implementation slice, assessment remediation, Roast remediation, risk or security fix, cleanup fix, and readability/supporting-material change. Run a final Evidence Gate sweep only after selected assessment gates, Roast, risk/security, cleanup, and readability/supporting-material passes are stable.
 
-The Evidence Gate verifies that material outcome, behavior, content, quality, compatibility, safety, publication, delivery, cleanup, remediation, and final-report claims are supported by current-run evidence. It is not a duplicate Roast or a standalone report: unresolved actionable evidence gaps become work items for the Crucible Execution Loop. Narrow unsupported claims, add missing verification, or fix contradicted behavior before claiming a slice, gate finding, or final target is complete.
+The Evidence Gate verifies that material outcome, behavior, content, quality, compatibility, safety, publication, delivery, cleanup, remediation, and final-report claims are supported by current-run evidence. It is not a duplicate Roast or a standalone report: unresolved current-milestone evidence blockers become work items for the Crucible Execution Loop. Narrow unsupported claims, add missing verification, or fix contradicted behavior before claiming a slice, gate finding, or final target is complete.
 
 ## Gate Remediation Loop
 
@@ -128,21 +132,20 @@ Use the same outer loop for every gate that runs, whether it is the default Evid
 
 1. Run the skill or equivalent fallback pass against the current changed state.
 2. Capture the grade, severity list, evidence, and scope limitations.
-3. Classify every finding as `actionable in scope`, `external or owner-blocked`, `unverifiable with current access`, or `explicitly accepted`.
-4. Fix each actionable Critical, High, and Medium finding through the Execution Loop. Fix Low or nitpick findings when they are cheap, clarifying, or readiness-confidence-building.
-5. For external, owner-blocked, or unverifiable findings, document the evidence, why Crucible cannot resolve or verify it with current access, who or what would unblock it, and whether it caps the grade.
-6. Rerun the same skill, a focused rerun, or the closest equivalent verification against the changed state.
-7. Repeat until the gate produces an A grade or equivalent high result and no unresolved actionable finding remains above Low or nitpick level.
+3. Classify and disposition every finding through `helpers/PROPORTIONALITY.md`; preserve valid findings even when they do not block the current milestone.
+4. Apply the Control-Cost Test before adding or materially expanding review-induced machinery.
+5. Fix current-milestone blockers and selected proportionate fixes through the Execution Loop. Prefer simplifying or removing an unnecessary parent control when that reduces net risk.
+6. Record deferred, accepted, external, owner-blocked, unverifiable, out-of-scope, evidence-gap, and review-process-invalidated results with their readiness effect and exact next step when one exists.
+7. Rerun the narrowest affected skill, review, or verification against a stable current revision.
+8. Repeat while each cycle reduces material current-milestone risk. Invoke the Steward reframe when a trigger in `helpers/PROPORTIONALITY.md` fires.
 
-Do not keep rerunning a gate solely because its grade is capped by documented external, owner-blocked, or unverifiable conditions. After actionable fixes are exhausted, treat the gate as `capped` rather than failed when the remaining above-Low findings are outside Crucible's current ability to change or verify. Report the cap clearly with evidence, owner or unblocker, and next step.
+Finish the gate when no current-milestone blocker remains, required claims are verified or honestly narrowed, and every other material finding has an evidence-backed disposition. Do not require an A grade unless the caller requested maximum assurance or the assurance posture and present exposure justify it. A lower Roast grade may still be fit for the stated milestone; report it without inflating it.
 
-Do not loop indefinitely on defensible subjective disagreement. When competing directions depend on taste, brand, policy, risk acceptance, stakeholder preference, or a professionally governed decision that the work source does not resolve, surface the alternatives and evidence, then ask for the owner decision or classify the gate as owner-blocked.
+Do not keep rerunning a gate solely because of deferred hardening, an honestly narrowed non-required claim, a documented external or owner-blocked condition, or a defensible subjective disagreement. Ask the caller only when resolution changes scope, acceptance criteria, complexity boundary, risk acceptance, or another authority boundary.
 
-If a skill does not produce a letter grade, treat the gate as passing only when its rerun has no unresolved actionable Critical, High, or Medium findings and the remaining Low, nitpick, external, owner-blocked, or unverifiable findings are documented. Do not claim readiness while any run gate still has unresolved actionable Critical, High, or Medium findings unless the caller explicitly accepts that risk in the final report.
+Do not use deferral, acceptance, external ownership, unverifiability, or process invalidation as an escape hatch for applicable current-milestone blockers. When classification is uncertain, run the narrowest useful check or Steward review before deciding.
 
-Do not use `external`, `owner-blocked`, or `unverifiable` as an escape hatch for findings that can be fixed or verified within the authorized target and current access. When in doubt, attempt the narrowest reasonable fix or verification once, then classify the remaining cap from evidence.
-
-Run gate remediation loops sequentially when later fixes can invalidate earlier evidence. For work-led hardening, finish the initial creation or implementation loop while maintaining the Evidence Gate ledger. Run selected adjunct assessment gates in the concrete order documented by `helpers/ASSESSMENT-GATES.md`, converting their actionable findings into Execution Loop slices and updating the evidence ledger after each fix. Run the Roast gate after assessment fixes so Roast reviews the final assessed state, again treating actionable findings as Execution Loop slices with evidence-ledger updates. Then run risk and security, cleanup, and readability/supporting-material passes. If those later passes materially change the Roast-reviewed target, rerun a focused or whole-target Roast against the changed surface and remediate it before the final Evidence Gate sweep. After all mutating passes and any required Roast rerun are stable, run the final Evidence Gate sweep against the completed state and final readiness claims. Parallelize independent investigation inside a loop when it will not create conflicting edits, but integrate changes through the main Execution Loop.
+Run gate remediation loops sequentially when later fixes can invalidate earlier evidence. For work-led hardening, finish the initial creation or implementation loop while maintaining the Evidence Gate ledger. Run selected adjunct assessment gates in the concrete order documented by `helpers/ASSESSMENT-GATES.md`, converting current blockers and selected proportionate fixes into Execution Loop slices and updating the evidence ledger after each fix. Run the Roast gate after assessment fixes so Roast reviews the final assessed state, again treating current blockers and selected fixes as Execution Loop slices with evidence-ledger updates. Then run risk and security, cleanup, and readability/supporting-material passes. If those later passes materially change the Roast-reviewed target, rerun a focused or whole-target Roast against the changed surface and disposition its findings before the final Evidence Gate sweep. After all mutating passes and any required Roast rerun are stable, run the final Evidence Gate sweep against the completed state and final readiness claims. Parallelize independent investigation inside a loop when it will not create conflicting edits, but integrate changes through the main Execution Loop.
 
 ## Adjunct Assessment Gates
 
@@ -167,7 +170,7 @@ Inspect:
 
 For legal, financial, compliance, medical, or other professionally governed conclusions, rely on supplied or verified authority and distinguish workflow review from professional approval or certification. Report `ready to sign` or an equivalent governed disposition only when the work source identifies the competent authority and current evidence contains that approval; otherwise report `ready for owner or qualified review`.
 
-Patch confirmed issues through the Execution Loop rules. Rerun focused checks after patches. If a risk cannot be resolved inside scope, report it with severity, evidence, impact, and the safest next action.
+Classify and disposition confirmed issues through `helpers/PROPORTIONALITY.md`, then patch current blockers and selected proportionate fixes through the Execution Loop rules. Rerun focused checks after patches. If a risk cannot be resolved inside scope, report it with severity, evidence, impact, disposition, and the safest next action.
 
 ## Cleanup Gate
 
@@ -186,7 +189,7 @@ Before final response or handoff:
 3. Confirm local commits were created for each logical slice when commits were authorized. If commits were not authorized, summarize commit-ready groups.
 4. Confirm verification commands and results.
 5. Confirm slice-level sub-agent reviews were integrated, or explain why review was performed locally.
-6. Confirm unresolved risks are Low or nitpick-level only, or explain why readiness is blocked.
+6. Confirm no current-milestone blocker remains, and report every deferred, accepted, external, owner-blocked, or unverifiable material risk with its disposition.
 
 ## Readability And Supporting Material
 
@@ -210,14 +213,15 @@ Keep the final report concise and evidence-based:
 
 - what work source was completed
 - work route and work source used
+- current milestone, assurance posture, present exposure, recoverability, complexity boundary, blocker policy, and reframe trigger
 - logical slices completed and commits created, if any
 - how sub-agents and roles were used, including artifact revisions, maker/verifier independence, and material disagreement outcomes, or why they were unavailable or disallowed
 - target-appropriate tests, checks, comparisons, renders, walkthroughs, or other verification run
 - Evidence Gate ledger summary, final sweep status, unresolved claim gaps, and whether final claims were narrowed to match proof
-- slice-level peer review, gate remediation loops, risk and security pass, cleanup, readability/supporting-material sweep, and Roast gate scope, status, grade, and cap reason
-- Gate Remediation Loop status for every selected adjunct assessment gate, including gate name, run/skipped/unavailable/capped status, final grade or equivalent, cap reason, and unresolved findings
-- unresolved findings or readiness blockers
-- whether the final state is ready to release, merge, publish, deliver, submit for approval, execute, adopt, or hand off
+- slice-level peer review, gate remediation loops, risk and security pass, cleanup, readability/supporting-material sweep, and Roast gate scope, status, grade, and cap or blocker reason
+- Gate Remediation Loop status for every selected adjunct assessment gate, including gate name, run/skipped/unavailable/capped/blocked status, final grade or equivalent, cap or blocker reason, and unresolved findings
+- unresolved findings, dispositions, deferred lifecycle gates, and readiness blockers
+- whether the final state is fit for the stated milestone and ready to release, merge, publish, deliver, submit for approval, execute, adopt, or hand off
 
 Use `templates/CRUCIBLE.md` as the final report skeleton.
 
