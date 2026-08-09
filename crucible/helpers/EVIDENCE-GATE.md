@@ -17,7 +17,7 @@ Build the evidence map from current-run sources whenever possible:
 
 Do not treat old handoff notes, remembered results, previous CI runs, stale logs, or intended behavior as verified evidence unless the current run revalidates them or clearly labels them as reused and potentially stale.
 
-Bind delegated review and verification outputs to the exact artifact revision, hash, saved version, or equivalent identifier inspected. Treat an output as stale when a changed surface intersects its claim, check, or reviewed scope; rerun the narrowest affected check before using it as current-run evidence. Reuse evidence across an unrelated change only when the non-intersection is recorded and demonstrable.
+Bind delegated review and verification outputs to the exact artifact revision, hash, saved version, or equivalent identifier inspected. When a delayed or asynchronous output arrives, compare that bound subject and scope with the current target before treating its verdict as current. If an intersecting change makes the output stale, preserve it as historical evidence and reconcile each material finding against the current target as `still applicable`, `already remediated`, `misattributed or unsupported`, or `newly exposed`. Independently verify factual findings, and rerun the narrowest affected review or check when final gate status depends on it. Do not silently discard a stale output, transfer its grade to a newer target, or imply that it reviewed later changes. Reuse evidence across an unrelated change only when the non-intersection is recorded and demonstrable.
 
 ## Claim Extraction
 
