@@ -1,4 +1,4 @@
-# [Game / demo] — Creator Preview Notes
+# [Game / demo] — Recollection Notes
 
 ## Source and evidence
 

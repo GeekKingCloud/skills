@@ -1,9 +1,9 @@
 ---
-name: creator-preview-notes
-description: Transcribe gameplay or turn transcripts into creator notes.
+name: recollect
+description: Reconstruct creator thoughts from recorded gameplay.
 ---
 
-# Creator Preview Notes
+# Recollect
 
 Use this skill when a creator wants to remember what they said, noticed, liked, disliked, expected, or changed their mind about while playing a game demo or similarly bounded preview build. The deliverable is source-grounded working notes for the creator—not review copy, a publishable preview, marketing prose, or an independent judgment of the game.
 
@@ -102,7 +102,7 @@ When audio and game sound overlap, lower confidence rather than silently repairi
 
 ## Stage 2: Reconstruct Creator-Memory Notes
 
-This stage must work from any timestamped transcript, including one produced in an earlier run. Use `templates/CREATOR-PREVIEW-NOTES.md` as the output shape.
+This stage must work from any timestamped transcript, including one produced in an earlier run. Use `templates/RECOLLECT.md` as the output shape.
 
 ### 1. Read for chronology before themes
 
