@@ -70,6 +70,12 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
 
 ## Utilities
 
+- **recollect** — Reconstruct a creator's thoughts from recorded gameplay as compact, timestamped notes without ghostwriting the final piece.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/recollect
+  ```
+
 - **remix-voiceover** — Repair commentary-over-background audio or video with deterministic measurement, sustained-level alignment, listener-first balancing, source-format preservation, and verified delivery.
 
   ```
