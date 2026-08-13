@@ -70,7 +70,7 @@ Skills are grouped below for browsing only. Each skill remains a visible top-lev
 
 ## Utilities
 
-- **recollect** — Reconstruct a creator's thoughts from recorded gameplay as compact, timestamped notes without ghostwriting the final piece.
+- **recollect** — Reconstruct a creator's thoughts from recorded gameplay as quick or full timestamped notes without ghostwriting the final piece.
 
   ```
   npx skills@latest add GeekKingCloud/skills/recollect

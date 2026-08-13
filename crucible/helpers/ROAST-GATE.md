@@ -1,6 +1,6 @@
 # Roast Gate
 
-Read this helper when choosing Roast scope, running Roast, using Roast as Crucible's work queue, falling back because the `roast` skill is unavailable, or explaining why a work-led route has no Roast.
+Read this helper when choosing Roast scope, running Roast, using Roast as Crucible's work queue, falling back because the `roast` skill is unavailable, or explaining why a work-led route has no Roast. Use `PROPORTIONALITY.md` for every finding disposition and gate decision.
 
 Relationship type: default core gate when the selected route includes roast.
 
@@ -33,15 +33,22 @@ Keep the Challenger role and Roast distinct. Challenger attempts to falsify a bo
 
 Use the Gate Remediation Loop:
 - collect findings, grade, evidence, and scope limitations
-- fix one finding or root-cause group at a time through the Execution Loop
+- classify each finding as a target defect, evidence gap, review-process invalidation, or future hardening
+- disposition findings against the current milestone, assurance posture, and blocker policy
+- apply the Control-Cost Test before adding review-induced machinery
+- fix one current blocker or proportionate root-cause group at a time through the Execution Loop
 - rerun roast, a focused roast, or the closest equivalent verification after fixes
-- repeat until the gate earns an A grade or equivalent high result and no unresolved actionable finding remains above Low or nitpick level
+- finish when the target is fit for the stated milestone and every material finding has an evidence-backed disposition
 
-Fix actionable Critical, High, and Medium findings. Fix Low findings when they are cheap, clarify real confusion, or affect readiness confidence. Do not batch unrelated Roast findings into one broad rewrite or refactor.
+Fix applicable current-milestone Critical and High findings by default. Fix Medium findings when they violate a current acceptance criterion or required invariant, create credible material harm in the present exposure, or the assurance posture makes them blockers. Fix other findings when proportionate; otherwise defer, accept, or exclude them with evidence. Do not batch unrelated Roast findings into one broad rewrite or refactor.
+
+Roast grade and Crucible gate disposition are separate. Report Roast's grade honestly. Do not require an A unless maximum assurance is caller-requested or justified by the current exposure; a B may be fit for the stated milestone under Roast's own rubric.
 
 If the grade is capped by documented external, owner-blocked, or unverifiable conditions, report roast status as `capped` with the final grade, evidence, unblocker, and next step. Do not keep rerunning roast solely because of a documented non-actionable cap.
 
 If risk/security, cleanup, readability, or supporting-material remediation materially changes the Roast-reviewed target, rerun a focused or whole-target Roast against the changed surface before the final Evidence Gate sweep. Do not carry an earlier grade forward across material post-Roast changes.
+
+When exact artifact identity matters, review a stable commit, saved revision, hash-addressed bundle, or equivalent frozen candidate. If it changes during review, mark the Roast verdict process-invalidated and rerun the affected scope; do not convert review-path drift into a product defect.
 
 ## Fallbacks And Reporting
 
@@ -61,8 +68,8 @@ Report Roast status separately as one of:
 - `capped`
 - `blocked`
 
-Always report the final Roast grade or equivalent status and the Roast cap reason. Use `None` as the cap reason when the Roast gate is not capped. For scope `none` and status `skipped`, include the reason and reduced-confidence disclosure. For `fallback`, include why the actual skill was unavailable, what equivalent review was performed, and whether it covered the work scope or whole target. If a fallback review is also capped, report final status `capped` and separately disclose that the fallback mechanism was used. For `capped`, include non-actionable cap evidence and the exact unblocker.
+Always report the final Roast grade or equivalent status and the Roast cap or blocker reason. Use `None` when the Roast gate is neither capped nor blocked. For scope `none` and status `skipped`, include the reason and reduced-confidence disclosure. For `fallback`, include why the actual skill was unavailable, what equivalent review was performed, and whether it covered the work scope or whole target. If a fallback review is also capped, report final status `capped` and separately disclose that the fallback mechanism was used. For `capped` or `blocked`, include the evidence and exact unblocker.
 
-Do not claim an A-grade ready state if material target-appropriate verification did not run, Roast or equivalent review was sampled, Roast was omitted without a valid `work-led-no-roast` reason, or actionable Critical, High, or Medium findings remain unresolved.
+Do not claim a fit-for-milestone ready state if material target-appropriate verification did not run, Roast or equivalent review was sampled without disclosure, Roast was omitted without a valid `work-led-no-roast` reason, or a current-milestone blocker remains unresolved.
 
 An A-grade Roast is evidence of quality within its reviewed scope and lenses, not professional certification, stakeholder acceptance, or authority to publish, sign, send, deploy, or release the target.

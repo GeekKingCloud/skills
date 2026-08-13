@@ -1,6 +1,6 @@
 # Evidence Gate
 
-Read this helper for every Crucible run. Maintain it as a running internal proof ledger throughout creation or implementation, gate remediation, risk and security review, cleanup, readability/supporting-material work, and final readiness review.
+Read this helper for every Crucible run. Maintain it as a running internal proof ledger throughout creation or implementation, gate remediation, risk and security review, cleanup, readability/supporting-material work, and final readiness review. Use `PROPORTIONALITY.md` to decide whether an evidence gap blocks the current milestone.
 
 Relationship type: default core gate.
 
@@ -17,7 +17,7 @@ Build the evidence map from current-run sources whenever possible:
 
 Do not treat old handoff notes, remembered results, previous CI runs, stale logs, or intended behavior as verified evidence unless the current run revalidates them or clearly labels them as reused and potentially stale.
 
-Bind delegated review and verification outputs to the exact artifact revision, hash, saved version, or equivalent identifier inspected. Treat an output as stale when a changed surface intersects its claim, check, or reviewed scope; rerun the narrowest affected check before using it as current-run evidence. Reuse evidence across an unrelated change only when the non-intersection is recorded and demonstrable.
+Bind delegated review and verification outputs to the exact artifact revision, hash, saved version, or equivalent identifier inspected. When a delayed or asynchronous output arrives, compare that bound subject and scope with the current target before treating its verdict as current. If an intersecting change makes the output stale, preserve it as historical evidence and reconcile each material finding against the current target as `still applicable`, `already remediated`, `misattributed or unsupported`, or `newly exposed`. Independently verify factual findings, and rerun the narrowest affected review or check when final gate status depends on it. Do not silently discard a stale output, transfer its grade to a newer target, or imply that it reviewed later changes. Reuse evidence across an unrelated change only when the non-intersection is recorded and demonstrable.
 
 ## Claim Extraction
 
@@ -46,11 +46,13 @@ For each material slice, gate finding, remediation, or final readiness claim, re
 - evidence checked
 - verdict
 - severity
+- classification and current disposition from `PROPORTIONALITY.md`
+- disposition rationale, named later gate, owner, or unblocker when applicable
 - next check or fix when unresolved
 - rerun result after remediation
-- final state: `closed`, `capped`, `accepted`, or `blocked`
+- final state: `closed`, `deferred`, `capped`, `accepted`, `process-invalidated`, `not-applicable`, or `blocked`
 
-Do not stop at producing an evidence report. Treat unresolved actionable evidence gaps as work items for the Crucible Execution Loop. A slice is not complete until its material claims are verified, narrowed to match evidence, capped with evidence, or explicitly accepted by the caller.
+Do not stop at producing an evidence report. Treat current-milestone evidence blockers and selected proportionate checks as work items for the Crucible Execution Loop. A slice is not complete until its material claims are verified, narrowed to match evidence, dispositioned with evidence, or explicitly accepted by the caller.
 
 ## Verdicts
 
@@ -75,13 +77,13 @@ Classify unresolved evidence gaps by readiness risk:
 - `Low`: a narrow edge case, non-core environment or audience, minor supporting claim, or convenience claim lacks direct proof.
 - `Nitpick`: wording can be tightened without changing the readiness decision.
 
-Unresolved `Critical`, `High`, and `Medium` Evidence Gate findings block readiness unless the caller explicitly accepts the risk. Public release, publication, delivery, binding obligation, package install, launcher, update, migration, platform, security, destructive-operation, and credential-handling claims block at any unresolved severity when they are advertised as supported or complete.
+Applicable current-milestone Critical and High evidence gaps block readiness by default. Medium evidence gaps block when they leave a current acceptance criterion or required invariant unsupported, create credible material harm in the present exposure, or the assurance posture makes them blockers. An explicit support or completeness claim blocks only while the claimed current behavior remains materially unsupported; narrow or defer a non-required claim instead of adding product machinery merely to preserve it.
 
-Low and nitpick findings do not block readiness when they are documented and do not make the final report overclaim.
+Low and nitpick findings do not block readiness when they are documented and do not make the final report overclaim. A review-process invalidation blocks reliance on the affected evidence, not the artifact; rerun the narrowest check against a stable current subject.
 
 ## Remediation Loop
 
-Use the Crucible Gate Remediation Loop for actionable evidence findings:
+Use the Crucible Gate Remediation Loop for current blockers and selected proportionate evidence findings:
 
 1. Replace unsupported claims with narrower, evidence-true language, or run the missing verification.
 2. Fix the target, supporting material, implementation, packaging, checks, or examples when the evidence shows the claim is false.
@@ -96,7 +98,7 @@ After creation or implementation, selected adjunct assessment gates, Roast, risk
 
 Use the final sweep to:
 
-- confirm the ledger has no unresolved actionable Critical, High, or Medium evidence gaps
+- confirm the ledger has no unresolved current-milestone evidence blocker
 - confirm public release, publication, delivery, obligation, package install, launcher, update, migration, platform, security, destructive-operation, and credential-handling claims are verified or explicitly accepted when relevant
 - confirm final report wording is no broader than the evidence
 - reopen the Execution Loop if a final claim is unsupported, contradicted, or too broad
@@ -112,4 +114,4 @@ In the final Crucible report, include:
 - capped conditions with evidence, unblocker, and exact next step
 - whether final report language was narrowed to match the evidence
 
-Use `capped` only when actionable checks have been exhausted and the remaining gap is external, owner-blocked, unavailable in the current environment, or intentionally accepted. Use `blocked` when an actionable above-Low evidence gap remains unresolved.
+Keep status `run` when every remaining gap is fully dispositioned and does not limit a current required claim. Use `capped` only when proportionate actionable checks have been exhausted and a deferred, external, owner-blocked, unavailable, or intentionally accepted gap still limits the grade, evidence, or readiness claim required by the current milestone. Use `blocked` when a current-milestone evidence blocker remains unresolved.
