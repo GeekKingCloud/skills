@@ -21,9 +21,21 @@ Choose the modes before acting:
 - **Input mode:** public media URL, local media, or supplied transcript.
 - **Evidence mode:** transcript only or transcript plus media spot-checks. Do not imply audio or visual verification in transcript-only mode.
 - **Action mode:** transcribe only, notes only, or both stages.
-- **Output mode:** inline notes, saved transcript and notes, or both.
+- **Recollection depth:** quick recall or full recollection.
+- **Delivery mode:** inline notes, saved transcript and notes, or both.
 
-Ask only when the source, creator voice, requested stage, or privacy boundary cannot be inferred safely. A public video supplied for analysis authorizes retrieval for this task, not account-cookie export, publication, or unrelated channel access.
+### Ask for recollection depth at intake
+
+Unless the caller already selected a mode, ask one short outcome-based question before transcription or reconstruction:
+
+- **Quick recall:** a compact briefing with roughly 12–20 core notes, optimized for fast memory reset and editorial triage.
+- **Full recollection:** richer working notes with specific moments, systems, comparisons, tensions, and a useful timestamp index, optimized for preparing to write later.
+
+Do not ask for an abstract numeric verbosity score. If the caller says only “use Recollect,” default to **full recollection** for creator-preview or article preparation and **quick recall** when they explicitly request concise, condensed, direct, brief, or triage-oriented output. State the selected mode in the artifact header.
+
+The depth choice changes only Stage 2. A usable transcript is reusable: switching modes must regenerate notes from the same transcript rather than retranscribing or returning an artifact produced under the previous mode. Give the new artifact a mode-specific filename and provenance line so stale output cannot be mistaken for a rerun.
+
+Ask other questions only when the source, creator voice, requested stage, or privacy boundary cannot be inferred safely. A public video supplied for analysis authorizes retrieval for this task, not account-cookie export, publication, or unrelated channel access.
 
 ## Non-Negotiable Boundary
 
@@ -102,7 +114,7 @@ When audio and game sound overlap, lower confidence rather than silently repairi
 
 ## Stage 2: Reconstruct Creator-Memory Notes
 
-This stage must work from any timestamped transcript, including one produced in an earlier run. Use `templates/RECOLLECT.md` as the output shape.
+This stage must work from any timestamped transcript, including one produced in an earlier run. Use `templates/RECOLLECT.md` to select the depth-specific output template.
 
 ### 1. Read for chronology before themes
 
@@ -146,25 +158,43 @@ Favor notes that help the creator recover their own mental state:
 
 Compress procedural gameplay that carries no reaction. Retain mechanical description when it explains praise, concern, confusion, pacing, or expected audience fit.
 
-### 4. Build compact notes by default
+### 4. Build notes at the selected depth
 
-Default to roughly 12–20 short bullets across the sections below. Keep one thought per bullet, usually one sentence, with a timestamp or compact timestamp range. Preserve a few useful verified quotes, but do not make the creator reread a transcript in outline form.
+Use `templates/RECOLLECT-QUICK.md` for quick recall and `templates/RECOLLECT-FULL.md` for full recollection. Both modes preserve fidelity, chronology, changed views, timestamps, and uncertainty; depth changes coverage and retrieval detail, not evidentiary standards.
+
+#### Quick recall
+
+Target roughly 12–20 substantive bullets. Keep one thought per bullet, usually one sentence, with a timestamp or compact timestamp range. Optimize for learning the creator’s overall view in a few minutes.
 
 Produce, in this order:
 
 1. **Quick memory reset:** four to six bullets capturing the overall arc without inventing a verdict.
-2. **Expectation-to-end arc:** two to four chronological bullets only when the change over time adds value.
-3. **What landed:** praise and positive surprise, each tied to evidence.
-4. **Reservations and friction:** criticism, confusion, technical issues, or design concerns without inflating severity.
-5. **What changed during play:** self-corrections, learned counterplay, revised assumptions, and rating movement.
-6. **Comparisons and audience signals:** only comparisons or player-fit comments made by the creator.
-7. **Questions and uncertainties:** combine unanswered demo questions with transcript uncertainties that could alter interpretation.
+2. **Expectation-to-end arc:** two to four chronological bullets when change over time adds value.
+3. **What landed.**
+4. **Reservations and friction.**
+5. **What changed during play.**
+6. **Comparisons and audience signals.**
+7. **Questions and uncertainties.**
 
-Add **Specific systems and moments** or a **Useful timestamp index** only when they contribute information not already present. Produce an expanded version only when requested or when compact notes would omit materially conflicting reactions.
+Merge related examples into the strongest representative point. Include **Specific systems and moments** only when omission would distort the creator’s view. Do not add a timestamp index unless the caller requests it.
 
-Omit unsupported sections rather than filling them with generic game-analysis boilerplate.
+#### Full recollection
 
-Give each detailed point one canonical home. Elsewhere, either omit it or use a one-line cross-reference that adds a genuinely different function. A boss attempt, control complaint, comparison, or reveal must not be retold in the quick reset, chronology, praise/friction, systems, comparisons, and timestamp index at full length. The quick reset states the takeaway; later sections hold the evidence and detail.
+Target roughly 30–60 substantive bullets as useful—not a quota. Optimize for restoring enough texture that the creator can prepare an article later without repeatedly reopening the transcript.
+
+Use the same core sections as quick recall, then add non-duplicative detail where supported:
+
+- specific systems and moments that triggered reactions;
+- secondary praise, friction, comparisons, jokes, and unresolved questions that may matter during writing;
+- encounter-level detail when individual attempts changed the creator’s understanding;
+- a compact **Useful timestamp index** for the strongest writing or review windows;
+- a separate transcript-uncertainty ledger when several material passages need qualification.
+
+Full does not mean exhaustive chronology. Compress neutral traversal, repeated exclamations, incidental off-topic speech, and attempts that did not alter the opinion arc.
+
+#### Rules shared by both depths
+
+Omit unsupported sections rather than filling them with generic game-analysis boilerplate. Give each detailed point one canonical home. Elsewhere, omit it or add only a genuinely different function. The quick reset states the takeaway; later sections hold evidence and detail. Preserve a few useful verified quotes, but neither mode should make the creator reread the transcript in outline form.
 
 ### 5. Run the fidelity audit
 
@@ -184,15 +214,17 @@ Then run four coverage passes:
 - **End:** closing view, appetite, caveats, and unresolved questions.
 - **Minority report:** tensions or counterexamples that complicate the dominant impression.
 
-Finish with a density pass: mark repeated claims, choose one canonical section for each, and remove copies that add no new memory value. Compress long encounter chronology to the creator's opinion arc—initial read, material correction, residual concern, and end-state judgment—unless individual attempts each changed the conclusion. If the default draft exceeds about 20 substantive bullets, make every additional bullet justify why it cannot be merged or omitted.
+Finish with a mode-aware density pass. In quick recall, merge or remove every nonessential detail beyond about 20 substantive bullets. In full recollection, retain secondary details that could genuinely help later writing, while removing repeated evidence and neutral chronology; bullets beyond about 60 should be exceptional. Compress long encounter chronology to the creator's opinion arc—initial read, material correction, residual concern, and end-state judgment—unless individual attempts each changed the conclusion.
 
-Revise the notes, not the transcript. Stop after the audit resolves concrete omissions or distortions; do not keep generating stylistic variants once the notes are faithful and useful.
+Revise the notes, not the transcript. Stop after the audit resolves concrete omissions or distortions; do not keep generating stylistic variants once the selected mode is faithful and useful. Verify that the artifact header names the selected mode and that a mode switch produced a newly generated, mode-specific artifact rather than returning an older file.
 
 **Done when:** every substantive note is traceable, the opening-to-closing arc is represented, superseded impressions are labelled, and no section reads like ghostwritten preview prose.
 
 ## Output Rules
 
-- Use concise working-note language, not polished article paragraphs.
+- Name the selected depth in the header: **Quick recall** or **Full recollection**.
+- Use mode-specific filenames such as `notes-quick.md` and `notes-full.md`; never overwrite or relabel an older mode’s artifact as a fresh run.
+- Use concise working-note language, not polished article paragraphs. Full recollection adds coverage and retrieval detail, not ornamental prose.
 - Include timestamps for substantive reactions and examples. A timestamp range is better than a falsely precise instant.
 - Quote sparingly; use exact quotes only when phrasing itself is useful and verified.
 - Separate creator statements from cautious synthesis.
@@ -211,9 +243,13 @@ Revise the notes, not the transcript. Stop after the audit resolves concrete omi
 7. **Ghostwriting:** produces polished preview copy. Return to terse evidence-backed notes and questions.
 8. **Tool overcommitment:** treats one downloader or recognizer as mandatory. Follow the acquisition ladder and report the actual route used.
 9. **Evidence repetition:** repeats the same encounter or opinion across most sections. Keep one detailed account and make every other mention earn its place.
+10. **Silent depth assumption:** produces a quick or full artifact without selecting the user-facing outcome. Ask once when not inferable; use the documented default when it is.
+11. **Stale-mode delivery:** claims to test a revised mode but returns notes produced before the revision. Reconstruct from the reusable transcript, write a new mode-specific artifact, and identify its provenance in the header.
+12. **False full mode:** treats “full” as permission for transcript-shaped chronology. Retain memory-bearing texture, not every event or utterance.
 
 ## Completion Checklist
 
+- [ ] Recollection depth was selected explicitly or inferred from the documented default and recorded in the artifact
 - [ ] Exact source, duration, language, and transcript provenance recorded
 - [ ] Complete timestamped transcript available or supplied
 - [ ] Material names and high-impact passages spot-checked when media is available; otherwise limitations are explicit
@@ -225,5 +261,7 @@ Revise the notes, not the transcript. Stop after the audit resolves concrete omi
 - [ ] Detailed points have one canonical home and repeated encounter chronology is compressed
 - [ ] Every substantive note has a relevant timestamp or explicit evidence limit
 - [ ] Unsupported template sections are omitted
+- [ ] Output depth matches the selected mode without weakening fidelity
+- [ ] A mode switch reused the transcript but generated a new mode-specific notes artifact
 - [ ] Output is working notes, not preview copy
 - [ ] Raw media and transcript remain private unless authorized distribution was explicitly requested
