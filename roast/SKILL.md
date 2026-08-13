@@ -10,8 +10,8 @@ Review any directed target with a strict, evidence-first lens. Code and release 
 ## Quick start
 
 When asked to roast a target:
-1. Identify the exact artifact, scope, and requested review lens from the workspace, supplied path, attachment, URL, or caller context.
-2. Read the instructions, requirements, source material, standards, and surrounding context that define what good means for that target.
+1. Identify the exact artifact, scope, current milestone or delivery state, and requested review lens from the workspace, supplied path, attachment, URL, or caller context.
+2. Read the instructions, requirements, source material, standards, present exposure, recoverability, and surrounding context that define what good means for that target now.
 3. Choose the evidence mode: source, rendered or live behavior, supplied artifact, external references, or an explicit combination.
 4. Inspect the artifact itself before judging. Use the full engineering baseline for code; select only relevant lenses for other targets.
 5. Prioritize safety, security, correctness, legal or operational exposure, and fitness-for-purpose failures over polish when those risks apply.
@@ -25,6 +25,7 @@ Roast is report-only by default. Do not edit, redline, or remediate the target u
 Infer these modes from the request and available evidence before reviewing:
 
 - `Target and scope`: the whole project or artifact, changed portions, one file, one section, one visual, or one named concern.
+- `Current milestone`: the target's present delivery state, users, data, exposure, recoverability, and stated success criteria. Eventual ambition does not silently redefine the reviewed milestone.
 - `Review lenses`: caller-named concerns first, then context-appropriate risks and quality criteria. Do not silently broaden a directed review into an unrelated full audit.
 - `Evidence mode`: what can actually be inspected, such as source, rendered output, live behavior, attachments, requirements, references, or only the artifact itself.
 - `Output mode`: inline report by default, or a saved report, review comment, redline plan, or remediation work queue when requested.
@@ -60,7 +61,7 @@ Examples:
 - `roast this homepage design for hierarchy, accessibility, and conversion friction`
 - `roast this rollout plan for missing decisions, operational risk, and unverifiable acceptance criteria`
 
-Treat phrases such as `roast this about X`, `focus on Y`, or `look only at Z` as binding scope or lens instructions. Use contextual background to tune the framing, not to excuse defects or lower the relevant quality bar. Judge the target in the state actually supplied.
+Treat phrases such as `roast this about X`, `focus on Y`, or `look only at Z` as binding scope or lens instructions. Use contextual background to define the relevant current quality bar, not to excuse applicable defects. Judge the target in the state actually supplied; record future hardening separately from current fitness.
 
 ## Review Voice
 
@@ -117,7 +118,7 @@ For every safety or security finding, include:
 - `Severity`: Critical, High, Medium, or Low
 - `Evidence`: precise location, reference, observed behavior, or exact pattern
 - `Why it is bad`: the exploit or failure mode
-- `Fix`: concrete remediation direction
+- `Simplest fix direction`: concrete remediation, removal, simplification, claim narrowing, manual recovery, or deferral as applicable
 
 Use harsher wording for security theater, fake safeguards, silent failures, or artifacts that claim validation happened when it did not.
 
@@ -176,7 +177,7 @@ Style and presentation findings must still be concrete. Prefer "rename `x` becau
 
 ## Severity
 
-Assign severity from consequence, likelihood, reach, and reversibility, not reviewer annoyance:
+Assign severity from consequence, likelihood, reach, and reversibility within the reviewed target's current purpose, milestone, and credible operating environment, not reviewer annoyance or eventual ambition:
 
 - `Critical`: credible catastrophic harm or complete failure of the target's core purpose
 - `High`: major likely harm, failure, unusability, or exposure
@@ -184,7 +185,17 @@ Assign severity from consequence, likelihood, reach, and reversibility, not revi
 - `Low`: localized weakness with limited impact
 - `Nitpick`: optional polish that does not materially affect fitness for purpose
 
-Apply severity, evidence, impact, and fix direction to every substantive finding, not only security findings. For subjective surfaces, separate observable defects from taste. A demonstrated contrast failure is a finding; disliking a color is not one without a relevant brief, requirement, or standard.
+Apply severity, evidence, impact, and simplest fix direction to every substantive finding, not only security findings. For subjective surfaces, separate observable defects from taste. A demonstrated contrast failure is a finding; disliking a color is not one without a relevant brief, requirement, or standard.
+
+For every substantive finding, also state:
+
+- `Current applicability`: directly applicable, conditionally applicable, later-milestone hardening, evidence-only, review-process-only, or out of scope.
+- `Simplest fix direction`: include removal, simplification, claim narrowing, manual recovery, or deferral when those reduce net risk better than another control.
+- `Suggested disposition`: `block now`, `fix if proportionate`, `defer to named milestone`, `candidate for owner acceptance`, `evidence correction`, `process invalidated`, or `out of scope`.
+
+Do not inflate a future-only concern into a current High or Medium finding merely because the target may later reach production. When later exposure materially changes severity, state that future risk explicitly. Do not lower a directly applicable finding merely because remediation is expensive.
+
+Later-milestone, evidence-only, and review-process-only observations do not lower the current artifact grade unless they expose a current fitness defect. Put them in `Deferred, Evidence, And Review-Process Observations` rather than forcing them into the current severity queue. Mention an out-of-scope observation only when it materially affects the reviewed scope, and do not let it lower the grade by itself.
 
 ## Output Format
 
@@ -192,11 +203,15 @@ Use `templates/ROAST.md` as the report skeleton.
 
 If no issues are found in a category, say so briefly and mention any limits of the review. Do not fake a problem to make the report harsher.
 
-In `What To Fix First`, list up to three highest-priority fixes supported by reported findings. Omit unsupported slots, and omit the priority list entirely when there are no supported findings.
+In `What To Fix First`, list up to three current blockers or proportionate fixes supported by reported findings. Do not place deferred hardening, evidence-only corrections, or process-invalidated reviews in this implementation priority list unless they require a current action. Omit unsupported slots, and omit the priority list entirely when there are no supported fixes.
 
 ## Orchestrator Use
 
-Other workflow skills may use Roast output as a remediation work source or as a post-change review gate. Keep findings concrete enough to be acted on one at a time: severity, evidence, impact, and fix direction. Roast does not depend on those orchestrator skills; it remains a standalone review skill.
+Other workflow skills may use Roast output as a remediation work source or as a post-change review gate. Keep findings concrete enough to be acted on one at a time: severity, evidence, impact, current applicability, simplest fix direction, and suggested disposition. Roast does not depend on those orchestrator skills; it remains a standalone review skill.
+
+Finding validity, severity, grade, and current remediation disposition are separate judgments. Roast recommends applicability and disposition; the orchestrator decides what blocks the current milestone against its work source, assurance posture, exposure, recoverability, and authority boundary. A valid finding does not become an automatic implementation requirement.
+
+If the reviewed subject changes during an exact-artifact review, mark the affected verdict `process invalidated` and request a rerun against a stable revision. Preserve still-useful observations as stale evidence, but do not classify review-path drift as a target defect.
 
 ## Grading
 
@@ -211,6 +226,8 @@ Severity caps apply across target types:
 - any unresolved Critical finding caps the grade at `D`
 - multiple unresolved High findings cap the grade at `C`
 - a fatal safety, security, legal, operational, or fitness-for-purpose defect usually deserves `F` until fixed
+
+Grade against the stated current purpose and milestone. Do not make an A the implicit minimum for fitness when the rubric defines B as fit for use. Report future hardening and deferred exposure separately so they remain visible without distorting the current artifact grade.
 
 Do not cap a grade merely because evidence was unavailable. Narrow the grade to the evidence-backed scope, state the confidence limit, and mark unreviewed categories `Not assessed` rather than treating them as defects. If the available evidence cannot support an honest A-F grade for even a useful bounded scope, use `Not graded` and state exactly what is missing.
 

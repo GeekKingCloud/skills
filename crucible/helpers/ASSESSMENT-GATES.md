@@ -21,26 +21,19 @@ Each selected gate must have:
 - the skip condition that would make it irrelevant on a future run
 - the evidence or tool used
 - blocking behavior for unresolved findings
-- final-report fields for status, grade or equivalent result, cap reason, and unresolved findings
+- final-report fields for status, grade or equivalent result, cap or blocker reason, and unresolved findings
 
 Examples of possible assessment gates include accessibility, classic SEO, agent-readiness, performance, package/install smoke, platform compatibility, API or document contract checks, factual/source review, visual quality, usability, documentation freshness, compliance requirements, or target-specific readiness scans. Treat named examples as examples only; do not report them as mandatory fields unless they were selected for the run.
 
 ## Shared Gate Rules
 
-Use the Crucible Gate Remediation Loop for every selected assessment gate.
+Use the Crucible Gate Remediation Loop and `PROPORTIONALITY.md` for every selected assessment gate.
 
 Treat selected assessment skills or tools as optional adjunct dependencies, not as a promoted skill bundle. Report which gate ran, what evidence or fallback was used, and why it was relevant to this target surface. Do not list unselected assessment skills as missing features or imply they are mandatory Crucible companions.
 
-Classify every assessment finding as:
+Classify and disposition every assessment finding through the shared Proportionality Contract. Loop on current-milestone blockers and proportionate fixes, not every above-Low finding automatically. Keep valid deferred, accepted, external, owner-blocked, unverifiable, and out-of-scope findings visible with their readiness effect.
 
-- `actionable in scope`
-- `external or owner-blocked`
-- `unverifiable with current access`
-- `explicitly accepted`
-
-Loop on actionable Critical, High, and Medium findings. Fix Low or nitpick findings when they are cheap, clarifying, or readiness-confidence-building.
-
-Do not keep rerunning a gate solely because its grade is capped by documented external, owner-blocked, or unverifiable conditions. After actionable fixes are exhausted, treat the gate as `capped` rather than failed when the remaining above-Low findings are outside Crucible's current ability to change or verify.
+Do not keep rerunning a gate solely because of documented deferred, external, owner-blocked, or unverifiable conditions. After current blockers and selected proportionate fixes are exhausted, keep the gate's ordinary `run` status when remaining findings are fully dispositioned and do not limit the intended ready state. Use `capped` only when a remaining condition limits the grade, evidence, or readiness claim that the current milestone requires.
 
 For capped gates, report:
 
@@ -50,7 +43,7 @@ For capped gates, report:
 - whether the cap affects the intended ready state
 - the exact next step
 
-Do not use `external`, `owner-blocked`, or `unverifiable` as an escape hatch for findings that can be fixed or verified within the authorized target and current access. When in doubt, attempt the narrowest reasonable fix or verification once, then classify the remaining cap from evidence.
+Do not use deferral, acceptance, `external`, `owner-blocked`, or `unverifiable` as an escape hatch for a current-milestone blocker that can be fixed or verified within the authorized target and current access. When in doubt, attempt the narrowest reasonable verification or Steward review before deciding.
 
 ## Gate Order
 
@@ -83,11 +76,12 @@ Do not claim the same confidence as the unavailable assessment unless the fallba
 For every selected adjunct assessment gate, report:
 
 - gate name
-- status: `run`, `skipped`, `unavailable`, or `capped`
+- status: `run`, `skipped`, `unavailable`, `capped`, or `blocked`
 - trigger or skip reason
 - final grade, score, verdict, or equivalent status
 - rerun evidence when fixes were made
 - unresolved findings by severity
 - cap reason, owner or unblocker, and exact next step when capped
+- current-milestone blocker and exact unblocker when blocked
 
 For gates not selected, report nothing unless the omission could be misread as a missing readiness check. When relevant, say `No adjunct assessment gates selected` with the reason.
