@@ -2,9 +2,9 @@
   <img src=".assets/logo.svg" alt="Skills" width="400">
 </p>
 
-A collection of reusable skills. Each visible top-level folder is a skill package with a required `SKILL.md` entry point and optional supporting files such as references, assets, helpers, templates, and examples. Repo-level branding and presentation files live in `.assets`.
+A collection of reusable skills. Each visible top-level folder except `docs/` is a skill package with a required `SKILL.md` entry point and optional supporting files such as references, assets, helpers, templates, and examples. Repo-level branding and presentation files live in `.assets`.
 
-See `AGENTS.md` for repository conventions and `STYLE.md` for authoring rules.
+See `AGENTS.md` for the repository entry point and `docs/skills/README.md` for the folded guidebook and skill map.
 
 Skills are grouped below for browsing only. Each skill remains a visible top-level folder so discovery and install paths stay predictable.
 
