@@ -1,6 +1,6 @@
 # Skills Repository Guide
 
-This repository stores reusable, individually installable skills. Treat this file as the routing shim into the Operandi guidebook under [`docs/operandi/`](docs/operandi/README.md); do not read every guide for every task.
+This repository stores reusable, individually installable skills. Treat this file as the routing shim into the Skills Guidebook under [`docs/skills/`](docs/skills/README.md); do not read every guide for every task.
 
 ## Start Here
 
@@ -14,14 +14,14 @@ This repository stores reusable, individually installable skills. Treat this fil
 
 | When you are...                                                                     | Read                                                                         |
 | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| Adding, moving, renaming, or removing a package or repo-level file                  | [`docs/operandi/repository/layout.md`](docs/operandi/repository/layout.md)                     |
-| Working in the repo or checking repository-wide language                            | [`docs/operandi/repository/workflow.md`](docs/operandi/repository/workflow.md)                 |
-| Creating a skill or editing its entry point, frontmatter, prose, or output contract | [`docs/operandi/authoring/foundations.md`](docs/operandi/authoring/foundations.md)             |
-| Editing an audit, report, review, recovery, feedback, or handoff skill              | [`docs/operandi/authoring/report-and-review.md`](docs/operandi/authoring/report-and-review.md) |
-| Defining or changing a relationship between skills                                  | [`docs/operandi/authoring/composition.md`](docs/operandi/authoring/composition.md)             |
-| Adding or changing helpers, templates, references, assets, or examples              | [`docs/operandi/authoring/supporting-files.md`](docs/operandi/authoring/supporting-files.md)   |
-| Maintaining, renaming, or reviewing an existing skill                               | [`docs/operandi/authoring/maintenance.md`](docs/operandi/authoring/maintenance.md)             |
-| Choosing a skill or understanding families and combinations                         | [`docs/operandi/catalog/skill-map.md`](docs/operandi/catalog/skill-map.md)                     |
+| Adding, moving, renaming, or removing a package or repo-level file                  | [`docs/skills/repository/layout.md`](docs/skills/repository/layout.md)                     |
+| Working in the repo or checking repository-wide language                            | [`docs/skills/repository/workflow.md`](docs/skills/repository/workflow.md)                 |
+| Creating a skill or editing its entry point, frontmatter, prose, or output contract | [`docs/skills/authoring/foundations.md`](docs/skills/authoring/foundations.md)             |
+| Editing an audit, report, review, recovery, feedback, or handoff skill              | [`docs/skills/authoring/report-and-review.md`](docs/skills/authoring/report-and-review.md) |
+| Defining or changing a relationship between skills                                  | [`docs/skills/authoring/composition.md`](docs/skills/authoring/composition.md)             |
+| Adding or changing helpers, templates, references, assets, or examples              | [`docs/skills/authoring/supporting-files.md`](docs/skills/authoring/supporting-files.md)   |
+| Maintaining, renaming, or reviewing an existing skill                               | [`docs/skills/authoring/maintenance.md`](docs/skills/authoring/maintenance.md)             |
+| Choosing a skill or understanding families and combinations                         | [`docs/skills/catalog/skill-map.md`](docs/skills/catalog/skill-map.md)                     |
 
 ## Hard Boundaries
 

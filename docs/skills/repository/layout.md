@@ -12,7 +12,7 @@ Read this when adding, moving, renaming, or removing a skill package or reposito
 - Repository-wide guidance has three entry surfaces:
   - `README.md` lists the published skills for people browsing and installing them.
   - `AGENTS.md` is the compact agent routing shim.
-  - `docs/operandi/` holds the folded guidebook and task-oriented skill map.
+  - `docs/skills/` holds the folded guidebook and task-oriented skill map.
 
 ## Expected shape
 
@@ -38,7 +38,7 @@ Optional examples may live in `examples/` when they support trigger behavior, ou
 - The folder name is the skill name and should be lowercase kebab-case.
 - `SKILL.md` is required and is the entry point for the skill.
 - `SKILL.md` frontmatter must include `name` and `description`; treat those fields as the portable skill-selection contract.
-- `docs/` is the only visible root-level non-skill folder; repository guidance lives under `docs/operandi/`. Use `.assets/` for repo presentation assets and do not add other visible non-skill roots without an explicit repository-wide reason.
+- `docs/` is the only visible root-level non-skill folder; repository guidance lives under `docs/skills/`. Use `.assets/` for repo presentation assets and do not add other visible non-skill roots without an explicit repository-wide reason.
 - Keep skill categories as README/catalog organization only. Do not create visible grouping folders such as `development/`, `assessment/`, or `workflow/`; nested skill folders make discovery and install paths less predictable.
 - Put novelty or tone-only skills under a README/catalog category such as `Just For Fun`; keep them as normal top-level skill folders, not nested category folders.
 - `references/` is for longer factual or background material the skill may lean on.

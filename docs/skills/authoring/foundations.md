@@ -16,7 +16,7 @@ Read this when creating a skill or changing its entry point, frontmatter, prose,
 - Match the folder name and frontmatter `name` unless there is a strong reason not to.
 - Put the required `SKILL.md` at the root of the skill folder.
 - Treat `SKILL.md` plus frontmatter `name` and `description` as the required portable contract.
-- Keep visible root-level directories reserved for skills except the folded repository guide at `docs/operandi/`. Put repo-level branding and presentation files in `.assets/`.
+- Keep visible root-level directories reserved for skills except the folded repository guide at `docs/skills/`. Put repo-level branding and presentation files in `.assets/`.
 - Store supporting material in well-named subdirectories such as:
   - `references/` for longer factual or background material
   - `assets/` for static resources consumed by the skill's output, such as document templates, images, fonts, fixtures, or boilerplate
