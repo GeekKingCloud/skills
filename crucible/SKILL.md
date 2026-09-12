@@ -1,6 +1,6 @@
 ---
 name: crucible
-description: Orchestrate iterative, role-guided, sub-agent-heavy work on software, documents, contracts, plans, workflows, policies, designs, images, or other directed targets from a supplied work source or whole-target Roast queue through create-review-verify-repair loops, Evidence Gate checks, remediation, risk review, cleanup, and readiness reporting. Use for development and release hardening or any substantial work that should converge through independent critique and evidence; requires current governing or caller-approved authorization for sub-agents, or explicit degraded local-only confirmation before proceeding.
+description: Use for requested Crucible orchestration or high-risk work that warrants independent create-review-verify-repair loops. Converge an authorized work source through role-guided sub-agents, evidence gates, and remediation. Not a default for ordinary implementation or merely lengthy tasks; requires applicable sub-agent authorization or explicit degraded local-only confirmation.
 ---
 
 # Crucible
@@ -19,6 +19,12 @@ The target state is:
 - code comments, annotations, rationale, and supporting material explain non-obvious decisions without narrating the obvious
 - no current-milestone blocker remains unresolved; deferred, accepted, external, and unverifiable findings remain visible with their readiness effect
 - the final state is fit for the stated milestone and ready to release, merge, publish, deliver, submit for approval, execute, adopt, or hand off only as current evidence permits
+
+## Selection Boundary
+
+Use Crucible when the caller explicitly requests its orchestration, an applicable project contract requires it, or the authorized work has consequential risk that genuinely warrants independent create-review-verify-repair convergence. Task length, multiple files, or ordinary implementation alone is not a trigger. Use direct execution and the relevant project checks for routine bounded work instead.
+
+An explicit request to use Crucible selects its strict workflow; a request to explain, audit, or edit this skill does not start a Crucible run. Selection supplies procedure, not permission to delegate, remediate, publish, or expand the task. Preserve current caller direction, governing runtime constraints, and mandatory safety or repository gates. If selected, follow Startup Permission and the core-role contract below rather than silently simulating independent review.
 
 ## Startup Permission
 
@@ -110,7 +116,7 @@ Work in logically connected slices. For each slice:
 7. Update the Evidence Gate ledger for the slice: record the claim, evidence, verdict, severity, pre-artifact challenges, and any next check or fix needed before the slice can be treated as complete.
 8. Ask the Verifier and other reviewers to check the completed current revision for correctness, contradictions, regressions, missing verification, security or other material risks, stale material, orphaned content, usability, clarity, and maintainability. Record their verdicts and findings in the Evidence Gate ledger, classify and disposition them through `helpers/PROPORTIONALITY.md`, remediate current blockers and justified fixes, rerun every affected check, and update the ledger after each change.
 9. Review the slice for dead, stale, duplicated, orphaned, contradictory, placeholder, or unnecessary material introduced or exposed by the change.
-10. Commit a version-controlled slice when local commits are authorized by the caller or target workflow; otherwise save or version the artifact as authorized. Treat an explicit Crucible request as authorization for local logical commits unless the caller or target instructions say otherwise. Do not push, force-push, rewrite history, publish, send, sign, approve, or release anything without explicit approval.
+10. Commit a version-controlled slice when local commits are authorized by the caller or governing target instructions; otherwise save or version the artifact as authorized. A request to use Crucible does not itself grant commit or other mutation authority. Do not push, force-push, rewrite history, publish, send, sign, approve, or release anything without explicit approval.
 
 If verification fails, fix the cause and rerun the relevant check. Do not weaken tests, criteria, rubrics, or evidence merely to pass; align the target and checks with the intended outcome.
 
@@ -130,7 +136,7 @@ The Evidence Gate verifies that material outcome, behavior, content, quality, co
 
 Use the same outer loop for every gate that runs, whether it is the default Evidence Gate, default Roast gate, an adjunct assessment gate, or an evidence-backed fallback pass:
 
-1. Run the skill or equivalent fallback pass against the current changed state.
+1. Run the skill or a permitted fallback pass against the current changed state, following the owning gate helper. Do not substitute for an explicitly required skill, reviewer, or check without authority to change that requirement.
 2. Capture the grade, severity list, evidence, and scope limitations.
 3. Classify and disposition every finding through `helpers/PROPORTIONALITY.md`; preserve valid findings even when they do not block the current milestone.
 4. Apply the Control-Cost Test before adding or materially expanding review-induced machinery.
@@ -149,9 +155,9 @@ Run gate remediation loops sequentially when later fixes can invalidate earlier 
 
 ## Adjunct Assessment Gates
 
-Use adjunct assessment gates only when the work source or changed target has a relevant surface, the caller asks Crucible to pair with an assessment skill, or a concrete requirement or scan is needed for readiness confidence. They are not hard dependencies for every Crucible run.
+Use adjunct assessment gates when the caller or applicable project contract requires them, or a distinct full assessment is proportionate and materially needed for the current acceptance criteria. A matching target surface alone does not require a scored audit; ordinary domain checks may be enough. These optional aids never replace or make optional a mandatory safety, security, or repository gate.
 
-When the caller asks for an assessment skill or scan, or the changed surface clearly makes one relevant, read `helpers/ASSESSMENT-GATES.md` and follow its selection, trigger, skip, fallback, capped-grade, and final-report rules. Named assessment skills such as accessibility, agent-readiness, SEO, performance, security, compliance, package, or platform checks are examples, not mandatory fixed gates. If no assessment gate is relevant, do not read the helper; report adjunct gates as skipped only when that status matters to the final readiness explanation.
+When an assessment is required or justified by that selection rule, read `helpers/ASSESSMENT-GATES.md` and follow its selection, trigger, skip, fallback, capped-grade, and final-report rules. Named assessment skills such as accessibility, agent-readiness, SEO, performance, security, compliance, package, or platform checks are examples, not mandatory fixed gates. If no assessment gate is relevant, do not read the helper; report adjunct gates as skipped only when that status matters to the final readiness explanation.
 
 ## Risk And Security Pass
 

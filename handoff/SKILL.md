@@ -1,11 +1,13 @@
 ---
 name: handoff
-description: Capture restart-safe handoff notes for unfinished work in a reachable HANDOFF.md file by default. Use when pausing, transferring, or resuming after context loss, token pressure, machine restart, session change, or any stop that needs goal, status, blockers, artifacts, and next steps preserved.
+description: Capture restart-safe notes for unfinished work before a pause or transfer, or when the caller asks to preserve state for a later session. Save goals, status, blockers, artifacts, and next steps in a reachable HANDOFF.md by default. Use Recover instead when the task is to reconstruct or resume already interrupted work.
 ---
 
 # Handoff
 
 Create a concise handoff for the next coding agent. Optimize for fast restart, not prose.
+
+Use this for outgoing state preservation, not an ordinary status update or completed-task summary. If the task is to reconstruct already interrupted work, switch to Recover rather than creating another handoff first. An explicit Handoff request retains the saved-note contract below, subject to current stop or no-write instructions.
 
 ## Quick start
 

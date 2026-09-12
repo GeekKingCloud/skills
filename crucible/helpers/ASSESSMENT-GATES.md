@@ -2,21 +2,21 @@
 
 Read this helper only when the caller asks Crucible to pair with an assessment skill, requirement, or scan, or when the work source or changed target makes an assessment gate relevant to readiness confidence.
 
-Adjunct assessment gates are optional. They are selected for the current target surface; they are not a fixed checklist that every Crucible run must execute.
+Adjunct assessment skills are optional aids unless the current caller or applicable project contract requires one. They are not a fixed checklist for every Crucible run. Mandatory safety, security, repository, and current acceptance gates remain binding whether or not a specialized assessment skill is selected.
 
 ## Selecting Gates
 
-Choose assessment gates from concrete current-run evidence:
+Choose a full assessment only when it is explicitly required or its distinct evidence materially serves the current milestone at a proportionate cost. A changed UI, public page, API, or other domain surface is a relevance signal, not automatic activation; use a focused native check when that satisfies the requirement without a full scored audit. Establish relevance from concrete current-run evidence:
 
 - caller-requested skills, scans, or requirements
 - changed surfaces such as UI, designs, images, documents, contracts, policies, plans, public sites, APIs, SDKs, CLIs, packages, installers, workflows, auth boundaries, data handling, platform support, performance-sensitive paths, compliance-sensitive material, or agent-facing content
-- repository instructions, release criteria, issue text, handoff files, plans, CI requirements, or deployment constraints
+- applicable repository instructions, current release criteria, issue text, plans, CI requirements, or deployment constraints; reconcile handoff pointers with current caller direction rather than reviving stale requirements
 - gaps exposed by the running Evidence Gate ledger
 
 Each selected gate must have:
 
 - a specific gate name
-- the relationship type `optional adjunct gate`
+- the relationship type `optional adjunct gate`, noting any current caller or project requirement that makes this particular gate mandatory
 - the trigger that made it relevant
 - the skip condition that would make it irrelevant on a future run
 - the evidence or tool used
@@ -29,7 +29,7 @@ Examples of possible assessment gates include accessibility, classic SEO, agent-
 
 Use the Crucible Gate Remediation Loop and `PROPORTIONALITY.md` for every selected assessment gate.
 
-Treat selected assessment skills or tools as optional adjunct dependencies, not as a promoted skill bundle. Report which gate ran, what evidence or fallback was used, and why it was relevant to this target surface. Do not list unselected assessment skills as missing features or imply they are mandatory Crucible companions.
+Treat assessment skills or tools as distinct adjunct dependencies, not as a promoted skill bundle. An explicit current requirement remains mandatory even though the general relationship is optional. Report which gate ran, what evidence or fallback was used, and why it was relevant to this target surface. Do not list unselected assessment skills as missing features or imply they are mandatory Crucible companions.
 
 Classify and disposition every assessment finding through the shared Proportionality Contract. Loop on current-milestone blockers and proportionate fixes, not every above-Low finding automatically. Keep valid deferred, accepted, external, owner-blocked, unverifiable, and out-of-scope findings visible with their readiness effect.
 
@@ -59,7 +59,9 @@ If two gates are independent and will not create conflicting edits, their invest
 
 ## Fallbacks
 
-If a selected assessment skill or tool is unavailable, perform the closest evidence-backed fallback pass that is proportional to the risk and available context.
+If an optional assessment aid is unavailable, use a proportionate evidence-backed native fallback or omit it with any material evidence limit disclosed. Do not install, synchronize, or fetch packages just because selection found a missing skill.
+
+If the caller or applicable safety, repository, or delivery contract requires that specific skill, tool, or reviewer, keep the affected gate blocked and request the missing capability or an authorized change of requirement. A native fallback may collect useful evidence but cannot silently satisfy the required gate. Continue unrelated authorized work only when the blocker does not make it unsafe or contradict a stop instruction.
 
 Report fallback gates as `unavailable` when the named skill or tool could not run, then include:
 

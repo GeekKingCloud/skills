@@ -9,9 +9,9 @@ Prefer plain-language composition over formal dependency metadata. Do not add ma
 When a skill leans on another skill, describe the relationship in the parent skill's body and reflect any reportable result in the parent skill's template. Use these terms consistently:
 
 - `Work source`: input that defines the parent skill's work queue, such as a plan, review, current-state inspection, or another skill's findings.
-- `Default core gate`: expected in the parent skill's normal success path, but skippable with evidence and final-report disclosure.
+- `Default core gate`: expected in the parent skill's normal success path; omit it only when the parent route and governing contract permit that, with evidence and final-report disclosure.
 - `Optional adjunct gate`: relevant only for specific target surfaces or caller requests.
-- `Fallback pass`: the local review or workflow to perform when the referenced skill is unavailable.
+- `Fallback pass`: the local review or workflow allowed when an optional referenced skill is unavailable, or when the governing contract permits substitution. It does not silently satisfy a specifically required skill, reviewer, or check.
 
 For each relationship, state:
 
@@ -20,5 +20,7 @@ For each relationship, state:
 - skip conditions that make it irrelevant
 - what unresolved findings block the parent workflow
 - what to report when it ran, was skipped, or was unavailable
+
+Skill selection supplies procedure, not action authority. Keep current caller direction, applicable repository and safety requirements, and runtime limits binding. A relationship described as optional does not waive a specific current requirement; conversely, a matching domain surface does not automatically require a full assessment. When a required dependency is unavailable, report the affected gate as blocked and seek the capability or an authorized requirement change rather than weakening the gate.
 
 Do not make optional capabilities look mandatory in frontmatter descriptions. Keep frontmatter focused on the parent skill's primary trigger; put optional adjunct rules in the body where the conditions can be precise.
