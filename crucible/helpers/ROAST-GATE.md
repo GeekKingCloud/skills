@@ -4,7 +4,7 @@ Read this helper when choosing Roast scope, running Roast, using Roast as Crucib
 
 Relationship type: default core gate when the selected route includes roast.
 
-Dependency: the sibling `roast` skill, or an equivalent serious fallback review when that skill is unavailable. Report the dependency status as execution evidence; do not present Crucible as advertising or requiring a public bundle of skills.
+Dependency: the sibling `roast` skill, or an equivalent serious fallback review when that skill is unavailable and the governing contract permits substitution. Report the dependency status as execution evidence; do not present Crucible as advertising or requiring a public bundle of skills.
 
 ## Routes
 
@@ -17,7 +17,7 @@ Crucible has exactly four valid routes:
 
 ## Choosing Roast Scope
 
-Use `work-led-no-roast` only when the caller opts out of Roast, the work is narrow enough that broad review would be disproportionate, or target instructions make Roast inappropriate. Disclose reduced readiness confidence in the final report.
+Use `work-led-no-roast` only when the caller opts out of Roast, the work is narrow enough that broad review would be disproportionate, or target instructions make Roast inappropriate, and no applicable governing contract still requires it. Disclose reduced readiness confidence in the final report.
 
 Use `work-led-scope-roast` as the default work-led Roast route. Scope Roast to the changed or created code, content, sections, regions, states, files, tests, configuration, documentation, contracts, or supporting material needed to judge the completed work source.
 
@@ -52,7 +52,9 @@ When exact artifact identity matters, review a stable commit, saved revision, ha
 
 ## Fallbacks And Reporting
 
-If the actual `roast` skill is unavailable on a route that requires roast, perform an equivalent serious, evidence-backed review and report roast status as `fallback`.
+If the actual `roast` skill is unavailable and this route uses only Crucible's default broad-quality gate, an equivalent serious, evidence-backed review may serve as `fallback`. Disclose its actual coverage and independence.
+
+If the current caller or applicable safety, repository, or delivery contract requires Roast itself or a specific independent reviewer, report the affected gate as `blocked` and request that capability or an authorized change of requirement. Do not silently simulate it, install a skill without permission, or describe local self-review as independent coverage. The fallback rule never overrides a mandatory gate or current caller direction.
 
 Report Roast scope as one of:
 

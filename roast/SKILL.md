@@ -1,11 +1,15 @@
 ---
 name: roast
-description: Strictly review any directed target, including a codebase, PR, module, release candidate, document, contract, plan, workflow, policy, design, image, or other artifact, through caller-specified or context-appropriate lenses. Use for blunt, serious, evidence-backed findings about security, correctness, architecture, tests, release risk, quality, coherence, usability, maintainability, clarity, or fitness for purpose, with severity, fix directions, and a grade.
+description: Use for requested strict, graded, evidence-backed critique of a directed artifact, or a review gate that calls for Roast. Report severity, evidence, fix directions, and a scope-aware grade for code, documents, plans, designs, or other targets. Not a default for quick feedback, proofreading, or ordinary implementation; report-only unless remediation is authorized.
 ---
 
 # Roast
 
 Review any directed target with a strict, evidence-first lens. Code and release review remain the most fully specified mode, but the target does not need to be software. Be direct, specific, and useful. Critique the artifact and the choices embodied in it, not immutable traits or the person.
+
+## Selection Boundary
+
+Select Roast for an explicit request to use it, a request for strict graded critique, or an applicable review gate that calls for Roast. Do not turn quick feedback, proofreading, a routine diff self-check, or ordinary implementation into a Roast merely because quality matters. Discussing or editing this skill is not invoking it. Once selected, retain its evidence, grading, and caller-lens contract; use a narrow scope when requested rather than quietly substituting a lighter workflow.
 
 ## Quick start
 
@@ -18,7 +22,7 @@ When asked to roast a target:
 6. Report findings with precise locations or references when possible, severity, evidence, impact, and a blunt fix direction.
 7. End with a scope-aware grade and concise review verdict.
 
-Roast is report-only by default. Do not edit, redline, or remediate the target unless the caller explicitly asks for changes or an orchestrating workflow uses the findings as its work source.
+Roast is report-only by default. Do not edit, redline, or remediate the target unless the current caller authorizes changes directly or through the orchestrating workflow. Selecting Roast or feeding findings into a work queue does not itself grant edit, delegation, publication, or scope-expansion authority.
 
 ## Review Contract
 

@@ -8,15 +8,17 @@ See `AGENTS.md` for the repository entry point and `docs/skills/README.md` for t
 
 Skills are grouped below for browsing only. Each skill remains a visible top-level folder so discovery and install paths stay predictable.
 
+Choose a skill when its task trigger fits, or the caller or applicable project contract explicitly requires it. Ordinary work may need no skill beyond direct execution and project checks. Selecting or installing a skill supplies procedure, not permission for edits, delegation, publication, or other side effects; read its complete `SKILL.md` before use. See the [task-first skill map](docs/skills/catalog/skill-map.md) for selection and composition boundaries.
+
 ## Iterative Work And Review
 
-- **crucible** — Orchestrate iterative, role-guided, sub-agent-heavy work on software, documents, contracts, plans, workflows, policies, designs, images, or other targets through create-review-verify-repair loops, evidence checks, risk review, cleanup, and readiness reporting.
+- **crucible** — Use for requested orchestration or high-risk work that warrants independent create-review-verify-repair convergence. Keeps authorized work source, core roles, evidence, remediation, risk, cleanup, and readiness reporting together; not a default for ordinary implementation or task length alone.
 
   ```
   npx skills@latest add GeekKingCloud/skills/crucible
   ```
 
-- **roast** — Strictly review code, documents, contracts, plans, workflows, designs, images, or other directed targets through evidence-backed lenses, with severity, fix directions, and a grade.
+- **roast** — Use for requested strict, graded critique of a directed target or a gate that calls for Roast. Reports evidence, severity, and fix directions without remediation by default; not a substitute for quick feedback or an automatic companion to implementation.
 
   ```
   npx skills@latest add GeekKingCloud/skills/roast
