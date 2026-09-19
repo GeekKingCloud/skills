@@ -12,6 +12,18 @@ Choose a skill when its task trigger fits, or the caller or applicable project c
 
 ## Iterative Work And Review
 
+- **requesting-code-review** — Prepare proportionate review of a stable change, preserving required approval gates without automatic reviewer chains.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/requesting-code-review
+  ```
+
+- **adversarial-change-review** — Review exact candidates and stateful safety boundaries with evidence-backed findings and bounded verification.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/adversarial-change-review
+  ```
+
 - **crucible** — Use for requested orchestration or high-risk work that warrants independent create-review-verify-repair convergence. Keeps authorized work source, core roles, evidence, remediation, risk, cleanup, and readiness reporting together; not a default for ordinary implementation or task length alone.
 
   ```
@@ -46,6 +58,18 @@ Choose a skill when its task trigger fits, or the caller or applicable project c
 
 ## Workflow
 
+- **unattended-batch-operations** — Complete finite unattended batches with single-writer ownership, bounded recovery, and truthful delivery evidence.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/unattended-batch-operations
+  ```
+
+- **task-intake-and-delivery** — Preserve multi-part requests and corrections through verified delivery within the active authority and budget.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/task-intake-and-delivery
+  ```
+
 - **scour** — Locate prior coding agent chat or session conversations by topic, project, date, file path, command, error text, or remembered fragment, then return likely session names or titles, session IDs or resume handles when available, evidence, and alternate candidates.
 
   ```
@@ -71,6 +95,12 @@ Choose a skill when its task trigger fits, or the caller or applicable project c
   ```
 
 ## Utilities
+
+- **game-localization** — Produce source-bound game localization with faithful voice, mechanical integrity, privacy, and usable-package proof.
+
+  ```
+  npx skills@latest add GeekKingCloud/skills/game-localization
+  ```
 
 - **recollect** — Reconstruct a creator's thoughts from recorded gameplay as quick or full timestamped notes without ghostwriting the final piece.
 

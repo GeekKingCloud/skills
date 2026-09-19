@@ -29,6 +29,10 @@ Skill selection and installation grant no action authority. Current caller direc
 
 ### Iterative Work And Review
 
+- `requesting-code-review` — Prepare proportionate review of a stable change, preserving required approval gates without automatic reviewer chains.
+
+- `adversarial-change-review` — Review exact candidates and stateful safety boundaries with evidence-backed findings and bounded verification.
+
 - `crucible` — requested orchestration or justified high-risk execution and independent convergence, not routine implementation or task length alone.
 - `roast` — strict evidence-backed report-only review by default.
 
@@ -40,12 +44,18 @@ Skill selection and installation grant no action authority. Current caller direc
 
 ### Workflow And Continuity
 
+- `unattended-batch-operations` — Complete finite unattended batches with single-writer ownership, bounded recovery, and truthful delivery evidence.
+
+- `task-intake-and-delivery` — Preserve multi-part requests and corrections through verified delivery within the active authority and budget.
+
 - `scour` — locate prior coding-agent conversations.
 - `recover` — reconstruct state and safely continue interrupted work.
 - `handoff` — save restart-safe active state before transfer or pause.
 - `coach` — derive evidence-bound collaboration coaching and reusable improvements.
 
 ### Creator And Media Utilities
+
+- `game-localization` — Produce source-bound game localization with faithful voice, mechanical integrity, privacy, and usable-package proof.
 
 - `recollect` — reconstruct a creator's recorded gameplay thoughts without ghostwriting the final piece.
 - `remix-voiceover` — measure, repair, render, and verify commentary-over-background audio or video.
